@@ -11,7 +11,7 @@ import StateMenu from "./StateMenu";
 
 const App = () => {
   const [map, setMap] = useState(null);
-  let hoveredPolygonId = null;
+  let hoveredPolygonId999 = null;
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
