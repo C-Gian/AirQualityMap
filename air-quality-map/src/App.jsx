@@ -10,10 +10,8 @@ import StateMenu from "./StateMenu";
 //LE COORDINATE IN MAPBOX SONO ROVESCIATE RISPETTO A QUELLE DI GOOGLE
 
 const App = () => {
-  //CIAOOO
   const [map, setMap] = useState(null);
   let hoveredPolygonId = null;
-  let hoveredPolygonId3 = null;
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
