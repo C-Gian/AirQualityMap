@@ -20,18 +20,18 @@ const App = () => {
   };
 
   function initilizeJson() {
-    dataR.features.forEach(feature => {
+    dataR.features.forEach((feature) => {
       feature.properties.AQI = null;
       feature.lastUpdatedMe = null;
       feature.properties.nStations = null;
-      Object.keys(feature.properties.measurements).forEach(key => {
+      Object.keys(feature.properties.measurements).forEach((key) => {
         feature.properties.measurements[key].totalValues = null;
-        feature.properties.measurements[key].fixedValue = null
-        feature.properties.measurements[key].times = null
-        feature.properties.measurements[key].unit = null
-      })
-    })
-    console.log("JSON initilized correctly", "\n", dataR)
+        feature.properties.measurements[key].fixedValue = null;
+        feature.properties.measurements[key].times = null;
+        feature.properties.measurements[key].unit = null;
+      });
+    });
+    console.log("JSON initilized correctly", "\n", dataR);
   }
 
   const aqi_breakpoints = [
@@ -58,17 +58,14 @@ const App = () => {
     // Creare la stringa di data e ora formattata
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
   }
-  
+
   function o3_aqi_calculator(o3_value) {
-    const o3_breakpoints = {
-      1: [0.0, 0.054],
-      2: [0.055, 0.07],
-      3: [0.071, 0.085],
-      4: [0.086, 0.105],
-      5: [0.106, 0.2],
-      6: [0.405, 0.504],
-      7: [0.505, 0.604],
-    };
+    const o3_breakpoints = [
+      [0, 126.428],
+      [160.714, 351.428],
+      [437.142, 865.714],
+      [1080, 1294.285],
+    ];
     /*
     C_P = the truncated concentration of pollutant
     BP_HI = the concentration breakpoint that is greater than or equal to C_P
@@ -89,6 +86,7 @@ const App = () => {
     });
     return aqiTotal;
   }
+
   function pm25_aqi_calculator(pm25_value) {
     const pm25_breakpoints = [
       [0.0, 12.0],
@@ -108,6 +106,7 @@ const App = () => {
     */
     const C_P = pm25_value;
     let aqiTotal = null;
+
     Object.keys(pm25_breakpoints).forEach((key) => {
       if (C_P >= pm25_breakpoints[key][0] && C_P <= pm25_breakpoints[key][1]) {
         const BP_HI = pm25_breakpoints[key][1];
@@ -269,6 +268,7 @@ const App = () => {
     });
     return aqiTotal;
   }
+
   function no_aqi_calculator(no_value) {
     const no_breakpoints = [
       [0, 50],
@@ -299,59 +299,64 @@ const App = () => {
     });
     return aqiTotal;
   }
+
   function AQICalculator(pollutant) {
     const parameter = pollutant[0];
     const value = pollutant[1];
+
     switch (parameter) {
       case "pm25":
         const aqi_pm25 = pm25_aqi_calculator(value);
         if (aqi_pm25 != null) {
-          return aqi_pm25
+          return aqi_pm25;
         }
         break;
       case "o3":
         const aqi_o3 = o3_aqi_calculator(value);
         if (aqi_o3 != null) {
-          return aqi_o3
+          return aqi_o3;
         }
         break;
       case "pm10":
         const aqi_pm10 = pm10_aqi_calculator(value);
         if (aqi_pm10 != null) {
-          return aqi_pm10
+          return aqi_pm10;
         }
         break;
       case "co":
         const aqi_co = co_aqi_calculator(value);
         if (aqi_co != null) {
-          return aqi_co
+          return aqi_co;
         }
         break;
       case "so2":
         const aqi_so2 = so2_aqi_calculator(value);
         if (aqi_so2 != null) {
-          return aqi_so2
+          return aqi_so2;
         }
         break;
       case "no2":
         const aqi_no2 = no2_aqi_calculator(value);
         if (aqi_no2 != null) {
-          return aqi_no2
+          return aqi_no2;
         }
         break;
       case "no":
         const aqi_no = no_aqi_calculator(value);
         if (aqi_no != null) {
-          return aqi_no
+          return aqi_no;
         }
         break;
       case "nox":
         const aqi_nox = nox_aqi_calculator(value);
         if (aqi_nox != null) {
-          return aqi_nox
+          return aqi_nox;
         }
         break;
     }
+  }
+
+  console.log(o3_aqi_calculator(40.0));
   /* //ambee - 100 richieste al giorno ma ogni richiesta ti da tutte le stazioni, problema è che tutte le stazioni = 5 stazioni
   useEffect(() => {
     const fetchData = async () => {
@@ -407,13 +412,44 @@ const App = () => {
   const OPENAQ_ENDPOINT =
     "https://api.openaq.org/v2/latest?limit=6000&offset=0&sort=desc&country_id=US&order_by=city&dumpRaw=false";
 
+  async function getLatestMeasurements() {
+    const url = "https://www.airnowapi.org/aq/observation/zipCode/current/";
+    const latitude = "37.7749"; // Latitudine degli Stati Uniti (esempio: New York)
+    const longitude = "-122.4194"; // Longitudine degli Stati Uniti (esempio: New York)
+    const distance = "100"; // Distanza in miglia dalla posizione specificata
+    const API_KEY = "B463827E-2DD2-4E7D-A5DC-CCF4D074877A"; // Inserisci la tua chiave API di AirNow
+
+    const apiURL = `${url}?format=application/json&zipCode=${"00501"}&distance=50&API_KEY=${API_KEY}`;
+
+    try {
+      const response = await fetch(apiURL);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log("Errore durante la richiesta API:", error);
+      return null;
+    }
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         /* const response = await axios.get(OPENAQ_ENDPOINT);
         const data = response.data.results; */
         //const data = proxyData.slice(0, 50);
-        const data = proxyData;
+        //const data = proxyData;
+        /* const data = getLatestMeasurements()
+          .then((data) => {
+            if (data && data.length > 0) {
+              console.log("Ultime misurazioni di tutte le stazioni degli USA:");
+              console.log(data);
+            } else {
+              console.log("Nessuna misurazione disponibile.");
+            }
+          })
+          .catch((error) => {
+            console.log("Errore:", error);
+          }); */
         initilizeJson();
         for (let i = 0; i < data.length; i++) {
           const point = turf.point([
@@ -433,7 +469,6 @@ const App = () => {
               polygon = turf.polygon(dataR.features[j].geometry.coordinates);
             }
             if (turf.booleanPointInPolygon(point, polygon)) {
-              
               dataR.features[j].properties.nStations =
                 dataR.features[j].properties.nStations + 1;
 
@@ -441,41 +476,41 @@ const App = () => {
                 let parameter = data[i].measurements[k].parameter;
                 //da ottimizzare!!!
                 if (
-                  !Object.keys(
+                  Object.keys(
                     dataR.features[j].properties.measurements
                   ).includes(parameter)
                 ) {
-                  parameter = "pm25";
+                  const unit = data[i].measurements[k].unit;
+                  const lastUpdate = data[i].measurements[k].lastUpdate;
+                  const value = data[i].measurements[k].value;
+                  const AQIpoll = AQICalculator([parameter, value]);
+                  if (dataR.features[j].properties.AQI < AQIpoll) {
+                    dataR.features[j].properties.AQI = AQIpoll;
+                  }
+                  if (
+                    dataR.features[j].properties.measurements[parameter]
+                      .totalValues != null
+                  ) {
+                    dataR.features[j].properties.measurements[
+                      parameter
+                    ].totalValues += value;
+                    dataR.features[j].properties.measurements[
+                      parameter
+                    ].times += 1;
+                  } else {
+                    dataR.features[j].properties.measurements[
+                      parameter
+                    ].totalValues = value;
+                    dataR.features[j].properties.measurements[parameter].unit =
+                      unit;
+                    dataR.features[j].properties.measurements[
+                      parameter
+                    ].lastUpdate = lastUpdate;
+                    dataR.features[j].properties.measurements[
+                      parameter
+                    ].times = 1;
+                  }
                 }
-                const unit = data[i].measurements[k].unit;
-                const lastUpdate = data[i].measurements[k].lastUpdate;
-                const value = data[i].measurements[k].value;
-                const AQIpoll = AQICalculator([parameter, value])
-                if (dataR.features[j].properties.AQI < AQIpoll) {
-                  dataR.features[j].properties.AQI = AQIpoll;
-                }
-                if (
-                  dataR.features[j].properties.measurements[parameter]
-                    .totalValues != null
-                ) {
-                  dataR.features[j].properties.measurements[
-                    parameter
-                  ].totalValues += value;
-                dataR.features[j].properties.measurements[parameter].times += 1;
-
-                } else {
-                  dataR.features[j].properties.measurements[
-                    parameter
-                  ].totalValues = value;
-                  dataR.features[j].properties.measurements[parameter].unit =
-                    unit;
-                  dataR.features[j].properties.measurements[
-                    parameter
-                  ].lastUpdate = lastUpdate;
-                dataR.features[j].properties.measurements[parameter].times = 1;
-
-                }
-
               }
               break;
             }
@@ -497,7 +532,6 @@ const App = () => {
           });
         });
 
-        console.log(obj)
         //console.log(dataR);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
