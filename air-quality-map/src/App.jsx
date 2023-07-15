@@ -1,25 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import mapboxgl, { NavigationControl } from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useEffect, useState } from "react";
 import dataR from "./dataR.json";
 import proxyData from "./proxydata.json";
 import axios from "axios";
 import * as turf from "@turf/turf";
-import Popup from "./Popup";
-import StateMenu from "./StateMenu";
+import Sidebar from "./Sidebar";
+import MapComponent from "./MapComponent";
 
 //LE COORDINATE IN MAPBOX SONO ROVESCIATE RISPETTO A QUELLE DI GOOGLE
 
 const App = () => {
-  const [map, setMap] = useState(null);
-  let hoveredPolygonId = null;
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupPosition, setPopupPosition] = useState({});
-  const [hoveredState, setHoveredState] = useState(null);
-  const [hoveredStateColor, setHoveredStateColor] = useState(null);
   const [stateInfo, setStateInfo] = useState(null);
 
   const handleCloseMenu = () => {
     setStateInfo(null);
+  };
+
+  const stateClicked = (stateInfos) => {
+    setStateInfo(stateInfos);
   };
 
   function formattedTime() {
@@ -62,7 +59,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = o3_value.value;
+    const C_P = o3_value;
     let aqiTotal = null;
     Object.keys(o3_breakpoints).forEach((key) => {
       if (C_P >= o3_breakpoints[key][0] && C_P <= o3_breakpoints[key][1]) {
@@ -92,7 +89,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = pm25_value.value;
+    const C_P = pm25_value;
     let aqiTotal = null;
     Object.keys(pm25_breakpoints).forEach((key) => {
       if (C_P >= pm25_breakpoints[key][0] && C_P <= pm25_breakpoints[key][1]) {
@@ -122,7 +119,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = pm10_value.value;
+    const C_P = pm10_value;
     let aqiTotal = null;
     Object.keys(pm10_breakpoints).forEach((key) => {
       if (C_P >= pm10_breakpoints[key][0] && C_P <= pm10_breakpoints[key][1]) {
@@ -152,7 +149,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = co_value.value;
+    const C_P = co_value;
     let aqiTotal = null;
     Object.keys(co_breakpoints).forEach((key) => {
       if (C_P >= co_breakpoints[key][0] && C_P <= co_breakpoints[key][1]) {
@@ -182,7 +179,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = so2_value.value;
+    const C_P = so2_value;
     let aqiTotal = null;
     Object.keys(so2_breakpoints).forEach((key) => {
       if (C_P >= so2_breakpoints[key][0] && C_P <= so2_breakpoints[key][1]) {
@@ -212,7 +209,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = no2_value.value;
+    const C_P = no2_value;
     let aqiTotal = null;
     Object.keys(no2_breakpoints).forEach((key) => {
       if (C_P >= no2_breakpoints[key][0] && C_P <= no2_breakpoints[key][1]) {
@@ -242,7 +239,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = nox_value.value;
+    const C_P = nox_value;
     let aqiTotal = null;
     Object.keys(nox_breakpoints).forEach((key) => {
       if (C_P >= nox_breakpoints[key][0] && C_P <= nox_breakpoints[key][1]) {
@@ -272,7 +269,7 @@ const App = () => {
     I_HI = the AQI value corresponding to BP_HI
     I_LO = the AQI value corresponding to BP_LO
     */
-    const C_P = no_value.value;
+    const C_P = no_value;
     let aqiTotal = null;
     Object.keys(no_breakpoints).forEach((key) => {
       if (C_P >= no_breakpoints[key][0] && C_P <= no_breakpoints[key][1]) {
@@ -286,72 +283,66 @@ const App = () => {
     return aqiTotal;
   }
   function AQICalculator(measurements) {
-    let AQIs = {};
-    if (measurements.o3.value != null && measurements.o3.value != 0) {
-      AQIs.o3 = [null, null];
-      const o3_aqi = o3_aqi_calculator(measurements.o3);
-      if (o3_aqi != null) {
-        AQIs.o3 = [measurements.o3.value, o3_aqi];
-      }
-    }
-    if (measurements.pm25.value != null && measurements.pm25.value != 0) {
-      AQIs.pm25 = [null, null];
-      const pm25_aqi = pm25_aqi_calculator(measurements.pm25);
-      if (pm25_aqi != null) {
-        AQIs.pm25 = [measurements.pm25.value, pm25_aqi];
-      }
-    }
-    if (measurements.pm10.value != null && measurements.pm10.value != 0) {
-      AQIs.pm10 = [null, null];
-      const pm10_aqi = pm10_aqi_calculator(measurements.pm10);
-      if (pm10_aqi != null) {
-        AQIs.pm10 = [measurements.pm10.value, pm10_aqi];
-      }
-    }
-    if (measurements.co.value != null && measurements.co.value != 0) {
-      AQIs.co = [null, null];
-      const co_aqi = co_aqi_calculator(measurements.co);
-      if (co_aqi != null) {
-        AQIs.co = [measurements.co.value, co_aqi];
-      }
-    }
-    if (measurements.so2.value != null && measurements.so2.value != 0) {
-      AQIs.so2 = [null, null];
-      const so2_aqi = so2_aqi_calculator(measurements.so2);
-      if (so2_aqi != null) {
-        AQIs.so2 = [measurements.so2.value, so2_aqi];
-      }
-    }
-    if (measurements.no2.value != null && measurements.no2.value != 0) {
-      AQIs.no2 = [null, null];
-      const no2_aqi = no2_aqi_calculator(measurements.no2);
-      if (no2_aqi != null) {
-        AQIs.no2 = [measurements.no2.value, no2_aqi];
-      }
-    }
-    if (measurements.nox.value != null && measurements.nox.value != 0) {
-      AQIs.nox = [null, null];
-      const nox_aqi = nox_aqi_calculator(measurements.nox);
-      if (nox_aqi != null) {
-        AQIs.nox = [measurements.nox.value, nox_aqi];
-      }
-    }
-    if (measurements.no.value != null && measurements.no.value != 0) {
-      AQIs.no = [null, null];
-      const no_aqi = no_aqi_calculator(measurements.no);
-      if (no_aqi != null) {
-        AQIs.no = [measurements.no.value, no_aqi];
-      }
-    }
-    let AQI_array = [];
-    Object.keys(AQIs).forEach((key) => {
-      if (AQIs[key][1] != null) {
-        AQI_array.push(AQIs[key][1]);
+    let AQIs = [];
+    Object.keys(measurements).forEach((key) => {
+      if (measurements[key].fixedValue != null) {
+        switch (key) {
+          case "pm25":
+            const aqi_pm25 = pm25_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_pm25 != null) {
+              AQIs.push(aqi_pm25.toFixed(2));
+            }
+            break;
+          case "o3":
+            const aqi_o3 = o3_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_o3 != null) {
+              AQIs.push(aqi_o3.toFixed(2));
+            }
+            break;
+          case "pm10":
+            const aqi_pm10 = pm10_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_pm10 != null) {
+              AQIs.push(aqi_pm10.toFixed(2));
+            }
+            break;
+          case "co":
+            const aqi_co = co_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_co != null) {
+              AQIs.push(aqi_co.toFixed(2));
+            }
+            break;
+          case "so2":
+            const aqi_so2 = so2_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_so2 != null) {
+              AQIs.push(aqi_so2.toFixed(2));
+            }
+            break;
+          case "no2":
+            const aqi_no2 = no2_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_no2 != null) {
+              AQIs.push(aqi_no2.toFixed(2));
+            }
+            break;
+          case "no":
+            const aqi_no = no_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_no != null) {
+              AQIs.push(aqi_no.toFixed(2));
+            }
+            break;
+          case "nox":
+            const aqi_nox = nox_aqi_calculator(measurements[key].fixedValue);
+            if (aqi_nox != null) {
+              AQIs.push(aqi_nox.toFixed(2));
+            }
+            break;
+        }
       }
     });
-    if (AQI_array.length > 0) {
-      return Math.max(...AQI_array);
+
+    if (AQIs.length > 0) {
+      return Math.max(...AQIs);
     }
+
     return 0;
   }
   /* //ambee - 100 richieste al giorno ma ogni richiesta ti da tutte le stazioni, problema è che tutte le stazioni = 5 stazioni
@@ -408,11 +399,13 @@ const App = () => {
   //openAQ API - max 300 richieste ogni 5m - una singola chiamata ottieni max 1000 stazioni ma con tutti gli inquinanti
   const OPENAQ_ENDPOINT =
     "https://api.openaq.org/v2/latest?limit=6000&offset=0&sort=desc&country_id=US&order_by=city&dumpRaw=false";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         /* const response = await axios.get(OPENAQ_ENDPOINT);
         const data = response.data.results; */
+        //const data = proxyData.slice(0, 50);
         const data = proxyData;
         for (let i = 0; i < data.length; i++) {
           const point = turf.point([
@@ -434,54 +427,63 @@ const App = () => {
             if (turf.booleanPointInPolygon(point, polygon)) {
               dataR.features[j].properties.nStations =
                 dataR.features[j].properties.nStations + 1;
-              const pollutionElements = [
-                "pm25",
-                "o3",
-                "no",
-                "co",
-                "so2",
-                "pm10",
-                "no2",
-                "nox",
-              ];
-              /* console.log(data[i].measurements);
-              console.log(dataR.features[j].properties.measurements); */
-              var measurements = {};
-              data[i].measurements.forEach((el) => {
-                if (pollutionElements.includes(el.parameter)) {
-                  const index = pollutionElements.indexOf(el.parameter);
-                  if (index > -1) {
-                    pollutionElements.splice(index, 1);
-                  }
-                  Object.assign(measurements, {
-                    [el.parameter]: {
-                      value: el.value,
-                      lastUpdatedStation: el.lastUpdated,
-                      unit: el.unit,
-                    },
-                  });
+
+              for (let k = 0; k < data[i].measurements.length; k++) {
+                let parameter = data[i].measurements[k].parameter;
+                //da ottimizzare!!!
+                if (
+                  !Object.keys(
+                    dataR.features[j].properties.measurements
+                  ).includes(parameter)
+                ) {
+                  parameter = "pm25";
                 }
-              });
-              if (pollutionElements.length > 0) {
-                pollutionElements.forEach((el) => {
-                  Object.assign(measurements, {
-                    [el]: {
-                      value: null,
-                      lastUpdatedStation: null,
-                      unit: null,
-                    },
-                  });
-                });
-              }
-              dataR.features[j].properties.measurements = measurements;
-              const thisStationAQI = AQICalculator(measurements);
-              if (thisStationAQI > dataR.features[j].properties.AQI) {
-                dataR.features[j].properties.AQI = thisStationAQI;
+                const unit = data[i].measurements[k].unit;
+                const lastUpdate = data[i].measurements[k].lastUpdate;
+                const value = data[i].measurements[k].value;
+                if (
+                  dataR.features[j].properties.measurements[parameter]
+                    .totalValues != null
+                ) {
+                  dataR.features[j].properties.measurements[
+                    parameter
+                  ].totalValues += value;
+                } else {
+                  dataR.features[j].properties.measurements[
+                    parameter
+                  ].totalValues = value;
+                  dataR.features[j].properties.measurements[parameter].unit =
+                    unit;
+                  dataR.features[j].properties.measurements[
+                    parameter
+                  ].lastUpdate = lastUpdate;
+                }
+                dataR.features[j].properties.measurements[parameter].times += 1;
               }
             }
           }
         }
-        console.log(dataR);
+
+        //setting fixedValue and AQI
+        dataR.features.forEach((el) => {
+          //setting fixedValue
+          Object.keys(el.properties.measurements).forEach((key) => {
+            if (
+              el.properties.measurements[key].totalValues != null &&
+              el.properties.measurements[key].totalValues > 0
+            ) {
+              el.properties.measurements[key].fixedValue =
+                el.properties.measurements[key].totalValues /
+                el.properties.measurements[key].times;
+            }
+          });
+
+          //setting AQI
+          el.properties.AQI = AQICalculator(el.properties.measurements);
+        });
+
+        //console.log(dataR);
+
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
         let min = 0;
         let med = 0;
@@ -516,223 +518,16 @@ const App = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
-    const map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/dark-v11",
-      center: [-98.30953630020429, 38.75491131673913],
-      minZoom: 2,
-      zoom: 3,
-    });
-    setMap(map);
-
-    const zoomThreshold = 5;
-
-    map.on("load", () => {
-      let show = false;
-      map.style.stylesheet.layers.forEach(function (layer) {
-        if (layer.type === "symbol") {
-          map.setLayoutProperty(
-            layer.id,
-            "visibility",
-            show ? "visible" : "none"
-          );
-        }
-      });
-
-      //map.addControl(new NavigationControl(), "top-right");
-
-      map.addSource("aqi", {
-        type: "geojson",
-        data: dataR,
-      });
-
-      map.addLayer(
-        {
-          id: "state-aqi",
-          source: "aqi",
-          maxzoom: zoomThreshold,
-          type: "fill",
-          paint: {
-            "fill-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "AQI"],
-              0,
-              "#FFFFFF",
-              16.8,
-              "#00ff04",
-              33.4,
-              "#a2ff00",
-              50,
-              "#bbff00",
-
-              51,
-              "#f6ff00",
-              67.4,
-              "#ffea00",
-              83.7,
-              "#ffd000",
-              100,
-              "#ffb300",
-
-              101,
-              "#ff9900",
-              117.4,
-              "#ff8000",
-              133.7,
-              "#ff6600",
-              150,
-              "#ff4800",
-
-              151,
-              "#ff0000",
-              167.4,
-              "#ff003c",
-              183.7,
-              "#ff0066",
-              200,
-              "#d6006f",
-
-              201,
-              "#db0072",
-              220.8,
-              "#b50460",
-              240.6,
-              "#9e0253",
-              260.4,
-              "#8a0349",
-              280.2,
-              "#7a0140",
-              300,
-              "#690137",
-
-              301,
-              "#57012d",
-            ],
-            "fill-opacity": [
-              "case",
-              ["boolean", ["feature-state", "hover"], false],
-              1,
-              0.75,
-            ],
-          },
-        },
-        "road-label-simple"
-      );
-
-      map.addLayer(
-        {
-          id: "state-aqi-line",
-          source: "aqi",
-          maxzoom: zoomThreshold,
-          type: "line",
-          interactive: false,
-          paint: {
-            "line-opacity": 0.3, // Opacità delle linee dei confini
-            "line-color": "#212121", // Colore delle linee dei confini
-            "line-width": 0.5, // Spessore delle linee dei confini
-          },
-        },
-        "road-label-simple"
-      );
-    });
-
-    map.on("zoom", () => {
-      const stateLegendEl = document.getElementById("state-legend");
-      const countyLegendEl = document.getElementById("county-legend");
-      if (map.getZoom() > zoomThreshold) {
-        stateLegendEl.style.display = "none";
-        countyLegendEl.style.display = "block";
-      } else {
-        stateLegendEl.style.display = "block";
-        countyLegendEl.style.display = "none";
-      }
-    });
-
-    // Create a popup, but don't add it to the map yet.
-    const popup = new mapboxgl.Popup({
-      className: "popup-style",
-      closeButton: false,
-      closeOnClick: false,
-    });
-
-    map.on("mousemove", "state-aqi", (e) => {
-      map.getCanvas().style.cursor = "pointer";
-      if (e.features.length > 0) {
-        if (hoveredPolygonId == null) {
-          hoveredPolygonId = e.features[0].id;
-          map.setFeatureState(
-            { source: "aqi", id: hoveredPolygonId },
-            { hover: true }
-          );
-          setHoveredState(dataR.features[e.features[0].id]);
-          setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
-        } else if (e.features[0].id != hoveredPolygonId) {
-          map.setFeatureState(
-            { source: "aqi", id: hoveredPolygonId },
-            { hover: false }
-          );
-          hoveredPolygonId = e.features[0].id;
-          map.setFeatureState(
-            { source: "aqi", id: hoveredPolygonId },
-            { hover: true }
-          );
-          setHoveredState(dataR.features[e.features[0].id]);
-          setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
-        }
-        setPopupPosition({
-          x: e.originalEvent.clientX,
-          y: e.originalEvent.clientY,
-        });
-        setShowPopup(true);
-      }
-    });
-
-    map.on("mouseleave", "state-aqi", () => {
-      map.getCanvas().style.cursor = "";
-      setShowPopup(false);
-      setHoveredState({});
-      setHoveredStateColor({});
-      if (hoveredPolygonId !== null) {
-        map.setFeatureState(
-          { source: "aqi", id: hoveredPolygonId },
-          { hover: false }
-        );
-      }
-      hoveredPolygonId = null;
-    });
-
-    map.on("click", "state-aqi", (e) => {
-      const stateInfos = dataR.features.find(
-        (obj) => obj.id === e.features[0].id
-      );
-      if (stateInfos) {
-        setStateInfo(stateInfos);
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(stateInfo);
-  }, [stateInfo]);
-
   return (
     <div>
-      <div id="map"></div>
-      {showPopup && (
-        <Popup
-          x={popupPosition.x}
-          y={popupPosition.y}
-          hoveredState={hoveredState}
-          hoveredStateColor={hoveredStateColor}
-        />
+      {dataR && (
+        <MapComponent
+          dataR={dataR}
+          stateClicked={stateClicked}
+          handleCloseMenu={handleCloseMenu}
+        ></MapComponent>
       )}
-      {stateInfo && (
-        <StateMenu stateInfo={stateInfo} onClose={handleCloseMenu} />
-      )}
+      {stateInfo && <Sidebar stateInfo={stateInfo} onClose={handleCloseMenu} />}
     </div>
   );
 };
