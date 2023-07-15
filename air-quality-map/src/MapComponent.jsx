@@ -4,7 +4,7 @@ import Popup from "./Popup";
 import * as turf from "@turf/turf";
 
 function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
-  console.log(dataR);
+  //console.log(dataR);
   const [map, setMap] = useState(null);
   let hoveredPolygonId = null;
   const [showPopup, setShowPopup] = useState(false);
