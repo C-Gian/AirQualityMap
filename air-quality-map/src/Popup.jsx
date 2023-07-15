@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
   const r = Math.round(hoveredStateColor.r * 255);

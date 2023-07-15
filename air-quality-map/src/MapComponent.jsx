@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 /* import dataR from "./dataR.json"; */
 import Popup from "./Popup";
+import * as turf from "@turf/turf";
 
-function MapComponent({ dataR, stateClicked }) {
+function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
   const [map, setMap] = useState(null);
   let hoveredPolygonId = null;
   const [showPopup, setShowPopup] = useState(false);
@@ -22,7 +23,7 @@ function MapComponent({ dataR, stateClicked }) {
     });
     setMap(map);
 
-    const zoomThreshold = 5;
+    const zoomThreshold = 8;
 
     map.on("load", () => {
       let show = false;
@@ -134,7 +135,7 @@ function MapComponent({ dataR, stateClicked }) {
       );
     });
 
-    map.on("zoom", () => {
+    /* map.on("zoom", () => {
       const stateLegendEl = document.getElementById("state-legend");
       const countyLegendEl = document.getElementById("county-legend");
       if (map.getZoom() > zoomThreshold) {
@@ -145,6 +146,7 @@ function MapComponent({ dataR, stateClicked }) {
         countyLegendEl.style.display = "none";
       }
     });
+ */
 
     map.on("mousemove", "state-aqi", (e) => {
       map.getCanvas().style.cursor = "pointer";
@@ -193,10 +195,40 @@ function MapComponent({ dataR, stateClicked }) {
     });
 
     map.on("click", "state-aqi", (e) => {
+      e.preventDefault();
       const stateInfos = dataR.features.find(
         (obj) => obj.id === e.features[0].id
       );
       stateClicked(stateInfos);
+      const center = turf.center(e.features[0].geometry).geometry.coordinates;
+
+      // Esegui l'animazione di zoom e panoramica verso il centro dello stato
+      map.flyTo({
+        center: center,
+        zoom: 5, // Livello di zoom desiderato
+        speed: 1.5, // Velocità dell'animazione
+        curve: 1.5, // Curva di accelerazione dell'animazione
+        essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+      });
+    });
+
+    map.on("click", (e) => {
+      if (e.defaultPrevented === false) {
+        handleCloseMenu();
+      }
+    });
+
+    map.on("dragstart", () => {
+      setShowPopup(false);
+      setHoveredState({});
+      setHoveredStateColor({});
+      if (hoveredPolygonId !== null) {
+        map.setFeatureState(
+          { source: "aqi", id: hoveredPolygonId },
+          { hover: false }
+        );
+      }
+      hoveredPolygonId = null;
     });
   }, []);
 

@@ -3,7 +3,7 @@ import dataR from "./dataR.json";
 import proxyData from "./proxydata.json";
 import axios from "axios";
 import * as turf from "@turf/turf";
-import StateMenu from "./StateMenu";
+import Sidebar from "./Sidebar";
 import MapComponent from "./MapComponent";
 
 //LE COORDINATE IN MAPBOX SONO ROVESCIATE RISPETTO A QUELLE DI GOOGLE
@@ -517,11 +517,13 @@ const App = () => {
   return (
     <div>
       {dataR && (
-        <MapComponent dataR={dataR} stateClicked={stateClicked}></MapComponent>
+        <MapComponent
+          dataR={dataR}
+          stateClicked={stateClicked}
+          handleCloseMenu={handleCloseMenu}
+        ></MapComponent>
       )}
-      {stateInfo && (
-        <StateMenu stateInfo={stateInfo} onClose={handleCloseMenu} />
-      )}
+      {stateInfo && <Sidebar stateInfo={stateInfo} onClose={handleCloseMenu} />}
     </div>
   );
 };

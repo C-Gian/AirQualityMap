@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
-const StateMenu = ({ stateInfo, onClose }) => {
+const Sidebar = ({ stateInfo, onClose }) => {
+  console.log(stateInfo);
   const measurements = {
     pm25: {
       value: 3.3,
@@ -147,4 +148,4 @@ const StateMenu = ({ stateInfo, onClose }) => {
   );
 };
 
-export default StateMenu;
+export default Sidebar;
