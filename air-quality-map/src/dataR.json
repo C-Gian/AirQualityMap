@@ -3,27 +3,66 @@
   "features": [
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "AL",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 0,
       "properties": {
-"AQI": 0,
+        "AQI": 157.36,
         "name": "Alabama",
         "measurements": {
           "pm10": {
-            "value": 5,
-            "lastUpdated": "2023-02-01T23:52:09+00:00",
+            "totalValues": 1367,
+            "fixedValue": 7.85632183908046,
+            "times": 174,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 4.6,
-            "lastUpdated": "2023-02-01T23:52:09+00:00",
+            "totalValues": 83878.52199999991,
+            "fixedValue": 67.8080210185933,
+            "times": 1237,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 4.35799999999999,
+            "fixedValue": 0.020851674641148277,
+            "times": 209,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "so2": {
+            "totalValues": 0.03250000000000001,
+            "fixedValue": 0.0009848484848484851,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 394
       },
       "geometry": {
         "type": "Polygon",
@@ -68,28 +107,63 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-
-      "id": "AK",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 1,
       "properties": {
-"AQI": 0,
+        "AQI": 160.26,
         "name": "Alaska",
         "measurements": {
-          "pm25": {
-            "value": 1.5,
-            "lastUpdated": "2023-07-10T10:27:44+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 1.6,
-            "lastUpdated": "2023-07-10T10:27:44+00:00",
+            "totalValues": 1416.500000000001,
+            "fixedValue": 3.7081151832460755,
+            "times": 382,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 200176.54499999958,
+            "fixedValue": 73.43233492296389,
+            "times": 2726,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 0.7390000000000004,
+            "fixedValue": 0.022393939393939407,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.17789999999999997,
+            "fixedValue": 0.01617272727272727,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 2.6000000000000005,
+            "fixedValue": 0.07878787878787881,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0071,
+            "fixedValue": 0.00032272727272727276,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.058899999999999994,
+            "fixedValue": 0.005354545454545454,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 415
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -1329,27 +1403,63 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "AZ",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 2,
       "properties": {
-"AQI": 0,
+        "AQI": 167.74,
         "name": "Arizona",
         "measurements": {
-          "pm25": {
-            "value": 2.1,
-            "lastUpdated": "2023-07-10T10:27:39+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 2.2,
-            "lastUpdated": "2023-07-10T10:27:39+00:00",
+            "totalValues": 54722.400000000016,
+            "fixedValue": 57.30094240837698,
+            "times": 955,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 359772.90000000095,
+            "fixedValue": 87.9210410557187,
+            "times": 4092,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 15.182999999999977,
+            "fixedValue": 0.030672727272727227,
+            "times": 495,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0011000000000000003,
+            "fixedValue": 0.00010000000000000003,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 26.899999999999988,
+            "fixedValue": 0.2717171717171716,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.020900000000000005,
+            "fixedValue": 0.0002714285714285715,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.41720000000000024,
+            "fixedValue": 0.006321212121212125,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 1263
       },
       "geometry": {
         "type": "Polygon",
@@ -1393,27 +1503,67 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "AR",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 3,
       "properties": {
-"AQI": 0,
+        "AQI": 134.39,
         "name": "Arkansas",
         "measurements": {
           "pm10": {
-            "value": 38.1,
-            "lastUpdated": "2021-12-10T14:43:56+00:00",
+            "totalValues": 935.5000000000002,
+            "fixedValue": 12.641891891891895,
+            "times": 74,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 31.8,
-            "lastUpdated": "2021-12-10T14:43:56+00:00",
+            "totalValues": 28209.974000000013,
+            "fixedValue": 49.060824347826106,
+            "times": 575,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 1.7449999999999986,
+            "fixedValue": 0.019829545454545437,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "so2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 173
       },
       "geometry": {
         "type": "Polygon",
@@ -1462,27 +1612,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "CA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 4,
       "properties": {
-"AQI": 0,
+        "AQI": 162.94,
         "name": "California",
         "measurements": {
           "pm10": {
-            "value": 0,
-            "lastUpdated": "2021-08-18T19:37:04+00:00",
+            "totalValues": 339410.120000007,
+            "fixedValue": 13.179951848400396,
+            "times": 25752,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0,
-            "lastUpdated": "2021-08-18T19:37:04+00:00",
+            "totalValues": 16864364.808996096,
+            "fixedValue": 78.62577945254114,
+            "times": 214489,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 52.591000000000136,
+            "fixedValue": 0.02513910133843219,
+            "times": 2092,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 1.8936999999999973,
+            "fixedValue": 0.0024949934123847132,
+            "times": 759,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 155.5300000000001,
+            "fixedValue": 0.26677530017152673,
+            "times": 583,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.06890000000000006,
+            "fixedValue": 0.00031318181818181846,
+            "times": 220,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 5.997809999999994,
+            "fixedValue": 0.005605429906542051,
+            "times": 1070,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 7.589400000000001,
+            "fixedValue": 0.009717541613316262,
+            "times": 781,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 27410
       },
       "geometry": {
         "type": "Polygon",
@@ -1587,27 +1772,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "CO",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 5,
       "properties": {
-"AQI": 0,
+        "AQI": 159.75,
         "name": "Colorado",
         "measurements": {
           "pm10": {
-            "value": 2.1,
-            "lastUpdated": "2023-07-10T10:27:13+00:00",
+            "totalValues": 26188.950000000008,
+            "fixedValue": 18.048897312198488,
+            "times": 1451,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 1.9,
-            "lastUpdated": "2023-07-10T10:27:13+00:00",
+            "totalValues": 903351.6070000103,
+            "fixedValue": 72.44779910177323,
+            "times": 12469,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 10.244999999999997,
+            "fixedValue": 0.03211598746081504,
+            "times": 319,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0131,
+            "fixedValue": 0.00023818181818181818,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 20.399999999999977,
+            "fixedValue": 0.20606060606060583,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.020300000000000006,
+            "fixedValue": 0.0003690909090909092,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.4173700000000003,
+            "fixedValue": 0.0032354263565891497,
+            "times": 129,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.11340000000000001,
+            "fixedValue": 0.0025772727272727275,
+            "times": 44,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 1814
       },
       "geometry": {
         "type": "Polygon",
@@ -1635,27 +1855,63 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "CT",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 6,
       "properties": {
-"AQI": 0,
+        "AQI": 163.11,
         "name": "Connecticut",
         "measurements": {
           "pm10": {
-            "value": 7.1,
-            "lastUpdated": "2021-06-20T17:59:18+00:00",
+            "totalValues": 2109.600000000001,
+            "fixedValue": 6.097109826589597,
+            "times": 346,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 6.9,
-            "lastUpdated": "2021-06-20T17:59:18+00:00",
+            "totalValues": 186792.37199999962,
+            "fixedValue": 78.94859340659325,
+            "times": 2366,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 1.9520000000000002,
+            "fixedValue": 0.01971717171717172,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0014,
+            "fixedValue": 0.00006363636363636364,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 9.12,
+            "fixedValue": 0.1658181818181818,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": -0.0007000000000000001,
+            "fixedValue": null,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.14100000000000004,
+            "fixedValue": 0.0032045454545454556,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 390
       },
       "geometry": {
         "type": "Polygon",
@@ -1683,27 +1939,65 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "DE",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 7,
       "properties": {
-"AQI": 0,
+        "AQI": 161.13,
         "name": "Delaware",
         "measurements": {
           "pm10": {
-            "value": 9.6,
-            "lastUpdated": "2023-07-10T10:28:38+00:00",
+            "totalValues": 847.7,
+            "fixedValue": 11.153947368421052,
+            "times": 76,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 8.9,
-            "lastUpdated": "2023-07-10T10:28:38+00:00",
+            "totalValues": 59049.41600000001,
+            "fixedValue": 75.12648346055981,
+            "times": 786,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 2.6619999999999986,
+            "fixedValue": 0.03457142857142855,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 6.599999999999999,
+            "fixedValue": 0.5999999999999999,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0059,
+            "fixedValue": 0.00017878787878787878,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 186
       },
       "geometry": {
         "type": "Polygon",
@@ -1728,27 +2022,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "FL",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 8,
       "properties": {
-"AQI": 0,
+        "AQI": 155.6,
         "name": "Florida",
         "measurements": {
-          "pm25": {
-            "value": 7.5,
-            "lastUpdated": "2023-07-10T10:28:28+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 8.1,
-            "lastUpdated": "2023-07-10T10:28:28+00:00",
+            "totalValues": 6782.900000000003,
+            "fixedValue": 15.486073059360738,
+            "times": 438,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 168622.31399999963,
+            "fixedValue": 64.4088288770052,
+            "times": 2618,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 6.869999999999975,
+            "fixedValue": 0.012745825602968414,
+            "times": 539,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.2803,
+            "fixedValue": 0.005096363636363636,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 22.000000000000004,
+            "fixedValue": 0.25000000000000006,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.13500000000000006,
+            "fixedValue": 0.0008181818181818186,
+            "times": 165,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.7984999999999999,
+            "fixedValue": 0.006049242424242423,
+            "times": 132,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.6545000000000002,
+            "fixedValue": 0.014875000000000005,
+            "times": 44,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 1054
       },
       "geometry": {
         "type": "Polygon",
@@ -1838,27 +2167,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "GA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 9,
       "properties": {
-"AQI": 0,
+        "AQI": 158.44,
         "name": "Georgia",
         "measurements": {
-          "pm25": {
-            "value": 1.5,
-            "lastUpdated": "2023-07-10T10:27:27+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 1.7,
-            "lastUpdated": "2023-07-10T10:27:27+00:00",
+            "totalValues": 5260.9000000000015,
+            "fixedValue": 11.769351230425059,
+            "times": 447,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 180441.74999999948,
+            "fixedValue": 69.91156528477315,
+            "times": 2581,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 3.923999999999992,
+            "fixedValue": 0.01877511961722484,
+            "times": 209,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.22170000000000006,
+            "fixedValue": 0.00671818181818182,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 5.700000000000001,
+            "fixedValue": 0.25909090909090915,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.1029,
+            "fixedValue": 0.001169318181818182,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.27969999999999995,
+            "fixedValue": 0.008475757575757574,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.5041,
+            "fixedValue": 0.015275757575757576,
+            "times": 33,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 612
       },
       "geometry": {
         "type": "Polygon",
@@ -1921,27 +2285,65 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "HI",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 10,
       "properties": {
-"AQI": 0,
+        "AQI": 164.17,
         "name": "Hawaii",
         "measurements": {
-          "pm25": {
-            "value": 0.7,
-            "lastUpdated": "2023-07-10T10:27:52+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 0.9,
-            "lastUpdated": "2023-07-10T10:27:52+00:00",
+            "totalValues": 344.2000000000003,
+            "fixedValue": 2.8213114754098383,
+            "times": 122,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 95835.86600000011,
+            "fixedValue": 81.01087573964506,
+            "times": 1183,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 2.31,
+            "fixedValue": 0.21,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.10000000000000006,
+            "fixedValue": 0.0010101010101010108,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.0195,
+            "fixedValue": 0.0017727272727272728,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 243
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2020,27 +2422,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "ID",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 11,
       "properties": {
-"AQI": 0,
+        "AQI": 158.61,
         "name": "Idaho",
         "measurements": {
           "pm10": {
-            "value": 0.2,
-            "lastUpdated": "2021-06-02T01:37:30+00:00",
+            "totalValues": 7656.1000000000095,
+            "fixedValue": 16.938274336283207,
+            "times": 452,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0.1,
-            "lastUpdated": "2021-06-02T01:37:30+00:00",
+            "totalValues": 267755.05700000044,
+            "fixedValue": 70.2400464323191,
+            "times": 3812,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 2.196999999999999,
+            "fixedValue": 0.03994545454545453,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0043,
+            "fixedValue": 0.0003909090909090909,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 1.0999999999999999,
+            "fixedValue": 0.09999999999999999,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.010100000000000001,
+            "fixedValue": 0.0003060606060606061,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.04690000000000001,
+            "fixedValue": 0.004263636363636364,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.0514,
+            "fixedValue": 0.004672727272727273,
+            "times": 11,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 806
       },
       "geometry": {
         "type": "Polygon",
@@ -2118,27 +2555,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "IL",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 12,
       "properties": {
-"AQI": 0,
+        "AQI": 155.55,
         "name": "Illinois",
         "measurements": {
-          "pm25": {
-            "value": 1,
-            "lastUpdated": "2023-07-01T18:09:09+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 1.2,
-            "lastUpdated": "2023-07-01T18:09:09+00:00",
+            "totalValues": 2133.6999999999975,
+            "fixedValue": 7.815750915750907,
+            "times": 273,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 165138.4359999999,
+            "fixedValue": 64.30624454828657,
+            "times": 2568,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 7.91999999999999,
+            "fixedValue": 0.019459459459459434,
+            "times": 407,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0008,
+            "fixedValue": 0.00007272727272727273,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 1.0999999999999999,
+            "fixedValue": 0.09999999999999999,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.011400000000000002,
+            "fixedValue": 0.0005181818181818182,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 790
       },
       "geometry": {
         "type": "Polygon",
@@ -2217,27 +2691,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "IN",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 13,
       "properties": {
-"AQI": 0,
+        "AQI": 155.34,
         "name": "Indiana",
         "measurements": {
           "pm10": {
-            "value": 14.6,
-            "lastUpdated": "2023-07-10T10:28:23+00:00",
+            "totalValues": 4443.8,
+            "fixedValue": 21.16095238095238,
+            "times": 210,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 13.4,
-            "lastUpdated": "2023-07-10T10:28:23+00:00",
+            "totalValues": 87474.80500000007,
+            "fixedValue": 63.89686267348434,
+            "times": 1369,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 18.230999999999966,
+            "fixedValue": 0.02716989567809235,
+            "times": 671,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 18.249999999999996,
+            "fixedValue": 0.33181818181818173,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.056400000000000006,
+            "fixedValue": 0.0003016042780748663,
+            "times": 187,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 1.1970000000000005,
+            "fixedValue": 0.010881818181818187,
+            "times": 110,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 947
       },
       "geometry": {
         "type": "Polygon",
@@ -2295,27 +2806,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "IA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 14,
       "properties": {
-"AQI": 0,
+        "AQI": 167.46,
         "name": "Iowa",
         "measurements": {
           "pm10": {
-            "value": 17.1,
-            "lastUpdated": "2023-07-10T10:27:33+00:00",
+            "totalValues": 36946.200000000004,
+            "fixedValue": 155.89113924050633,
+            "times": 237,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 16,
-            "lastUpdated": "2023-07-10T10:27:33+00:00",
+            "totalValues": 150568.87200000024,
+            "fixedValue": 87.38762159024971,
+            "times": 1723,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 3.485999999999996,
+            "fixedValue": 0.02437762237762235,
+            "times": 143,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0079,
+            "fixedValue": 0.0007181818181818182,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 4.400000000000001,
+            "fixedValue": 0.20000000000000007,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.027000000000000014,
+            "fixedValue": 0.00027272727272727285,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.09250000000000001,
+            "fixedValue": 0.004204545454545455,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.035500000000000004,
+            "fixedValue": 0.0032272727272727275,
+            "times": 11,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 490
       },
       "geometry": {
         "type": "Polygon",
@@ -2377,27 +2923,65 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "KS",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 15,
       "properties": {
-"AQI": 0,
+        "AQI": 139.32,
         "name": "Kansas",
         "measurements": {
           "pm10": {
-            "value": 24.7,
-            "lastUpdated": "2021-09-04T08:43:02+00:00",
+            "totalValues": 3630.2999999999984,
+            "fixedValue": 17.04366197183098,
+            "times": 213,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 23.3,
-            "lastUpdated": "2021-09-04T08:43:02+00:00",
+            "totalValues": 44321.224000000024,
+            "fixedValue": 51.06131797235026,
+            "times": 868,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 1.746,
+            "fixedValue": 0.017636363636363638,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "so2": {
+            "totalValues": 0.010099999999999998,
+            "fixedValue": 0.0002295454545454545,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.38109999999999994,
+            "fixedValue": 0.006929090909090908,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 235
       },
       "geometry": {
         "type": "Polygon",
@@ -2422,27 +3006,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "KY",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 16,
       "properties": {
-"AQI": 0,
+        "AQI": 158.52,
         "name": "Kentucky",
         "measurements": {
-          "pm25": {
-            "value": 5.9,
-            "lastUpdated": "2022-04-13T23:05:48+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 6.9,
-            "lastUpdated": "2022-04-13T23:05:48+00:00",
+            "totalValues": 1669.5999999999995,
+            "fixedValue": 15.041441441441437,
+            "times": 111,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 54503.37399999996,
+            "fixedValue": 70.05575064267347,
+            "times": 778,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 5.062999999999988,
+            "fixedValue": 0.01587147335423194,
+            "times": 319,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 8.200000000000001,
+            "fixedValue": 0.3727272727272728,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.036300000000000006,
+            "fixedValue": 0.0008250000000000001,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.2951999999999999,
+            "fixedValue": 0.013418181818181813,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 408
       },
       "geometry": {
         "type": "Polygon",
@@ -2529,27 +3150,66 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "LA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 17,
       "properties": {
-"AQI": 0,
+        "AQI": 137.61,
         "name": "Louisiana",
         "measurements": {
           "pm10": {
-            "value": 10.9,
-            "lastUpdated": "2023-07-10T10:28:46+00:00",
+            "totalValues": 1118.8999999999996,
+            "fixedValue": 9.7295652173913,
+            "times": 115,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 9.8,
-            "lastUpdated": "2023-07-10T10:28:46+00:00",
+            "totalValues": 49812.362,
+            "fixedValue": 50.36639231547017,
+            "times": 989,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 2.195999999999996,
+            "fixedValue": 0.00907438016528924,
+            "times": 242,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "so2": {
+            "totalValues": 0.0018000000000000004,
+            "fixedValue": 0.00016363636363636366,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 390
       },
       "geometry": {
         "type": "Polygon",
@@ -2637,27 +3297,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "ME",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 18,
       "properties": {
-"AQI": 0,
+        "AQI": 91.54,
         "name": "Maine",
         "measurements": {
-          "pm25": {
-            "value": 0,
-            "lastUpdated": "2022-06-19T12:08:51+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 0,
-            "lastUpdated": "2022-06-19T12:08:51+00:00",
+            "totalValues": 632.2999999999998,
+            "fixedValue": 5.595575221238937,
+            "times": 113,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 18576.428000000007,
+            "fixedValue": 31.379101351351363,
+            "times": 592,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 2.3449999999999998,
+            "fixedValue": 0.021318181818181816,
+            "times": 110,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.009,
+            "fixedValue": 0.0002727272727272727,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 4.400000000000001,
+            "fixedValue": 0.20000000000000007,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.011000000000000003,
+            "fixedValue": 0.00033333333333333343,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.0295,
+            "fixedValue": 0.0013409090909090907,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.0394,
+            "fixedValue": 0.0017909090909090908,
+            "times": 22,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 256
       },
       "geometry": {
         "type": "Polygon",
@@ -2735,27 +3430,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MD",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 19,
       "properties": {
-"AQI": 0,
+        "AQI": 169.29,
         "name": "Maryland",
         "measurements": {
-          "pm25": {
-            "value": 10.9,
-            "lastUpdated": "2023-07-10T10:27:53+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 11.9,
-            "lastUpdated": "2023-07-10T10:27:53+00:00",
+            "totalValues": 26182.8,
+            "fixedValue": 47.00682226211849,
+            "times": 557,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 472255.97999999917,
+            "fixedValue": 90.92336927223704,
+            "times": 5194,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 4.964999999999996,
+            "fixedValue": 0.0225681818181818,
+            "times": 220,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.12680000000000002,
+            "fixedValue": 0.003842424242424243,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 6.049999999999998,
+            "fixedValue": 0.10999999999999996,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.006199999999999998,
+            "fixedValue": 0.0001127272727272727,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.46220000000000017,
+            "fixedValue": 0.007003030303030305,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.3265,
+            "fixedValue": 0.014840909090909092,
+            "times": 22,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 799
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2837,27 +3567,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 20,
       "properties": {
-"AQI": 0,
+        "AQI": 156.39,
         "name": "Massachusetts",
         "measurements": {
-          "pm25": {
-            "value": 1.7,
-            "lastUpdated": "2021-02-04T16:32:47+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 2.2,
-            "lastUpdated": "2021-02-04T16:32:47+00:00",
+            "totalValues": 4116.500000000001,
+            "fixedValue": 5.889127324749643,
+            "times": 699,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 370765.03500000085,
+            "fixedValue": 65.93722834785717,
+            "times": 5623,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 7.096999999999996,
+            "fixedValue": 0.0248146853146853,
+            "times": 286,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.1671000000000002,
+            "fixedValue": 0.0008935828877005358,
+            "times": 187,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 13.779999999999996,
+            "fixedValue": 0.20878787878787872,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0198,
+            "fixedValue": 0.00030000000000000003,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.5903000000000004,
+            "fixedValue": 0.00268318181818182,
+            "times": 220,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.5830000000000004,
+            "fixedValue": 0.0053000000000000035,
+            "times": 110,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 1029
       },
       "geometry": {
         "type": "Polygon",
@@ -2904,27 +3669,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MI",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 21,
       "properties": {
-"AQI": 0,
+        "AQI": 160.97,
         "name": "Michigan",
         "measurements": {
-          "pm25": {
-            "value": 10.7,
-            "lastUpdated": "2023-07-10T10:08:01+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 11.5,
-            "lastUpdated": "2023-07-10T10:08:01+00:00",
+            "totalValues": 4566.8,
+            "fixedValue": 14.731612903225807,
+            "times": 310,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 204163.30999999915,
+            "fixedValue": 74.81249908391321,
+            "times": 2729,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 7.607999999999992,
+            "fixedValue": 0.022180758017492686,
+            "times": 343,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.11159999999999999,
+            "fixedValue": 0.010145454545454544,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 20.200000000000003,
+            "fixedValue": 0.3672727272727273,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.043100000000000006,
+            "fixedValue": 0.0004353535353535354,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 1.1587000000000007,
+            "fixedValue": 0.011704040404040411,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.2933,
+            "fixedValue": 0.026663636363636365,
+            "times": 11,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 686
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -3102,27 +3902,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MN",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 22,
       "properties": {
-"AQI": 0,
+        "AQI": 167.31,
         "name": "Minnesota",
         "measurements": {
-          "pm25": {
-            "value": 7.2,
-            "lastUpdated": "2023-07-10T10:27:13+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 7.8,
-            "lastUpdated": "2023-07-10T10:27:13+00:00",
+            "totalValues": 9390.999999999993,
+            "fixedValue": 22.25355450236965,
+            "times": 422,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 331624.1340000007,
+            "fixedValue": 87.08616964285733,
+            "times": 3808,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 6.553999999999993,
+            "fixedValue": 0.03504812834224595,
+            "times": 187,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.013199999999999998,
+            "fixedValue": 0.00039999999999999996,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 6.900000000000001,
+            "fixedValue": 0.15681818181818186,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0143,
+            "fixedValue": 0.0004333333333333333,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.09400000000000001,
+            "fixedValue": 0.002848484848484849,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.10519999999999999,
+            "fixedValue": 0.0031878787878787877,
+            "times": 33,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 708
       },
       "geometry": {
         "type": "Polygon",
@@ -3217,27 +4052,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MS",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 23,
       "properties": {
-"AQI": 0,
+        "AQI": 158.26,
         "name": "Mississippi",
         "measurements": {
-          "pm25": {
-            "value": 3.3,
-            "lastUpdated": "2023-07-10T10:27:34+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 3.9,
-            "lastUpdated": "2023-07-10T10:27:34+00:00",
+            "totalValues": 348.5,
+            "fixedValue": 14.520833333333334,
+            "times": 24,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 16205.400000000003,
+            "fixedValue": 69.55107296137341,
+            "times": 233,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 1.609999999999999,
+            "fixedValue": 0.014636363636363628,
+            "times": 110,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 2.1999999999999997,
+            "fixedValue": 0.19999999999999998,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.009499999999999998,
+            "fixedValue": 0.0004318181818181817,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.0127,
+            "fixedValue": 0.0011545454545454545,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 134
       },
       "geometry": {
         "type": "Polygon",
@@ -3295,27 +4167,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MO",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 24,
       "properties": {
-"AQI": 0,
+        "AQI": 135.1,
         "name": "Missouri",
         "measurements": {
-          "pm25": {
-            "value": 5.5,
-            "lastUpdated": "2022-07-25T00:10:11+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 5.5,
-            "lastUpdated": "2022-07-25T00:10:11+00:00",
+            "totalValues": 4495.999999999997,
+            "fixedValue": 16.40875912408758,
+            "times": 274,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 60796.76800000005,
+            "fixedValue": 49.348025974026015,
+            "times": 1232,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 6.4059999999999935,
+            "fixedValue": 0.02426515151515149,
+            "times": 264,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.8610999999999998,
+            "fixedValue": 0.00978522727272727,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 13.899999999999995,
+            "fixedValue": 0.25272727272727263,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.07049999999999997,
+            "fixedValue": 0.0008011363636363632,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 1.1273000000000004,
+            "fixedValue": 0.012810227272727277,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 1.986600000000002,
+            "fixedValue": 0.022575000000000022,
+            "times": 88,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 549
       },
       "geometry": {
         "type": "Polygon",
@@ -3380,27 +4287,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "MT",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 25,
       "properties": {
-"AQI": 0,
+        "AQI": 158.88,
         "name": "Montana",
         "measurements": {
           "pm10": {
-            "value": 0.3,
-            "lastUpdated": "2021-08-18T20:05:23+00:00",
+            "totalValues": 9522.000000000022,
+            "fixedValue": 17.00357142857147,
+            "times": 560,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0.3,
-            "lastUpdated": "2021-08-18T20:05:23+00:00",
+            "totalValues": 291384.0699999998,
+            "fixedValue": 70.75863768819809,
+            "times": 4118,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 2.46,
+            "fixedValue": 0.03194805194805195,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0108,
+            "fixedValue": 0.00024545454545454545,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 6.200000000000001,
+            "fixedValue": 0.28181818181818186,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.019000000000000003,
+            "fixedValue": 0.0008636363636363637,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.10840000000000002,
+            "fixedValue": 0.0032848484848484855,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.12340000000000001,
+            "fixedValue": 0.0037393939393939395,
+            "times": 33,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 714
       },
       "geometry": {
         "type": "Polygon",
@@ -3464,27 +4406,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NE",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 26,
       "properties": {
-"AQI": 0,
+        "AQI": 165.69,
         "name": "Nebraska",
         "measurements": {
-          "pm25": {
-            "value": 14.6,
-            "lastUpdated": "2023-07-10T10:28:52+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 16.6,
-            "lastUpdated": "2023-07-10T10:28:52+00:00",
+            "totalValues": 1154.4,
+            "fixedValue": 16.730434782608697,
+            "times": 69,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 48106.13999999998,
+            "fixedValue": 83.95486910994761,
+            "times": 573,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 1.4519999999999995,
+            "fixedValue": 0.03299999999999999,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0054,
+            "fixedValue": 0.0004909090909090909,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 5,
+            "fixedValue": 0.22727272727272727,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": -0.005300000000000001,
+            "fixedValue": null,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 179
       },
       "geometry": {
         "type": "Polygon",
@@ -3525,27 +4504,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NV",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 27,
       "properties": {
-"AQI": 0,
+        "AQI": 166.78,
         "name": "Nevada",
         "measurements": {
           "pm10": {
-            "value": 10.6,
-            "lastUpdated": "2023-07-10T10:27:05+00:00",
+            "totalValues": 78422.70000000013,
+            "fixedValue": 75.697586872587,
+            "times": 1036,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 8.5,
-            "lastUpdated": "2023-07-10T10:27:05+00:00",
+            "totalValues": 618250.3480000029,
+            "fixedValue": 86.05934688196031,
+            "times": 7184,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 11.882000000000003,
+            "fixedValue": 0.04320727272727274,
+            "times": 275,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0247,
+            "fixedValue": 0.0011227272727272726,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 23.399999999999984,
+            "fixedValue": 0.2659090909090907,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.006100000000000001,
+            "fixedValue": 0.00027727272727272735,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 1.0295000000000003,
+            "fixedValue": 0.013370129870129874,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.035699999999999996,
+            "fixedValue": 0.003245454545454545,
+            "times": 11,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 1157
       },
       "geometry": {
         "type": "Polygon",
@@ -3578,27 +4592,65 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NH",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 28,
       "properties": {
-"AQI": 0,
+        "AQI": 110.75,
         "name": "New Hampshire",
         "measurements": {
           "pm10": {
-            "value": 0,
-            "lastUpdated": "2022-10-04T19:30:39+00:00",
+            "totalValues": 1103.8000000000018,
+            "fixedValue": 4.181060606060613,
+            "times": 264,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0,
-            "lastUpdated": "2022-10-04T19:30:39+00:00",
+            "totalValues": 61045.29799999995,
+            "fixedValue": 39.460438267614705,
+            "times": 1547,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 2.062,
+            "fixedValue": 0.018745454545454544,
+            "times": 110,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 3.3000000000000016,
+            "fixedValue": 0.15000000000000008,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.023499999999999997,
+            "fixedValue": 0.000534090909090909,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 352
       },
       "geometry": {
         "type": "Polygon",
@@ -3638,27 +4690,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NJ",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 29,
       "properties": {
-"AQI": 0,
+        "AQI": 163,
         "name": "New Jersey",
         "measurements": {
           "pm10": {
-            "value": 22.9,
-            "lastUpdated": "2023-06-28T19:47:31+00:00",
+            "totalValues": 1225.4999999999998,
+            "fixedValue": 8.009803921568626,
+            "times": 153,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 21.7,
-            "lastUpdated": "2023-06-28T19:47:31+00:00",
+            "totalValues": 124710.41999999981,
+            "fixedValue": 78.73132575757563,
+            "times": 1584,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 4.289999999999999,
+            "fixedValue": 0.025999999999999995,
+            "times": 165,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.9160000000000004,
+            "fixedValue": 0.009252525252525257,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 21.00000000000001,
+            "fixedValue": 0.381818181818182,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.018000000000000002,
+            "fixedValue": 0.00020454545454545457,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 1.198,
+            "fixedValue": 0.0121010101010101,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 2.134999999999998,
+            "fixedValue": 0.024261363636363612,
+            "times": 88,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 428
       },
       "geometry": {
         "type": "Polygon",
@@ -3702,27 +4789,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NM",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 30,
       "properties": {
-"AQI": 0,
+        "AQI": 156.54,
         "name": "New Mexico",
         "measurements": {
           "pm10": {
-            "value": 4.9,
-            "lastUpdated": "2023-07-10T10:27:09+00:00",
+            "totalValues": 3664.900000000001,
+            "fixedValue": 12.016065573770495,
+            "times": 305,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 4.4,
-            "lastUpdated": "2023-07-10T10:27:09+00:00",
+            "totalValues": 103463.22999999994,
+            "fixedValue": 66.23766325224068,
+            "times": 1562,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 6.602000000000002,
+            "fixedValue": 0.033343434343434356,
+            "times": 198,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0394,
+            "fixedValue": 0.0011939393939393939,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 3.1000000000000014,
+            "fixedValue": 0.14090909090909098,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0,
+            "fixedValue": null,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.5137000000000004,
+            "fixedValue": 0.004670000000000003,
+            "times": 110,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.14880000000000002,
+            "fixedValue": 0.00450909090909091,
+            "times": 33,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 448
       },
       "geometry": {
         "type": "Polygon",
@@ -3751,27 +4873,65 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NY",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 31,
       "properties": {
-"AQI": 0,
+        "AQI": 160.47,
         "name": "New York",
         "measurements": {
           "pm10": {
-            "value": 0,
-            "lastUpdated": "2023-07-10T10:28:56+00:00",
+            "totalValues": 4070.2999999999956,
+            "fixedValue": 9.927560975609746,
+            "times": 410,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0,
-            "lastUpdated": "2023-07-10T10:28:56+00:00",
+            "totalValues": 271021.5870000001,
+            "fixedValue": 73.84784386920984,
+            "times": 3670,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 7.133999999999994,
+            "fixedValue": 0.02594181818181816,
+            "times": 275,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "so2": {
+            "totalValues": 0.011000000000000003,
+            "fixedValue": 0.0010000000000000002,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.011699999999999999,
+            "fixedValue": 0.0010636363636363636,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 828
       },
       "geometry": {
         "type": "Polygon",
@@ -3851,27 +5011,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "NC",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 32,
       "properties": {
-"AQI": 0,
+        "AQI": 159.83,
         "name": "North Carolina",
         "measurements": {
           "pm10": {
-            "value": 0.2,
-            "lastUpdated": "2021-01-30T03:56:34+00:00",
+            "totalValues": 8988.499999999996,
+            "fixedValue": 11.87384412153236,
+            "times": 757,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0.1,
-            "lastUpdated": "2021-01-30T03:56:34+00:00",
+            "totalValues": 383070.86900000257,
+            "fixedValue": 72.59254671214754,
+            "times": 5277,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 9.93999999999999,
+            "fixedValue": 0.021515151515151494,
+            "times": 462,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.14039999999999994,
+            "fixedValue": 0.0021272727272727263,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 13.929999999999998,
+            "fixedValue": 0.21106060606060603,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.011500000000000007,
+            "fixedValue": 0.00008712121212121218,
+            "times": 132,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.5163000000000001,
+            "fixedValue": 0.004693636363636364,
+            "times": 110,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.4432,
+            "fixedValue": 0.006715151515151515,
+            "times": 66,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 1186
       },
       "geometry": {
         "type": "Polygon",
@@ -3944,27 +5139,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "ND",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 33,
       "properties": {
-"AQI": 0,
+        "AQI": 103.06,
         "name": "North Dakota",
         "measurements": {
           "pm10": {
-            "value": 1.8,
-            "lastUpdated": "2022-07-27T23:40:26+00:00",
+            "totalValues": 2583.4000000000005,
+            "fixedValue": 24.84038461538462,
+            "times": 104,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 1.5,
-            "lastUpdated": "2022-07-27T23:40:26+00:00",
+            "totalValues": 12463.489999999998,
+            "fixedValue": 36.3367055393586,
+            "times": 343,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 2.9659999999999975,
+            "fixedValue": 0.029959595959595936,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.1151,
+            "fixedValue": 0.0014948051948051946,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 2.3999999999999995,
+            "fixedValue": 0.21818181818181814,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0702,
+            "fixedValue": 0.0007977272727272728,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.22919999999999996,
+            "fixedValue": 0.002604545454545454,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.30620000000000014,
+            "fixedValue": 0.003976623376623379,
+            "times": 77,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 137
       },
       "geometry": {
         "type": "Polygon",
@@ -3992,27 +5222,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "OH",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 34,
       "properties": {
-"AQI": 0,
+        "AQI": 135.16,
         "name": "Ohio",
         "measurements": {
-          "pm25": {
-            "value": 12.9,
-            "lastUpdated": "2023-07-10T10:18:19+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 13.4,
-            "lastUpdated": "2023-07-10T10:18:19+00:00",
+            "totalValues": 5000.799999999996,
+            "fixedValue": 11.963636363636354,
+            "times": 418,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 142937.65,
+            "fixedValue": 49.37397236614853,
+            "times": 2895,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 11.243999999999991,
+            "fixedValue": 0.01965734265734264,
+            "times": 572,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 19.840000000000007,
+            "fixedValue": 0.25766233766233776,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.11680000000000007,
+            "fixedValue": 0.0005056277056277059,
+            "times": 231,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.5060000000000001,
+            "fixedValue": 0.009200000000000002,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 1172
       },
       "geometry": {
         "type": "Polygon",
@@ -4071,27 +5338,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "OK",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 35,
       "properties": {
-"AQI": 0,
+        "AQI": 139.56,
         "name": "Oklahoma",
         "measurements": {
           "pm10": {
-            "value": 10.3,
-            "lastUpdated": "2022-06-23T15:58:17+00:00",
+            "totalValues": 3271.800000000001,
+            "fixedValue": 16.69285714285715,
+            "times": 196,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 9.4,
-            "lastUpdated": "2022-06-23T15:58:17+00:00",
+            "totalValues": 25887.11000000001,
+            "fixedValue": 51.160296442687766,
+            "times": 506,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 3.6079999999999925,
+            "fixedValue": 0.013666666666666638,
+            "times": 264,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.28279999999999994,
+            "fixedValue": 0.0051418181818181806,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 16.700000000000003,
+            "fixedValue": 0.37954545454545463,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.010700000000000001,
+            "fixedValue": 0.00013896103896103898,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.27659999999999996,
+            "fixedValue": 0.005029090909090908,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.5103000000000001,
+            "fixedValue": 0.011597727272727275,
+            "times": 44,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 361
       },
       "geometry": {
         "type": "Polygon",
@@ -4148,27 +5450,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "OR",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 36,
       "properties": {
-"AQI": 0,
+        "AQI": 163.09,
         "name": "Oregon",
         "measurements": {
           "pm10": {
-            "value": 3.6,
-            "lastUpdated": "2023-03-31T14:59:26+00:00",
+            "totalValues": 11574.500000000002,
+            "fixedValue": 5.932598667350078,
+            "times": 1951,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 2.8,
-            "lastUpdated": "2023-03-31T14:59:26+00:00",
+            "totalValues": 1532367.6520000203,
+            "fixedValue": 78.91886759025701,
+            "times": 19417,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 1.9829999999999992,
+            "fixedValue": 0.020030303030303023,
+            "times": 99,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.13449999999999998,
+            "fixedValue": 0.006113636363636363,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 3.000000000000001,
+            "fixedValue": 0.1363636363636364,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0024000000000000002,
+            "fixedValue": 0.0002181818181818182,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.12259999999999997,
+            "fixedValue": 0.005572727272727272,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.2512,
+            "fixedValue": 0.011418181818181817,
+            "times": 22,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 2862
       },
       "geometry": {
         "type": "Polygon",
@@ -4236,27 +5573,63 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "PA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 37,
       "properties": {
-"AQI": 0,
+        "AQI": 164.51,
         "name": "Pennsylvania",
         "measurements": {
-          "pm25": {
-            "value": 20.4,
-            "lastUpdated": "2023-07-10T10:28:38+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 22.9,
-            "lastUpdated": "2023-07-10T10:28:38+00:00",
+            "totalValues": 23535.49999999998,
+            "fixedValue": 25.03776595744679,
+            "times": 940,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 727477.057567628,
+            "fixedValue": 81.6564213231146,
+            "times": 8909,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 15.672976999546064,
+            "fixedValue": 0.025360804206385215,
+            "times": 618,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.07723340188182827,
+            "fixedValue": 0.007021218352893479,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 15.0740648963476,
+            "fixedValue": 0.26445727888329124,
+            "times": 57,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.04115561084108458,
+            "fixedValue": 0.0008946871921974908,
+            "times": 46,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.7132424437461496,
+            "fixedValue": 0.012513025328879818,
+            "times": 57,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 1690
       },
       "geometry": {
         "type": "Polygon",
@@ -4301,27 +5674,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "RI",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 38,
       "properties": {
-"AQI": 0,
+        "AQI": 156.75,
         "name": "Rhode Island",
         "measurements": {
           "pm10": {
-            "value": 0.4,
-            "lastUpdated": "2023-07-10T10:27:27+00:00",
+            "totalValues": 117.40000000000002,
+            "fixedValue": 2.3019607843137257,
+            "times": 51,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0.4,
-            "lastUpdated": "2023-07-10T10:27:27+00:00",
+            "totalValues": 34586.26000000001,
+            "fixedValue": 66.64019267822738,
+            "times": 519,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 0.32600000000000007,
+            "fixedValue": 0.01481818181818182,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0321,
+            "fixedValue": 0.001459090909090909,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 6.800000000000001,
+            "fixedValue": 0.30909090909090914,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0020000000000000005,
+            "fixedValue": 0.00018181818181818186,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.036199999999999996,
+            "fixedValue": 0.001096969696969697,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.0694,
+            "fixedValue": 0.0031545454545454546,
+            "times": 22,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 117
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -4354,27 +5762,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "SC",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 39,
       "properties": {
-"AQI": 0,
+        "AQI": 152.01,
         "name": "South Carolina",
         "measurements": {
-          "pm25": {
-            "value": 3.3,
-            "lastUpdated": "2023-07-10T10:27:49+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 3.8,
-            "lastUpdated": "2023-07-10T10:27:49+00:00",
+            "totalValues": 1966.4,
+            "fixedValue": 20.06530612244898,
+            "times": 98,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 31140.912000000004,
+            "fixedValue": 57.45555719557196,
+            "times": 542,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 2.847999999999997,
+            "fixedValue": 0.018493506493506475,
+            "times": 154,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 1.0999999999999999,
+            "fixedValue": 0.09999999999999999,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0226,
+            "fixedValue": 0.0002568181818181818,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.20100000000000012,
+            "fixedValue": 0.0036545454545454568,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 296
       },
       "geometry": {
         "type": "Polygon",
@@ -4430,27 +5875,67 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "SD",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 40,
       "properties": {
-"AQI": 0,
+        "AQI": 168.1,
         "name": "South Dakota",
         "measurements": {
-          "pm25": {
-            "value": 0.1,
-            "lastUpdated": "2023-07-10T10:28:22+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 0.1,
-            "lastUpdated": "2023-07-10T10:28:22+00:00",
+            "totalValues": 2111.5000000000005,
+            "fixedValue": 13.622580645161293,
+            "times": 155,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 75682.81999999989,
+            "fixedValue": 88.62156908665092,
+            "times": 854,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 2.6749999999999994,
+            "fixedValue": 0.03474025974025973,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "so2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 177
       },
       "geometry": {
         "type": "Polygon",
@@ -4491,27 +5976,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "TN",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 41,
       "properties": {
-"AQI": 0,
+        "AQI": 163.8,
         "name": "Tennessee",
         "measurements": {
           "pm10": {
-            "value": 16.9,
-            "lastUpdated": "2023-07-10T10:27:47+00:00",
+            "totalValues": 2665.500000000001,
+            "fixedValue": 15.49709302325582,
+            "times": 172,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 16.7,
-            "lastUpdated": "2023-07-10T10:27:47+00:00",
+            "totalValues": 160885.30299999967,
+            "fixedValue": 80.28208732534914,
+            "times": 2004,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 4.4879999999999916,
+            "fixedValue": 0.016999999999999967,
+            "times": 264,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0,
+            "fixedValue": null,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 2.1999999999999997,
+            "fixedValue": 0.19999999999999998,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.06200000000000003,
+            "fixedValue": 0.0014090909090909098,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 689
       },
       "geometry": {
         "type": "Polygon",
@@ -4566,27 +6088,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "TX",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 42,
       "properties": {
-"AQI": 0,
+        "AQI": 156.82,
         "name": "Texas",
         "measurements": {
-          "pm25": {
-            "value": 3.3,
-            "lastUpdated": "2021-11-17T15:46:50+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 3.6,
-            "lastUpdated": "2021-11-17T15:46:50+00:00",
+            "totalValues": 44327.80000000001,
+            "fixedValue": 47.35876068376069,
+            "times": 936,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 508582.69200000213,
+            "fixedValue": 66.77818960084062,
+            "times": 7616,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 14.479999999999967,
+            "fixedValue": 0.016053215077605286,
+            "times": 902,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 4.3999999999999995,
+            "fixedValue": 0.19999999999999998,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": -0.007700000000000001,
+            "fixedValue": null,
+            "times": 55,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.14190000000000003,
+            "fixedValue": 0.0021500000000000004,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 2036
       },
       "geometry": {
         "type": "Polygon",
@@ -4750,27 +6309,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "UT",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 43,
       "properties": {
-"AQI": 0,
+        "AQI": 163.59,
         "name": "Utah",
         "measurements": {
           "pm10": {
-            "value": 4.6,
-            "lastUpdated": "2023-06-29T17:34:44+00:00",
+            "totalValues": 113553.59999999999,
+            "fixedValue": 70.13810994441012,
+            "times": 1619,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 4.4,
-            "lastUpdated": "2023-06-29T17:34:44+00:00",
+            "totalValues": 1086006.4060000053,
+            "fixedValue": 79.87690541335726,
+            "times": 13596,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 11.449,
+            "fixedValue": 0.03829096989966555,
+            "times": 299,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.2248,
+            "fixedValue": 0.0008515151515151515,
+            "times": 264,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 4.1000000000000005,
+            "fixedValue": 0.05324675324675325,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.025500000000000012,
+            "fixedValue": 0.0005795454545454549,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.9937999999999998,
+            "fixedValue": 0.0037643939393939385,
+            "times": 264,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 1.1916,
+            "fixedValue": 0.004513636363636364,
+            "times": 264,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 1830
       },
       "geometry": {
         "type": "Polygon",
@@ -4794,27 +6388,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "VT",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 44,
       "properties": {
-"AQI": 0,
+        "AQI": 166.67,
         "name": "Vermont",
         "measurements": {
-          "pm25": {
-            "value": 0,
-            "lastUpdated": "2023-07-10T10:27:53+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 0,
-            "lastUpdated": "2023-07-10T10:27:53+00:00",
+            "totalValues": 814.1000000000003,
+            "fixedValue": 8.848913043478264,
+            "times": 92,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 44122.18000000001,
+            "fixedValue": 85.84081712062259,
+            "times": 514,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 1.1240000000000003,
+            "fixedValue": 0.03406060606060607,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0014,
+            "fixedValue": 0.00006363636363636364,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 7.7,
+            "fixedValue": 0.23333333333333334,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.0032999999999999995,
+            "fixedValue": 0.00015,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.0716,
+            "fixedValue": 0.0032545454545454544,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.018000000000000002,
+            "fixedValue": 0.0016363636363636365,
+            "times": 11,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 92
       },
       "geometry": {
         "type": "Polygon",
@@ -4854,27 +6483,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "VA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 45,
       "properties": {
-"AQI": 0,
+        "AQI": 163.77,
         "name": "Virginia",
         "measurements": {
-          "pm25": {
-            "value": 6.8,
-            "lastUpdated": "2023-07-10T10:27:27+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 7.6,
-            "lastUpdated": "2023-07-10T10:27:27+00:00",
+            "totalValues": 4701.200000000007,
+            "fixedValue": 13.20561797752811,
+            "times": 356,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 225046.84799999968,
+            "fixedValue": 80.23060534759347,
+            "times": 2805,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 4.360999999999993,
+            "fixedValue": 0.01802066115702476,
+            "times": 242,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 9.899999999999999,
+            "fixedValue": 0.22499999999999998,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.013999999999999997,
+            "fixedValue": 0.00018181818181818178,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.3216000000000001,
+            "fixedValue": 0.003654545454545456,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 587
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -4976,27 +6642,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "WA",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 46,
       "properties": {
-"AQI": 0,
+        "AQI": 166.33,
         "name": "Washington",
         "measurements": {
           "pm10": {
-            "value": 8,
-            "lastUpdated": "2023-07-10T09:57:17+00:00",
+            "totalValues": 18555.000000000044,
+            "fixedValue": 7.4309171005206425,
+            "times": 2497,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 7.1,
-            "lastUpdated": "2023-07-10T09:57:17+00:00",
+            "totalValues": 2105727.97100004,
+            "fixedValue": 85.193509366025,
+            "times": 24717,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 4.1749999999999945,
+            "fixedValue": 0.023721590909090876,
+            "times": 176,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.27929999999999994,
+            "fixedValue": 0.006347727272727271,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 4.300000000000002,
+            "fixedValue": 0.13030303030303036,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.008,
+            "fixedValue": 0.00036363636363636367,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.3137,
+            "fixedValue": 0.007129545454545454,
+            "times": 44,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.48539999999999994,
+            "fixedValue": 0.02206363636363636,
+            "times": 22,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 3276
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5090,27 +6791,64 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "WV",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 47,
       "properties": {
-"AQI": 0,
+        "AQI": 166.31,
         "name": "West Virginia",
         "measurements": {
-          "pm25": {
-            "value": 5.8,
-            "lastUpdated": "2023-07-10T10:25:35+00:00",
-            "unit": "µg/m³"
-          },
           "pm10": {
-            "value": 6.3,
-            "lastUpdated": "2023-07-10T10:25:35+00:00",
+            "totalValues": 867.6000000000001,
+            "fixedValue": 10.845000000000002,
+            "times": 80,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "pm25": {
+            "totalValues": 56025.17599999992,
+            "fixedValue": 85.14464437689958,
+            "times": 658,
+            "unit": "µg/m³"
+          },
+          "o3": {
+            "totalValues": 2.520000000000001,
+            "fixedValue": 0.028636363636363647,
+            "times": 88,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          },
+          "co": {
+            "totalValues": 1.0999999999999999,
+            "fixedValue": 0.09999999999999999,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0,
+            "fixedValue": null,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.011000000000000003,
+            "fixedValue": 0.0010000000000000002,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 179
       },
       "geometry": {
         "type": "Polygon",
@@ -5187,27 +6925,63 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "WI",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 48,
       "properties": {
-"AQI": 0,
+        "AQI": 164,
         "name": "Wisconsin",
         "measurements": {
           "pm10": {
-            "value": 10.9,
-            "lastUpdated": "2023-07-10T10:28:54+00:00",
+            "totalValues": 5191.4,
+            "fixedValue": 14.875071633237821,
+            "times": 349,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 9.5,
-            "lastUpdated": "2023-07-10T10:28:54+00:00",
+            "totalValues": 229958.03599999959,
+            "fixedValue": 80.68703017543845,
+            "times": 2850,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 10.626999999999985,
+            "fixedValue": 0.035781144781144726,
+            "times": 297,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.0006,
+            "fixedValue": 0.00005454545454545454,
+            "times": 11,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 4.6000000000000005,
+            "fixedValue": 0.2090909090909091,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.020400000000000005,
+            "fixedValue": 0.000264935064935065,
+            "times": 77,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.11230000000000004,
+            "fixedValue": 0.003403030303030304,
+            "times": 33,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": null,
+            "fixedValue": null,
+            "times": 0,
+            "lastUpdate": null,
+            "unit": null
+          }
+        },
+        "nStations": 657
       },
       "geometry": {
         "type": "Polygon",
@@ -5294,27 +7068,62 @@
     },
     {
       "type": "Feature",
-      "lastUpdatedMe": null,
-      "id": "WY",
+      "lastUpdatedMe": "15-07-2023 15:18:42",
+      "id": 49,
       "properties": {
-"AQI": 0,
+        "AQI": 155.21,
         "name": "Wyoming",
         "measurements": {
           "pm10": {
-            "value": 2.1,
-            "lastUpdated": "2021-02-25T17:05:25+00:00",
+            "totalValues": 5905.9000000000015,
+            "fixedValue": 16.82592592592593,
+            "times": 351,
             "unit": "µg/m³"
           },
           "pm25": {
-            "value": 0.7,
-            "lastUpdated": "2021-02-25T17:05:25+00:00",
+            "totalValues": 122613.52300000013,
+            "fixedValue": 63.66226531671865,
+            "times": 1926,
             "unit": "µg/m³"
           },
-          "o3": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "no2": { "value": null, "lastUpdatedStation": null, "unit": null },
-          "nox": { "value": null, "lastUpdatedStation": null, "unit": null }
-        }
+          "o3": {
+            "totalValues": 8.462999999999997,
+            "fixedValue": 0.03205681818181817,
+            "times": 264,
+            "unit": "ppm"
+          },
+          "no": {
+            "totalValues": 0.04079999999999999,
+            "fixedValue": 0.00019521531100478464,
+            "times": 209,
+            "unit": "ppm"
+          },
+          "co": {
+            "totalValues": 3.1000000000000014,
+            "fixedValue": 0.14090909090909098,
+            "times": 22,
+            "unit": "ppm"
+          },
+          "so2": {
+            "totalValues": 0.01870000000000001,
+            "fixedValue": 0.00028333333333333346,
+            "times": 66,
+            "unit": "ppm"
+          },
+          "no2": {
+            "totalValues": 0.4527000000000004,
+            "fixedValue": 0.0022863636363636385,
+            "times": 198,
+            "unit": "ppm"
+          },
+          "nox": {
+            "totalValues": 0.4798000000000003,
+            "fixedValue": 0.0024232323232323246,
+            "times": 198,
+            "unit": "ppm"
+          }
+        },
+        "nStations": 560
       },
       "geometry": {
         "type": "Polygon",

@@ -2,57 +2,15 @@ import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
 const Sidebar = ({ stateInfo, onClose }) => {
-  console.log(stateInfo);
-  const measurements = {
-    pm25: {
-      value: 3.3,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    pm10: {
-      value: 3.6,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    o3: {
-      value: 5.5,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    no: {
-      value: 4.7,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    co: {
-      value: 3.9,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    so2: {
-      value: 8.9,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    no2: {
-      value: 11,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-    nox: {
-      value: 1.2,
-      lastUpdatedStation: "2021-11-17T15:46:50+00:00",
-      unit: "µg/m³",
-    },
-  };
+  //console.log("1", stateInfo.properties.measurements);
   let values = [];
-  Object.keys(measurements).forEach((key) => {
-    values.push(measurements[key].value);
+  Object.keys(stateInfo.properties.measurements).forEach((key) => {
+    values.push(stateInfo.properties.measurements[key].value);
   });
   const chartRef = useRef(null);
   // Dati per il grafico
   const data = {
-    labels: Object.keys(measurements),
+    labels: Object.keys(stateInfo.properties.measurements),
     datasets: [
       {
         label: "Valori inquinanti",

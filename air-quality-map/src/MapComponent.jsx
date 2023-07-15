@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-/* import dataR from "./dataR.json"; */
 import Popup from "./Popup";
 import * as turf from "@turf/turf";
 
 function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
+  console.log(dataR);
   const [map, setMap] = useState(null);
   let hoveredPolygonId = null;
   const [showPopup, setShowPopup] = useState(false);
