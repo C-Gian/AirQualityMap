@@ -352,8 +352,6 @@ const App = () => {
         }
         break;
     }
-    return 0;
-  }
   /* //ambee - 100 richieste al giorno ma ogni richiesta ti da tutte le stazioni, problema è che tutte le stazioni = 5 stazioni
   useEffect(() => {
     const fetchData = async () => {
@@ -477,6 +475,7 @@ const App = () => {
                 dataR.features[j].properties.measurements[parameter].times = 1;
 
                 }
+
               }
               break;
             }
@@ -499,7 +498,6 @@ const App = () => {
         });
 
         console.log(obj)
-
         //console.log(dataR);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
