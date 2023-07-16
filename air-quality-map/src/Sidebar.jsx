@@ -1,11 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
-const Sidebar = ({ stateInfo, onClose }) => {
-  //console.log("1", stateInfo.properties.measurements);
+const Sidebar = ({ infos, onButtonClick }) => {
+  //console.log("1", infos);
+  const stateInfo = infos.stato;
+  const hoveredStateColor = infos.colore;
+  console.log("1", stateInfo);
+  const r = Math.round(hoveredStateColor.r * 255);
+  const g = Math.round(hoveredStateColor.g * 255);
+  const b = Math.round(hoveredStateColor.b * 255);
+  const hexColor = `#${r.toString(16).padStart(2, "0")}${g
+    .toString(16)
+    .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
   let values = [];
   Object.keys(stateInfo.properties.measurements).forEach((key) => {
-    values.push(stateInfo.properties.measurements[key].value);
+    values.push(stateInfo.properties.measurements[key].fixedValue);
   });
   const chartRef = useRef(null);
   // Dati per il grafico
@@ -13,23 +22,30 @@ const Sidebar = ({ stateInfo, onClose }) => {
     labels: Object.keys(stateInfo.properties.measurements),
     datasets: [
       {
-        label: "Valori inquinanti",
+        label: "Polluttans levels",
         data: values, // Sostituisci con i tuoi valori reali
-        backgroundColor: "rgba(75, 192, 192, 0.6)", // Colore delle barre
-        borderColor: "rgba(75, 192, 192, 1)", // Colore dei bordi delle barre
-        borderWidth: 1, // Spessore dei bordi delle barre
+        backgroundColor: ["red", "blue", "green", "yellow", "orange"], // Colore delle barre
       },
     ],
   };
 
   const options = {
+    barPercentage: 0.6,
+    indexAxis: "x", // Imposta l'asse x come asse principale
     scales: {
+      xAxes: [
+        {
+          barPercentage: 0.2,
+        },
+      ],
       y: {
         beginAtZero: true,
         grid: {
           color: "white", // Colore delle linee di griglia sull'asse Y
         },
         ticks: {
+          stepSize: 10, // Imposta l'incremento dei valori sull'asse y
+          callback: (value) => `${value}%`, // Formatta i valori sull'asse y
           font: {
             size: 14, // Dimensione del carattere per le etichette dell'asse Y
           },
@@ -38,8 +54,11 @@ const Sidebar = ({ stateInfo, onClose }) => {
       },
       x: {
         ticks: {
+          autoSkip: false,
+          maxRotation: 0,
+          minRotation: 0,
           font: {
-            size: 14, // Dimensione del carattere per le etichette dell'asse Y
+            size: 12, // Dimensione del carattere per le etichette dell'asse Y
           },
           color: "white", // Colore delle etichette dell'asse Y
         },
@@ -47,6 +66,7 @@ const Sidebar = ({ stateInfo, onClose }) => {
     },
     plugins: {
       legend: {
+        display: false, // Nascondi la legenda
         labels: {
           font: {
             size: 16, // Dimensione del carattere per le etichette della legenda
@@ -78,7 +98,7 @@ const Sidebar = ({ stateInfo, onClose }) => {
 
   return (
     <div className="w-fit h-full p-8 bg-gray-600 z-30 fixed">
-      <button className="close-button" onClick={onClose}>
+      <button className="close-button" onClick={onButtonClick}>
         &#10005;
       </button>
       <div className="flex items-center">
@@ -89,8 +109,11 @@ const Sidebar = ({ stateInfo, onClose }) => {
           <h2 className="text-white text-xl items-center mr-5">
             Air Quality Index (AQI):
           </h2>
-          <div className=" rounded-2xl p-3 bg-red-400">
-            <h2 className="text-white text-xl">300</h2>
+          <div
+            className=" rounded-2xl p-3"
+            style={{ backgroundColor: hexColor }}
+          >
+            <h2 className="text-white text-xl">{stateInfo.properties.AQI}</h2>
           </div>
         </div>
         <div className="flex w-full h-fit justify-between items-center mt-3">

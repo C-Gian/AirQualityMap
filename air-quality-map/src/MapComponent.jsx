@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loade
 import Popup from "./Popup";
 import * as turf from "@turf/turf";
 
-function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
+function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
   //console.log("1 \n", dataR);
   const [map, setMap] = useState(null);
   let hoveredPolygonId = null;
@@ -11,6 +11,18 @@ function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
+
+  if (buttonPressed) {
+    map.flyTo({
+      center: [-100.86857959024933, 38.482552979137004],
+      zoom: 3, // Livello di zoom desiderato
+      speed: 1.5, // Velocità dell'animazione
+      curve: 1.5, // Curva di accelerazione dell'animazione
+      essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+    });
+    onButtonClick();
+  }
+
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
@@ -196,9 +208,10 @@ function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
 
     map.on("click", "state-aqi", (e) => {
       e.preventDefault();
-      const stateInfos = dataR.features.find(
-        (obj) => obj.id === e.features[0].id
-      );
+      const stateInfos = {
+        stato: dataR.features.find((obj) => obj.id === e.features[0].id),
+        colore: e.features[0].layer.paint["fill-color"],
+      };
       stateClicked(stateInfos);
       const center = turf.center(e.features[0].geometry).geometry.coordinates;
 
@@ -214,7 +227,14 @@ function MapComponent({ dataR, stateClicked, handleCloseMenu }) {
 
     map.on("click", (e) => {
       if (e.defaultPrevented === false) {
-        handleCloseMenu();
+        map.flyTo({
+          center: [-100.86857959024933, 38.482552979137004],
+          zoom: 3, // Livello di zoom desiderato
+          speed: 1.5, // Velocità dell'animazione
+          curve: 1.5, // Curva di accelerazione dell'animazione
+          essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+        });
+        onButtonClick();
       }
     });
 

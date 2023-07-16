@@ -10,8 +10,14 @@ import MapComponent from "./MapComponent";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
+  const [buttonPressed, setButtonPressed] = useState(false);
 
-  const handleCloseMenu = () => {
+  const handleButtonClick = () => {
+    if (buttonPressed) {
+      setButtonPressed(false);
+    } else {
+      setButtonPressed(true);
+    }
     setStateInfo(null);
   };
 
@@ -609,10 +615,13 @@ const App = () => {
         <MapComponent
           dataR={dataR}
           stateClicked={stateClicked}
-          handleCloseMenu={handleCloseMenu}
+          buttonPressed={buttonPressed}
+          onButtonClick={handleButtonClick}
         ></MapComponent>
       )}
-      {stateInfo && <Sidebar stateInfo={stateInfo} onClose={handleCloseMenu} />}
+      {stateInfo && (
+        <Sidebar infos={stateInfo} onButtonClick={handleButtonClick} />
+      )}
     </div>
   );
 };
