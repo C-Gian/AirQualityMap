@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
+import historicalData from "./historicalData.json";
+
 
 const Sidebar = ({ infos, onButtonClick }) => {
   const stateInfo = infos.stato;
@@ -77,6 +79,10 @@ const Sidebar = ({ infos, onButtonClick }) => {
       },
     },
   };
+
+
+  //historical data manipolation
+  
 
   useEffect(() => {
     const canvas = chartRef.current;
