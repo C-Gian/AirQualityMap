@@ -478,13 +478,28 @@ const App = () => {
     }
   }
 
-  const historyStartMonth = "07";
-  const historyStartDay = "16";
-  const historyEndMonth = "07";
-  const historyEndDay = "16";
-
-  async function getFirstHistoricalUS() {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${historyStartMonth}-${historyStartDay}T10&endDate=2023-${historyEndMonth}-${historyEndDay}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125,24,-97.67,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
+  async function getHistoricalData(startDate, endDate) {
+    //startDate = "2023-07-10" endDate = "2023-07-17"
+    const startDay = startDate.split("-")[2]
+    const endDay = endDate.split("-")[2]
+    const month = startDate.split("-")[1]
+    const days = []
+    for (let i=Number(startDay); i<endDay; i++) {
+      days.push(i);
+    }
+    console.log(days)
+    let data = []
+    for (const day of days) {
+      data.push(await getFirstHistoricalUS(month, day));
+      data.push(await getSecondHistoricalUS(month, day));
+      data.push(await getThirdHistoricalUS(month, day));
+      data.push(await getFourthHistoricalUS(month, day));
+    }
+    return data;
+  }
+  
+  async function getFirstHistoricalUS(month, day) {
+    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125,24,-97.67,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
     try {
       const response = await fetch(apiURL);
       const data = await response.json();
@@ -495,8 +510,8 @@ const App = () => {
       return null;
     }
   }
-  async function getSecondHistoricalUS() {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${historyStartMonth}-${historyStartDay}T10&endDate=2023-${historyEndMonth}-${historyEndDay}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-97.67,24,-70.33,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
+  async function getSecondHistoricalUS(month, day) {
+    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-97.67,24,-70.33,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
     try {
       const response = await fetch(apiURL);
       const data = await response.json();
@@ -507,8 +522,8 @@ const App = () => {
       return null;
     }
   }
-  async function getThirdHistoricalUS() {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${historyStartMonth}-${historyStartDay}T10&endDate=2023-${historyEndMonth}-${historyEndDay}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-70.33,24,-67,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
+  async function getThirdHistoricalUS(month, day) {
+    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-70.33,24,-67,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
     try {
       const response = await fetch(apiURL);
       const data = await response.json();
@@ -519,8 +534,8 @@ const App = () => {
       return null;
     }
   }
-  async function getFourthHistoricalUS() {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${historyStartMonth}-${historyStartDay}T10&endDate=2023-${historyEndMonth}-${historyEndDay}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-179.33,54,-129,72&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
+  async function getFourthHistoricalUS(month, day) {
+    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-179.33,54,-129,72&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
     try {
       const response = await fetch(apiURL);
       const data = await response.json();
@@ -547,14 +562,8 @@ const App = () => {
         const d4 = await getFourthUS();
         console.log(d4); */
         //DATAPROXYAIRNOW LASTUPDATE = 16/07/2023 ORE 15:00
-        const d1 = await getFirstHistoricalDay1US();
-        console.log(d1);
-        const d2 = await getSecondHistoricalDay1US();
-        console.log(d2);
-        const d3 = await getThirdHistoricalDay1US();
-        console.log(d3);
-        const d4 = await getFourthHistoricalDay1US();
-        console.log(d4);
+        /* const d = await getHistoricalData("2023-07-09", "2023-07-16");
+        console.log(d); */
 
         initilizeJson();
         dataAirNow.forEach((measurement) => {
