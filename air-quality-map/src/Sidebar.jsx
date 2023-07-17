@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
 const Sidebar = ({ infos, onButtonClick }) => {
-  //console.log("1", infos);
   const stateInfo = infos.stato;
   const hoveredStateColor = infos.colore;
   console.log("1", stateInfo);
@@ -44,8 +43,9 @@ const Sidebar = ({ infos, onButtonClick }) => {
           color: "white", // Colore delle linee di griglia sull'asse Y
         },
         ticks: {
+          min: 0, // Valore minimo dell'asse y
           stepSize: 10, // Imposta l'incremento dei valori sull'asse y
-          callback: (value) => `${value}%`, // Formatta i valori sull'asse y
+          callback: (value) => `${value}`, // Formatta i valori sull'asse y
           font: {
             size: 14, // Dimensione del carattere per le etichette dell'asse Y
           },
@@ -118,7 +118,7 @@ const Sidebar = ({ infos, onButtonClick }) => {
         </div>
         <div className="flex w-full h-fit justify-between items-center mt-3">
           <h2 className="text-white text-xl items-center mr-5">Last Update:</h2>
-          <span className="text-l text-white">11/09/2023</span>
+          <span className="text-l text-white">{stateInfo.lastUpdatedMe}</span>
         </div>
       </div>
       <div>
