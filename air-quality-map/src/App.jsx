@@ -573,6 +573,15 @@ const App = () => {
           });
         });
 
+        //calculating countryAQI
+        let med = 0;
+        dataR.features.forEach((el) => {
+          med += el.properties.AQI;
+        });
+        dataR.features.forEach((el) => {
+          el.properties.countryAQI = med / dataR.features.length;
+        });
+
         console.log(dataR);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL

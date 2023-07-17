@@ -28,14 +28,15 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
     const map = new mapboxgl.Map({
       container: "map",
+      //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
       style: "mapbox://styles/mapbox/dark-v11",
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
-      zoom: 3,
+      zoom: 2.5,
     });
     setMap(map);
 
-    const zoomThreshold = 8;
+    const zoomThreshold = 3;
 
     map.on("load", () => {
       let show = false;
@@ -56,99 +57,164 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
         data: dataR,
       });
 
-      map.addLayer(
-        {
-          id: "state-aqi",
-          source: "aqi",
-          maxzoom: zoomThreshold,
-          type: "fill",
-          paint: {
-            "fill-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "AQI"],
-              0,
-              "#FFFFFF",
-              16.8,
-              "#00ff04",
-              33.4,
-              "#a2ff00",
-              50,
-              "#bbff00",
+      map.addLayer({
+        id: "country-aqi",
+        source: "aqi",
+        maxzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "countryAQI"],
+            0,
+            "#FFFFFF",
+            16.8,
+            "#00ff04",
+            33.4,
+            "#a2ff00",
+            50,
+            "#bbff00",
 
-              51,
-              "#f6ff00",
-              67.4,
-              "#ffea00",
-              83.7,
-              "#ffd000",
-              100,
-              "#ffb300",
+            51,
+            "#f6ff00",
+            67.4,
+            "#ffea00",
+            83.7,
+            "#ffd000",
+            100,
+            "#ffb300",
 
-              101,
-              "#ff9900",
-              117.4,
-              "#ff8000",
-              133.7,
-              "#ff6600",
-              150,
-              "#ff4800",
+            101,
+            "#ff9900",
+            117.4,
+            "#ff8000",
+            133.7,
+            "#ff6600",
+            150,
+            "#ff4800",
 
-              151,
-              "#ff0000",
-              167.4,
-              "#ff003c",
-              183.7,
-              "#ff0066",
-              200,
-              "#d6006f",
+            151,
+            "#ff0000",
+            167.4,
+            "#ff003c",
+            183.7,
+            "#ff0066",
+            200,
+            "#d6006f",
 
-              201,
-              "#db0072",
-              220.8,
-              "#b50460",
-              240.6,
-              "#9e0253",
-              260.4,
-              "#8a0349",
-              280.2,
-              "#7a0140",
-              300,
-              "#690137",
+            201,
+            "#db0072",
+            220.8,
+            "#b50460",
+            240.6,
+            "#9e0253",
+            260.4,
+            "#8a0349",
+            280.2,
+            "#7a0140",
+            300,
+            "#690137",
 
-              301,
-              "#57012d",
-            ],
-            "fill-opacity": [
-              "case",
-              ["boolean", ["feature-state", "hover"], false],
-              1,
-              0.75,
-            ],
-          },
+            301,
+            "#57012d",
+          ],
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
         },
-        "road-label-simple"
-      );
+      });
 
-      map.addLayer(
-        {
-          id: "state-aqi-line",
-          source: "aqi",
-          maxzoom: zoomThreshold,
-          type: "line",
-          interactive: false,
-          paint: {
-            "line-opacity": 0.3, // Opacità delle linee dei confini
-            "line-color": "#212121", // Colore delle linee dei confini
-            "line-width": 0.5, // Spessore delle linee dei confini
-          },
+      map.addLayer({
+        id: "state-aqi",
+        source: "aqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "AQI"],
+            0,
+            "#FFFFFF",
+            16.8,
+            "#00ff04",
+            33.4,
+            "#a2ff00",
+            50,
+            "#bbff00",
+
+            51,
+            "#f6ff00",
+            67.4,
+            "#ffea00",
+            83.7,
+            "#ffd000",
+            100,
+            "#ffb300",
+
+            101,
+            "#ff9900",
+            117.4,
+            "#ff8000",
+            133.7,
+            "#ff6600",
+            150,
+            "#ff4800",
+
+            151,
+            "#ff0000",
+            167.4,
+            "#ff003c",
+            183.7,
+            "#ff0066",
+            200,
+            "#d6006f",
+
+            201,
+            "#db0072",
+            220.8,
+            "#b50460",
+            240.6,
+            "#9e0253",
+            260.4,
+            "#8a0349",
+            280.2,
+            "#7a0140",
+            300,
+            "#690137",
+
+            301,
+            "#57012d",
+          ],
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
         },
-        "road-label-simple"
-      );
+      });
+
+      map.addLayer({
+        id: "state-aqi-line",
+        source: "aqi",
+        minzoom: zoomThreshold,
+        type: "line",
+        interactive: false,
+        paint: {
+          "line-opacity": 0.3, // Opacità delle linee dei confini
+          "line-color": "#212121", // Colore delle linee dei confini
+          "line-width": 0.5, // Spessore delle linee dei confini
+        },
+      });
     });
 
     /* map.on("zoom", () => {
-      const stateLegendEl = document.getElementById("state-legend");
+      const country = document.getElementById("state-legend");
       const countyLegendEl = document.getElementById("county-legend");
       if (map.getZoom() > zoomThreshold) {
         stateLegendEl.style.display = "none";
@@ -157,8 +223,7 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
         stateLegendEl.style.display = "block";
         countyLegendEl.style.display = "none";
       }
-    });
- */
+    }); */
 
     map.on("mousemove", "state-aqi", (e) => {
       map.getCanvas().style.cursor = "pointer";
