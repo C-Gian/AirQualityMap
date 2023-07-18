@@ -234,7 +234,7 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
             { source: "aqi", id: hoveredPolygonId },
             { hover: true }
           );
-          setHoveredState(dataR.features[e.features[0].id]);
+          setHoveredState([dataR.features[e.features[0].id], false]);
           setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
         } else if (e.features[0].id != hoveredPolygonId) {
           map.setFeatureState(
@@ -246,7 +246,7 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
             { source: "aqi", id: hoveredPolygonId },
             { hover: true }
           );
-          setHoveredState(dataR.features[e.features[0].id]);
+          setHoveredState([dataR.features[e.features[0].id], false]);
           setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
         }
         setPopupPosition({
@@ -267,6 +267,33 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
           { source: "aqi", id: hoveredPolygonId },
           { hover: false }
         );
+      }
+      hoveredPolygonId = null;
+    });
+
+    map.on("mousemove", "country-aqi", (e) => {
+      map.getCanvas().style.cursor = "pointer";
+      if (e.features.length > 0) {
+        for (let i = 0; i < 50; i++) {
+          map.setFeatureState({ source: "aqi", id: i }, { hover: true });
+        }
+        setHoveredState([dataR.features[e.features[0].id], true]);
+        setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
+        setPopupPosition({
+          x: e.originalEvent.clientX,
+          y: e.originalEvent.clientY,
+        });
+        setShowPopup(true);
+      }
+    });
+
+    map.on("mouseleave", "country-aqi", () => {
+      map.getCanvas().style.cursor = "";
+      setShowPopup(false);
+      setHoveredState({});
+      setHoveredStateColor({});
+      for (let i = 0; i < 50; i++) {
+        map.setFeatureState({ source: "aqi", id: i }, { hover: false });
       }
       hoveredPolygonId = null;
     });
