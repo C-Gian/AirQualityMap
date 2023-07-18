@@ -118,7 +118,7 @@ const App = () => {
 
   async function getHistoricalData(startDate, endDate) {
     //startDate = "2023-07-10" endDate = "2023-07-17"
-    const startDay = startDate.split("-")[2];
+const startDay = startDate.split("-")[2];
     const endDay = endDate.split("-")[2];
     const month = startDate.split("-")[1];
     const days = [];
