@@ -38,7 +38,7 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
     });
     setMap(map);
 
-    const zoomThreshold = 3;
+    const zoomThreshold = 4;
 
     map.on("load", () => {
       let show = false;
@@ -307,8 +307,33 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
       });
     });
 
+    map.on("click", "country-aqi", (e) => {
+      e.preventDefault();
+      const stateInfos = {
+        stato: { USA: dataR },
+        colore: e.features[0].layer.paint["fill-color"],
+      };
+      stateClicked(stateInfos);
+      const center = [-108.15050813778196, 43.20742527199025];
+
+      // Esegui l'animazione di zoom e panoramica verso il centro dello stato
+      map.flyTo({
+        center: center,
+        zoom: 3, // Livello di zoom desiderato
+        speed: 1.5, // Velocità dell'animazione
+        curve: 1.5, // Curva di accelerazione dell'animazione
+        essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+      });
+    });
+
     map.on("click", (e) => {
       if (e.defaultPrevented === false) {
+        const layers = map.getStyle().layers;
+        const layer = layers.find((l) => l.id === "country-aqi");
+
+        if (layer) {
+          console.log(layer.ac);
+        }
         map.flyTo({
           center: [-100.86857959024933, 38.482552979137004],
           zoom: 3, // Livello di zoom desiderato
