@@ -284,7 +284,7 @@ const App = () => {
           el.properties.countryAQI = med / dataR.features.length;
         });
 
-        console.log(dataR);
+        console.log("dataR", dataR);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
         let min = 0;
