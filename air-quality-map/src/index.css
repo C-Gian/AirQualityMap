@@ -45,3 +45,11 @@ body {
   font-size: 20px;
   color: #bfbfbf;
 }
+
+.mapbox-logo {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}

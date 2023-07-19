@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import dataR from "./dataR.json";
-import dataAirNow from "./dataAirNow.json";
+import dataR from "./data/dataR.json";
+import dataAirNow from "./data/dataAirNow.json";
 import axios from "axios";
 import * as turf from "@turf/turf";
-import Sidebar from "./Sidebar";
-import MapComponent from "./MapComponent";
-import historicalData from "./historicalData.json";
-
-//LE COORDINATE IN MAPBOX SONO ROVESCIATE RISPETTO A QUELLE DI GOOGLE
+import Sidebar from "./components/Sidebar";
+import MapComponent from "./components/MapComponent";
+import Legend from "./components/Legend";
+import Toolbar from "./components/Toolbar";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
@@ -136,95 +135,68 @@ const App = () => {
     return data;
   }
 
-  async function getFirstHistoricalUS(month, day) {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125,24,-97.67,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("first historical data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching historical first US data", error);
-      return null;
-    }
-  }
-  async function getSecondHistoricalUS(month, day) {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-97.67,24,-70.33,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("second historical data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching historical second US data", error);
-      return null;
-    }
-  }
-  async function getThirdHistoricalUS(month, day) {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-70.33,24,-67,49&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("third historical data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching historical third US data", error);
-      return null;
-    }
-  }
-  async function getFourthHistoricalUS(month, day) {
-    const apiURL = `https://www.airnowapi.org/aq/data/?startDate=2023-${month}-${day}T10&endDate=2023-${month}-${day}T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-179.33,54,-129,72&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A`;
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("fourth historical data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching historical fourth US data", error);
-      return null;
-    }
-  }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        /* const response = await axios.get(OPENAQ_ENDPOINT);
-        const data = response.data.results; */
-        //const data = proxyData;//.slice(0, 50);
-        /* const d1 = await getFirstUS();
-        console.log(d1);
-        const d2 = await getSecondUS();
-        console.log(d2);
-        const d3 = await getThirdUS();
-        console.log(d3);
-        const d4 = await getFourthUS();
-        console.log(d4); */
-        //DATAPROXYAIRNOW LASTUPDATE = 16/07/2023 ORE 15:00
-        /* const d = await getHistoricalData("2023-07-09", "2023-07-16");
-        console.log(d); */
-
-        /* //addinge test data
+  async function dailyUpdate() {
+    /* //addinge test data
         await axios.post(`http://localhost:4000/test-aggiunta`); */
 
-        /*  //removing 
+    /*  //removing 
         const id = "_1";
         await axios.post(`http://localhost:4000/inserisci-dati`, {
           id,
           ...historicalData[id].slice(0, 5),
         }); */
 
-        /* await axios.post(`http://localhost:4000/daily-update`, {
+    /* await axios.post(`http://localhost:4000/daily-update`, {
           dataR,
         }); */
 
-        const response = await axios.get(`http://localhost:4000/daily-update`);
-        if (!response.data) {
-          await axios.post(`http://localhost:4000/daily-update`, {
-            dataR,
-          });
-        }
+    const response = await axios.get(`http://localhost:4000/daily-update`);
+    if (!response.data) {
+      await axios.post(`http://localhost:4000/daily-update`, {
+        dataR,
+      });
+      console.log("Daily update to do");
+    }
+    console.log("Daily check done");
+  }
 
-        initilizeJson();
+  async function getDailyData() {
+    let data = [];
+    const d1 = await getFirstUS();
+    d1.forEach((measurement) => {
+      data.push(measurement);
+    });
+    console.log("data after first: ", data);
+    const d2 = await getSecondUS();
+    d2.forEach((measurement) => {
+      data.push(measurement);
+    });
+    console.log("data after second: ", data);
+    const d3 = await getThirdUS();
+    d3.forEach((measurement) => {
+      data.push(measurement);
+    });
+    console.log("data after third: ", data);
+    const d4 = await getFourthUS();
+    d4.forEach((measurement) => {
+      data.push(measurement);
+    });
+    console.log("data after fourth: ", data);
+    console.log("Daily data got");
+    return data;
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        //getDailyData();  //getting today data
+
+        //dailyUpdate(); //checking if the today data has been put into server as first day of historical data
+
+        initilizeJson(); //initialize json to be sure that adding field are correct
+
+        //dataairnow using like proxy to not exceed api airnow rate limit, last update: 16/07/2023 T15
+        //in this foreach I get all the today measurements and put into the right state
         dataAirNow.forEach((measurement) => {
           const point = turf.point([
             measurement.Longitude,
@@ -288,7 +260,7 @@ const App = () => {
           }
         });
 
-        //setting fixedValue and AQI
+        //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
         dataR.features.forEach((el) => {
           //setting fixedValue
           Object.keys(el.properties.measurements).forEach((key) => {
@@ -303,7 +275,7 @@ const App = () => {
           });
         });
 
-        //calculating countryAQI
+        //calculating countryAQI for country-layer
         let med = 0;
         dataR.features.forEach((el) => {
           med += el.properties.AQI;
@@ -329,8 +301,8 @@ const App = () => {
         });
         console.log(min, med / dataR.features.length, max); */
 
-        /* axios
-          .post("http://localhost:4000/update", dataR)
+        /* //code to write the dataR json into a real file
+          axios.post("http://localhost:4000/update", dataR)
           .then((response) => {
             console.log(response.data);
           })
@@ -361,6 +333,8 @@ const App = () => {
       {stateInfo && (
         <Sidebar infos={stateInfo} onButtonClick={handleButtonClick} />
       )}
+      <Legend></Legend>
+      <Toolbar></Toolbar>
     </div>
   );
 };

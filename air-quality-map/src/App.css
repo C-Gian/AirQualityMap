@@ -21,3 +21,7 @@
   margin-right: 5px;
   width: 10px;
 }
+
+.mapbox-logo {
+  display: none !important;
+}
