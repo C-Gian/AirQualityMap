@@ -33,8 +33,13 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
       </div>
       <div className="flex flex-col w-fit h-fit items-center mt-4 overflow-hidden">
         <h2 className="text-white text-l items-center">AQI</h2>
-        <div className=" rounded-2xl p-3" style={{ backgroundColor: hexColor }}>
-          <h2 className="text-white text-2xl">{Math.round(AQI * 10) / 10}</h2>
+        <div
+          className=" rounded-2xl p-3 flex items-center justify-center"
+          style={{ backgroundColor: hexColor, width: "60px", height: "60px" }}
+        >
+          <h2 className="text-white mix-blend-difference text-2xl">
+            {Math.round(AQI * 10) / 10}
+          </h2>
         </div>
       </div>
     </div>

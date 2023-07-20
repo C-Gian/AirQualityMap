@@ -1,7 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { Chart } from "chart.js/auto";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import SideBarChart from "./SideBarChart";
 
-const Sidebar = ({ infos, onButtonClick }) => {
+const Sidebar = ({ infos, onButtonClick, onSliderChange }) => {
+  const handleSliderChange = (value) => {
+    onSliderChange(value);
+  };
   let name = "";
   let AQI = "";
   let lastUpdate = "";
@@ -74,86 +79,8 @@ const Sidebar = ({ infos, onButtonClick }) => {
     .toString(16)
     .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 
-  const chartRef = useRef(null);
-  // Dati per il grafico
-  const data = {
-    labels: Object.keys(countryPolluttans),
-    datasets: [
-      {
-        label: "Polluttans levels",
-        data: values, // Sostituisci con i tuoi valori reali
-        backgroundColor: ["red", "blue", "green", "yellow", "orange"], // Colore delle barre
-      },
-    ],
-  };
-
-  const options = {
-    barPercentage: 0.6,
-    indexAxis: "x", // Imposta l'asse x come asse principale
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: "white", // Colore delle linee di griglia sull'asse Y
-        },
-        ticks: {
-          min: 0, // Valore minimo dell'asse y
-          stepSize: 10, // Imposta l'incremento dei valori sull'asse y
-          callback: (value) => `${value}`, // Formatta i valori sull'asse y
-          font: {
-            size: 14, // Dimensione del carattere per le etichette dell'asse Y
-          },
-          color: "white", // Colore delle etichette dell'asse Y
-        },
-      },
-      x: {
-        ticks: {
-          autoSkip: false,
-          maxRotation: 0,
-          minRotation: 0,
-          font: {
-            size: 12, // Dimensione del carattere per le etichette dell'asse Y
-          },
-          color: "white", // Colore delle etichette dell'asse Y
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        display: false, // Nascondi la legenda
-        labels: {
-          font: {
-            size: 16, // Dimensione del carattere per le etichette della legenda
-            weight: "bold", // Spessore del carattere per le etichette della legenda
-          },
-          color: "white", // Colore delle etichette della legenda
-        },
-      },
-    },
-  };
-
-  //historical data manipolation
-
-  useEffect(() => {
-    const canvas = chartRef.current;
-
-    // Verifica se esiste già un grafico sul canvas
-    if (canvas && canvas.chart) {
-      canvas.chart.destroy(); // Distruggi l'istanza del grafico esistente
-    }
-    const ctx = canvas.getContext("2d");
-
-    // Crea l'istanza del grafico
-    const chart = new Chart(ctx, {
-      type: "bar",
-      data: data,
-      options: options,
-    });
-    canvas.chart = chart;
-  }, [data, options]);
-
   return (
-    <div className="w-400 h-full p-8 bg-gray-600 z-30 fixed">
+    <div className="w-400 h-full p-5 bg-gray-600 z-30 fixed">
       <button className="close-button" onClick={onButtonClick}>
         &#10005;
       </button>
@@ -162,14 +89,16 @@ const Sidebar = ({ infos, onButtonClick }) => {
       </div>
       <div className="flex flex-col w-fit h-fit items-center  justify-between ">
         <div className="flex w-full h-fit items-center mt-4 overflow-hidden">
-          <h2 className="text-white text-xl items-center mr-5">
+          <h2 className="text-white  text-xl items-center mr-5">
             Air Quality Index (AQI):
           </h2>
           <div
-            className=" rounded-2xl p-3"
-            style={{ backgroundColor: hexColor }}
+            className="rounded-2xl p-3 flex items-center justify-center "
+            style={{ backgroundColor: hexColor, width: "60px", height: "60px" }}
           >
-            <h2 className="text-white text-xl">{AQI}</h2>
+            <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle">
+              {AQI}
+            </h2>
           </div>
         </div>
         <div className="flex w-full h-fit justify-between items-center mt-3">
@@ -177,10 +106,44 @@ const Sidebar = ({ infos, onButtonClick }) => {
           <span className="text-l text-white">{lastUpdate}</span>
         </div>
       </div>
-      <div>
-        <canvas className="mt-5" ref={chartRef} />
+      {countryPolluttans && values && (
+        <SideBarChart
+          values={values}
+          countryPolluttans={countryPolluttans}
+        ></SideBarChart>
+      )}
+      <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
+        <h2 className="text-white text-xl font-semibold mb-2">
+          7 days past data
+        </h2>
+        <div className="temporal-slider-container">
+          <Slider
+            min={1}
+            max={7}
+            marks={{
+              1: <span className="slider-mark">1</span>,
+              2: <span className="slider-mark">2</span>,
+              3: <span className="slider-mark">3</span>,
+              4: <span className="slider-mark">4</span>,
+              5: <span className="slider-mark">5</span>,
+              6: <span className="slider-mark">6</span>,
+              7: <span className="slider-mark">7</span>,
+            }}
+            defaultValue={1}
+            railStyle={{ backgroundColor: "#FFF", height: 6 }}
+            trackStyle={{ backgroundColor: "#FFF", height: 6 }}
+            handleStyle={{
+              borderColor: "#FFF",
+              height: 16,
+              width: 16,
+              backgroundColor: "#fff",
+            }}
+            dotStyle={{ visibility: "hidden" }}
+            activeDotStyle={{ visibility: "hidden" }}
+            onChange={handleSliderChange}
+          />
+        </div>
       </div>
-      {/* Aggiungi altre informazioni dello stato qui */}
     </div>
   );
 };

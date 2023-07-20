@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import dataR from "./data/dataR.json";
-import dataAirNow from "./data/dataAirNow.json";
+import day1 from "./data/day1.json";
+import day2 from "./data/day2.json";
 import axios from "axios";
 import * as turf from "@turf/turf";
 import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
 import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
+import { data } from "autoprefixer";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
   const [buttonPressed, setButtonPressed] = useState(false);
+  const [datas, setDatas] = useState([]);
+  const [selectedDay, setSelectedDay] = useState(1); // Lo stato per memorizzare il valore dello slider
+
+  const handleSliderChange = (value) => {
+    setSelectedDay(value); // Aggiorna lo stato con il valore selezionato dallo slider
+  };
 
   const handleButtonClick = () => {
     if (buttonPressed) {
@@ -115,7 +123,7 @@ const App = () => {
     }
   }
 
-  async function getHistoricalData(startDate, endDate) {
+  /* async function getHistoricalData(startDate, endDate) {
     //startDate = "2023-07-10" endDate = "2023-07-17"
     const startDay = startDate.split("-")[2];
     const endDay = endDate.split("-")[2];
@@ -133,9 +141,9 @@ const App = () => {
       data.push(await getFourthHistoricalUS(month, day));
     }
     return data;
-  }
+  } */
 
-  async function dailyUpdate() {
+  async function dailyUpdate(dataToUpdate) {
     /* //addinge test data
         await axios.post(`http://localhost:4000/test-aggiunta`); */
 
@@ -150,10 +158,12 @@ const App = () => {
           dataR,
         }); */
 
-    const response = await axios.get(`http://localhost:4000/daily-update`);
+    const response = await axios.get(
+      `http://localhost:4000/is-daily-update-done`
+    );
     if (!response.data) {
       await axios.post(`http://localhost:4000/daily-update`, {
-        dataR,
+        dataToUpdate,
       });
       console.log("Daily update to do");
     }
@@ -186,105 +196,114 @@ const App = () => {
     return data;
   }
 
+  async function getDatas() {
+    const response = await axios.get(`http://localhost:4000/datas`);
+    return response.data;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //getDailyData();  //getting today data
-
-        //dailyUpdate(); //checking if the today data has been put into server as first day of historical data
-
-        initilizeJson(); //initialize json to be sure that adding field are correct
-
-        //dataairnow using like proxy to not exceed api airnow rate limit, last update: 16/07/2023 T15
-        //in this foreach I get all the today measurements and put into the right state
-        dataAirNow.forEach((measurement) => {
-          const point = turf.point([
-            measurement.Longitude,
-            measurement.Latitude,
-          ]);
-          for (let i = 0; i < dataR.features.length; i++) {
-            const feature = dataR.features[i];
-            if (feature.properties.name == "Oregon") {
-            }
-
-            feature.id = i;
-            feature.lastUpdatedMe = formattedTime().toString(); //??
-            const typeF = feature.geometry.type;
-            let polygon = {};
-            if (typeF === "MultiPolygon") {
-              polygon = turf.multiPolygon(feature.geometry.coordinates);
-            } else {
-              polygon = turf.polygon(feature.geometry.coordinates);
-            }
-            if (
-              turf.booleanPointInPolygon(point, polygon, {
-                ignoreBoundary: false,
-              })
-            ) {
-              feature.properties.nDetections =
-                feature.properties.nDetections + 1;
-              if (
-                Object.keys(feature.properties.measurements).includes(
-                  measurement.Parameter
-                )
-              ) {
-                if (feature.properties.AQI < measurement.AQI) {
-                  feature.properties.AQI = measurement.AQI;
-                }
-                if (
-                  feature.properties.measurements[measurement.Parameter]
-                    .totalValues != null
-                ) {
-                  feature.properties.measurements[
-                    measurement.Parameter
-                  ].totalValues += measurement.Value;
-                  feature.properties.measurements[
-                    measurement.Parameter
-                  ].times += 1;
-                } else {
-                  feature.properties.measurements[
-                    measurement.Parameter
-                  ].totalValues = measurement.Value;
-                  feature.properties.measurements[measurement.Parameter].unit =
-                    measurement.Unit;
-                  feature.properties.measurements[
-                    measurement.Parameter
-                  ].lastUpdate = measurement.UTC;
-                  feature.properties.measurements[
-                    measurement.Parameter
-                  ].times = 1;
-                }
+        const todayIsUpdated = await axios.get(
+          `http://localhost:4000/is-daily-update-done`
+        );
+        if (!todayIsUpdated.data) {
+          const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
+          initilizeJson(); //initialize json to be sure that adding field are correct
+          day2.forEach((measurement) => {
+            const point = turf.point([
+              measurement.Longitude,
+              measurement.Latitude,
+            ]);
+            for (let i = 0; i < dataR.features.length; i++) {
+              const feature = dataR.features[i];
+              if (feature.properties.name == "Oregon") {
               }
-              break;
-            }
-          }
-        });
 
-        //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
-        dataR.features.forEach((el) => {
-          //setting fixedValue
-          Object.keys(el.properties.measurements).forEach((key) => {
-            if (
-              el.properties.measurements[key].totalValues != null &&
-              el.properties.measurements[key].totalValues > 0
-            ) {
-              el.properties.measurements[key].fixedValue =
-                el.properties.measurements[key].totalValues /
-                el.properties.measurements[key].times;
+              feature.id = i;
+              feature.lastUpdatedMe = formattedTime().toString(); //??
+              const typeF = feature.geometry.type;
+              let polygon = {};
+              if (typeF === "MultiPolygon") {
+                polygon = turf.multiPolygon(feature.geometry.coordinates);
+              } else {
+                polygon = turf.polygon(feature.geometry.coordinates);
+              }
+              if (
+                turf.booleanPointInPolygon(point, polygon, {
+                  ignoreBoundary: false,
+                })
+              ) {
+                feature.properties.nDetections =
+                  feature.properties.nDetections + 1;
+                if (
+                  Object.keys(feature.properties.measurements).includes(
+                    measurement.Parameter
+                  )
+                ) {
+                  if (feature.properties.AQI < measurement.AQI) {
+                    feature.properties.AQI = measurement.AQI;
+                  }
+                  if (
+                    feature.properties.measurements[measurement.Parameter]
+                      .totalValues != null
+                  ) {
+                    feature.properties.measurements[
+                      measurement.Parameter
+                    ].totalValues += measurement.Value;
+                    feature.properties.measurements[
+                      measurement.Parameter
+                    ].times += 1;
+                  } else {
+                    feature.properties.measurements[
+                      measurement.Parameter
+                    ].totalValues = measurement.Value;
+                    feature.properties.measurements[
+                      measurement.Parameter
+                    ].unit = measurement.Unit;
+                    feature.properties.measurements[
+                      measurement.Parameter
+                    ].lastUpdate = measurement.UTC;
+                    feature.properties.measurements[
+                      measurement.Parameter
+                    ].times = 1;
+                  }
+                }
+                break;
+              }
             }
           });
-        });
 
-        //calculating countryAQI for country-layer
-        let med = 0;
-        dataR.features.forEach((el) => {
-          med += el.properties.AQI;
-        });
-        dataR.features.forEach((el) => {
-          el.properties.countryAQI = med / dataR.features.length;
-        });
+          //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
+          dataR.features.forEach((el) => {
+            //setting fixedValue
+            Object.keys(el.properties.measurements).forEach((key) => {
+              if (
+                el.properties.measurements[key].totalValues != null &&
+                el.properties.measurements[key].totalValues > 0
+              ) {
+                el.properties.measurements[key].fixedValue =
+                  el.properties.measurements[key].totalValues /
+                  el.properties.measurements[key].times;
+              }
+            });
+          });
 
-        console.log("dataR", dataR);
+          //calculating countryAQI for country-layer
+          let med = 0;
+          dataR.features.forEach((el) => {
+            med += el.properties.AQI;
+          });
+          dataR.features.forEach((el) => {
+            el.properties.countryAQI = med / dataR.features.length;
+          });
+          const response = await dailyUpdate(dataR);
+          if (response) {
+            console.log("Daily Data Updated");
+          }
+        }
+
+        setDatas(await getDatas()); //getting the whole db data (7 days data)
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
         let min = 0;
@@ -322,16 +341,21 @@ const App = () => {
 
   return (
     <div>
-      {dataR && (
+      {datas && (
         <MapComponent
-          dataR={dataR}
+          datas={datas}
           stateClicked={stateClicked}
           buttonPressed={buttonPressed}
           onButtonClick={handleButtonClick}
+          selectedDay={selectedDay}
         ></MapComponent>
       )}
       {stateInfo && (
-        <Sidebar infos={stateInfo} onButtonClick={handleButtonClick} />
+        <Sidebar
+          infos={stateInfo}
+          onButtonClick={handleButtonClick}
+          onSliderChange={handleSliderChange}
+        />
       )}
       <Legend></Legend>
       <Toolbar></Toolbar>
