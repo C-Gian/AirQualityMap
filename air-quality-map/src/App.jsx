@@ -297,10 +297,8 @@ const App = () => {
           dataR.features.forEach((el) => {
             el.properties.countryAQI = med / dataR.features.length;
           });
-          const response = await dailyUpdate(dataR);
-          if (response) {
-            console.log("Daily Data Updated");
-          }
+          await dailyUpdate(dataR);
+          console.log("Daily Data Updated");
         }
 
         setDatas(await getDatas()); //getting the whole db data (7 days data)
