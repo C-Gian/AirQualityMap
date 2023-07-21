@@ -1,17 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import SideBarChart from "./SideBarChart";
+import { connect } from "react-redux";
+import { setSliderValue } from "../actions/index.js";
 
-const Sidebar = ({ infos, onButtonClick, onSliderChange }) => {
-  const handleSliderChange = (value) => {
-    onSliderChange(value);
-  };
-  let name = "";
-  let AQI = "";
-  let lastUpdate = "";
-  let values = [];
-  let dataR = null;
+const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
+  //console.log(infos);
+  const [name, setName] = useState("");
+  const [AQI, setAQI] = useState("");
+  const [lastUpdate, setLastUpdate] = useState("");
+  const [values, setValues] = useState([]);
+  const [dataR, setDataR] = useState(infos.datas[0].features[infos.id]);
+  const [hexColor, setHexColor] = useState("");
   let countryPolluttans = {
     CO: {
       totalValue: 0,
@@ -44,40 +45,72 @@ const Sidebar = ({ infos, onButtonClick, onSliderChange }) => {
       fixedValue: 0,
     },
   };
-  if (Object.keys(infos.stato)[0] == "USA") {
-    name = "USA";
-    dataR = infos.stato["USA"];
-    AQI = dataR.features[0].properties.countryAQI;
-    lastUpdate = dataR.features[0].lastUpdatedMe;
-    dataR.features.forEach((feature) => {
-      Object.keys(feature.properties.measurements).forEach((poll) => {
-        if (feature.properties.measurements[poll].fixedValue != null) {
-          countryPolluttans[poll].totalValue +=
-            feature.properties.measurements[poll].fixedValue;
-          countryPolluttans[poll].times += 1;
-        }
+
+  const handleChange = (value) => {
+    console.log("SLIDER VALUE", value);
+    setDataR(infos.datas[value - 1].features[infos.id]);
+    setSliderValue(value - 1);
+  };
+
+  useEffect(() => {
+    /* if (infos.isState == false) {
+      setName("USA");
+      setDataR(infos.datas[0]);
+      setAQI(dataR.features[0].properties.countryAQI);
+      setLastUpdate(dataR.features[0].lastUpdatedMe);
+      dataR.features.forEach((feature) => {
+        Object.keys(feature.properties.measurements).forEach((poll) => {
+          if (feature.properties.measurements[poll].fixedValue != null) {
+            countryPolluttans[poll].totalValue +=
+              feature.properties.measurements[poll].fixedValue;
+            countryPolluttans[poll].times += 1;
+          }
+        });
       });
+      let temp = [];
+      Object.keys(countryPolluttans).forEach((key) => {
+        countryPolluttans[key].fixedValue =
+          countryPolluttans[key].totalValue / countryPolluttans[key].times;
+        temp.push(countryPolluttans[key].fixedValue);
+      });
+      setValues(temp);
+    } else {
+      setName(dataR.properties.name);
+      setAQI(dataR.properties.AQI);
+      setLastUpdate(dataR.lastUpdatedMe);
+      let temp = [];
+      Object.keys(dataR.properties.measurements).forEach((key) => {
+        temp.push(dataR.properties.measurements[key].fixedValue);
+      });
+      setValues(temp);
+    }
+    const r = Math.round(infos.color.r * 255);
+    const g = Math.round(infos.color.g * 255);
+    const b = Math.round(infos.color.b * 255);
+    setHexColor(
+      `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b
+        .toString(16)
+        .padStart(2, "0")}`
+    ); */
+    setName(dataR.properties.name);
+    setAQI(dataR.properties.AQI);
+    setLastUpdate(dataR.lastUpdatedMe);
+    let temp = [];
+    Object.keys(dataR.properties.measurements).forEach((key) => {
+      temp.push(dataR.properties.measurements[key].fixedValue);
     });
-    Object.keys(countryPolluttans).forEach((key) => {
-      countryPolluttans[key].fixedValue =
-        countryPolluttans[key].totalValue / countryPolluttans[key].times;
-      values.push(countryPolluttans[key].fixedValue);
-    });
-  } else {
-    name = infos.stato.properties.name;
-    AQI = infos.stato.properties.AQI;
-    lastUpdate = infos.stato.lastUpdatedMe;
-    Object.keys(infos.stato.properties.measurements).forEach((key) => {
-      values.push(infos.stato.properties.measurements[key].fixedValue);
-    });
-  }
-  const colorToColor = infos.colore;
-  const r = Math.round(colorToColor.r * 255);
-  const g = Math.round(colorToColor.g * 255);
-  const b = Math.round(colorToColor.b * 255);
-  const hexColor = `#${r.toString(16).padStart(2, "0")}${g
-    .toString(16)
-    .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+    setValues(temp);
+    const r = Math.round(infos.color.r * 255);
+    const g = Math.round(infos.color.g * 255);
+    const b = Math.round(infos.color.b * 255);
+    setHexColor(
+      `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b
+        .toString(16)
+        .padStart(2, "0")}`
+    );
+  }, [dataR]);
+
+  useEffect(() => {}, []);
 
   return (
     <div className="w-400 h-full p-5 bg-gray-600 z-30 fixed">
@@ -140,7 +173,7 @@ const Sidebar = ({ infos, onButtonClick, onSliderChange }) => {
             }}
             dotStyle={{ visibility: "hidden" }}
             activeDotStyle={{ visibility: "hidden" }}
-            onChange={handleSliderChange}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -148,4 +181,14 @@ const Sidebar = ({ infos, onButtonClick, onSliderChange }) => {
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  return {
+    sliderValue: state.sliderValue,
+  };
+};
+
+const mapDispatchToProps = {
+  setSliderValue,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

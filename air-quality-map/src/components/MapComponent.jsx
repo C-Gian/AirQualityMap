@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Popup from "../Popup";
 import * as turf from "@turf/turf";
+import { connect } from "react-redux";
 
 function MapComponent({
   datas,
   stateClicked,
   buttonPressed,
   onButtonClick,
-  selectedDay,
+  sliderValue,
 }) {
-  const [map, setMap] = useState(null);
+  const mapRef = useRef(null);
   let hoveredPolygonId = null;
+  const [dataR, setDataR] = useState(datas[sliderValue]);
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
-  let dataR = datas[selectedDay - 1];
+
+  useEffect(() => {
+    setDataR(datas[sliderValue - 1]);
+  }, [sliderValue]);
 
   if (buttonPressed) {
-    map.flyTo({
+    mapRef.current.flyTo({
       center: [-100.86857959024933, 38.482552979137004],
       zoom: 3, // Livello di zoom desiderato
       speed: 1.5, // Velocità dell'animazione
@@ -47,7 +52,7 @@ function MapComponent({
       attributionControl: false,
       logoPosition: "top-left",
     });
-    setMap(map);
+    mapRef.current = map;
 
     const zoomThreshold = 3;
 
@@ -302,8 +307,10 @@ function MapComponent({
     map.on("click", "state-aqi", (e) => {
       e.preventDefault();
       const stateInfos = {
-        stato: dataR.features.find((obj) => obj.id === e.features[0].id),
-        colore: e.features[0].layer.paint["fill-color"],
+        datas: datas,
+        id: e.features[0].id,
+        //isState: true,
+        color: e.features[0].layer.paint["fill-color"],
       };
       stateClicked(stateInfos);
       const center = turf.center(e.features[0].geometry).geometry.coordinates;
@@ -318,11 +325,13 @@ function MapComponent({
       });
     });
 
-    map.on("click", "country-aqi", (e) => {
+    /* map.on("click", "country-aqi", (e) => {
       e.preventDefault();
       const stateInfos = {
-        stato: { USA: dataR },
-        colore: e.features[0].layer.paint["fill-color"],
+        datas: datas,
+        id: e.features[0].id,
+        isState: false,
+        color: e.features[0].layer.paint["fill-color"],
       };
       stateClicked(stateInfos);
       const center = [-108.15050813778196, 43.20742527199025];
@@ -336,7 +345,7 @@ function MapComponent({
         essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
       });
     });
-
+ */
     map.on("click", (e) => {
       if (e.defaultPrevented === false) {
         map.flyTo({
@@ -362,7 +371,13 @@ function MapComponent({
       }
       hoveredPolygonId = null;
     });
-  }, [dataR]); //dataR added to prevent map to be black at the start, if problems delete this
+  }, []); //dataR added to prevent map to be black at the start, if problems delete this
+
+  useEffect(() => {
+    //setDataR(datas[sliderValue - 1]);
+    if (!mapRef.current || !sliderValue) return;
+    mapRef.current.getSource("aqi").setData(datas[sliderValue]);
+  }, [sliderValue]);
 
   return (
     <div>
@@ -379,4 +394,10 @@ function MapComponent({
   );
 }
 
-export default MapComponent;
+const mapStateToProps = (state) => {
+  return {
+    sliderValue: state.sliderValue,
+  };
+};
+
+export default connect(mapStateToProps)(MapComponent);

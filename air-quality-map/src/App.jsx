@@ -6,16 +6,47 @@ import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
 import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
+import * as d3 from "d3";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
   const [buttonPressed, setButtonPressed] = useState(false);
   const [datas, setDatas] = useState([]);
-  const [selectedDay, setSelectedDay] = useState(1); // Lo stato per memorizzare il valore dello slider
-
-  const handleSliderChange = (value) => {
-    setSelectedDay(value); // Aggiorna lo stato con il valore selezionato dallo slider
+  //const [todayData, setTodayData] = useState({});
+  const colors = [
+    "#00D900",
+    "#B5B500",
+    "#F57300",
+    "#F50000",
+    "#83328C",
+    "#730017",
+  ];
+  // Funzione per calcolare il colore associato al valore in base all'interpolazione lineare
+  const getColorForValue = (value, minValue, maxValue) => {
+    const scale = d3
+      .scaleLinear()
+      .domain([minValue, maxValue])
+      .range([0, colors.length - 1]);
+    const index = scale(value);
+    const t = index % 1; // Frazione dell'indice
+    const colorInterpolator = d3.interpolate(
+      colors[Math.floor(index)],
+      colors[Math.ceil(index)]
+    );
+    return colorInterpolator(t);
   };
+  //const [selectedDay, setSelectedDay] = useState(1); // Lo stato per memorizzare il valore dello slider
+
+  /* const handleSliderChange = (value) => {
+    console.log("aaaa");
+    stateInfo.state = datas[value - 1].features[stateInfo.id];
+    stateInfo.color = getColorForValue(
+      datas[value - 1].features[stateInfo.id].properties.AQI,
+      0,
+      301
+    );
+    setStateInfo(stateInfo);
+  }; */
 
   const handleButtonClick = () => {
     if (buttonPressed) {
@@ -297,8 +328,9 @@ const App = () => {
           await dailyUpdate(dataR);
           console.log("Daily Data Updated");
         }
-
-        setDatas(await getDatas()); //getting the whole db data (7 days data)
+        const datas = await getDatas();
+        setDatas(datas); //getting the whole db data (7 days data)
+        //setTodayData(datas[0]);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
         let min = 0;
@@ -336,21 +368,16 @@ const App = () => {
 
   return (
     <div>
-      {datas && (
+      {datas.length > 0 && (
         <MapComponent
           datas={datas}
           stateClicked={stateClicked}
           buttonPressed={buttonPressed}
           onButtonClick={handleButtonClick}
-          selectedDay={selectedDay}
         ></MapComponent>
       )}
       {stateInfo && (
-        <Sidebar
-          infos={stateInfo}
-          onButtonClick={handleButtonClick}
-          onSliderChange={handleSliderChange}
-        />
+        <Sidebar infos={stateInfo} onButtonClick={handleButtonClick} />
       )}
       <Legend></Legend>
       <Toolbar></Toolbar>
