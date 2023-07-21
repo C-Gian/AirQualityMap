@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import dataR from "./data/dataR.json";
-import day1 from "./data/day1.json";
-import day2 from "./data/day2.json";
 import axios from "axios";
 import * as turf from "@turf/turf";
 import Sidebar from "./components/Sidebar";
