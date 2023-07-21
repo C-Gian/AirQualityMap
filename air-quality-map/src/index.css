@@ -53,3 +53,68 @@ body {
 .mapboxgl-ctrl-logo {
   display: none !important;
 }
+
+.temporal-slider-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.temporal-slider {
+  margin-top: 10px;
+  background-color: #ffffff; /* Cambia il colore dello sfondo della traccia dello slider */
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.slider-item {
+  width: 14%; /* Riduci la larghezza dei punti per renderli più compatti */
+  background-color: #666; /* Cambia il colore dei punti dello slider */
+  color: #fff;
+  padding: 6px 0;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.slider-item:hover {
+  background-color: #888; /* Cambia il colore dei punti al passaggio del mouse */
+}
+
+/* Stile per il cursore dello slider */
+.rc-slider-handle {
+  background-color: #fff;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 0 0 2px #59595950;
+  border-color: #666;
+}
+
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+  box-shadow: 0 0 0 4px #ffffff !important;
+}
+
+/* Stile per la transizione del bordo quando il pallino perde il focus */
+.rc-slider-handle:hover {
+  border-color: #666;
+  transition: border-color 0.3s;
+}
+
+/* Stile per la traccia dello slider */
+.rc-slider-rail {
+  background-color: #555; /* Cambia il colore della traccia dello slider */
+  height: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Stile per la parte già selezionata dello slider */
+.rc-slider-track {
+  background-color: #888; /* Cambia il colore della parte selezionata dello slider */
+  height: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.slider-mark {
+  color: #fff; /* Imposta il colore bianco per i numeri dello slider */
+  font-size: 16px;
+}

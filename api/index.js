@@ -19,14 +19,10 @@ app.use(
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 
-app.get("/test", (req, res) => {
-  res.json("test ok");
-});
-
-app.get("/daily-update", async (req, res) => {
+app.get("/is-daily-update-done", async (req, res) => {
   try {
     const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("Connessione a MongoDB avvenuta con successo!");
+    console.log("connection mongodb for /is-daily-update-done successfull");
 
     // Seleziona il database
     const db = client.db(dbName);
@@ -38,7 +34,6 @@ app.get("/daily-update", async (req, res) => {
     const object = await collection.findOne();
 
     if (object) {
-      console.log("Oggetto trovato:", object);
       if (object.todayDate) {
         res.send(true);
       } else {
@@ -67,11 +62,11 @@ app.get("/daily-update", async (req, res) => {
 app.post("/daily-update", async (req, res) => {
   try {
     const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("Connessione a MongoDB avvenuta con successo!");
-    const { dataR } = req.body;
+    console.log("connection mongodb for /daily-update successfull");
+    const { dataToUpdate } = req.body;
     const db = client.db(dbName);
     await db.collection("day7").deleteMany({});
-    await db.collection("day7").insertOne(dataR);
+    await db.collection("day7").insertOne(dataToUpdate);
     await db.collection("day7").rename("day0");
     await db.collection("day6").rename("day7");
     await db.collection("day5").rename("day6");
@@ -93,72 +88,33 @@ app.post("/daily-update", async (req, res) => {
   }
 });
 
-app.post("/inserisci-dati", async (req, res) => {
+app.get("/datas", async (req, res) => {
   try {
-    // JSON ricevuto dalla richiesta del client (req.body)
-    const { id, data } = req.body;
-    const obj = {};
-    obj[id] = data;
-    let collectionName = `day${id.replace("_", "")}`;
-    // Connessione al database
     const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("Connessione a MongoDB avvenuta con successo!");
-
-    // Seleziona il database
+    console.log("connection mongodb for /datas successfull");
     const db = client.db(dbName);
-
-    // Seleziona la collezione
-    const collection = db.collection(collectionName);
-
-    // Inserimento del JSON nella collezione
-    await collection.insertOne(obj);
-    //const result = await collection.deleteMany({});
-    console.log("Dati inseriti correttamente nella collezione.");
-
-    // Chiudi la connessione a MongoDB
-    client.close();
-    console.log("Connessione chiusa correttamente.");
-
-    // Invia una risposta al client con un messaggio di successo
-    res.status(200).send("Dati inseriti correttamente nella collezione.");
-  } catch (error) {
-    console.error("Errore durante la connessione o l'inserimento:", error);
-
-    // Invia una risposta al client con un messaggio di errore
-    res
-      .status(500)
-      .send("Si è verificato un errore durante l'inserimento dei dati.");
-  }
-});
-
-app.post("/test-aggiunta", async (req, res) => {
-  try {
-    const collName = ["day1", "day2", "day3", "day4", "day5", "day6", "day7"];
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("Connessione a MongoDB avvenuta con successo!");
-    const db = client.db(dbName);
-    let x = 1;
-    for (let i = 0; i < collName.length; i++) {
-      await db.collection(collName[i]).deleteMany({});
-      await db.collection(collName[i]).insertOne({ x: x });
-      x++;
+    const collections = [
+      "day1",
+      "day2",
+      "day3",
+      "day4",
+      "day5",
+      "day6",
+      "day7",
+    ];
+    let datas = [];
+    for (let i = 0; i < collections.length; i++) {
+      const collection = db.collection(collections[i]);
+      const object = await collection.findOne();
+      datas.push(object);
     }
-    console.log("Dati inseriti correttamente nella collezione.");
-    client.close();
-    console.log("Connessione chiusa correttamente.");
-    res.status(200).send("Dati inseriti correttamente nella collezione.");
-  } catch (error) {
-    console.error("Errore durante la connessione o l'inserimento:", error);
-    res
-      .status(500)
-      .send("Si è verificato un errore durante l'inserimento dei dati.");
-  }
+    res.json(datas);
+  } catch (error) {}
 });
 
 // Endpoint per la scrittura del file JSON
 app.post("/update", (req, res) => {
   const jsonData = req.body; // I dati JSON aggiornati inviati nella richiesta
-  console.log(req.body);
   // Scrivi i dati JSON sul file
   fs.writeFile("./dataRR.json", JSON.stringify(jsonData), (err) => {
     if (err) {

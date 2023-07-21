@@ -3,14 +3,20 @@ import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loade
 import Popup from "../Popup";
 import * as turf from "@turf/turf";
 
-function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
-  //console.log("1 \n", dataR);
+function MapComponent({
+  datas,
+  stateClicked,
+  buttonPressed,
+  onButtonClick,
+  selectedDay,
+}) {
   const [map, setMap] = useState(null);
   let hoveredPolygonId = null;
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
+  let dataR = datas[selectedDay - 1];
 
   if (buttonPressed) {
     map.flyTo({
@@ -22,6 +28,11 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
     });
     onButtonClick();
   }
+
+  /* useEffect(() => {
+    console.log("update!!");
+    dataR = datas[selectedDay];
+  }, [selectedDay]); */
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -300,7 +311,26 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
       // Esegui l'animazione di zoom e panoramica verso il centro dello stato
       map.flyTo({
         center: center,
-        zoom: 5, // Livello di zoom desiderato
+        zoom: 4, // Livello di zoom desiderato
+        speed: 1.5, // Velocità dell'animazione
+        curve: 1.5, // Curva di accelerazione dell'animazione
+        essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+      });
+    });
+
+    map.on("click", "country-aqi", (e) => {
+      e.preventDefault();
+      const stateInfos = {
+        stato: { USA: dataR },
+        colore: e.features[0].layer.paint["fill-color"],
+      };
+      stateClicked(stateInfos);
+      const center = [-108.15050813778196, 43.20742527199025];
+
+      // Esegui l'animazione di zoom e panoramica verso il centro dello stato
+      map.flyTo({
+        center: center,
+        zoom: 2.5, // Livello di zoom desiderato
         speed: 1.5, // Velocità dell'animazione
         curve: 1.5, // Curva di accelerazione dell'animazione
         essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
@@ -311,7 +341,7 @@ function MapComponent({ dataR, stateClicked, buttonPressed, onButtonClick }) {
       if (e.defaultPrevented === false) {
         map.flyTo({
           center: [-100.86857959024933, 38.482552979137004],
-          zoom: 3, // Livello di zoom desiderato
+          zoom: 2, // Livello di zoom desiderato
           speed: 1.5, // Velocità dell'animazione
           curve: 1.5, // Curva di accelerazione dell'animazione
           essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
