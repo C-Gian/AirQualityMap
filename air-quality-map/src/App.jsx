@@ -8,7 +8,6 @@ import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
 import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
-import { data } from "autoprefixer";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
@@ -210,7 +209,7 @@ const App = () => {
         if (!todayIsUpdated.data) {
           const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
           initilizeJson(); //initialize json to be sure that adding field are correct
-          day2.forEach((measurement) => {
+          dailyData.forEach((measurement) => {
             const point = turf.point([
               measurement.Longitude,
               measurement.Latitude,
