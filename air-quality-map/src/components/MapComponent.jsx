@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import Popup from "../Popup";
+import Popup from "./Popup";
 import * as turf from "@turf/turf";
 import { connect } from "react-redux";
 
@@ -18,10 +18,6 @@ function MapComponent({
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
-
-  useEffect(() => {
-    setDataR(datas[sliderValue - 1]);
-  }, [sliderValue]);
 
   if (buttonPressed) {
     mapRef.current.flyTo({
@@ -230,25 +226,27 @@ function MapComponent({
         },
       });
     });
+  }, []); //dataR added to prevent map to be black at the start, if problems delete this
 
-    map.on("mousemove", "state-aqi", (e) => {
-      map.getCanvas().style.cursor = "pointer";
+  useEffect(() => {
+    mapRef.current.on("mousemove", "state-aqi", (e) => {
+      mapRef.current.getCanvas().style.cursor = "pointer";
       if (e.features.length > 0) {
         if (hoveredPolygonId == null) {
           hoveredPolygonId = e.features[0].id;
-          map.setFeatureState(
+          mapRef.current.setFeatureState(
             { source: "aqi", id: hoveredPolygonId },
             { hover: true }
           );
           setHoveredState([dataR.features[e.features[0].id], false]);
           setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
         } else if (e.features[0].id != hoveredPolygonId) {
-          map.setFeatureState(
+          mapRef.current.setFeatureState(
             { source: "aqi", id: hoveredPolygonId },
             { hover: false }
           );
           hoveredPolygonId = e.features[0].id;
-          map.setFeatureState(
+          mapRef.current.setFeatureState(
             { source: "aqi", id: hoveredPolygonId },
             { hover: true }
           );
@@ -263,13 +261,13 @@ function MapComponent({
       }
     });
 
-    map.on("mouseleave", "state-aqi", () => {
-      map.getCanvas().style.cursor = "";
+    mapRef.current.on("mouseleave", "state-aqi", () => {
+      mapRef.current.getCanvas().style.cursor = "";
       setShowPopup(false);
       setHoveredState({});
       setHoveredStateColor({});
       if (hoveredPolygonId !== null) {
-        map.setFeatureState(
+        mapRef.current.setFeatureState(
           { source: "aqi", id: hoveredPolygonId },
           { hover: false }
         );
@@ -277,11 +275,14 @@ function MapComponent({
       hoveredPolygonId = null;
     });
 
-    map.on("mousemove", "country-aqi", (e) => {
-      map.getCanvas().style.cursor = "pointer";
+    mapRef.current.on("mousemove", "country-aqi", (e) => {
+      mapRef.current.getCanvas().style.cursor = "pointer";
       if (e.features.length > 0) {
         for (let i = 0; i < 50; i++) {
-          map.setFeatureState({ source: "aqi", id: i }, { hover: true });
+          mapRef.current.setFeatureState(
+            { source: "aqi", id: i },
+            { hover: true }
+          );
         }
         setHoveredState([dataR.features[e.features[0].id], true]);
         setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
@@ -293,30 +294,34 @@ function MapComponent({
       }
     });
 
-    map.on("mouseleave", "country-aqi", () => {
-      map.getCanvas().style.cursor = "";
+    mapRef.current.on("mouseleave", "country-aqi", () => {
+      mapRef.current.getCanvas().style.cursor = "";
       setShowPopup(false);
       setHoveredState({});
       setHoveredStateColor({});
       for (let i = 0; i < 50; i++) {
-        map.setFeatureState({ source: "aqi", id: i }, { hover: false });
+        mapRef.current.setFeatureState(
+          { source: "aqi", id: i },
+          { hover: false }
+        );
       }
       hoveredPolygonId = null;
     });
 
-    map.on("click", "state-aqi", (e) => {
+    mapRef.current.on("click", "state-aqi", (e) => {
       e.preventDefault();
       const stateInfos = {
         datas: datas,
         id: e.features[0].id,
-        //isState: true,
-        color: e.features[0].layer.paint["fill-color"],
+        isState: true,
+        //color: e.features[0], //.layer.paint["fill-color"],
       };
+
       stateClicked(stateInfos);
       const center = turf.center(e.features[0].geometry).geometry.coordinates;
 
       // Esegui l'animazione di zoom e panoramica verso il centro dello stato
-      map.flyTo({
+      mapRef.current.flyTo({
         center: center,
         zoom: 4, // Livello di zoom desiderato
         speed: 1.5, // Velocità dell'animazione
@@ -325,19 +330,19 @@ function MapComponent({
       });
     });
 
-    /* map.on("click", "country-aqi", (e) => {
+    mapRef.current.on("click", "country-aqi", (e) => {
       e.preventDefault();
       const stateInfos = {
         datas: datas,
         id: e.features[0].id,
         isState: false,
-        color: e.features[0].layer.paint["fill-color"],
+        //color: e.features[0].layer.paint["fill-color"],
       };
       stateClicked(stateInfos);
       const center = [-108.15050813778196, 43.20742527199025];
 
       // Esegui l'animazione di zoom e panoramica verso il centro dello stato
-      map.flyTo({
+      mapRef.current.flyTo({
         center: center,
         zoom: 2.5, // Livello di zoom desiderato
         speed: 1.5, // Velocità dell'animazione
@@ -345,10 +350,10 @@ function MapComponent({
         essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
       });
     });
- */
-    map.on("click", (e) => {
+
+    mapRef.current.on("click", (e) => {
       if (e.defaultPrevented === false) {
-        map.flyTo({
+        mapRef.current.flyTo({
           center: [-100.86857959024933, 38.482552979137004],
           zoom: 2, // Livello di zoom desiderato
           speed: 1.5, // Velocità dell'animazione
@@ -359,23 +364,29 @@ function MapComponent({
       }
     });
 
-    map.on("dragstart", () => {
+    mapRef.current.on("dragstart", () => {
       setShowPopup(false);
       setHoveredState({});
       setHoveredStateColor({});
       if (hoveredPolygonId !== null) {
-        map.setFeatureState(
+        mapRef.current.setFeatureState(
           { source: "aqi", id: hoveredPolygonId },
           { hover: false }
         );
       }
       hoveredPolygonId = null;
     });
-  }, []); //dataR added to prevent map to be black at the start, if problems delete this
+  }, [dataR]);
 
   useEffect(() => {
-    //setDataR(datas[sliderValue - 1]);
-    if (!mapRef.current || !sliderValue) return;
+    if (
+      !mapRef.current ||
+      sliderValue < 0 ||
+      sliderValue > 6 ||
+      !mapRef.current.getSource("aqi")
+    )
+      return;
+    setDataR(datas[sliderValue]);
     mapRef.current.getSource("aqi").setData(datas[sliderValue]);
   }, [sliderValue]);
 

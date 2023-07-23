@@ -4,15 +4,18 @@ import "rc-slider/assets/index.css";
 import SideBarChart from "./SideBarChart";
 import { connect } from "react-redux";
 import { setSliderValue } from "../actions/index.js";
+import { useSelector } from "react-redux";
+import * as d3 from "d3";
 
 const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
-  //console.log(infos);
   const [name, setName] = useState("");
   const [AQI, setAQI] = useState("");
   const [lastUpdate, setLastUpdate] = useState("");
   const [values, setValues] = useState([]);
   const [dataR, setDataR] = useState(infos.datas[0].features[infos.id]);
   const [hexColor, setHexColor] = useState("");
+  const sliderValue = useSelector((state) => state.sliderValue);
+  //const [sValue, setSValue] = useState(0);
   let countryPolluttans = {
     CO: {
       totalValue: 0,
@@ -45,11 +48,38 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       fixedValue: 0,
     },
   };
+  const colors = [
+    "#00D900",
+    "#B5B500",
+    "#F57300",
+    "#F50000",
+    "#83328C",
+    "#730017",
+  ];
+  // Funzione per calcolare il colore associato al valore in base all'interpolazione lineare
+  const getColorForValue = (value) => {
+    const scale = d3
+      .scaleLinear()
+      .domain([0, 301])
+      .range([0, colors.length - 1]);
+    const index = scale(value);
+    const t = index % 1; // Frazione dell'indice
+    const colorInterpolator = d3.interpolate(
+      colors[Math.floor(index)],
+      colors[Math.ceil(index)]
+    );
+    const color = colorInterpolator(t);
+
+    // Ora aumenta la luminosità del colore
+    const brighterColor = d3.color(color).brighter(1).toString();
+
+    return brighterColor;
+  };
 
   const handleChange = (value) => {
-    console.log("SLIDER VALUE", value);
     setDataR(infos.datas[value - 1].features[infos.id]);
     setSliderValue(value - 1);
+    //setSValue(sValue - 1);
   };
 
   useEffect(() => {
@@ -100,17 +130,32 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       temp.push(dataR.properties.measurements[key].fixedValue);
     });
     setValues(temp);
-    const r = Math.round(infos.color.r * 255);
-    const g = Math.round(infos.color.g * 255);
-    const b = Math.round(infos.color.b * 255);
-    setHexColor(
-      `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b
+    if (dataR.properties.AQI >= 301) {
+      setHexColor("#4b0b2c");
+    } else {
+      const stateColorArrayRGB = getColorForValue(dataR.properties.AQI)
+        .replace("rgb(", "")
+        .replace(")", "")
+        .split(",");
+      const stateColorObjectRGB = {
+        r: Number(stateColorArrayRGB[0]),
+        g: Number(stateColorArrayRGB[1]),
+        b: Number(stateColorArrayRGB[2]),
+      };
+
+      const r = stateColorObjectRGB.r;
+      const g = stateColorObjectRGB.g;
+      const b = stateColorObjectRGB.b;
+      const hc = `#${r.toString(16).padStart(2, "0")}${g
         .toString(16)
-        .padStart(2, "0")}`
-    );
+        .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+      setHexColor(hc);
+    }
   }, [dataR]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setDataR(infos.datas[sliderValue].features[infos.id]);
+  }, [infos]);
 
   return (
     <div className="w-400 h-full p-5 bg-gray-600 z-30 fixed">
@@ -162,7 +207,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
               6: <span className="slider-mark">6</span>,
               7: <span className="slider-mark">7</span>,
             }}
-            defaultValue={1}
+            defaultValue={sliderValue + 1}
             railStyle={{ backgroundColor: "#FFF", height: 6 }}
             trackStyle={{ backgroundColor: "#FFF", height: 6 }}
             handleStyle={{

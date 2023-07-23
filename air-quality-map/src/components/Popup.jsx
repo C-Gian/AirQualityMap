@@ -1,6 +1,7 @@
 import React from "react";
 
 const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
+  //console.log(hoveredState[0]);
   let name = "";
   let lastUpdatedMe = "";
   let AQI = 0;
