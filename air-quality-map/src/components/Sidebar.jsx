@@ -69,7 +69,6 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       colors[Math.ceil(index)]
     );
     const color = colorInterpolator(t);
-
     // Ora aumenta la luminosità del colore
     const brighterColor = d3.color(color).brighter(1).toString();
 
@@ -83,12 +82,12 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   };
 
   useEffect(() => {
-    /* if (infos.isState == false) {
+    if (!infos.isState) {
       setName("USA");
-      setDataR(infos.datas[0]);
-      setAQI(dataR.features[0].properties.countryAQI);
-      setLastUpdate(dataR.features[0].lastUpdatedMe);
-      dataR.features.forEach((feature) => {
+      setDataR(infos.datas[sliderValue].features[infos.id]);
+      setAQI(dataR.properties.countryAQI);
+      setLastUpdate(dataR.lastUpdatedMe);
+      infos.datas[sliderValue].features.forEach((feature) => {
         Object.keys(feature.properties.measurements).forEach((poll) => {
           if (feature.properties.measurements[poll].fixedValue != null) {
             countryPolluttans[poll].totalValue +=
@@ -106,23 +105,6 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       setValues(temp);
     } else {
       setName(dataR.properties.name);
-      setAQI(dataR.properties.AQI);
-      setLastUpdate(dataR.lastUpdatedMe);
-      let temp = [];
-      Object.keys(dataR.properties.measurements).forEach((key) => {
-        temp.push(dataR.properties.measurements[key].fixedValue);
-      });
-      setValues(temp);
-    }
-    const r = Math.round(infos.color.r * 255);
-    const g = Math.round(infos.color.g * 255);
-    const b = Math.round(infos.color.b * 255);
-    setHexColor(
-      `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b
-        .toString(16)
-        .padStart(2, "0")}`
-    ); */
-    setName(dataR.properties.name);
     setAQI(dataR.properties.AQI);
     setLastUpdate(dataR.lastUpdatedMe);
     let temp = [];
@@ -130,10 +112,18 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       temp.push(dataR.properties.measurements[key].fixedValue);
     });
     setValues(temp);
-    if (dataR.properties.AQI >= 301) {
+    }
+
+    if (dataR.properties.AQI >= 301 || dataR.properties.countryAQI >= 301) {
       setHexColor("#4b0b2c");
     } else {
-      const stateColorArrayRGB = getColorForValue(dataR.properties.AQI)
+      let stateColorArray = null;
+      if (infos.isState) {
+        stateColorArray = getColorForValue(dataR.properties.AQI)
+      } else {
+        stateColorArray = getColorForValue(dataR.properties.countryAQI)
+      }
+      const stateColorArrayRGB = stateColorArray
         .replace("rgb(", "")
         .replace(")", "")
         .split(",");
