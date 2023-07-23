@@ -7,6 +7,7 @@ function PopupLegend({ position }) {
   const mid3Color = "#F50000";
   const mid4Color = "#83328C";
   const endColor = "#730017";
+  // Ottieni il colore associato al valore fornito
   return (
     <div
       className="absolute w-500 h-fit bg-gray-700 rounded-lg flex-col"
