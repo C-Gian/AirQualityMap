@@ -19,6 +19,7 @@ function MapComponent({
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
 
+  //close button sidebar actions
   if (buttonPressed) {
     mapRef.current.flyTo({
       center: [-100.86857959024933, 38.482552979137004],
@@ -27,6 +28,12 @@ function MapComponent({
       curve: 1.5, // Curva di accelerazione dell'animazione
       essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
     });
+    for (let i = 0; i < 50; i++) {
+      mapRef.current.setFeatureState(
+        { source: "aqi", id: i },
+        { selected: false }
+      );
+    }
     onButtonClick();
   }
 
@@ -214,6 +221,23 @@ function MapComponent({
       });
 
       map.addLayer({
+        id: "state-outline-layer",
+        minzoom: zoomThreshold,
+        type: "line",
+        interactive: false,
+        source: "aqi",
+        paint: {
+          "line-color": "white", // Colore del contorno
+          "line-width": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false], // Lo stato selezionato avrà true per 'selected'
+            4, // Larghezza del contorno per lo stato selezionato (modifica questo valore come preferisci)
+            0, // Larghezza del contorno per gli stati non selezionati
+          ],
+        },
+      });
+
+      map.addLayer({
         id: "state-aqi-line",
         source: "aqi",
         minzoom: zoomThreshold,
@@ -316,7 +340,16 @@ function MapComponent({
         isState: true,
         //color: e.features[0], //.layer.paint["fill-color"],
       };
-
+      for (let i = 0; i < 50; i++) {
+        mapRef.current.setFeatureState(
+          { source: "aqi", id: i },
+          { selected: false }
+        );
+      }
+      mapRef.current.setFeatureState(
+        { source: "aqi", id: e.features[0].id },
+        { selected: true }
+      );
       stateClicked(stateInfos);
       const center = turf.center(e.features[0].geometry).geometry.coordinates;
 
