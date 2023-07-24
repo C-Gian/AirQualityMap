@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dataR from "./data/dataR.json";
 import axios from "axios";
+import weatherData from "./data/weatherProxy.json";
 import * as turf from "@turf/turf";
 import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
@@ -195,9 +196,83 @@ const App = () => {
     return response.data;
   }
 
+  async function getWeatherDatas() {
+    const apiKey = "bbf74644b9d24ee58ea144902232407";
+    const baseUrl = "https://api.weatherapi.com/v1/current.json";
+    const states = [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
+    ];
+
+    const weatherData = {};
+
+    for (const state of states) {
+      const url = `${baseUrl}?key=${apiKey}&q=${encodeURIComponent(state)}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      weatherData[state] = data; // Salva i dati meteo nell'oggetto weatherData
+    }
+
+    return weatherData;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        /* getWeatherDatas().then((weatherData) => {
+          console.log(weatherData);
+        }); */
+        console.log(weatherData.Alabama.current);
+
         const todayIsUpdated = await axios.get(
           `http://localhost:4000/is-daily-update-done`
         );
@@ -281,6 +356,9 @@ const App = () => {
                   el.properties.measurements[key].times;
               }
             });
+            /* Object.keys(weatherData).forEach(key => {
+              
+            }) */
           });
 
           //calculating countryAQI for country-layer

@@ -227,17 +227,22 @@ function MapComponent({
         interactive: false,
         source: "aqi",
         paint: {
-          "line-color": "white", // Colore del contorno
+          "line-color": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false],
+            "white", // Stato selezionato: bianco
+            "black", // Stato non selezionato: nero
+          ],
           "line-width": [
             "case",
             ["boolean", ["feature-state", "selected"], false], // Lo stato selezionato avrà true per 'selected'
             4, // Larghezza del contorno per lo stato selezionato (modifica questo valore come preferisci)
-            0, // Larghezza del contorno per gli stati non selezionati
+            0.1, // Larghezza del contorno per gli stati non selezionati
           ],
         },
       });
 
-      map.addLayer({
+      /* map.addLayer({
         id: "state-aqi-line",
         source: "aqi",
         minzoom: zoomThreshold,
@@ -248,7 +253,7 @@ function MapComponent({
           "line-color": "#212121", // Colore delle linee dei confini
           "line-width": 0.5, // Spessore delle linee dei confini
         },
-      });
+      }); */
     });
   }, []); //dataR added to prevent map to be black at the start, if problems delete this
 
