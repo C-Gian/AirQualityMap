@@ -105,13 +105,13 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       setValues(temp);
     } else {
       setName(dataR.properties.name);
-    setAQI(dataR.properties.AQI);
-    setLastUpdate(dataR.lastUpdatedMe);
-    let temp = [];
-    Object.keys(dataR.properties.measurements).forEach((key) => {
-      temp.push(dataR.properties.measurements[key].fixedValue);
-    });
-    setValues(temp);
+      setAQI(dataR.properties.AQI);
+      setLastUpdate(dataR.lastUpdatedMe);
+      let temp = [];
+      Object.keys(dataR.properties.measurements).forEach((key) => {
+        temp.push(dataR.properties.measurements[key].fixedValue);
+      });
+      setValues(temp);
     }
 
     if (dataR.properties.AQI >= 301 || dataR.properties.countryAQI >= 301) {
@@ -119,9 +119,9 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
     } else {
       let stateColorArray = null;
       if (infos.isState) {
-        stateColorArray = getColorForValue(dataR.properties.AQI)
+        stateColorArray = getColorForValue(dataR.properties.AQI);
       } else {
-        stateColorArray = getColorForValue(dataR.properties.countryAQI)
+        stateColorArray = getColorForValue(dataR.properties.countryAQI);
       }
       const stateColorArrayRGB = stateColorArray
         .replace("rgb(", "")
@@ -148,69 +148,97 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   }, [infos]);
 
   return (
-    <div className="w-400 h-full p-5 bg-gray-600 z-30 fixed">
-      <button className="close-button" onClick={onButtonClick}>
-        &#10005;
-      </button>
-      <div className="flex items-center">
-        <span className="text-4xl text-white">{name}</span>
+    <div className="sidebar h-screen w-500 p-5 bg-gray-600 z-30 fixed">
+      <div className="mb-2">
+        <button className="close-button" onClick={onButtonClick}>
+          &#10005;
+        </button>
+        <div className="flex items-center">
+          <span className="text-4xl text-white">{name}</span>
+        </div>
       </div>
-      <div className="flex flex-col w-fit h-fit items-center  justify-between ">
-        <div className="flex w-full h-fit items-center mt-4 overflow-hidden">
-          <h2 className="text-white  text-xl items-center mr-5">
-            Air Quality Index (AQI):
-          </h2>
-          <div
-            className="rounded-2xl p-3 flex items-center justify-center "
-            style={{ backgroundColor: hexColor, width: "60px", height: "60px" }}
-          >
-            <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle">
-              {AQI}
+      <div
+        className="sidebar p-4 overflow-y-auto h-full"
+        style={{ height: `calc(100% - 4rem)` }}
+      >
+        <div className="flex flex-col w-fit h-fit items-center  justify-between ">
+          <div className="flex w-full h-fit items-center mt-4 overflow-hidden">
+            <h2 className="text-white  text-xl items-center mr-5">
+              Air Quality Index (AQI):
             </h2>
+            <div
+              className="rounded-2xl p-3 flex items-center justify-center "
+              style={{
+                backgroundColor: hexColor,
+                width: "60px",
+                height: "60px",
+              }}
+            >
+              <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle">
+                {AQI}
+              </h2>
+            </div>
+          </div>
+          <div className="flex w-full h-fit justify-between items-center mt-3">
+            <h2 className="text-white text-xl items-center mr-5">
+              Last Update:
+            </h2>
+            <span className="text-l text-white">{lastUpdate}</span>
           </div>
         </div>
-        <div className="flex w-full h-fit justify-between items-center mt-3">
-          <h2 className="text-white text-xl items-center mr-5">Last Update:</h2>
-          <span className="text-l text-white">{lastUpdate}</span>
+        {countryPolluttans && values && (
+          <SideBarChart
+            values={values}
+            countryPolluttans={countryPolluttans}
+          ></SideBarChart>
+        )}
+        <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
+          <h2 className="text-white text-xl font-semibold mb-2">
+            7 days past data
+          </h2>
+          <div className="temporal-slider-container">
+            <Slider
+              min={1}
+              max={7}
+              marks={{
+                1: <span className="slider-mark">1</span>,
+                2: <span className="slider-mark">2</span>,
+                3: <span className="slider-mark">3</span>,
+                4: <span className="slider-mark">4</span>,
+                5: <span className="slider-mark">5</span>,
+                6: <span className="slider-mark">6</span>,
+                7: <span className="slider-mark">7</span>,
+              }}
+              defaultValue={sliderValue + 1}
+              railStyle={{ backgroundColor: "#FFF", height: 6 }}
+              trackStyle={{ backgroundColor: "#FFF", height: 6 }}
+              handleStyle={{
+                borderColor: "#FFF",
+                height: 16,
+                width: 16,
+                backgroundColor: "#fff",
+              }}
+              dotStyle={{ visibility: "hidden" }}
+              activeDotStyle={{ visibility: "hidden" }}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-      </div>
-      {countryPolluttans && values && (
-        <SideBarChart
-          values={values}
-          countryPolluttans={countryPolluttans}
-        ></SideBarChart>
-      )}
-      <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
-        <h2 className="text-white text-xl font-semibold mb-2">
-          7 days past data
-        </h2>
-        <div className="temporal-slider-container">
-          <Slider
-            min={1}
-            max={7}
-            marks={{
-              1: <span className="slider-mark">1</span>,
-              2: <span className="slider-mark">2</span>,
-              3: <span className="slider-mark">3</span>,
-              4: <span className="slider-mark">4</span>,
-              5: <span className="slider-mark">5</span>,
-              6: <span className="slider-mark">6</span>,
-              7: <span className="slider-mark">7</span>,
-            }}
-            defaultValue={sliderValue + 1}
-            railStyle={{ backgroundColor: "#FFF", height: 6 }}
-            trackStyle={{ backgroundColor: "#FFF", height: 6 }}
-            handleStyle={{
-              borderColor: "#FFF",
-              height: 16,
-              width: 16,
-              backgroundColor: "#fff",
-            }}
-            dotStyle={{ visibility: "hidden" }}
-            activeDotStyle={{ visibility: "hidden" }}
-            onChange={handleChange}
-          />
+        <div className="h-fit w-full mt-10 flex-col">
+          <div className="flex items-center">
+            <h2 className="text-xl text-white mr-5">Air Quality: </h2>
+            <h2 className="text-xl text-green-400">Good</h2>
+          </div>
+          <div className="flex items-center mt-3">
+            <h2 className="text-xl text-white mr-5">Temperature: </h2>
+            <h2 className="text-xl text-white">38°</h2>
+          </div>
+          <div className="flex items-center mt-3">
+            <h2 className="text-xl text-white mr-5">Humidity: </h2>
+            <h2 className="text-xl text-white">20%</h2>
+          </div>
         </div>
+        <div className="bg-black h-500 w-full mt-10"></div>
       </div>
     </div>
   );

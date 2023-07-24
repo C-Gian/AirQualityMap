@@ -118,3 +118,20 @@ body {
   color: #fff; /* Imposta il colore bianco per i numeri dello slider */
   font-size: 16px;
 }
+
+.sidebar {
+  padding: 5px;
+}
+
+/* Stili per la barra di scorrimento della sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Larghezza della barra di scorrimento */
+  height: 5px;
+  background-color: #ffffff00; /* Colore dello sfondo grigio chiaro */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #9f9f9f; /* Colore della barra di scorrimento grigia */
+  height: 5px;
+  border-radius: 100px; /* Smussatura dei bordi */
+}

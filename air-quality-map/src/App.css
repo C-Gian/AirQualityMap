@@ -25,3 +25,18 @@
 .mapbox-logo {
   display: none !important;
 }
+
+/* Stili per la barra di scorrimento della sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Larghezza della barra di scorrimento */
+  background-color: #f2f2f2; /* Colore dello sfondo grigio chiaro */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Colore della barra di scorrimento grigia */
+  border-radius: 4px; /* Smussatura dei bordi */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #999; /* Colore della barra di scorrimento grigia più scuro al passaggio del mouse */
+}
