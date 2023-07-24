@@ -258,7 +258,6 @@ const App = () => {
       const url = `${baseUrl}?key=${apiKey}&q=${encodeURIComponent(state)}`;
       const response = await fetch(url);
       const data = await response.json();
-
       weatherData[state] = data; // Salva i dati meteo nell'oggetto weatherData
     }
 
@@ -271,7 +270,20 @@ const App = () => {
         /* getWeatherDatas().then((weatherData) => {
           console.log(weatherData);
         }); */
-        console.log(weatherData.Alabama.current);
+        //console.log(weatherData.Alabama.current)
+        dataR.features.forEach((el) => {
+          const weatherNameState = el.properties.name
+          const weatherStateData = weatherData[weatherNameState]
+          const cloud = weatherStateData.current.cloud
+          const tempReal = weatherStateData.current.temp_c
+          const tempFeel = weatherStateData.current.feelslike_c
+          const humidity = weatherStateData.current.humidity
+          const conditionIcon = weatherStateData.current.condition.icon
+          const conditionText = weatherStateData.current.condition.text
+          el.weather = {"data" : {cloud, tempReal, tempFeel, humidity, conditionIcon, conditionText}}
+        });
+
+        console.log(dataR)
 
         const todayIsUpdated = await axios.get(
           `http://localhost:4000/is-daily-update-done`
@@ -344,6 +356,8 @@ const App = () => {
           });
 
           //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
+          //calculating countryAQI for country-layer
+          let med = 0;
           dataR.features.forEach((el) => {
             //setting fixedValue
             Object.keys(el.properties.measurements).forEach((key) => {
@@ -356,15 +370,10 @@ const App = () => {
                   el.properties.measurements[key].times;
               }
             });
-            /* Object.keys(weatherData).forEach(key => {
-              
-            }) */
-          });
-
-          //calculating countryAQI for country-layer
-          let med = 0;
-          dataR.features.forEach((el) => {
             med += el.properties.AQI;
+            const name = el.properties.name
+            const prova = weatherData[name]
+            console.log(prova)
           });
           dataR.features.forEach((el) => {
             el.properties.countryAQI = med / dataR.features.length;
