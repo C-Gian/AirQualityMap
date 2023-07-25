@@ -23,7 +23,7 @@ function MapComponent({
   if (buttonPressed) {
     mapRef.current.flyTo({
       center: [-100.86857959024933, 38.482552979137004],
-      zoom: 3, // Livello di zoom desiderato
+      zoom: 2.5, // Livello di zoom desiderato
       speed: 1.5, // Velocità dell'animazione
       curve: 1.5, // Curva di accelerazione dell'animazione
       essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
