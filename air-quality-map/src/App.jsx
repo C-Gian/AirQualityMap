@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import dataR from "./data/dataR.json";
 import axios from "axios";
 import weatherData from "./data/weatherProxy.json";
+import dailyDataProxy from "./data/dailyDataProxy.json";
+import datasBackup from "./data/datasBackup.json";
 import * as turf from "@turf/turf";
 import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
@@ -196,7 +198,7 @@ const App = () => {
     return response.data;
   }
 
-  async function getWeatherDatas() {
+  async function getWeatherDataStates() {
     const apiKey = "bbf74644b9d24ee58ea144902232407";
     const baseUrl = "https://api.weatherapi.com/v1/current.json";
     const states = [
@@ -251,28 +253,26 @@ const App = () => {
       "Wisconsin",
       "Wyoming",
     ];
-
     const weatherData = {};
-
     for (const state of states) {
       const url = `${baseUrl}?key=${apiKey}&q=${encodeURIComponent(state)}`;
       const response = await fetch(url);
       const data = await response.json();
-
       weatherData[state] = data; // Salva i dati meteo nell'oggetto weatherData
     }
-
     return weatherData;
   }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        /* getWeatherDatas().then((weatherData) => {
+        /* getWeatherData().then((weatherData) => {
           console.log(weatherData);
         }); */
-        console.log(weatherData.Alabama.current);
-
+        //console.log(weatherData)
+        /* await axios.post("http://localhost:4000/multipleAddForTest", {
+          datasBackup,
+        }); */
         const todayIsUpdated = await axios.get(
           `http://localhost:4000/is-daily-update-done`
         );
@@ -342,39 +342,62 @@ const App = () => {
               }
             }
           });
-
           //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
-          dataR.features.forEach((el) => {
-            //setting fixedValue
-            Object.keys(el.properties.measurements).forEach((key) => {
-              if (
-                el.properties.measurements[key].totalValues != null &&
-                el.properties.measurements[key].totalValues > 0
-              ) {
-                el.properties.measurements[key].fixedValue =
-                  el.properties.measurements[key].totalValues /
-                  el.properties.measurements[key].times;
-              }
-            });
-            /* Object.keys(weatherData).forEach(key => {
-              
-            }) */
-          });
-
           //calculating countryAQI for country-layer
           let med = 0;
+          let tem = 0;
+          let hum = 0;
           dataR.features.forEach((el) => {
-            med += el.properties.AQI;
+            if (el.type == "Feature") {
+              //setting fixedValue
+              Object.keys(el.properties.measurements).forEach((key) => {
+                if (
+                  el.properties.measurements[key].totalValues != null &&
+                  el.properties.measurements[key].totalValues > 0
+                ) {
+                  el.properties.measurements[key].fixedValue =
+                    el.properties.measurements[key].totalValues /
+                    el.properties.measurements[key].times;
+                }
+              });
+              med += el.properties.AQI;
+            }
           });
+          dataR.features[0].data.countryAQI = med / dataR.features.length;
           dataR.features.forEach((el) => {
-            el.properties.countryAQI = med / dataR.features.length;
+            if (el.type == "Feature") {
+              const weatherNameState = el.properties.name;
+              const weatherStateData = weatherData[weatherNameState];
+              const cloud = weatherStateData.current.cloud;
+              const tempReal = weatherStateData.current.temp_c;
+              const tempFeel = weatherStateData.current.feelslike_c;
+              const humidity = weatherStateData.current.humidity;
+              const conditionIcon = weatherStateData.current.condition.icon;
+              const conditionText = weatherStateData.current.condition.text;
+              tem += tempReal;
+              hum += humidity;
+              el.weather = {
+                data: {
+                  cloud,
+                  tempReal,
+                  tempFeel,
+                  humidity,
+                  conditionIcon,
+                  conditionText,
+                },
+              };
+            }
           });
+          dataR.features[0].data.weather = {
+            temperature: tem / dataR.features.length,
+            humidity: hum / dataR.features.length,
+          };
           await dailyUpdate(dataR);
           console.log("Daily Data Updated");
         }
-        const datas = await getDatas();
+        const datas = datasBackup; //await getDatas();
+        console.log(datas);
         setDatas(datas); //getting the whole db data (7 days data)
-        //setTodayData(datas[0]);
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
@@ -382,13 +405,15 @@ const App = () => {
         let med = 0;
         let max = 0;
         dataR.features.forEach((el) => {
-          if (el.properties.AQI > max) {
-            max = el.properties.AQI;
+          if (el.type == "Feature") {
+            if (el.properties.AQI > max) {
+              max = el.properties.AQI;
+            }
+            if (el.properties.AQI < min) {
+              min = el.properties.AQI;
+            }
+            med += el.properties.AQI;
           }
-          if (el.properties.AQI < min) {
-            min = el.properties.AQI;
-          }
-          med += el.properties.AQI;
         });
         console.log(min, med / dataR.features.length, max); */
 
