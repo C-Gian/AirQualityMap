@@ -130,4 +130,115 @@ app.post("/update", (req, res) => {
   });
 });
 
+app.post("/singleUpdateForTest", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for /daily-update successfull");
+    const { dataR } = req.body;
+    const db = client.db(dbName);
+    await db.collection("day1").insertOne(dataR);
+    console.log("Single update for test done");
+    res.send(true);
+  } catch (error) {
+    console.error("Errore durante la connessione o l'inserimento:", error);
+    res.status(500).send(false);
+  }
+});
+
+app.post("/multipleUpdateForTest", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for multiple test successfull");
+    const db = client.db(dbName);
+    const collections = [
+      "day1",
+      "day2",
+      "day3",
+      "day4",
+      "day5",
+      "day6",
+      "day7",
+    ];
+    for (let i = 0; i < collections.length; i++) {
+      const collection = db.collection(collections[i]);
+      const object = await collection.findOne();
+      await collection.deleteMany({});
+      const objToAdd = {
+        type: "Country",
+        data: {
+          countryAQI: null,
+          weather: null,
+        },
+      };
+      console.log();
+      object.features = object.features.unshift(objToAdd);
+      await collection.insertOne(object);
+      console.log(collections[i] + " multiple test done");
+    }
+    console.log("multiple test done");
+    res.send(true);
+  } catch (error) {
+    console.error("Errore durante la connessione o l'inserimento:", error);
+    res.status(500).send(false);
+  }
+});
+
+app.post("/multipleAddForTest", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for multiple test successfull");
+    const db = client.db(dbName);
+    const { datasBackup } = req.body;
+    const d1 = datasBackup[0];
+    const d2 = datasBackup[1];
+    const d3 = datasBackup[2];
+    const d4 = datasBackup[3];
+    const d5 = datasBackup[4];
+    const d6 = datasBackup[5];
+    const d7 = datasBackup[6];
+    const collections = [
+      "day1",
+      "day2",
+      "day3",
+      "day4",
+      "day5",
+      "day6",
+      "day7",
+    ];
+    for (let i = 0; i < collections.length; i++) {
+      const collection = db.collection(collections[i]);
+      await collection.deleteMany({});
+      switch (i) {
+        case 0:
+          await collection.insertOne(d1);
+          break;
+        case 1:
+          await collection.insertOne(d2);
+          break;
+        case 2:
+          await collection.insertOne(d3);
+          break;
+        case 3:
+          await collection.insertOne(d4);
+          break;
+        case 4:
+          await collection.insertOne(d5);
+          break;
+        case 5:
+          await collection.insertOne(d6);
+          break;
+        case 6:
+          await collection.insertOne(d7);
+          break;
+      }
+      console.log("day " + i + " backup restored");
+    }
+    console.log("all datas days backup restored");
+    res.send(true);
+  } catch (error) {
+    console.error("Errore durante la connessione o l'inserimento:", error);
+    res.status(500).send(false);
+  }
+});
+
 app.listen(4000);

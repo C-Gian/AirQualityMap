@@ -14,8 +14,14 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   const [values, setValues] = useState([]);
   const [dataR, setDataR] = useState(infos.datas[0].features[infos.id]);
   const [hexColor, setHexColor] = useState("");
+  const [airQualityText, setAirQualityText] = useState(null);
+  const [airQualityColor, setAirQualityColor] = useState(null);
+  const [weatherCondition, setWeatherCondition] = useState(null);
+  const [tempFeel, setTempFeel] = useState(null);
+  const [tempReal, setTempReal] = useState(null);
+  const [cloud, setCloud] = useState(null);
+  const [humidity, setHumidity] = useState(null);
   const sliderValue = useSelector((state) => state.sliderValue);
-  //const [sValue, setSValue] = useState(0);
   let countryPolluttans = {
     CO: {
       totalValue: 0,
@@ -56,6 +62,30 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
     "#83328C",
     "#730017",
   ];
+
+  function getColoreByValore(value) {
+    if (value >= 0 && value <= 51) {
+      return ["Good", "#00D900"];
+    } else if (value > 51 && value <= 100) {
+      return ["Moderate", "#B5B500"];
+    } else if (value > 100 && value <= 150) {
+      return ["Unhealthy for Sensitive Groups", "#F57300"];
+    } else if (value > 150 && value <= 200) {
+      return ["Unhealthy", "#F50000"];
+    } else if (value > 200 && value <= 300) {
+      return ["Very Unhealthy", "#83328C"];
+    }
+    return ["Hazardous", "#730017"];
+  }
+
+  /* function getFixedValues(datas) {
+    datas.forEach(day => {
+      day.features.forEach(feature => {
+
+      })
+    })
+  } */
+
   // Funzione per calcolare il colore associato al valore in base all'interpolazione lineare
   const getColorForValue = (value) => {
     const scale = d3
@@ -103,7 +133,12 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
         temp.push(countryPolluttans[key].fixedValue);
       });
       setValues(temp);
+      setTempReal(dataR.properties.countryTemp);
+      setHumidity(dataR.properties.countryHum);
+      setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
+      setAirQualityColor(getColoreByValore(dataR.properties.countryAQI)[1]);
     } else {
+      console.log("aaa", dataR);
       setName(dataR.properties.name);
       setAQI(dataR.properties.AQI);
       setLastUpdate(dataR.lastUpdatedMe);
@@ -112,6 +147,17 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
         temp.push(dataR.properties.measurements[key].fixedValue);
       });
       setValues(temp);
+      //setairQualityty(dataR.weather.data.);
+      setWeatherCondition({
+        condText: dataR.weather.data.conditionText,
+        condIcon: dataR.weather.data.conditionIcon,
+      });
+      setTempFeel(dataR.weather.data.tempFeel);
+      setTempReal(dataR.weather.data.tempReal);
+      setCloud(dataR.weather.data.cloud);
+      setHumidity(dataR.weather.data.humidity);
+      setAirQualityText(getColoreByValore(dataR.properties.AQI)[0]);
+      setAirQualityColor(getColoreByValore(dataR.properties.AQI)[1]);
     }
 
     if (dataR.properties.AQI >= 301 || dataR.properties.countryAQI >= 301) {
@@ -175,7 +221,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
               }}
             >
               <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle">
-                {AQI}
+                {Math.floor(AQI * 100) / 100}
               </h2>
             </div>
           </div>
@@ -224,21 +270,61 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             />
           </div>
         </div>
-        <div className="h-fit w-full mt-10 flex-col">
-          <div className="flex items-center">
+        <div className="h-fit w-full mt-10 flex-col justify-between pl-5 pr-5">
+          <div className="flex justify-between">
             <h2 className="text-xl text-white mr-5">Air Quality: </h2>
-            <h2 className="text-xl text-green-400">Good</h2>
+            <h2 className="text-xl" style={{ color: airQualityColor }}>
+              {airQualityText}
+            </h2>
           </div>
-          <div className="flex items-center mt-3">
-            <h2 className="text-xl text-white mr-5">Temperature: </h2>
-            <h2 className="text-xl text-white">38°</h2>
-          </div>
-          <div className="flex items-center mt-3">
-            <h2 className="text-xl text-white mr-5">Humidity: </h2>
-            <h2 className="text-xl text-white">20%</h2>
-          </div>
+          {weatherCondition != null && infos.isState && (
+            <div className="flex justify-between mt-5 items-center">
+              <h2 className="text-xl text-white mr-5">Weather: </h2>
+              <div className="flex items-center">
+                <img
+                  className=" mr-2 "
+                  src={`${weatherCondition.condIcon}`}
+                  width={50}
+                  height={50}
+                />
+                <h2 className="text-xl text-white">{`${weatherCondition.condText}`}</h2>
+              </div>
+            </div>
+          )}
+          {cloud != null && infos.isState && (
+            <div className="flex justify-between mt-5">
+              <h2 className="text-xl text-white mr-5">Cloud: </h2>
+              <h2 className="text-xl text-white">
+                {Math.floor(cloud * 100) / 100}
+              </h2>
+            </div>
+          )}
+          {tempFeel != null && infos.isState && (
+            <div className="flex justify-between mt-5">
+              <h2 className="text-xl text-white mr-5">Temp. Feel: </h2>
+              <h2 className="text-xl text-white">{`${
+                Math.floor(tempFeel * 100) / 100
+              }°`}</h2>
+            </div>
+          )}
+          {tempReal != null && (
+            <div className="flex justify-between mt-5">
+              <h2 className="text-xl text-white mr-5">Temp. Real: </h2>
+              <h2 className="text-xl text-white">{`${
+                Math.floor(tempReal * 100) / 100
+              }°`}</h2>
+            </div>
+          )}
+          {humidity != null && (
+            <div className="flex justify-between mt-5">
+              <h2 className="text-xl text-white mr-5">Humidity: </h2>
+              <h2 className="text-xl text-white">{`${
+                Math.floor(humidity * 100) / 100
+              }%`}</h2>
+            </div>
+          )}
         </div>
-        <div className="bg-black h-500 w-full mt-10"></div>
+        <div className="bg-black h-500 w-full mt-10 "></div>
       </div>
     </div>
   );

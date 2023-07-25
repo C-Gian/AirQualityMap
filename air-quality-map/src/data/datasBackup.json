@@ -7,12 +7,10 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "Alabama",
           "measurements": {
@@ -115,12 +113,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 24,
           "name": "Alaska",
           "measurements": {
@@ -1418,12 +1415,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 60,
           "name": "Arizona",
           "measurements": {
@@ -1525,12 +1521,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Arkansas",
           "measurements": {
@@ -1636,12 +1631,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 182,
           "name": "California",
           "measurements": {
@@ -1804,12 +1798,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Colorado",
           "measurements": {
@@ -1895,12 +1888,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Connecticut",
           "measurements": {
@@ -1986,12 +1978,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 24,
           "name": "Delaware",
           "measurements": {
@@ -2073,12 +2064,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "Florida",
           "measurements": {
@@ -2226,12 +2216,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Georgia",
           "measurements": {
@@ -2352,12 +2341,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -2491,12 +2479,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 39,
           "name": "Idaho",
           "measurements": {
@@ -2632,12 +2619,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 157,
           "name": "Illinois",
           "measurements": {
@@ -2773,12 +2759,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 140,
           "name": "Indiana",
           "measurements": {
@@ -2894,12 +2879,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 163,
           "name": "Iowa",
           "measurements": {
@@ -3019,12 +3003,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 84,
           "name": "Kansas",
           "measurements": {
@@ -3107,12 +3090,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Kentucky",
           "measurements": {
@@ -3257,12 +3239,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 82,
           "name": "Louisiana",
           "measurements": {
@@ -3407,12 +3388,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Maine",
           "measurements": {
@@ -3548,12 +3528,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 40,
           "name": "Maryland",
           "measurements": {
@@ -3693,12 +3672,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Massachusetts",
           "measurements": {
@@ -3802,12 +3780,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 97,
           "name": "Michigan",
           "measurements": {
@@ -4043,12 +4020,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 155,
           "name": "Minnesota",
           "measurements": {
@@ -4201,12 +4177,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 64,
           "name": "Mississippi",
           "measurements": {
@@ -4322,12 +4297,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 109,
           "name": "Missouri",
           "measurements": {
@@ -4450,12 +4424,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 176,
           "name": "Montana",
           "measurements": {
@@ -4577,12 +4550,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 137,
           "name": "Nebraska",
           "measurements": {
@@ -4681,12 +4653,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Nevada",
           "measurements": {
@@ -4777,12 +4748,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 33,
           "name": "New Hampshire",
           "measurements": {
@@ -4880,12 +4850,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 50,
           "name": "New Jersey",
           "measurements": {
@@ -4986,12 +4955,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 29,
           "name": "New Mexico",
           "measurements": {
@@ -5078,12 +5046,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "New York",
           "measurements": {
@@ -5221,12 +5188,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "North Carolina",
           "measurements": {
@@ -5357,12 +5323,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 172,
           "name": "North Dakota",
           "measurements": {
@@ -5448,12 +5413,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Ohio",
           "measurements": {
@@ -5570,12 +5534,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 58,
           "name": "Oklahoma",
           "measurements": {
@@ -5690,12 +5653,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Oregon",
           "measurements": {
@@ -5820,12 +5782,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 40,
           "name": "Pennsylvania",
           "measurements": {
@@ -5928,12 +5889,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 29,
           "name": "Rhode Island",
           "measurements": {
@@ -6023,12 +5983,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 30,
           "name": "South Carolina",
           "measurements": {
@@ -6142,12 +6101,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 170,
           "name": "South Dakota",
           "measurements": {
@@ -6246,12 +6204,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Tennessee",
           "measurements": {
@@ -6363,12 +6320,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 75,
           "name": "Texas",
           "measurements": {
@@ -6590,12 +6546,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Utah",
           "measurements": {
@@ -6676,12 +6631,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 33,
           "name": "Vermont",
           "measurements": {
@@ -6779,12 +6733,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 38,
           "name": "Virginia",
           "measurements": {
@@ -6944,12 +6897,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Washington",
           "measurements": {
@@ -7101,12 +7053,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 34,
           "name": "West Virginia",
           "measurements": {
@@ -7241,12 +7192,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 162,
           "name": "Wisconsin",
           "measurements": {
@@ -7391,12 +7341,11 @@
         "type": "Feature",
         "lastUpdatedMe": "16-07-2023 15:05:36",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 117,
           "name": "Wyoming",
           "measurements": {
@@ -7485,12 +7434,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Alabama",
           "measurements": {
@@ -7594,12 +7542,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 75,
           "name": "Alaska",
           "measurements": {
@@ -8898,12 +8845,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 94,
           "name": "Arizona",
           "measurements": {
@@ -9006,12 +8952,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 63,
           "name": "Arkansas",
           "measurements": {
@@ -9117,12 +9062,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 127,
           "name": "California",
           "measurements": {
@@ -9286,12 +9230,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Colorado",
           "measurements": {
@@ -9378,12 +9321,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Connecticut",
           "measurements": {
@@ -9470,12 +9412,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Delaware",
           "measurements": {
@@ -9558,12 +9499,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Florida",
           "measurements": {
@@ -9712,12 +9652,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Georgia",
           "measurements": {
@@ -9839,12 +9778,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -9978,12 +9916,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 59,
           "name": "Idaho",
           "measurements": {
@@ -10120,12 +10057,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 74,
           "name": "Illinois",
           "measurements": {
@@ -10261,12 +10197,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 60,
           "name": "Indiana",
           "measurements": {
@@ -10383,12 +10318,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 88,
           "name": "Iowa",
           "measurements": {
@@ -10509,12 +10443,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Kansas",
           "measurements": {
@@ -10598,12 +10531,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Kentucky",
           "measurements": {
@@ -10749,12 +10681,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Louisiana",
           "measurements": {
@@ -10900,12 +10831,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Maine",
           "measurements": {
@@ -11042,12 +10972,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Maryland",
           "measurements": {
@@ -11188,12 +11117,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Massachusetts",
           "measurements": {
@@ -11298,12 +11226,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 71,
           "name": "Michigan",
           "measurements": {
@@ -11540,12 +11467,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 165,
           "name": "Minnesota",
           "measurements": {
@@ -11699,12 +11625,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Mississippi",
           "measurements": {
@@ -11821,12 +11746,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 39,
           "name": "Missouri",
           "measurements": {
@@ -11949,12 +11873,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 93,
           "name": "Montana",
           "measurements": {
@@ -12076,12 +11999,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 70,
           "name": "Nebraska",
           "measurements": {
@@ -12181,12 +12103,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "Nevada",
           "measurements": {
@@ -12278,12 +12199,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "New Hampshire",
           "measurements": {
@@ -12382,12 +12302,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "New Jersey",
           "measurements": {
@@ -12489,12 +12408,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "New Mexico",
           "measurements": {
@@ -12582,12 +12500,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "New York",
           "measurements": {
@@ -12725,12 +12642,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 45,
           "name": "North Carolina",
           "measurements": {
@@ -12862,12 +12778,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 127,
           "name": "North Dakota",
           "measurements": {
@@ -12954,12 +12869,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Ohio",
           "measurements": {
@@ -13077,12 +12991,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "Oklahoma",
           "measurements": {
@@ -13198,12 +13111,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 158,
           "name": "Oregon",
           "measurements": {
@@ -13329,12 +13241,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 114,
           "name": "Pennsylvania",
           "measurements": {
@@ -13438,12 +13349,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 42,
           "name": "Rhode Island",
           "measurements": {
@@ -13534,12 +13444,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 41,
           "name": "South Carolina",
           "measurements": {
@@ -13654,12 +13563,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 69,
           "name": "South Dakota",
           "measurements": {
@@ -13758,12 +13666,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Tennessee",
           "measurements": {
@@ -13876,12 +13783,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 77,
           "name": "Texas",
           "measurements": {
@@ -14103,12 +14009,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Utah",
           "measurements": {
@@ -14191,12 +14096,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Vermont",
           "measurements": {
@@ -14294,12 +14198,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 41,
           "name": "Virginia",
           "measurements": {
@@ -14460,12 +14363,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "Washington",
           "measurements": {
@@ -14617,12 +14519,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 36,
           "name": "West Virginia",
           "measurements": {
@@ -14758,12 +14659,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 155,
           "name": "Wisconsin",
           "measurements": {
@@ -14909,12 +14809,11 @@
         "type": "Feature",
         "lastUpdatedMe": "24-07-2023 10:45:25",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "Wyoming",
           "measurements": {
@@ -15004,12 +14903,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Alabama",
           "measurements": {
@@ -15112,12 +15010,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Alaska",
           "measurements": {
@@ -16415,12 +16312,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 601,
           "name": "Arizona",
           "measurements": {
@@ -16522,12 +16418,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 57,
           "name": "Arkansas",
           "measurements": {
@@ -16633,12 +16528,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 126,
           "name": "California",
           "measurements": {
@@ -16801,12 +16695,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Colorado",
           "measurements": {
@@ -16892,12 +16785,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 57,
           "name": "Connecticut",
           "measurements": {
@@ -16983,12 +16875,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Delaware",
           "measurements": {
@@ -17070,12 +16961,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Florida",
           "measurements": {
@@ -17223,12 +17113,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 87,
           "name": "Georgia",
           "measurements": {
@@ -17349,12 +17238,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -17488,12 +17376,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 64,
           "name": "Idaho",
           "measurements": {
@@ -17629,12 +17516,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Illinois",
           "measurements": {
@@ -17770,12 +17656,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 75,
           "name": "Indiana",
           "measurements": {
@@ -17891,12 +17776,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Iowa",
           "measurements": {
@@ -18016,12 +17900,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Kansas",
           "measurements": {
@@ -18104,12 +17987,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Kentucky",
           "measurements": {
@@ -18254,12 +18136,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Louisiana",
           "measurements": {
@@ -18404,12 +18285,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Maine",
           "measurements": {
@@ -18546,12 +18426,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Maryland",
           "measurements": {
@@ -18691,12 +18570,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Massachusetts",
           "measurements": {
@@ -18800,12 +18678,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Michigan",
           "measurements": {
@@ -19041,12 +18918,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 80,
           "name": "Minnesota",
           "measurements": {
@@ -19199,12 +19075,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Mississippi",
           "measurements": {
@@ -19320,12 +19195,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 41,
           "name": "Missouri",
           "measurements": {
@@ -19448,12 +19322,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 101,
           "name": "Montana",
           "measurements": {
@@ -19575,12 +19448,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 40,
           "name": "Nebraska",
           "measurements": {
@@ -19679,12 +19551,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "Nevada",
           "measurements": {
@@ -19775,12 +19646,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 38,
           "name": "New Hampshire",
           "measurements": {
@@ -19878,12 +19748,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "New Jersey",
           "measurements": {
@@ -19984,12 +19853,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 58,
           "name": "New Mexico",
           "measurements": {
@@ -20076,12 +19944,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 71,
           "name": "New York",
           "measurements": {
@@ -20219,12 +20086,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "North Carolina",
           "measurements": {
@@ -20356,12 +20222,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 91,
           "name": "North Dakota",
           "measurements": {
@@ -20447,12 +20312,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 95,
           "name": "Ohio",
           "measurements": {
@@ -20569,12 +20433,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 57,
           "name": "Oklahoma",
           "measurements": {
@@ -20690,12 +20553,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 64,
           "name": "Oregon",
           "measurements": {
@@ -20820,12 +20682,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 115,
           "name": "Pennsylvania",
           "measurements": {
@@ -20928,12 +20789,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Rhode Island",
           "measurements": {
@@ -21023,12 +20883,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "South Carolina",
           "measurements": {
@@ -21142,12 +21001,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 84,
           "name": "South Dakota",
           "measurements": {
@@ -21246,12 +21104,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Tennessee",
           "measurements": {
@@ -21363,12 +21220,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 78,
           "name": "Texas",
           "measurements": {
@@ -21590,12 +21446,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "Utah",
           "measurements": {
@@ -21677,12 +21532,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 36,
           "name": "Vermont",
           "measurements": {
@@ -21780,12 +21634,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 45,
           "name": "Virginia",
           "measurements": {
@@ -21945,12 +21798,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 98,
           "name": "Washington",
           "measurements": {
@@ -22102,12 +21954,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 15,
           "name": "West Virginia",
           "measurements": {
@@ -22242,12 +22093,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "Wisconsin",
           "measurements": {
@@ -22392,12 +22242,11 @@
         "type": "Feature",
         "lastUpdatedMe": "23-07-2023 10:05:52",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Wyoming",
           "measurements": {
@@ -22486,12 +22335,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Alabama",
           "measurements": {
@@ -22595,12 +22443,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 38,
           "name": "Alaska",
           "measurements": {
@@ -23899,12 +23746,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 605,
           "name": "Arizona",
           "measurements": {
@@ -24007,12 +23853,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 59,
           "name": "Arkansas",
           "measurements": {
@@ -24118,12 +23963,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 118,
           "name": "California",
           "measurements": {
@@ -24287,12 +24131,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 45,
           "name": "Colorado",
           "measurements": {
@@ -24379,12 +24222,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 37,
           "name": "Connecticut",
           "measurements": {
@@ -24471,12 +24313,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Delaware",
           "measurements": {
@@ -24559,12 +24400,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Florida",
           "measurements": {
@@ -24713,12 +24553,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 42,
           "name": "Georgia",
           "measurements": {
@@ -24840,12 +24679,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -24979,12 +24817,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Idaho",
           "measurements": {
@@ -25121,12 +24958,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 64,
           "name": "Illinois",
           "measurements": {
@@ -25262,12 +25098,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 64,
           "name": "Indiana",
           "measurements": {
@@ -25384,12 +25219,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Iowa",
           "measurements": {
@@ -25510,12 +25344,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Kansas",
           "measurements": {
@@ -25599,12 +25432,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Kentucky",
           "measurements": {
@@ -25750,12 +25582,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 84,
           "name": "Louisiana",
           "measurements": {
@@ -25901,12 +25732,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 63,
           "name": "Maine",
           "measurements": {
@@ -26043,12 +25873,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 34,
           "name": "Maryland",
           "measurements": {
@@ -26189,12 +26018,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Massachusetts",
           "measurements": {
@@ -26299,12 +26127,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 75,
           "name": "Michigan",
           "measurements": {
@@ -26541,12 +26368,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 59,
           "name": "Minnesota",
           "measurements": {
@@ -26700,12 +26526,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 59,
           "name": "Mississippi",
           "measurements": {
@@ -26822,12 +26647,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 33,
           "name": "Missouri",
           "measurements": {
@@ -26950,12 +26774,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Montana",
           "measurements": {
@@ -27078,12 +26901,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 58,
           "name": "Nebraska",
           "measurements": {
@@ -27183,12 +27005,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 50,
           "name": "Nevada",
           "measurements": {
@@ -27280,12 +27101,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "New Hampshire",
           "measurements": {
@@ -27384,12 +27204,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "New Jersey",
           "measurements": {
@@ -27491,12 +27310,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 124,
           "name": "New Mexico",
           "measurements": {
@@ -27584,12 +27402,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "New York",
           "measurements": {
@@ -27727,12 +27544,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "North Carolina",
           "measurements": {
@@ -27864,12 +27680,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 63,
           "name": "North Dakota",
           "measurements": {
@@ -27956,12 +27771,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 71,
           "name": "Ohio",
           "measurements": {
@@ -28079,12 +27893,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "Oklahoma",
           "measurements": {
@@ -28200,12 +28013,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 104,
           "name": "Oregon",
           "measurements": {
@@ -28331,12 +28143,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Pennsylvania",
           "measurements": {
@@ -28440,12 +28251,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 37,
           "name": "Rhode Island",
           "measurements": {
@@ -28536,12 +28346,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 37,
           "name": "South Carolina",
           "measurements": {
@@ -28656,12 +28465,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 38,
           "name": "South Dakota",
           "measurements": {
@@ -28760,12 +28568,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Tennessee",
           "measurements": {
@@ -28878,12 +28685,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Texas",
           "measurements": {
@@ -29105,12 +28911,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Utah",
           "measurements": {
@@ -29193,12 +28998,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Vermont",
           "measurements": {
@@ -29296,12 +29100,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Virginia",
           "measurements": {
@@ -29462,12 +29265,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Washington",
           "measurements": {
@@ -29619,12 +29421,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 29,
           "name": "West Virginia",
           "measurements": {
@@ -29760,12 +29561,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 53,
           "name": "Wisconsin",
           "measurements": {
@@ -29911,12 +29711,11 @@
         "type": "Feature",
         "lastUpdatedMe": "22-07-2023 10:41:38",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 42,
           "name": "Wyoming",
           "measurements": {
@@ -30005,12 +29804,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 68,
           "name": "Alabama",
           "measurements": {
@@ -30113,12 +29911,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Alaska",
           "measurements": {
@@ -31416,12 +31213,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 119,
           "name": "Arizona",
           "measurements": {
@@ -31523,12 +31319,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 76,
           "name": "Arkansas",
           "measurements": {
@@ -31634,12 +31429,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 143,
           "name": "California",
           "measurements": {
@@ -31802,12 +31596,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 49,
           "name": "Colorado",
           "measurements": {
@@ -31893,12 +31686,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 71,
           "name": "Connecticut",
           "measurements": {
@@ -31984,12 +31776,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "Delaware",
           "measurements": {
@@ -32071,12 +31862,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 73,
           "name": "Florida",
           "measurements": {
@@ -32224,12 +32014,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 85,
           "name": "Georgia",
           "measurements": {
@@ -32350,12 +32139,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -32489,12 +32277,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 50,
           "name": "Idaho",
           "measurements": {
@@ -32630,12 +32417,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Illinois",
           "measurements": {
@@ -32771,12 +32557,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 49,
           "name": "Indiana",
           "measurements": {
@@ -32892,12 +32677,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Iowa",
           "measurements": {
@@ -33017,12 +32801,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Kansas",
           "measurements": {
@@ -33105,12 +32888,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Kentucky",
           "measurements": {
@@ -33255,12 +33037,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 70,
           "name": "Louisiana",
           "measurements": {
@@ -33406,12 +33187,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Maine",
           "measurements": {
@@ -33548,12 +33328,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Maryland",
           "measurements": {
@@ -33693,12 +33472,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Massachusetts",
           "measurements": {
@@ -33802,12 +33580,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Michigan",
           "measurements": {
@@ -34044,12 +33821,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Minnesota",
           "measurements": {
@@ -34202,12 +33978,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 69,
           "name": "Mississippi",
           "measurements": {
@@ -34323,12 +34098,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Missouri",
           "measurements": {
@@ -34451,12 +34225,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "Montana",
           "measurements": {
@@ -34578,12 +34351,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Nebraska",
           "measurements": {
@@ -34682,12 +34454,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Nevada",
           "measurements": {
@@ -34779,12 +34550,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 40,
           "name": "New Hampshire",
           "measurements": {
@@ -34882,12 +34652,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 79,
           "name": "New Jersey",
           "measurements": {
@@ -34988,12 +34757,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "New Mexico",
           "measurements": {
@@ -35080,12 +34848,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 80,
           "name": "New York",
           "measurements": {
@@ -35223,12 +34990,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "North Carolina",
           "measurements": {
@@ -35360,12 +35126,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 67,
           "name": "North Dakota",
           "measurements": {
@@ -35451,12 +35216,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 58,
           "name": "Ohio",
           "measurements": {
@@ -35573,12 +35337,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Oklahoma",
           "measurements": {
@@ -35694,12 +35457,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 74,
           "name": "Oregon",
           "measurements": {
@@ -35824,12 +35586,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 79,
           "name": "Pennsylvania",
           "measurements": {
@@ -35932,12 +35693,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Rhode Island",
           "measurements": {
@@ -36027,12 +35787,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "South Carolina",
           "measurements": {
@@ -36146,12 +35905,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 73,
           "name": "South Dakota",
           "measurements": {
@@ -36250,12 +36008,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Tennessee",
           "measurements": {
@@ -36367,12 +36124,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 67,
           "name": "Texas",
           "measurements": {
@@ -36594,12 +36350,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Utah",
           "measurements": {
@@ -36680,12 +36435,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Vermont",
           "measurements": {
@@ -36784,12 +36538,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 63,
           "name": "Virginia",
           "measurements": {
@@ -36949,12 +36702,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Washington",
           "measurements": {
@@ -37106,12 +36858,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 28,
           "name": "West Virginia",
           "measurements": {
@@ -37246,12 +36997,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Wisconsin",
           "measurements": {
@@ -37396,12 +37146,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:25:26",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Wyoming",
           "measurements": {
@@ -37490,12 +37239,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 68,
           "name": "Alabama",
           "measurements": {
@@ -37598,12 +37346,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Alaska",
           "measurements": {
@@ -38901,12 +38648,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 119,
           "name": "Arizona",
           "measurements": {
@@ -39008,12 +38754,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 76,
           "name": "Arkansas",
           "measurements": {
@@ -39119,12 +38864,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 143,
           "name": "California",
           "measurements": {
@@ -39287,12 +39031,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 49,
           "name": "Colorado",
           "measurements": {
@@ -39378,12 +39121,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 71,
           "name": "Connecticut",
           "measurements": {
@@ -39469,12 +39211,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "Delaware",
           "measurements": {
@@ -39556,12 +39297,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 73,
           "name": "Florida",
           "measurements": {
@@ -39709,12 +39449,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 85,
           "name": "Georgia",
           "measurements": {
@@ -39835,12 +39574,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -39974,12 +39712,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 50,
           "name": "Idaho",
           "measurements": {
@@ -40115,12 +39852,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Illinois",
           "measurements": {
@@ -40256,12 +39992,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 49,
           "name": "Indiana",
           "measurements": {
@@ -40377,12 +40112,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Iowa",
           "measurements": {
@@ -40502,12 +40236,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Kansas",
           "measurements": {
@@ -40590,12 +40323,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Kentucky",
           "measurements": {
@@ -40740,12 +40472,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 70,
           "name": "Louisiana",
           "measurements": {
@@ -40891,12 +40622,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Maine",
           "measurements": {
@@ -41033,12 +40763,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Maryland",
           "measurements": {
@@ -41178,12 +40907,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Massachusetts",
           "measurements": {
@@ -41287,12 +41015,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Michigan",
           "measurements": {
@@ -41529,12 +41256,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Minnesota",
           "measurements": {
@@ -41687,12 +41413,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 69,
           "name": "Mississippi",
           "measurements": {
@@ -41808,12 +41533,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Missouri",
           "measurements": {
@@ -41936,12 +41660,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "Montana",
           "measurements": {
@@ -42063,12 +41786,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Nebraska",
           "measurements": {
@@ -42167,12 +41889,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Nevada",
           "measurements": {
@@ -42264,12 +41985,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 40,
           "name": "New Hampshire",
           "measurements": {
@@ -42367,12 +42087,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 79,
           "name": "New Jersey",
           "measurements": {
@@ -42473,12 +42192,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "New Mexico",
           "measurements": {
@@ -42565,12 +42283,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 80,
           "name": "New York",
           "measurements": {
@@ -42708,12 +42425,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "North Carolina",
           "measurements": {
@@ -42845,12 +42561,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 67,
           "name": "North Dakota",
           "measurements": {
@@ -42936,12 +42651,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 58,
           "name": "Ohio",
           "measurements": {
@@ -43058,12 +42772,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Oklahoma",
           "measurements": {
@@ -43179,12 +42892,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 74,
           "name": "Oregon",
           "measurements": {
@@ -43309,12 +43021,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 79,
           "name": "Pennsylvania",
           "measurements": {
@@ -43417,12 +43128,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Rhode Island",
           "measurements": {
@@ -43512,12 +43222,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "South Carolina",
           "measurements": {
@@ -43631,12 +43340,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 73,
           "name": "South Dakota",
           "measurements": {
@@ -43735,12 +43443,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Tennessee",
           "measurements": {
@@ -43852,12 +43559,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 67,
           "name": "Texas",
           "measurements": {
@@ -44079,12 +43785,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Utah",
           "measurements": {
@@ -44165,12 +43870,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Vermont",
           "measurements": {
@@ -44269,12 +43973,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 63,
           "name": "Virginia",
           "measurements": {
@@ -44434,12 +44137,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Washington",
           "measurements": {
@@ -44591,12 +44293,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 28,
           "name": "West Virginia",
           "measurements": {
@@ -44731,12 +44432,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Wisconsin",
           "measurements": {
@@ -44881,12 +44581,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:24:49",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Wyoming",
           "measurements": {
@@ -44975,12 +44674,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 0,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 68,
           "name": "Alabama",
           "measurements": {
@@ -45083,12 +44781,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 1,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 35,
           "name": "Alaska",
           "measurements": {
@@ -46386,12 +46083,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 2,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 119,
           "name": "Arizona",
           "measurements": {
@@ -46493,12 +46189,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 3,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 76,
           "name": "Arkansas",
           "measurements": {
@@ -46604,12 +46299,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 4,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 143,
           "name": "California",
           "measurements": {
@@ -46772,12 +46466,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 5,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 49,
           "name": "Colorado",
           "measurements": {
@@ -46863,12 +46556,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 6,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 71,
           "name": "Connecticut",
           "measurements": {
@@ -46954,12 +46646,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 7,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 62,
           "name": "Delaware",
           "measurements": {
@@ -47041,12 +46732,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 8,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 73,
           "name": "Florida",
           "measurements": {
@@ -47194,12 +46884,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 9,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 85,
           "name": "Georgia",
           "measurements": {
@@ -47320,12 +47009,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 10,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": null,
           "name": "Hawaii",
           "measurements": {
@@ -47459,12 +47147,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 11,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 50,
           "name": "Idaho",
           "measurements": {
@@ -47600,12 +47287,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 12,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 46,
           "name": "Illinois",
           "measurements": {
@@ -47741,12 +47427,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 13,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 49,
           "name": "Indiana",
           "measurements": {
@@ -47862,12 +47547,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 14,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Iowa",
           "measurements": {
@@ -47987,12 +47671,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 15,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Kansas",
           "measurements": {
@@ -48075,12 +47758,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 16,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 47,
           "name": "Kentucky",
           "measurements": {
@@ -48225,12 +47907,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 17,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 70,
           "name": "Louisiana",
           "measurements": {
@@ -48376,12 +48057,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 18,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Maine",
           "measurements": {
@@ -48518,12 +48198,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 19,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Maryland",
           "measurements": {
@@ -48663,12 +48342,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 20,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 54,
           "name": "Massachusetts",
           "measurements": {
@@ -48772,12 +48450,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 21,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Michigan",
           "measurements": {
@@ -49014,12 +48691,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 22,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 56,
           "name": "Minnesota",
           "measurements": {
@@ -49172,12 +48848,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 23,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 69,
           "name": "Mississippi",
           "measurements": {
@@ -49293,12 +48968,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 24,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "Missouri",
           "measurements": {
@@ -49421,12 +49095,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 25,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "Montana",
           "measurements": {
@@ -49548,12 +49221,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 26,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 48,
           "name": "Nebraska",
           "measurements": {
@@ -49652,12 +49324,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 27,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Nevada",
           "measurements": {
@@ -49749,12 +49420,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 28,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 40,
           "name": "New Hampshire",
           "measurements": {
@@ -49852,12 +49522,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 29,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 79,
           "name": "New Jersey",
           "measurements": {
@@ -49958,12 +49627,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 30,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "New Mexico",
           "measurements": {
@@ -50050,12 +49718,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 31,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 80,
           "name": "New York",
           "measurements": {
@@ -50193,12 +49860,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 32,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 52,
           "name": "North Carolina",
           "measurements": {
@@ -50330,12 +49996,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 33,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 67,
           "name": "North Dakota",
           "measurements": {
@@ -50421,12 +50086,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 34,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 58,
           "name": "Ohio",
           "measurements": {
@@ -50543,12 +50207,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 35,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 66,
           "name": "Oklahoma",
           "measurements": {
@@ -50664,12 +50327,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 36,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 74,
           "name": "Oregon",
           "measurements": {
@@ -50794,12 +50456,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 37,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 79,
           "name": "Pennsylvania",
           "measurements": {
@@ -50902,12 +50563,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 38,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Rhode Island",
           "measurements": {
@@ -50997,12 +50657,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 39,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 61,
           "name": "South Carolina",
           "measurements": {
@@ -51116,12 +50775,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 40,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 73,
           "name": "South Dakota",
           "measurements": {
@@ -51220,12 +50878,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 41,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 65,
           "name": "Tennessee",
           "measurements": {
@@ -51337,12 +50994,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 42,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 67,
           "name": "Texas",
           "measurements": {
@@ -51564,12 +51220,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 43,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 55,
           "name": "Utah",
           "measurements": {
@@ -51650,12 +51305,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 44,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Vermont",
           "measurements": {
@@ -51754,12 +51408,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 45,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 63,
           "name": "Virginia",
           "measurements": {
@@ -51919,12 +51572,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 46,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 51,
           "name": "Washington",
           "measurements": {
@@ -52076,12 +51728,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 47,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 28,
           "name": "West Virginia",
           "measurements": {
@@ -52216,12 +51867,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 48,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 43,
           "name": "Wisconsin",
           "measurements": {
@@ -52366,12 +52016,11 @@
         "type": "Feature",
         "lastUpdatedMe": "21-07-2023 09:22:43",
         "id": 49,
-        "CountryData": {
-          "countryAQI": 70.7843137254902,
-          "temperature": 23.972549019607847,
-          "humidity": 68.54901960784314
-        },
+
         "properties": {
+          "countryAQI": 70.7843137254902,
+          "countryTemp": 23.972549019607847,
+          "countryHum": 68.54901960784314,
           "AQI": 44,
           "name": "Wyoming",
           "measurements": {
