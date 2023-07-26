@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dataR from "./data/dataR.json";
 import axios from "axios";
-import weatherData from "./data/weatherProxy.json";
+import weatherDataProxy from "./data/weatherProxy.json";
 import dailyDataProxy from "./data/dailyDataProxy.json";
 import datasBackup from "./data/datasBackup.json";
 import * as turf from "@turf/turf";
@@ -278,6 +278,7 @@ const App = () => {
         );
         if (!todayIsUpdated.data) {
           const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
+          const weatherDailyData = await getWeatherDataStates();
           initilizeJson(); //initialize json to be sure that adding field are correct
           dailyData.forEach((measurement) => {
             const point = turf.point([
@@ -348,54 +349,48 @@ const App = () => {
           let tem = 0;
           let hum = 0;
           dataR.features.forEach((el) => {
-            if (el.type == "Feature") {
-              //setting fixedValue
-              Object.keys(el.properties.measurements).forEach((key) => {
-                if (
-                  el.properties.measurements[key].totalValues != null &&
-                  el.properties.measurements[key].totalValues > 0
-                ) {
-                  el.properties.measurements[key].fixedValue =
-                    el.properties.measurements[key].totalValues /
-                    el.properties.measurements[key].times;
-                }
-              });
-              med += el.properties.AQI;
-            }
+            //setting fixedValue
+            Object.keys(el.properties.measurements).forEach((key) => {
+              if (
+                el.properties.measurements[key].totalValues != null &&
+                el.properties.measurements[key].totalValues > 0
+              ) {
+                el.properties.measurements[key].fixedValue =
+                  el.properties.measurements[key].totalValues /
+                  el.properties.measurements[key].times;
+              }
+            });
+            const weatherNameState = el.properties.name;
+            const weatherStateData = weatherDailyData[weatherNameState];
+            const cloud = weatherStateData.current.cloud;
+            const tempReal = weatherStateData.current.temp_c;
+            const tempFeel = weatherStateData.current.feelslike_c;
+            const humidity = weatherStateData.current.humidity;
+            const conditionIcon = weatherStateData.current.condition.icon;
+            const conditionText = weatherStateData.current.condition.text;
+            tem += tempReal;
+            hum += humidity;
+            el.weather = {
+              data: {
+                cloud,
+                tempReal,
+                tempFeel,
+                humidity,
+                conditionIcon,
+                conditionText,
+              },
+            };
+            med += el.properties.AQI;
           });
-          dataR.features[0].data.countryAQI = med / dataR.features.length;
           dataR.features.forEach((el) => {
-            if (el.type == "Feature") {
-              const weatherNameState = el.properties.name;
-              const weatherStateData = weatherData[weatherNameState];
-              const cloud = weatherStateData.current.cloud;
-              const tempReal = weatherStateData.current.temp_c;
-              const tempFeel = weatherStateData.current.feelslike_c;
-              const humidity = weatherStateData.current.humidity;
-              const conditionIcon = weatherStateData.current.condition.icon;
-              const conditionText = weatherStateData.current.condition.text;
-              tem += tempReal;
-              hum += humidity;
-              el.weather = {
-                data: {
-                  cloud,
-                  tempReal,
-                  tempFeel,
-                  humidity,
-                  conditionIcon,
-                  conditionText,
-                },
-              };
-            }
+            el.properties.countryAQI = med / dataR.features.length;
+            el.properties.countryTemp = tem / dataR.features.length;
+            el.properties.countryHum = hum / dataR.features.length;
           });
-          dataR.features[0].data.weather = {
-            temperature: tem / dataR.features.length,
-            humidity: hum / dataR.features.length,
-          };
           await dailyUpdate(dataR);
           console.log("Daily Data Updated");
         }
-        const datas = datasBackup; //await getDatas();
+        const datas = await getDatas();
         console.log(datas);
         setDatas(datas); //getting the whole db data (7 days data)
         setIsLoading(false);

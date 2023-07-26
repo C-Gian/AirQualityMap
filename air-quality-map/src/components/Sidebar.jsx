@@ -138,7 +138,6 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
       setAirQualityColor(getColoreByValore(dataR.properties.countryAQI)[1]);
     } else {
-      console.log("aaa", dataR);
       setName(dataR.properties.name);
       setAQI(dataR.properties.AQI);
       setLastUpdate(dataR.lastUpdatedMe);
