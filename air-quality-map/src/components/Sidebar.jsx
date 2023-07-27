@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import * as d3 from "d3";
 import WeatherChart from "./WeatherChart";
 import AnalysisChartSidebar from "./AnalysisChartSidebar";
+import { linear } from "stats.js";
 
 const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   const [name, setName] = useState("");
@@ -332,6 +333,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
         <div className="mt-5">
           <AnalysisChartSidebar></AnalysisChartSidebar>
         </div>
+        <div className="w-full h-300 bg-black mt-10"></div>
       </div>
     </div>
   );
