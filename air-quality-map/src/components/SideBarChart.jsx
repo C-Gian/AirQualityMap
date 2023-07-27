@@ -76,6 +76,11 @@ function SideBarChart({ values, countryPolluttans }) {
       options: options,
     });
     canvas.chart = chart;
+
+    // when component unmounts
+    return () => {
+      chart.destroy();
+    };
   }, [data, options]);
 
   return (
