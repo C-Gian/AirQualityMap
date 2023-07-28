@@ -217,6 +217,7 @@ const AnalysisChartSidebar = () => {
         label: "CO2",
         data: co2.map((y, index) => ({ x: y, y })),
         backgroundColor: "rgba(0, 255, 0, 0.5)", // Colore dei punti per il CO2
+
       },
       // Ripeti per gli altri inquinanti
     ],
@@ -230,6 +231,7 @@ const AnalysisChartSidebar = () => {
         },
       },
     },
+
     scales: {
       x: {
         type: "linear",
@@ -308,6 +310,7 @@ const AnalysisChartSidebar = () => {
       )}
     </div>
   );
+
 };
 
 export default AnalysisChartSidebar;
