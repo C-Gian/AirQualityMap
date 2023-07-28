@@ -333,7 +333,6 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
         <div className="mt-5">
           <AnalysisChartSidebar></AnalysisChartSidebar>
         </div>
-        <div className="w-full h-300 bg-black mt-10"></div>
       </div>
     </div>
   );
