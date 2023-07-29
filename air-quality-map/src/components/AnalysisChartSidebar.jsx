@@ -291,6 +291,7 @@ const AnalysisChartSidebar = () => {
       )}
     </div>
   );
+
 };
 
 export default AnalysisChartSidebar;
