@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@turf/turf": "^6.5.0",
     "@types/mapbox-gl": "^2.7.11",
+    "@uiw/react-heat-map": "^2.1.1",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "chart.js": "^4.2.0",

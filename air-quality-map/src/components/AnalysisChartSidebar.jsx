@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Scatter, Line } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
-import Heatmap from "react-heatmap-grid";
+import * as d3 from "d3";
 
 const AnalysisChartSidebar = () => {
   const [matrix, setMatrix] = useState([]);
+  const svgRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   // Funzione per calcolare il coefficiente di correlazione di Pearson tra due array di dati
   const calculateCorrelationPearson = (xData, yData) => {
     const n = xData.length;
@@ -25,285 +28,265 @@ const AnalysisChartSidebar = () => {
     return correlation;
   };
 
-  const calculateCorrelationMatrix = (xData, yData) => {
-    const n = xData.length;
-    const xSum = xData.reduce((acc, val) => acc + val, 0);
-    const ySum = yData.reduce((acc, val) => acc + val, 0);
-    const xySum = xData.reduce(
-      (acc, val, index) => acc + val * yData[index],
-      0
-    );
-    const xSquaredSum = xData.reduce((acc, val) => acc + val * val, 0);
-    const ySquaredSum = yData.reduce((acc, val) => acc + val * val, 0);
-
-    const numerator = n * xySum - xSum * ySum;
-    const denominatorX = n * xSquaredSum - xSum * xSum;
-    const denominatorY = n * ySquaredSum - ySum * ySum;
-
-    const correlation = numerator / Math.sqrt(denominatorX * denominatorY);
-    return correlation;
-  };
-  const labels = ["T", "CO2", "NO2", "SO2", "SO3", "SO4", "SO5"];
-  let correlationMatrix = null;
   useEffect(() => {
-    // Dati casuali
-    /*  const temperature = [20, 22, 25, 24, 18, 23];
-    const co2 = [0, 0, 0, 0, 0, 0];
-    const no2 = [2, 9, 13, 11, 1, 4];
-    const so2 = [10, 12, 8, 11, 9, 7];
-    const pm25 = [25, 30, 28, 32, 27, 29];
-    const pm10 = [40, 38, 42, 39, 37, 41];
-    const o3 = [5, 6, 4, 7, 3, 5];
-    // Punto 1: Calcolo delle correlazioni tra temperatura e inquinanti
-    const data = [temperature, co2, no2, so2, pm25, pm10, o3];
-    const correlationMatrix = data.map((x, i) => {
-      return data.map((y, j) => {
-        return i === j ? 1 : sampleCorrelation(x, y);
-      });
-    });
+    setIsLoaded(true);
+  }, []);
 
-    console.log("Correlation Matrix:", correlationMatrix); */
-
-    // Punto 2: Esecuzione di una regressione multivariata
-
-    // Dati iniziali
-    const data2 = [
-      { temperatura: 35, inquinanti: { co2: 100, no2: 40, so2: 15 } },
-      { temperatura: 25, inquinanti: { co2: 80, no2: 60, so2: 30 } },
-      { temperatura: 30, inquinanti: { co2: 90, no2: 50, so2: 20 } },
-      { temperatura: 40, inquinanti: { co2: 120, no2: 30, so2: 25 } },
-      { temperatura: 20, inquinanti: { co2: 70, no2: 70, so2: 35 } },
-      { temperatura: 20, inquinanti: { co2: 70, no2: 70, so2: 35 } },
-      { temperatura: 20, inquinanti: { co2: 70, no2: 70, so2: 35 } },
+  useEffect(() => {
+    const data = [
+      {
+        temperatura: 25,
+        inquinanti: {
+          co2: 150,
+          no2: 120,
+          so2: 80,
+          o3: 50,
+          pm10: 180,
+          pm25: 120,
+        },
+      },
+      {
+        temperatura: -10,
+        inquinanti: { co2: 100, no2: 40, so2: 15, o3: 30, pm10: 80, pm25: 50 },
+      },
+      {
+        temperatura: 12,
+        inquinanti: {
+          co2: 50,
+          no2: 180,
+          so2: 160,
+          o3: 120,
+          pm10: 200,
+          pm25: 180,
+        },
+      },
+      {
+        temperatura: 30,
+        inquinanti: {
+          co2: 120,
+          no2: 80,
+          so2: 50,
+          o3: 70,
+          pm10: 160,
+          pm25: 100,
+        },
+      },
+      {
+        temperatura: -5,
+        inquinanti: { co2: 70, no2: 90, so2: 70, o3: 90, pm10: 120, pm25: 80 },
+      },
+      {
+        temperatura: 40,
+        inquinanti: {
+          co2: 180,
+          no2: 60,
+          so2: 30,
+          o3: 200,
+          pm10: 150,
+          pm25: 90,
+        },
+      },
     ];
 
     // Estraiamo i dati di temperatura e inquinanti dagli oggetti all'interno dell'array
-    const temperatureData = data2.map((item) => item.temperatura);
-    const co2Data = data2.map((item) => item.inquinanti.co2);
-    const no2Data = data2.map((item) => item.inquinanti.no2);
-    const so2Data = data2.map((item) => item.inquinanti.so2);
-    const so3Data = data2.map((item) => item.inquinanti.so3);
-    const so4Data = data2.map((item) => item.inquinanti.so4);
-    const so5Data = data2.map((item) => item.inquinanti.so5);
+    const temperatureData = data.map((item) => item.temperatura);
+    const co2Data = data.map((item) => item.inquinanti.co2);
+    const no2Data = data.map((item) => item.inquinanti.no2);
+    const so2Data = data.map((item) => item.inquinanti.so2);
+    const o3Data = data.map((item) => item.inquinanti.o3);
+    const pm10Data = data.map((item) => item.inquinanti.pm10);
+    const pm25Data = data.map((item) => item.inquinanti.pm25);
 
-    // Calcoliamo la correlation matrix tra tutte le variabili
     setMatrix([
       [
         1,
-        calculateCorrelationMatrix(temperatureData, co2Data),
-        calculateCorrelationMatrix(temperatureData, no2Data),
-        calculateCorrelationMatrix(temperatureData, so2Data),
-        calculateCorrelationMatrix(temperatureData, so3Data),
-        calculateCorrelationMatrix(temperatureData, so4Data),
-        calculateCorrelationMatrix(temperatureData, so5Data),
+        calculateCorrelationPearson(temperatureData, co2Data),
+        calculateCorrelationPearson(temperatureData, no2Data),
+        calculateCorrelationPearson(temperatureData, so2Data),
+        calculateCorrelationPearson(temperatureData, o3Data),
+        calculateCorrelationPearson(temperatureData, pm10Data),
+        calculateCorrelationPearson(temperatureData, pm25Data),
       ],
       [
-        calculateCorrelationMatrix(temperatureData, co2Data),
+        calculateCorrelationPearson(co2Data, temperatureData),
         1,
-        calculateCorrelationMatrix(co2Data, no2Data),
-        calculateCorrelationMatrix(co2Data, so2Data),
-        calculateCorrelationMatrix(co2Data, so3Data),
-        calculateCorrelationMatrix(co2Data, so4Data),
-        calculateCorrelationMatrix(co2Data, so5Data),
+        calculateCorrelationPearson(co2Data, no2Data),
+        calculateCorrelationPearson(co2Data, so2Data),
+        calculateCorrelationPearson(co2Data, o3Data),
+        calculateCorrelationPearson(co2Data, pm10Data),
+        calculateCorrelationPearson(co2Data, pm25Data),
       ],
       [
-        calculateCorrelationMatrix(temperatureData, no2Data),
-        calculateCorrelationMatrix(co2Data, no2Data),
+        calculateCorrelationPearson(no2Data, temperatureData),
+        calculateCorrelationPearson(no2Data, co2Data),
         1,
-        calculateCorrelationMatrix(no2Data, so2Data),
-        calculateCorrelationMatrix(co2Data, so3Data),
-        calculateCorrelationMatrix(co2Data, so4Data),
-        calculateCorrelationMatrix(co2Data, so5Data),
+        calculateCorrelationPearson(no2Data, so2Data),
+        calculateCorrelationPearson(no2Data, o3Data),
+        calculateCorrelationPearson(no2Data, pm10Data),
+        calculateCorrelationPearson(no2Data, pm25Data),
       ],
       [
-        calculateCorrelationMatrix(temperatureData, so2Data),
-        calculateCorrelationMatrix(co2Data, so2Data),
-        calculateCorrelationMatrix(no2Data, so2Data),
+        calculateCorrelationPearson(so2Data, temperatureData),
+        calculateCorrelationPearson(so2Data, co2Data),
+        calculateCorrelationPearson(so2Data, no2Data),
         1,
-        calculateCorrelationMatrix(co2Data, so3Data),
-        calculateCorrelationMatrix(co2Data, so4Data),
-        calculateCorrelationMatrix(co2Data, so5Data),
+        calculateCorrelationPearson(so2Data, o3Data),
+        calculateCorrelationPearson(so2Data, pm10Data),
+        calculateCorrelationPearson(so2Data, pm25Data),
       ],
       [
-        calculateCorrelationMatrix(temperatureData, so2Data),
-        calculateCorrelationMatrix(co2Data, so2Data),
-        calculateCorrelationMatrix(no2Data, so2Data),
-        calculateCorrelationMatrix(co2Data, so3Data),
+        calculateCorrelationPearson(o3Data, temperatureData),
+        calculateCorrelationPearson(o3Data, co2Data),
+        calculateCorrelationPearson(o3Data, no2Data),
+        calculateCorrelationPearson(o3Data, so2Data),
         1,
-        calculateCorrelationMatrix(co2Data, so4Data),
-        calculateCorrelationMatrix(co2Data, so5Data),
+        calculateCorrelationPearson(o3Data, pm10Data),
+        calculateCorrelationPearson(o3Data, pm25Data),
       ],
       [
-        calculateCorrelationMatrix(temperatureData, so2Data),
-        calculateCorrelationMatrix(co2Data, so2Data),
-        calculateCorrelationMatrix(no2Data, so2Data),
-        calculateCorrelationMatrix(co2Data, so3Data),
-        calculateCorrelationMatrix(co2Data, so4Data),
+        calculateCorrelationPearson(pm10Data, temperatureData),
+        calculateCorrelationPearson(pm10Data, co2Data),
+        calculateCorrelationPearson(pm10Data, no2Data),
+        calculateCorrelationPearson(pm10Data, so2Data),
+        calculateCorrelationPearson(pm10Data, o3Data),
         1,
-        calculateCorrelationMatrix(co2Data, so5Data),
+        calculateCorrelationPearson(pm10Data, pm25Data),
       ],
       [
-        calculateCorrelationMatrix(temperatureData, so2Data),
-        calculateCorrelationMatrix(co2Data, so2Data),
-        calculateCorrelationMatrix(no2Data, so2Data),
-        calculateCorrelationMatrix(co2Data, so3Data),
-        calculateCorrelationMatrix(co2Data, so4Data),
-        calculateCorrelationMatrix(co2Data, so5Data),
+        calculateCorrelationPearson(pm25Data, temperatureData),
+        calculateCorrelationPearson(pm25Data, co2Data),
+        calculateCorrelationPearson(pm25Data, no2Data),
+        calculateCorrelationPearson(pm25Data, so2Data),
+        calculateCorrelationPearson(pm25Data, o3Data),
+        calculateCorrelationPearson(pm25Data, pm10Data),
         1,
       ],
     ]);
-    console.log("Correlation Matrix:");
-    console.table(correlationMatrix);
+    console.log("Correlation Matrix", matrix);
+    console.table(matrix);
 
     // Calcoliamo il coefficiente di correlazione di Pearson per la temperatura e ciascun inquinante
-    const temperatureCo2Correlation = calculateCorrelationPearson(
-      temperatureData,
-      co2Data
-    );
-    const temperatureNo2Correlation = calculateCorrelationPearson(
-      temperatureData,
-      no2Data
-    );
-    const temperatureSo2Correlation = calculateCorrelationPearson(
-      temperatureData,
-      so2Data
-    );
-    const temperatureSo3Correlation = calculateCorrelationPearson(
-      temperatureData,
-      so3Data
-    );
-    const temperatureSo4Correlation = calculateCorrelationPearson(
-      temperatureData,
-      so4Data
-    );
-    const temperatureSo5Correlation = calculateCorrelationPearson(
-      temperatureData,
-      so5Data
-    );
     console.log(
       "Correlazione tra temperatura e CO2:",
-      temperatureCo2Correlation
+      calculateCorrelationPearson(temperatureData, co2Data)
     );
     console.log(
       "Correlazione tra temperatura e NO2:",
-      temperatureNo2Correlation
+      calculateCorrelationPearson(temperatureData, no2Data)
     );
     console.log(
       "Correlazione tra temperatura e SO2:",
-      temperatureSo2Correlation
+      calculateCorrelationPearson(temperatureData, so2Data)
     );
     console.log(
-      "Correlazione tra temperatura e SO3:",
-      temperatureSo3Correlation
+      "Correlazione tra temperatura e O3:",
+      calculateCorrelationPearson(temperatureData, o3Data)
     );
     console.log(
-      "Correlazione tra temperatura e SO4:",
-      temperatureSo4Correlation
+      "Correlazione tra temperatura e PM10:",
+      calculateCorrelationPearson(temperatureData, pm10Data)
     );
     console.log(
-      "Correlazione tra temperatura e SO5:",
-      temperatureSo5Correlation
+      "Correlazione tra temperatura e PM25:",
+      calculateCorrelationPearson(temperatureData, pm25Data)
     );
-
-    /* // Grafico a dispersione dei dati
-  const scatterData = {
-    datasets: [
-      {
-        label: "Temperature",
-        data: temperature.map((y, index) => ({ x: y, y })),
-        backgroundColor: "rgba(255, 0, 0, 0.5)", // Colore dei punti per la temperatura
-      },
-      {
-        label: "CO2",
-        data: co2.map((y, index) => ({ x: y, y })),
-        backgroundColor: "rgba(0, 255, 0, 0.5)", // Colore dei punti per il CO2
-      },
-      // Ripeti per gli altri inquinanti
-    ],
-  };
-
-  const scatterOptions = {
-    plugins: {
-      legend: {
-        labels: {
-          color: "white", // Colore delle etichette della legenda
-        },
-      },
-    },
-    scales: {
-      x: {
-        type: "linear",
-        position: "bottom",
-        title: {
-          display: true,
-          text: "Temperatura",
-          color: "white", // Colore del titolo asse x
-        },
-        ticks: {
-          color: "white", // Colore delle etichette asse x
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Valore Inquinante",
-          color: "white", // Colore del titolo asse y
-        },
-        ticks: {
-          color: "white", // Colore delle etichette asse y
-        },
-      },
-    },
-  }; */
   }, []);
 
+  useEffect(() => {
+    if (isLoaded) {
+      // set the dimensions and margins of the graph
+      const margin = { top: 50, right: 50, bottom: 50, left: 50 },
+        width = 450 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom;
+
+      // Labels of row and columns
+      const myGroups = ["T", "CO2", "NO2", "SO2", "O3", "PM10", "PM25"];
+      const myVars = ["T", "CO2", "NO2", "SO2", "O3", "PM10", "PM25"].reverse();
+
+      // Build X scales and axis:
+      const x = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
+
+      // Build X scales and axis:
+      const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
+
+      // Build color scale
+      const myColor = d3
+        .scaleLinear()
+        .range(["white", "#318765"])
+        .domain([-1, 1]);
+
+      // Read the data
+      const heatMapData = [];
+      const reversedMatrix = matrix.reverse();
+      for (let i = 0; i < myVars.length; i++) {
+        for (let j = 0; j < myGroups.length; j++) {
+          heatMapData.push({
+            group: myGroups[j],
+            variable: myVars[i],
+            value: reversedMatrix[i][j],
+          });
+        }
+      }
+
+      const svg = d3
+        .select(svgRef.current)
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // Clear existing content before drawing the heatmap
+      svg.selectAll("*").remove();
+
+      svg
+        .append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+      svg.append("g").call(d3.axisLeft(y));
+
+      // Imposta il colore delle etichette delle scale sull'asse x come bianche
+      svg.selectAll(".tick text").style("fill", "white");
+      svg
+        .selectAll()
+        .data(heatMapData)
+        .enter()
+        .append("rect")
+        .attr("x", function (d) {
+          return x(d.group);
+        })
+        .attr("y", function (d) {
+          return y(d.variable);
+        })
+        .attr("width", x.bandwidth())
+        .attr("height", y.bandwidth())
+        .style("fill", function (d) {
+          return myColor(d.value);
+        })
+        .on("mouseover", function (event, d) {
+          // Mostra il valore della cella come tooltip
+          svg
+            .append("text")
+            .attr("class", "heatmap-cell-value")
+            .attr("x", x(d.group) + x.bandwidth() / 2)
+            .attr("y", y(d.variable) + y.bandwidth() / 2)
+            .attr("text-anchor", "middle")
+            .attr("dominant-baseline", "central")
+            .style("font-size", "12px")
+            .style("fill", "black")
+            .text(d.value.toFixed(2));
+        })
+        .on("mouseout", function (event, d) {
+          // Rimuovi il tooltip quando il mouse esce dalla cella
+          svg.selectAll(".heatmap-cell-value").remove();
+        });
+    }
+  }, [isLoaded]);
+
   return (
-    <div
-      className="w-full"
-      style={{
-        width: "100%",
-        fontFamily: "sans-serif",
-      }}
-    >
-      {/* Controlla la console per vedere la Correlation Matrix
-        Controlla la console per vedere i coefficienti della regressione
-        multivariata
-        Controlla la console per vedere l'inquinante o coppia di inquinanti più
-        influente sulla temperatura */}
-      {console.log("HHHH", matrix)}
+    <div className="w-full">
       {matrix.length > 0 && (
-        <div
-          style={{
-            width: "100%",
-            fontFamily: "sans-serif",
-          }}
-        >
-          <Heatmap
-            xLabels={labels}
-            yLabels={labels}
-            data={matrix}
-            squares
-            xLabelsStyle={(index) => ({
-              color: index % 2 ? "transparent" : "#777",
-              fontSize: ".65rem",
-            })}
-            yLabelsStyle={() => ({
-              fontSize: ".65rem",
-              textTransform: "uppercase",
-              color: "#777",
-            })}
-            cellStyle={(background, value, min, max, data, x, y) => ({
-              background:
-                value === 1 ? "white" : `rgba(0, 255, 0, ${1 - value})`,
-              fontSize: "16px", // Imposta la dimensione del testo nelle celle
-              fontWeight: "bold",
-              color: value === 1 ? "black" : "white", // Cambia il colore del testo della cella se il valore è 1
-              textAlign: "center", // Centra il testo nella cella
-              lineHeight: "30px", // Imposta l'altezza della cella per centrare verticalmente il testo
-            })}
-            height={30}
-            width={6000} // Imposta la larghezza della matrice
-          />
+        <div>
+          <svg ref={svgRef} />
         </div>
       )}
     </div>

@@ -161,3 +161,7 @@ body {
   height: 100px;
   margin-bottom: 16px;
 }
+
+.heatmap-cell-value {
+  pointer-events: none;
+}

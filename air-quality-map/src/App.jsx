@@ -120,6 +120,43 @@ const App = () => {
     }
   }
 
+  /* async function getAirQualityDataEurope() {
+  const API_TOKEN = "551302aec928205074ba444ee505af1db545b83c";
+    try {
+      const response = await axios.get(
+        `https://api.waqi.info/map/bounds/?token=${API_TOKEN}&latlng=36.0,-10.0,72.0,40.0`
+      );
+
+      // Verifica se la risposta è valida
+      if (response.status === 200 && response.data.data) {
+        const europeAirQualityData = response.data.data;
+        let datas = []
+        // Otteniamo i dati degli inquinanti per ogni stazione di monitoraggio
+        for (const station of europeAirQualityData) {
+          const stationDataResponse = await axios.get(
+            `https://api.waqi.info/feed/@${station.uid}/?token=${API_TOKEN}`
+          );
+          if (
+            stationDataResponse.status === 200 &&
+            stationDataResponse.data.data
+          ) {
+            const stationAirQualityData = stationDataResponse.data.data;
+            datas.push(stationAirQualityData)
+            console.log("stazione: ", station.uid, stationAirQualityData); // I dati sull'indice di qualità dell'aria e gli inquinanti per questa stazione di monitoraggio sono presenti in stationAirQualityData
+          } else {
+            console.log(
+              `Errore nella richiesta API per la stazione di monitoraggio ${station.uid}`
+            );
+          }
+        }
+      } else {
+        console.log("Errore nella richiesta API");
+      }
+    } catch (error) {
+      console.error("Errore durante la richiesta API:", error.message);
+    }
+  } */
+
   /* async function getHistoricalData(startDate, endDate) {
     //startDate = "2023-07-10" endDate = "2023-07-17"
     const startDay = startDate.split("-")[2];
@@ -273,6 +310,10 @@ const App = () => {
         /* await axios.post("http://localhost:4000/multipleAddForTest", {
           datasBackup,
         }); */
+
+        /* const prova = await getAirQualityDataEurope();
+        console.log(prova); */
+
         const todayIsUpdated = await axios.get(
           `http://localhost:4000/is-daily-update-done`
         );
