@@ -6,7 +6,6 @@ const AnalysisChartSidebar = () => {
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   // Funzione per calcolare il coefficiente di correlazione di Pearson tra due array di dati
   const calculateCorrelationPearson = (xData, yData) => {
     const n = xData.length;
@@ -26,6 +25,7 @@ const AnalysisChartSidebar = () => {
     const correlation = numerator / Math.sqrt(denominatorX * denominatorY);
     return correlation;
   };
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -289,7 +289,6 @@ const AnalysisChartSidebar = () => {
       )}
     </div>
   );
-
 };
 
 export default AnalysisChartSidebar;
