@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-const AnalysisChartSidebar = () => {
+const CorrelationMatrix = ({ datas, id }) => {
   const [matrix, setMatrix] = useState([]);
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,74 +26,105 @@ const AnalysisChartSidebar = () => {
     return correlation;
   };
 
+  function printSingleCorrelation(
+    temperatureData,
+    co2Data,
+    no2Data,
+    so2Data,
+    o3Data,
+    pm10Data,
+    pm25Data
+  ) {
+    // Calcoliamo il coefficiente di correlazione di Pearson per la temperatura e ciascun inquinante
+    console.log(
+      "Correlazione tra temperatura e CO2:",
+      calculateCorrelationPearson(temperatureData, co2Data)
+        ? calculateCorrelationPearson(temperatureData, co2Data)
+        : 0
+    );
+    console.log(
+      "Correlazione tra temperatura e NO2:",
+      calculateCorrelationPearson(temperatureData, no2Data)
+        ? calculateCorrelationPearson(temperatureData, no2Data)
+        : 0
+    );
+    console.log(
+      "Correlazione tra temperatura e SO2:",
+      calculateCorrelationPearson(temperatureData, so2Data)
+        ? calculateCorrelationPearson(temperatureData, so2Data)
+        : 0
+    );
+    console.log(
+      "Correlazione tra temperatura e O3:",
+      calculateCorrelationPearson(temperatureData, o3Data)
+        ? calculateCorrelationPearson(temperatureData, o3Data)
+        : 0
+    );
+    console.log(
+      "Correlazione tra temperatura e PM10:",
+      calculateCorrelationPearson(temperatureData, pm10Data)
+        ? calculateCorrelationPearson(temperatureData, pm10Data)
+        : 0
+    );
+    console.log(
+      "Correlazione tra temperatura e PM25:",
+      calculateCorrelationPearson(temperatureData, pm25Data)
+        ? calculateCorrelationPearson(temperatureData, pm25Data)
+        : 0
+    );
+  }
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
   useEffect(() => {
-    const data = [
-      {
-        temperatura: 25,
-        inquinanti: {
-          co2: 150,
-          no2: 120,
-          so2: 80,
-          o3: 50,
-          pm10: 180,
-          pm25: 120,
+    // Clear existing content before drawing the heatmap
+    if (svgRef.current) {
+      d3.select(svgRef.current).selectAll("*").remove();
+    }
+  }, [id]);
+
+  useEffect(() => {
+    let data = [];
+
+    datas.forEach((day) => {
+      const dayToGet = day.features.filter((item) => item.id === id)[0];
+      data.push({
+        temp: dayToGet.weather.data.tempReal
+          ? dayToGet.weather.data.tempReal
+          : 0,
+        polls: {
+          co2: dayToGet.properties.measurements.CO.fixedValue
+            ? dayToGet.properties.measurements.CO.fixedValue
+            : 0,
+          no2: dayToGet.properties.measurements.NO2.fixedValue
+            ? dayToGet.properties.measurements.NO2.fixedValue
+            : 0,
+          o3: dayToGet.properties.measurements.OZONE.fixedValue
+            ? dayToGet.properties.measurements.OZONE.fixedValue
+            : 0,
+          so2: dayToGet.properties.measurements.SO2.fixedValue
+            ? dayToGet.properties.measurements.SO2.fixedValue
+            : 0,
+          pm25: dayToGet.properties.measurements["PM2.5"].fixedValue
+            ? dayToGet.properties.measurements["PM2.5"].fixedValue
+            : 0,
+          pm10: dayToGet.properties.measurements.PM10.fixedValue
+            ? dayToGet.properties.measurements.PM10.fixedValue
+            : 0,
         },
-      },
-      {
-        temperatura: -10,
-        inquinanti: { co2: 100, no2: 40, so2: 15, o3: 30, pm10: 80, pm25: 50 },
-      },
-      {
-        temperatura: 12,
-        inquinanti: {
-          co2: 50,
-          no2: 180,
-          so2: 160,
-          o3: 120,
-          pm10: 200,
-          pm25: 180,
-        },
-      },
-      {
-        temperatura: 30,
-        inquinanti: {
-          co2: 120,
-          no2: 80,
-          so2: 50,
-          o3: 70,
-          pm10: 160,
-          pm25: 100,
-        },
-      },
-      {
-        temperatura: -5,
-        inquinanti: { co2: 70, no2: 90, so2: 70, o3: 90, pm10: 120, pm25: 80 },
-      },
-      {
-        temperatura: 40,
-        inquinanti: {
-          co2: 180,
-          no2: 60,
-          so2: 30,
-          o3: 200,
-          pm10: 150,
-          pm25: 90,
-        },
-      },
-    ];
+      });
+    });
 
     // Estraiamo i dati di temperatura e inquinanti dagli oggetti all'interno dell'array
-    const temperatureData = data.map((item) => item.temperatura);
-    const co2Data = data.map((item) => item.inquinanti.co2);
-    const no2Data = data.map((item) => item.inquinanti.no2);
-    const so2Data = data.map((item) => item.inquinanti.so2);
-    const o3Data = data.map((item) => item.inquinanti.o3);
-    const pm10Data = data.map((item) => item.inquinanti.pm10);
-    const pm25Data = data.map((item) => item.inquinanti.pm25);
+    const temperatureData = data.map((item) => item.temp);
+    const co2Data = data.map((item) => item.polls.co2);
+    const no2Data = data.map((item) => item.polls.no2);
+    const so2Data = data.map((item) => item.polls.so2);
+    const o3Data = data.map((item) => item.polls.o3);
+    const pm10Data = data.map((item) => item.polls.pm10);
+    const pm25Data = data.map((item) => item.polls.pm25);
 
     setMatrix([
       [
@@ -160,35 +191,19 @@ const AnalysisChartSidebar = () => {
         1,
       ],
     ]);
-    console.log("Correlation Matrix", matrix);
-    console.table(matrix);
+    /* console.log("Correlation Matrix", matrix);
+    console.table(matrix); */
 
-    // Calcoliamo il coefficiente di correlazione di Pearson per la temperatura e ciascun inquinante
-    console.log(
-      "Correlazione tra temperatura e CO2:",
-      calculateCorrelationPearson(temperatureData, co2Data)
-    );
-    console.log(
-      "Correlazione tra temperatura e NO2:",
-      calculateCorrelationPearson(temperatureData, no2Data)
-    );
-    console.log(
-      "Correlazione tra temperatura e SO2:",
-      calculateCorrelationPearson(temperatureData, so2Data)
-    );
-    console.log(
-      "Correlazione tra temperatura e O3:",
-      calculateCorrelationPearson(temperatureData, o3Data)
-    );
-    console.log(
-      "Correlazione tra temperatura e PM10:",
-      calculateCorrelationPearson(temperatureData, pm10Data)
-    );
-    console.log(
-      "Correlazione tra temperatura e PM25:",
-      calculateCorrelationPearson(temperatureData, pm25Data)
-    );
-  }, []);
+    /* printSingleCorrelation(
+      temperatureData,
+      co2Data,
+      no2Data,
+      so2Data,
+      o3Data,
+      pm10Data,
+      pm25Data
+    ); */
+  }, [id]);
 
   useEffect(() => {
     if (isLoaded) {
@@ -244,6 +259,7 @@ const AnalysisChartSidebar = () => {
 
       // Imposta il colore delle etichette delle scale sull'asse x come bianche
       svg.selectAll(".tick text").style("fill", "white");
+
       svg
         .selectAll()
         .data(heatMapData)
@@ -258,7 +274,7 @@ const AnalysisChartSidebar = () => {
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
         .style("fill", function (d) {
-          return myColor(d.value);
+          return d.value ? myColor(d.value) : "darkgrey";
         })
         .on("mouseover", function (event, d) {
           // Mostra il valore della cella come tooltip
@@ -278,7 +294,7 @@ const AnalysisChartSidebar = () => {
           svg.selectAll(".heatmap-cell-value").remove();
         });
     }
-  }, [isLoaded]);
+  }, [isLoaded, id]);
 
   return (
     <div className="w-full">
@@ -291,4 +307,4 @@ const AnalysisChartSidebar = () => {
   );
 };
 
-export default AnalysisChartSidebar;
+export default CorrelationMatrix;
