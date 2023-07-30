@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Scatter, Line } from "react-chartjs-2";
-import { Chart } from "chart.js/auto";
 import * as d3 from "d3";
 
 const AnalysisChartSidebar = () => {
