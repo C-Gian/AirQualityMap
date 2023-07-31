@@ -47,7 +47,7 @@ const WeatherChart = ({ datas, id }) => {
     scales: {
       x: {
         grid: {
-          display: false,
+          color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
         },
         ticks: {
           color: "white", // Colore delle etichette dell'asse y
@@ -55,7 +55,7 @@ const WeatherChart = ({ datas, id }) => {
       },
       y: {
         grid: {
-          color: "white", // Colore delle linee di griglia dell'asse y
+          color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
         },
         ticks: {
           color: "white", // Colore delle etichette dell'asse y

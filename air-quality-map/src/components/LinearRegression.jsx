@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Scatter } from "react-chartjs-2";
 import regression from "regression";
 
-const LinearRegression = ({ datas, id, key, pollutant }) => {
+const LinearRegression = ({ datas, id, pollutant, index }) => {
   const data = [
     {
       temperatura: 20,
@@ -115,7 +115,7 @@ const LinearRegression = ({ datas, id, key, pollutant }) => {
         pointBorderColor: "transparent",
         pointHoverRadius: 8,
         pointHoverBackgroundColor: colors[pollutant], // Colore specifico per l'inquinante
-        pointHoverBorderColor: colors[pollutant],
+        pointHoverBorderColor: "#FFF",
       },
       {
         label: `${pollutant.toUpperCase()} Regression`,
@@ -137,21 +137,47 @@ const LinearRegression = ({ datas, id, key, pollutant }) => {
         ticks: {
           color: "white",
         },
+        grid: {
+          color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
+        },
       },
       y: {
         ticks: {
           color: "white",
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
         },
       },
     },
     plugins: {
       legend: {
         labels: {
-          color: "white",
+          pointStyleWidth: 20,
+          usePointStyle: true,
+          generateLabels: (chart) => {
+            let pointStyle = [];
+            chart.data.datasets.forEach((dataset) => {
+              if (dataset.type) {
+                pointStyle.push("line");
+              } else {
+                pointStyle.push("circle");
+              }
+            });
+            return chart.data.datasets.map((dataset, index) => ({
+              text: dataset.label,
+              color: "white",
+              fillStyle: dataset.backgroundColor,
+              strokeStyle: dataset.borderColor,
+              pointStyle: pointStyle[index],
+              lineWidth: 5,
+              fontColor: "white",
+            }));
+          },
         },
       },
     },
-    elements: {
+    /* elements: {
       point: {
         backgroundColor: "rgba(75,192,192,1)",
         borderColor: "#fff",
@@ -160,14 +186,9 @@ const LinearRegression = ({ datas, id, key, pollutant }) => {
         hoverRadius: 8,
         hoverBorderWidth: 4,
       },
-    },
-    responsive: true,
+    }, */
   };
 
-  return (
-    <div style={{ width: "100%", height: "250px" }}>
-      <Scatter data={chartData} options={chartOptions} />
-    </div>
-  );
+  return <Scatter className="mt-10" data={chartData} options={chartOptions} />;
 };
 export default LinearRegression;

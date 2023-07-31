@@ -10,6 +10,7 @@ import WeatherChart from "./WeatherChart";
 import CorrelationMatrix from "./CorrelationMatrix";
 import { linear } from "stats.js";
 import LinearRegression from "./LinearRegression";
+import MultipleRegression from "./MultipleRegression";
 
 const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   const [name, setName] = useState("");
@@ -337,17 +338,20 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             id={infos.id}
           ></CorrelationMatrix>
         </div>
-        <div className="p-5">
-          <div className="flex-col">
-            {["co", "no2", "so2", "o3", "pm10", "pm25"].map((pollutant) => (
+        <div className="pl-5 pr-5 flex-col">
+          {["co", "no2", "so2", "o3", "pm10", "pm25"].map(
+            (pollutant, index) => (
               <LinearRegression
                 datas={infos.datas}
                 id={infos.id}
-                key={pollutant}
                 pollutant={pollutant}
+                key={index}
               />
-            ))}
-          </div>
+            )
+          )}
+        </div>
+        <div>
+          <MultipleRegression></MultipleRegression>
         </div>
       </div>
     </div>
