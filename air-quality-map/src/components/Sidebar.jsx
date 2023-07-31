@@ -337,11 +337,17 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             id={infos.id}
           ></CorrelationMatrix>
         </div>
-        <div className="mt-5">
-          <LinearRegression
-            datas={infos.datas}
-            id={infos.id}
-          ></LinearRegression>
+        <div className="p-5">
+          <div className="flex-col">
+            {["co", "no2", "so2", "o3", "pm10", "pm25"].map((pollutant) => (
+              <LinearRegression
+                datas={infos.datas}
+                id={infos.id}
+                key={pollutant}
+                pollutant={pollutant}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

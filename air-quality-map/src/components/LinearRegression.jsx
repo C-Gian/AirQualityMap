@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { SimpleLinearRegression } from "ml-regression";
-import { Scatter, Line } from "react-chartjs-2";
-import * as d3 from "d3";
+import { Scatter } from "react-chartjs-2";
+import regression from "regression";
 
-const LinearRegression = ({ datas, id }) => {
+const LinearRegression = ({ datas, id, key, pollutant }) => {
   const data = [
     {
       temperatura: 20,
@@ -69,111 +68,106 @@ const LinearRegression = ({ datas, id }) => {
       pm25: 63,
     },
   ];
+  const temperatures = data.map((item) => item.temperatura);
+  const pollutantValues = data.map((item) => item[pollutant]);
 
-  const calculateRegressionLine = (data, xField, yField) => {
-    // Calcola la somma di x, y, x^2, xy
-    let n = data.length;
-    let sumX = 0;
-    let sumY = 0;
-    let sumXX = 0;
-    let sumXY = 0;
-    for (let i = 0; i < n; i++) {
-      const x = data[i][xField];
-      const y = data[i][yField];
-      sumX += x;
-      sumY += y;
-      sumXX += x * x;
-      sumXY += x * y;
-    }
-    // Calcola i coefficienti della retta di regressione (y = mx + b)
-    const m = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
-    const b = (sumY - m * sumX) / n;
-    // Restituisci i coefficienti della retta di regressione
-    return { m, b };
-  };
+  // Calcola la regressione lineare per l'inquinante corrente
+  const result = regression.linear(
+    temperatures.map((temp, index) => [temp, pollutantValues[index]])
+  );
+  const slope = result.equation[0];
+  const intercept = result.equation[1];
 
-  // Definisci le dimensioni e i margini del grafico
-  const width = 450;
-  const height = 300;
-  const margin = { top: 20, right: 30, bottom: 30, left: 60 };
-  const innerWidth = width - margin.left - margin.right;
-  const innerHeight = height - margin.top - margin.bottom;
-  const xField = "temperatura";
-  const yField = "co";
-  // Crea le scale per gli assi x e y
-  const xScale = d3
-    .scaleLinear()
-    .domain(d3.extent(data, (d) => d[xField]))
-    .range([0, innerWidth])
-    .nice();
-
-  const yScale = d3
-    .scaleLinear()
-    .domain(d3.extent(data, (d) => d[yField]))
-    .range([innerHeight, 0])
-    .nice();
-
-  const regressionLine = calculateRegressionLine(data, xField, yField);
-  // Calcola i punti della retta di regressione
-  const regressionLinePoints = [
+  // Genera i punti per la linea di regressione
+  const regressionLine = [
     {
-      x: d3.min(data, (d) => d[xField]),
-      y: regressionLine.m * d3.min(data, (d) => d[xField]) + regressionLine.b,
+      x: Math.min(...temperatures),
+      y: slope * Math.min(...temperatures) + intercept,
     },
     {
-      x: d3.max(data, (d) => d[xField]),
-      y: regressionLine.m * d3.max(data, (d) => d[xField]) + regressionLine.b,
+      x: Math.max(...temperatures),
+      y: slope * Math.max(...temperatures) + intercept,
     },
   ];
 
+  // Definisci i colori per gli inquinanti
+  const colors = {
+    co: "rgba(255, 0, 0, 1)", // Rosso
+    so2: "rgba(0, 0, 255, 1)", // Blu
+    no2: "rgba(0, 128, 0, 1)", // Verde
+    pm25: "rgba(128, 0, 128, 1)", // Viola
+    pm10: "rgba(255, 255, 0, 1)", // Giallo
+    o3: "rgba(0, 255, 255, 1)", // Celeste
+  };
+
+  const chartData = {
+    datasets: [
+      {
+        label: pollutant.toUpperCase(),
+        data: data.map((item) => ({
+          x: item.temperatura,
+          y: item[pollutant],
+        })),
+        backgroundColor: colors[pollutant], // Colore specifico per l'inquinante
+        borderColor: colors[pollutant], // Colore specifico per l'inquinante
+        pointRadius: 5,
+        pointBackgroundColor: colors[pollutant], // Colore specifico per l'inquinante
+        pointBorderColor: "transparent",
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: colors[pollutant], // Colore specifico per l'inquinante
+        pointHoverBorderColor: colors[pollutant],
+      },
+      {
+        label: `${pollutant.toUpperCase()} Regression`,
+        data: regressionLine,
+        type: "line",
+        fill: false,
+        borderColor: colors[pollutant],
+        borderWidth: 2,
+        lineTension: 0,
+      },
+    ],
+  };
+
+  const chartOptions = {
+    scales: {
+      x: {
+        type: "linear",
+        position: "bottom",
+        ticks: {
+          color: "white",
+        },
+      },
+      y: {
+        ticks: {
+          color: "white",
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",
+        },
+      },
+    },
+    elements: {
+      point: {
+        backgroundColor: "rgba(75,192,192,1)",
+        borderColor: "#fff",
+        borderWidth: 2,
+        hitRadius: 10,
+        hoverRadius: 8,
+        hoverBorderWidth: 4,
+      },
+    },
+    responsive: true,
+  };
+
   return (
-    <div>
-      <svg width={width} height={height}>
-        <g transform={`translate(${margin.left},${margin.top})`}>
-          {data.map((d) => (
-            <circle
-              key={`${d[xField]}-${d[yField]}`}
-              cx={xScale(d[xField])}
-              cy={yScale(d[yField])}
-              r={5}
-              fill="steelblue"
-            />
-          ))}
-
-          <line
-            x1={xScale(regressionLinePoints[0].x)}
-            y1={yScale(regressionLinePoints[0].y)}
-            x2={xScale(regressionLinePoints[1].x)}
-            y2={yScale(regressionLinePoints[1].y)}
-            stroke="red"
-            strokeWidth={2}
-          />
-
-          {/* Aggiungi l'asse x */}
-          <g
-            transform={`translate(0, ${innerHeight})`}
-            style={{ stroke: "white" }}
-          >
-            <line x1={0} y1={0} x2={innerWidth} y2={0} />
-          </g>
-
-          {/* Aggiungi l'asse y */}
-          <g style={{ stroke: "white" }}>
-            <line x1={0} y1={0} x2={0} y2={innerHeight} />
-          </g>
-
-          {/* Aggiungi annotazioni per la direzione */}
-          <text
-            x={xScale(d3.mean(data, (d) => d[xField]))}
-            y={yScale(d3.mean(data, (d) => d[yField])) - 10}
-            fill="white"
-          >
-            Pendenza: {regressionLine.m.toFixed(2)}
-          </text>
-        </g>
-      </svg>
+    <div style={{ width: "100%", height: "250px" }}>
+      <Scatter data={chartData} options={chartOptions} />
     </div>
   );
 };
-
 export default LinearRegression;

@@ -9,7 +9,7 @@ const WeatherChart = ({ datas, id }) => {
     data.push({
       day: "Day " + index,
       temp: dayToGet.weather.data.tempReal ? dayToGet.weather.data.tempReal : 0,
-      co2: dayToGet.properties.measurements.CO.fixedValue
+      co: dayToGet.properties.measurements.CO.fixedValue
         ? dayToGet.properties.measurements.CO.fixedValue
         : 0,
       no2: dayToGet.properties.measurements.NO2.fixedValue
@@ -35,8 +35,9 @@ const WeatherChart = ({ datas, id }) => {
 
   // Estrai i dati di temperatura e inquinanti dall'array di dati
   const temperaturaData = data.map((item) => item.temp);
-  const co2Data = data.map((item) => item.co2);
+  const coData = data.map((item) => item.co2);
   const no2Data = data.map((item) => item.no2);
+  const ozoneData = data.map((item) => item.ozone);
   const so2Data = data.map((item) => item.so2);
   const pm25Data = data.map((item) => item.pm25);
   const pm10Data = data.map((item) => item.pm10);
@@ -83,9 +84,16 @@ const WeatherChart = ({ datas, id }) => {
       },
       {
         label: "CO2",
-        data: co2Data,
+        data: coData,
         fill: false,
         borderColor: "red", // Colore della linea del CO2
+        borderWidth: 1,
+      },
+      {
+        label: "O3",
+        data: ozoneData,
+        fill: false,
+        borderColor: "cyan", // Colore della linea del CO2
         borderWidth: 1,
       },
       {
