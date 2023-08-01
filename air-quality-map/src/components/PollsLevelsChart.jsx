@@ -1,16 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
-function SideBarChart({ values, countryPolluttans }) {
+function PollsLevelsChart({ datas }) {
+  const labels = Object.keys(datas.properties.measurements);
+  const values = Object.values(datas.properties.measurements).map(
+    (item) => item.fixedValue
+  );
   const chartRef = useRef(null);
   // Dati per il grafico
   const data = {
-    labels: Object.keys(countryPolluttans),
+    labels: labels,
     datasets: [
       {
         label: "Polluttans levels",
-        data: values, // Sostituisci con i tuoi valori reali
-        backgroundColor: ["red", "blue", "green", "yellow", "orange"], // Colore delle barre
+        data: values,
+        backgroundColor: ["red", "blue", "green", "yellow", "orange", "purple"], // Colore delle barre
       },
     ],
   };
@@ -90,4 +94,4 @@ function SideBarChart({ values, countryPolluttans }) {
   );
 }
 
-export default SideBarChart;
+export default PollsLevelsChart;

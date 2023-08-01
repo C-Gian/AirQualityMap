@@ -1,13 +1,13 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-const WeatherChart = ({ datas, id }) => {
+const PollsTempCorrChart = ({ datas, id }) => {
   let data = [];
 
   datas.forEach((day, index) => {
     const dayToGet = day.features.filter((item) => item.id === id)[0];
     data.push({
-      day: "Day " + index,
+      day: "Day " + (index + 1),
       temp: dayToGet.weather.data.tempReal ? dayToGet.weather.data.tempReal : 0,
       co: dayToGet.properties.measurements.CO.fixedValue
         ? dayToGet.properties.measurements.CO.fixedValue
@@ -66,6 +66,7 @@ const WeatherChart = ({ datas, id }) => {
       legend: {
         labels: {
           color: "white", // Colore delle etichette della legenda
+          boxWidth: 12,
         },
       },
     },
@@ -80,48 +81,48 @@ const WeatherChart = ({ datas, id }) => {
         data: temperaturaData,
         fill: false,
         borderColor: "white", // Colore della linea della temperatura
-        borderWidth: 5,
+        borderWidth: 3,
       },
       {
-        label: "CO2",
-        data: coData,
+        label: "PM10",
+        data: pm10Data,
         fill: false,
-        borderColor: "red", // Colore della linea del CO2
-        borderWidth: 1,
-      },
-      {
-        label: "O3",
-        data: ozoneData,
-        fill: false,
-        borderColor: "cyan", // Colore della linea del CO2
-        borderWidth: 1,
-      },
-      {
-        label: "NO2",
-        data: no2Data,
-        fill: false,
-        borderColor: "green", // Colore della linea del NO2
-        borderWidth: 1,
-      },
-      {
-        label: "SO2",
-        data: so2Data,
-        fill: false,
-        borderColor: "blue", // Colore della linea del SO2
+        borderColor: "red", // Colore della linea del PM10
         borderWidth: 1,
       },
       {
         label: "PM2.5",
         data: pm25Data,
         fill: false,
-        borderColor: "purple", // Colore della linea del PM2.5
+        borderColor: "blue", // Colore della linea del PM2.5
         borderWidth: 1,
       },
       {
-        label: "PM10",
-        data: pm10Data,
+        label: "O3",
+        data: ozoneData,
         fill: false,
-        borderColor: "orange", // Colore della linea del PM10
+        borderColor: "green", // Colore della linea del CO2
+        borderWidth: 1,
+      },
+      {
+        label: "NO2",
+        data: no2Data,
+        fill: false,
+        borderColor: "yellow", // Colore della linea del NO2
+        borderWidth: 1,
+      },
+      {
+        label: "CO",
+        data: coData,
+        fill: false,
+        borderColor: "orange", // Colore della linea del CO2
+        borderWidth: 1,
+      },
+      {
+        label: "SO2",
+        data: so2Data,
+        fill: false,
+        borderColor: "purple", // Colore della linea del SO2
         borderWidth: 1,
       },
     ],
@@ -130,4 +131,4 @@ const WeatherChart = ({ datas, id }) => {
   return <Line data={chartData} options={options} />;
 };
 
-export default WeatherChart;
+export default PollsTempCorrChart;

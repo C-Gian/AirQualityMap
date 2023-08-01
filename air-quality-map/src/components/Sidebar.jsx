@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import SideBarChart from "./SideBarChart";
+import PollsLevelsChart from "./PollsLevelsChart";
 import { connect } from "react-redux";
 import { setSliderValue } from "../actions/index.js";
 import { useSelector } from "react-redux";
 import * as d3 from "d3";
-import WeatherChart from "./WeatherChart";
+import PollsTempCorrChart from "./PollsTempCorrChart";
 import CorrelationMatrix from "./CorrelationMatrix";
 import { linear } from "stats.js";
 import LinearRegression from "./LinearRegression";
@@ -16,7 +16,6 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   const [name, setName] = useState("");
   const [AQI, setAQI] = useState("");
   const [lastUpdate, setLastUpdate] = useState("");
-  const [values, setValues] = useState([]);
   const [dataR, setDataR] = useState(infos.datas[0].features[infos.id]);
   const [hexColor, setHexColor] = useState("");
   const [airQualityText, setAirQualityText] = useState(null);
@@ -143,14 +142,11 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
       setAirQualityColor(getColoreByValore(dataR.properties.countryAQI)[1]);
     } else {
+      /* console.log("all data", infos.datas);
+      console.log("today data", dataR); */
       setName(dataR.properties.name);
       setAQI(dataR.properties.AQI);
       setLastUpdate(dataR.lastUpdatedMe);
-      let temp = [];
-      Object.keys(dataR.properties.measurements).forEach((key) => {
-        temp.push(dataR.properties.measurements[key].fixedValue);
-      });
-      setValues(temp);
       //setairQualityty(dataR.weather.data.);
       setWeatherCondition({
         condText: dataR.weather.data.conditionText,
@@ -236,12 +232,9 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             <span className="text-l text-white">{lastUpdate}</span>
           </div>
         </div>
-        {countryPolluttans && values && (
-          <SideBarChart
-            values={values}
-            countryPolluttans={countryPolluttans}
-          ></SideBarChart>
-        )}
+        <div>
+          <PollsLevelsChart datas={dataR}></PollsLevelsChart>
+        </div>
         <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
           <h2 className="text-white text-xl font-semibold mb-2">
             7 days past data
@@ -330,7 +323,10 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
         </div>
         {/* <div className="bg-black h-500 w-full mt-10 "></div> */}
         <div className="mt-5">
-          <WeatherChart datas={infos.datas} id={infos.id}></WeatherChart>
+          <PollsTempCorrChart
+            datas={infos.datas}
+            id={infos.id}
+          ></PollsTempCorrChart>
         </div>
         <div className="mt-5">
           <CorrelationMatrix
@@ -339,7 +335,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
           ></CorrelationMatrix>
         </div>
         <div className="pl-5 pr-5 flex-col">
-          {["co", "no2", "so2", "o3", "pm10", "pm25"].map(
+          {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
             (pollutant, index) => (
               <LinearRegression
                 datas={infos.datas}
@@ -350,7 +346,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             )
           )}
         </div>
-        <div>
+        <div className="mt-5">
           <MultipleRegression></MultipleRegression>
         </div>
       </div>
