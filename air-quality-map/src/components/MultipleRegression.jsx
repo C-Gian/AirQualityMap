@@ -69,8 +69,33 @@ function MultipleRegression() {
       pm25: 63,
     },
   ];
+  const [activePollutants, setActivePollutants] = useState([
+    "co",
+    "no2",
+    "so2",
+    "o3",
+    "pm10",
+    "pm25",
+  ]);
 
-  const handlePollutantClick = (pollutant, value) => {};
+  const handlePollutantClick = (pollutant, hidden) => {
+    console.log("1", pollutant);
+    if (hidden) {
+      console.log("2a");
+      if (activePollutants.includes(pollutant)) {
+        console.log("3a");
+        setActivePollutants(
+          activePollutants.filter((item) => item !== pollutant)
+        );
+      }
+    } else {
+      console.log("2b", activePollutants);
+      if (!activePollutants.includes(pollutant)) {
+        console.log("3b");
+        setActivePollutants(activePollutants.push(pollutant));
+      }
+    }
+  };
 
   function multipleRegression(data) {
     const X = [];
@@ -101,8 +126,8 @@ function MultipleRegression() {
   }
 
   useEffect(() => {
-    //console.log(activePollutants);
-  }, []);
+    console.log("ap", activePollutants);
+  }, [activePollutants]);
 
   // Creazione del grafico all'interno di useEffect per assicurarci che il componente sia montato
   useEffect(() => {
@@ -156,7 +181,8 @@ function MultipleRegression() {
             const value = evt.chart.data.datasets[
               item.datasetIndex
             ].data.filter((number) => number !== 0)[0];
-            handlePollutantClick(item.text, value);
+            console.log("hidden", item.hidden);
+            handlePollutantClick(item.text, item.hidden);
           },
           labels: {
             color: "white", // Colore delle etichette della legenda
