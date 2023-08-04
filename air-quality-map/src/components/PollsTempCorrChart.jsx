@@ -3,6 +3,16 @@ import { Line } from "react-chartjs-2";
 
 const PollsTempCorrChart = ({ datas, id }) => {
   let data = [];
+  // Definisci i colori per gli inquinanti
+  const colors = {
+    TEMP: "rgba(255, 255, 255, 1)",
+    CO: "rgba(255, 165, 0, 1)",
+    SO2: "rgba(128, 0, 128, 1)",
+    NO2: "rgba(255, 255, 0, 1) ",
+    "PM2.5": "rgba(0, 0, 255, 1)",
+    PM10: "rgba(255, 0, 0, 1) ",
+    OZONE: "rgba(0, 128, 0, 1) ",
+  };
 
   datas.forEach((day, index) => {
     const dayToGet = day.features.filter((item) => item.id === id)[0];
@@ -65,8 +75,11 @@ const PollsTempCorrChart = ({ datas, id }) => {
     plugins: {
       legend: {
         labels: {
+          font: {
+            size: 16, // Imposta la dimensione del font della legenda
+          },
           color: "white", // Colore delle etichette della legenda
-          boxWidth: 12,
+          boxWidth: 17,
         },
       },
     },
@@ -77,52 +90,73 @@ const PollsTempCorrChart = ({ datas, id }) => {
     labels: labels,
     datasets: [
       {
-        label: "Temperatura",
+        label: "Temp",
         data: temperaturaData,
         fill: false,
-        borderColor: "white", // Colore della linea della temperatura
+        backgroundColor: colors["TEMP"], // Colore della linea della temperatura
+        borderColor: colors["TEMP"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 3,
       },
       {
         label: "PM10",
         data: pm10Data,
         fill: false,
-        borderColor: "red", // Colore della linea del PM10
+        backgroundColor: colors["PM10"], // Colore della linea del PM10
+        borderColor: colors["PM10"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 1,
       },
       {
         label: "PM2.5",
         data: pm25Data,
         fill: false,
-        borderColor: "blue", // Colore della linea del PM2.5
+        backgroundColor: colors["PM2.5"], // Colore della linea del PM2.5
+        borderColor: colors["PM2.5"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 1,
       },
       {
         label: "O3",
         data: ozoneData,
         fill: false,
-        borderColor: "green", // Colore della linea del CO2
+        backgroundColor: colors["OZONE"], // Colore della linea del CO2
+        borderColor: colors["OZONE"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 1,
       },
       {
         label: "NO2",
         data: no2Data,
         fill: false,
-        borderColor: "yellow", // Colore della linea del NO2
+        backgroundColor: colors["NO2"], // Colore della linea del NO2
+        borderColor: colors["NO2"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 1,
       },
       {
         label: "CO",
         data: coData,
         fill: false,
-        borderColor: "orange", // Colore della linea del CO2
+        backgroundColor: colors["CO"], // Colore della linea del CO2
+        borderColor: colors["CO"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 1,
       },
       {
         label: "SO2",
         data: so2Data,
         fill: false,
-        borderColor: "purple", // Colore della linea del SO2
+        backgroundColor: colors["SO2"], // Colore della linea del SO2
+        borderColor: colors["SO2"],
+        barPercentage: 0.8,
+        categoryPercentage: 0.5,
         borderWidth: 1,
       },
     ],

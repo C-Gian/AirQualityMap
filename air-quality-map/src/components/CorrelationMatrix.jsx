@@ -208,7 +208,7 @@ const CorrelationMatrix = ({ datas, id }) => {
   useEffect(() => {
     if (isLoaded) {
       // set the dimensions and margins of the graph
-      const margin = { top: 50, right: 50, bottom: 50, left: 50 },
+      const margin = { top: 0, right: 0, bottom: 50, left: 50 },
         width = 450 - margin.left - margin.right,
         height = 450 - margin.top - margin.bottom;
 
@@ -297,12 +297,8 @@ const CorrelationMatrix = ({ datas, id }) => {
   }, [isLoaded, id]);
 
   return (
-    <div className="w-full">
-      {matrix.length > 0 && (
-        <div>
-          <svg ref={svgRef} />
-        </div>
-      )}
+    <div className="w-fit  items-center justify-center">
+      {matrix.length > 0 && <svg ref={svgRef} />}
     </div>
   );
 };

@@ -194,7 +194,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   }, [infos]);
 
   return (
-    <div className="sidebar h-screen w-500 p-5 bg-gray-600 z-30 fixed">
+    <div className="sidebar h-screen w-600 p-5 bg-gray-600 z-30 fixed">
       <div className="mb-2">
         <button className="close-button" onClick={onButtonClick}>
           &#10005;
@@ -328,7 +328,7 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             id={infos.id}
           ></PollsTempCorrChart>
         </div>
-        <div className="mt-5">
+        <div className="mt-16 mr-0 w-fit items-center justify-center">
           <CorrelationMatrix
             datas={infos.datas}
             id={infos.id}
@@ -347,7 +347,10 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
           )}
         </div>
         <div className="mt-5">
-          <MultipleRegression></MultipleRegression>
+          <MultipleRegression
+            datas={infos.datas}
+            id={infos.id}
+          ></MultipleRegression>
         </div>
       </div>
     </div>

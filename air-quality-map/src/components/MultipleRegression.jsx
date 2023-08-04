@@ -2,109 +2,100 @@ import React, { useState, useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 import * as math from "mathjs";
 
-function MultipleRegression() {
+function MultipleRegression({ datas, id }) {
   const chartRef = useRef(null);
-  const dataX = [
-    {
-      temperatura: 20,
-      co: 100,
-      no2: 50,
-      so2: 30,
-      o3: 40,
-      pm10: 70,
-      pm25: 60,
-    },
-    {
-      temperatura: 22,
-      co: 90,
-      no2: 45,
-      so2: 35,
-      o3: 42,
-      pm10: 68,
-      pm25: 58,
-    },
-    {
-      temperatura: 18,
-      co: 95,
-      no2: 55,
-      so2: 28,
-      o3: 38,
-      pm10: 72,
-      pm25: 62,
-    },
-    {
-      temperatura: 25,
-      co: 85,
-      no2: 60,
-      so2: 25,
-      o3: 36,
-      pm10: 75,
-      pm25: 64,
-    },
-    {
-      temperatura: 23,
-      co: 92,
-      no2: 52,
-      so2: 29,
-      o3: 41,
-      pm10: 69,
-      pm25: 61,
-    },
-    {
-      temperatura: 27,
-      co: 80,
-      no2: 48,
-      so2: 32,
-      o3: 39,
-      pm10: 71,
-      pm25: 59,
-    },
-    {
-      temperatura: 21,
-      co: 97,
-      no2: 53,
-      so2: 31,
-      o3: 37,
-      pm10: 73,
-      pm25: 63,
-    },
-  ];
+  const [nullPolls, setNullPolls] = useState(null);
   const [activePollutants, setActivePollutants] = useState([
-    "co",
-    "no2",
-    "so2",
-    "o3",
-    "pm10",
-    "pm25",
+    "PM10",
+    "PM2.5",
+    "OZONE",
+    "NO2",
+    "CO",
+    "SO2",
   ]);
+  let dataX = [];
+  datas.forEach((day) => {
+    let obj = { temperatura: day.features[id].weather.data.tempReal };
+    Object.keys(day.features[id].properties.measurements).forEach((key) => {
+      obj[key] = day.features[id].properties.measurements[key].fixedValue;
+    });
+    dataX.push(obj);
+  });
+  const colors = {
+    CO: "rgba(255, 165, 0, 1)",
+    SO2: "rgba(128, 0, 128, 1)",
+    NO2: "rgba(255, 255, 0, 1) ",
+    "PM2.5": "rgba(0, 0, 255, 1)",
+    PM10: "red",
+    OZONE: "rgba(0, 128, 0, 1) ",
+  };
+  const indexs = {
+    PM10: 0,
+    "PM2.5": 1,
+    OZONE: 2,
+    NO2: 3,
+    CO: 4,
+    SO2: 5,
+  };
 
   const handlePollutantClick = (pollutant, hidden) => {
-    console.log("1", pollutant);
     if (hidden) {
-      console.log("2a");
       if (activePollutants.includes(pollutant)) {
-        console.log("3a");
         setActivePollutants(
           activePollutants.filter((item) => item !== pollutant)
         );
       }
     } else {
-      console.log("2b", activePollutants);
       if (!activePollutants.includes(pollutant)) {
-        console.log("3b");
-        setActivePollutants(activePollutants.push(pollutant));
+        activePollutants.splice(indexs[pollutant], 0, pollutant);
+        const temp = [...activePollutants];
+        setActivePollutants(temp);
       }
     }
   };
 
   function multipleRegression(data) {
+    const filteredData = data.map((obj) => {
+      const filteredObj = {
+        temperatura: obj["temperatura"], // Aggiungi il campo "temperatura"
+      };
+
+      activePollutants.forEach((key) => {
+        if (obj.hasOwnProperty(key)) {
+          filteredObj[key] = obj[key];
+        }
+      });
+
+      return filteredObj;
+    });
+    const filteredDataWithoutNull = filteredData.map((row) => {
+      const newRow = { ...row };
+      Object.keys(newRow).forEach((key) => {
+        if (newRow[key] === null) {
+          // Calcola la media dei valori non null per la variabile key
+          const nonNullValues = filteredData.filter(
+            (item) => item[key] !== null
+          );
+          const sum = nonNullValues.reduce((acc, item) => acc + item[key], 0);
+          const average = sum / nonNullValues.length;
+
+          newRow[key] = average;
+        }
+      });
+      return newRow;
+    });
     const X = [];
     const Y = [];
-    const pollutants = ["temp", "co", "no2", "so2", "o3", "pm10", "pm25"];
-
+    const pollutants = ["temp", ...activePollutants];
     // Costruisci le matrici X e Y dai dati
-    for (const row of data) {
-      const xRow = [1, row.co, row.no2, row.so2, row.o3, row.pm10, row.pm25];
+    for (const row of filteredDataWithoutNull) {
+      let xRow = [1];
+      Object.keys(row).forEach((key) => {
+        if (key !== "temperatura") {
+          xRow.push(row[key]);
+        }
+      });
+      //const xRow = [1, row.co, row.no2, row.so2, row.o3, row.pm10, row.pm25];
       X.push(xRow);
       Y.push(row.temperatura);
     }
@@ -121,30 +112,42 @@ function MultipleRegression() {
       coefficient: coefficient,
       pollutant: pollutants[index],
     }));
-
     return results;
   }
 
   useEffect(() => {
-    console.log("ap", activePollutants);
+    /* console.log("activePollutants", activePollutants); */
   }, [activePollutants]);
 
   // Creazione del grafico all'interno di useEffect per assicurarci che il componente sia montato
   useEffect(() => {
+    setNullPolls(multipleRegression(dataX)[0].coefficient.toFixed(2));
     const coefficients = multipleRegression(dataX).slice(1);
     const datasets = [];
+    const pollutants = ["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"];
 
-    const pollutants = ["co", "no2", "so2", "o3", "pm10", "pm25"];
+    if (coefficients.length != pollutants.length) {
+      let coefEls = [];
+      coefficients.forEach((el) => {
+        coefEls.push(el.pollutant);
+      });
+      const diffArr = pollutants.filter((item) => !coefEls.includes(item));
+      diffArr.forEach((el) => {
+        coefficients.splice(indexs[el], 0, 0);
+      });
+    }
     for (const pollutant of pollutants) {
+      const isHidden = activePollutants.includes(pollutant);
       const data = coefficients.map((coefficient) =>
         coefficient.pollutant === pollutant ? coefficient.coefficient : 0
       );
       datasets.push({
         label: pollutant,
         data: data,
-        backgroundColor: "rgba(255, 0, 0, 1)",
+        backgroundColor: colors[pollutant],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
+        hidden: isHidden ? false : true,
       });
     }
 
@@ -178,15 +181,14 @@ function MultipleRegression() {
         legend: {
           onClick(evt, item) {
             Chart.defaults.plugins.legend.onClick.call(this, evt, item, this);
-            const value = evt.chart.data.datasets[
-              item.datasetIndex
-            ].data.filter((number) => number !== 0)[0];
-            console.log("hidden", item.hidden);
             handlePollutantClick(item.text, item.hidden);
           },
           labels: {
+            font: {
+              size: 16, // Imposta la dimensione del font della legenda
+            },
             color: "white", // Colore delle etichette della legenda
-            boxWidth: 12,
+            boxWidth: 25,
           },
         },
       },
@@ -202,9 +204,16 @@ function MultipleRegression() {
     return () => {
       myChart.destroy();
     };
-  }, []);
+  }, [activePollutants, id]);
 
-  return <canvas ref={chartRef} />;
+  return (
+    <div>
+      <canvas ref={chartRef} />
+      <h2 className="text-xl text-white">
+        When All Polls = 0 temperature is: {nullPolls}
+      </h2>
+    </div>
+  );
 }
 
 export default MultipleRegression;

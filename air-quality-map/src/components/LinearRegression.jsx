@@ -92,6 +92,9 @@ const LinearRegression = ({ datas, id, pollutant, index }) => {
     plugins: {
       legend: {
         labels: {
+          font: {
+            size: 16, // Imposta la dimensione del font della legenda
+          },
           pointStyleWidth: 20,
           usePointStyle: true,
           generateLabels: (chart) => {
