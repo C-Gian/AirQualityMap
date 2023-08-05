@@ -1,10 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-const CorrelationMatrix = ({ datas, id }) => {
+const CorrelationMatrix = ({ datas, id, colorBlind }) => {
   const [matrix, setMatrix] = useState([]);
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const colors = colorBlind
+    ? [
+        "rgba(255, 255, 255, 1)",
+        "rgba(57, 139, 72, 1)",
+        "rgba(97, 169, 168, 1)",
+        "rgba(202, 55, 49, 1)",
+        "rgba(219, 100, 44, 1)",
+        "rgba(106, 58, 122, 1)",
+      ]
+    : ["white", "#318765"];
 
   // Funzione per calcolare il coefficiente di correlazione di Pearson tra due array di dati
   const calculateCorrelationPearson = (xData, yData) => {
@@ -223,10 +233,7 @@ const CorrelationMatrix = ({ datas, id }) => {
       const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
 
       // Build color scale
-      const myColor = d3
-        .scaleLinear()
-        .range(["white", "#318765"])
-        .domain([-1, 1]);
+      const myColor = d3.scaleLinear().range(colors).domain([-1, 1]);
 
       // Read the data
       const heatMapData = [];
@@ -294,7 +301,7 @@ const CorrelationMatrix = ({ datas, id }) => {
           svg.selectAll(".heatmap-cell-value").remove();
         });
     }
-  }, [isLoaded, id]);
+  }, [isLoaded, id, colorBlind]);
 
   return (
     <div className="w-fit  items-center justify-center">

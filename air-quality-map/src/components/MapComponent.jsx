@@ -10,6 +10,12 @@ function MapComponent({
   buttonPressed,
   onButtonClick,
   sliderValue,
+  nightMode,
+  colorBlind,
+  zoomInClicked,
+  centerClicked,
+  zoomOutClicked,
+  stopButton,
 }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
@@ -18,6 +24,254 @@ function MapComponent({
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
+  const colorsCountry = colorBlind
+    ? [
+        "interpolate",
+        ["linear"],
+        ["get", "countryAQI"],
+        0,
+        "#FFFFFF",
+        16.8,
+        "#00ff04",
+        33.4,
+        "#d3ff00",
+        50,
+        "#ffee00",
+
+        51,
+        "#ffa500",
+        67.4,
+        "#ffab00",
+        83.7,
+        "#ff6b00",
+        100,
+        "#ff0000",
+
+        101,
+        "#e60031",
+        117.4,
+        "#e8006f",
+        133.7,
+        "#ca3367",
+        150,
+        "#a7005b",
+
+        151,
+        "#6f00a4",
+        167.4,
+        "#3b00b3",
+        183.7,
+        "#004dd1",
+        200,
+        "#0071ce",
+
+        201,
+        "#00a2ff",
+        220.8,
+        "#00e0ff",
+        240.6,
+        "#00ffbf",
+        260.4,
+        "#00ff7b",
+        280.2,
+        "#00b34e",
+        300,
+        "#00734e",
+
+        301,
+        "#00494e",
+      ]
+    : [
+        "interpolate",
+        ["linear"],
+        ["get", "countryAQI"],
+        0,
+        "#FFFFFF",
+        16.8,
+        "#00ff04",
+        33.4,
+        "#a2ff00",
+        50,
+        "#bbff00",
+
+        51,
+        "#f6ff00",
+        67.4,
+        "#ffea00",
+        83.7,
+        "#ffd000",
+        100,
+        "#ffb300",
+
+        101,
+        "#ff9900",
+        117.4,
+        "#ff8000",
+        133.7,
+        "#ff6600",
+        150,
+        "#ff4800",
+
+        151,
+        "#ff0000",
+        167.4,
+        "#ff003c",
+        183.7,
+        "#ff0066",
+        200,
+        "#d6006f",
+
+        201,
+        "#db0072",
+        220.8,
+        "#b50460",
+        240.6,
+        "#9e0253",
+        260.4,
+        "#8a0349",
+        280.2,
+        "#7a0140",
+        300,
+        "#690137",
+
+        301,
+        "#57012d",
+      ];
+
+  const colorsStates = colorBlind
+    ? [
+        "interpolate",
+        ["linear"],
+        ["get", "AQI"],
+        0,
+        "#FFFFFF",
+        16.8,
+        "#00ff04",
+        33.4,
+        "#d3ff00",
+        50,
+        "#ffee00",
+
+        51,
+        "#ffa500",
+        67.4,
+        "#ffab00",
+        83.7,
+        "#ff6b00",
+        100,
+        "#ff0000",
+
+        101,
+        "#e60031",
+        117.4,
+        "#e8006f",
+        133.7,
+        "#ca3367",
+        150,
+        "#a7005b",
+
+        151,
+        "#6f00a4",
+        167.4,
+        "#3b00b3",
+        183.7,
+        "#004dd1",
+        200,
+        "#0071ce",
+
+        201,
+        "#00a2ff",
+        220.8,
+        "#00e0ff",
+        240.6,
+        "#00ffbf",
+        260.4,
+        "#00ff7b",
+        280.2,
+        "#00b34e",
+        300,
+        "#00734e",
+
+        301,
+        "#00494e",
+      ]
+    : [
+        "interpolate",
+        ["linear"],
+        ["get", "AQI"],
+        0,
+        "#FFFFFF",
+        16.8,
+        "#00ff04",
+        33.4,
+        "#a2ff00",
+        50,
+        "#bbff00",
+
+        51,
+        "#f6ff00",
+        67.4,
+        "#ffea00",
+        83.7,
+        "#ffd000",
+        100,
+        "#ffb300",
+
+        101,
+        "#ff9900",
+        117.4,
+        "#ff8000",
+        133.7,
+        "#ff6600",
+        150,
+        "#ff4800",
+
+        151,
+        "#ff0000",
+        167.4,
+        "#ff003c",
+        183.7,
+        "#ff0066",
+        200,
+        "#d6006f",
+
+        201,
+        "#db0072",
+        220.8,
+        "#b50460",
+        240.6,
+        "#9e0253",
+        260.4,
+        "#8a0349",
+        280.2,
+        "#7a0140",
+        300,
+        "#690137",
+
+        301,
+        "#57012d",
+      ];
+
+  if (zoomInClicked) {
+    mapRef.current.zoomIn();
+    stopButton();
+  }
+
+  if (centerClicked) {
+    mapRef.current.flyTo({
+      center: [-100.86857959024933, 38.482552979137004],
+      zoom: 3.5, // Livello di zoom desiderato
+      speed: 1.5, // Velocità dell'animazione
+      curve: 1.5, // Curva di accelerazione dell'animazione
+      essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+    });
+    stopButton();
+  }
+
+  if (zoomOutClicked) {
+    mapRef.current.zoomOut();
+    stopButton();
+  }
 
   //close button sidebar actions
   if (buttonPressed) {
@@ -48,7 +302,9 @@ function MapComponent({
     const map = new mapboxgl.Map({
       container: "map",
       //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
-      style: "mapbox://styles/mapbox/dark-v11",
+      style: nightMode
+        ? "mapbox://styles/mapbox/dark-v11"
+        : "mapbox://styles/mapbox/light-v11",
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
       zoom: 2.5,
@@ -84,62 +340,7 @@ function MapComponent({
         maxzoom: zoomThreshold,
         type: "fill",
         paint: {
-          "fill-color": [
-            "interpolate",
-            ["linear"],
-            ["get", "countryAQI"],
-            0,
-            "#FFFFFF",
-            16.8,
-            "#00ff04",
-            33.4,
-            "#a2ff00",
-            50,
-            "#bbff00",
-
-            51,
-            "#f6ff00",
-            67.4,
-            "#ffea00",
-            83.7,
-            "#ffd000",
-            100,
-            "#ffb300",
-
-            101,
-            "#ff9900",
-            117.4,
-            "#ff8000",
-            133.7,
-            "#ff6600",
-            150,
-            "#ff4800",
-
-            151,
-            "#ff0000",
-            167.4,
-            "#ff003c",
-            183.7,
-            "#ff0066",
-            200,
-            "#d6006f",
-
-            201,
-            "#db0072",
-            220.8,
-            "#b50460",
-            240.6,
-            "#9e0253",
-            260.4,
-            "#8a0349",
-            280.2,
-            "#7a0140",
-            300,
-            "#690137",
-
-            301,
-            "#57012d",
-          ],
+          "fill-color": colorsCountry,
           "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -155,62 +356,7 @@ function MapComponent({
         minzoom: zoomThreshold,
         type: "fill",
         paint: {
-          "fill-color": [
-            "interpolate",
-            ["linear"],
-            ["get", "AQI"],
-            0,
-            "#FFFFFF",
-            16.8,
-            "#00ff04",
-            33.4,
-            "#a2ff00",
-            50,
-            "#bbff00",
-
-            51,
-            "#f6ff00",
-            67.4,
-            "#ffea00",
-            83.7,
-            "#ffd000",
-            100,
-            "#ffb300",
-
-            101,
-            "#ff9900",
-            117.4,
-            "#ff8000",
-            133.7,
-            "#ff6600",
-            150,
-            "#ff4800",
-
-            151,
-            "#ff0000",
-            167.4,
-            "#ff003c",
-            183.7,
-            "#ff0066",
-            200,
-            "#d6006f",
-
-            201,
-            "#db0072",
-            220.8,
-            "#b50460",
-            240.6,
-            "#9e0253",
-            260.4,
-            "#8a0349",
-            280.2,
-            "#7a0140",
-            300,
-            "#690137",
-
-            301,
-            "#57012d",
-          ],
+          "fill-color": colorsStates,
           "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -255,7 +401,7 @@ function MapComponent({
         },
       }); */
     });
-  }, []); //dataR added to prevent map to be black at the start, if problems delete this
+  }, [nightMode, colorBlind]); //dataR added to prevent map to be black at the start, if problems delete this
 
   useEffect(() => {
     mapRef.current.on("mousemove", "state-aqi", (e) => {
@@ -414,7 +560,7 @@ function MapComponent({
       }
       hoveredPolygonId = null;
     });
-  }, [dataR]);
+  }, [dataR, nightMode, colorBlind]);
 
   useEffect(() => {
     if (
@@ -426,7 +572,7 @@ function MapComponent({
       return;
     setDataR(datas[sliderValue]);
     mapRef.current.getSource("aqi").setData(datas[sliderValue]);
-  }, [sliderValue]);
+  }, [sliderValue, nightMode, colorBlind]);
 
   return (
     <div>

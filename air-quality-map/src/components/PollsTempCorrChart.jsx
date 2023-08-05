@@ -1,18 +1,27 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-const PollsTempCorrChart = ({ datas, id }) => {
+const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
   let data = [];
-  // Definisci i colori per gli inquinanti
-  const colors = {
-    TEMP: "rgba(255, 255, 255, 1)",
-    CO: "rgba(255, 165, 0, 1)",
-    SO2: "rgba(128, 0, 128, 1)",
-    NO2: "rgba(255, 255, 0, 1) ",
-    "PM2.5": "rgba(0, 0, 255, 1)",
-    PM10: "rgba(255, 0, 0, 1) ",
-    OZONE: "rgba(0, 128, 0, 1) ",
-  };
+  const colors = colorBlind
+    ? {
+        TEMP: "rgba(255, 255, 255, 1)",
+        CO: "rgba(255, 149, 0, 1)",
+        SO2: "rgba(148, 0, 211, 1)",
+        NO2: "rgba(255, 205, 0, 1)",
+        "PM2.5": "rgba(0, 0, 255, 1)",
+        PM10: "rgba(255, 50, 50, 1)",
+        OZONE: "rgba(0, 255, 0, 1)",
+      }
+    : {
+        TEMP: "rgba(255, 255, 255, 1)",
+        CO: "rgba(255, 165, 0, 1)",
+        SO2: "rgba(128, 0, 128, 1)",
+        NO2: "rgba(255, 255, 0, 1) ",
+        "PM2.5": "rgba(0, 0, 255, 1)",
+        PM10: "rgba(255, 0, 0, 1) ",
+        OZONE: "rgba(0, 128, 0, 1) ",
+      };
 
   datas.forEach((day, index) => {
     const dayToGet = day.features.filter((item) => item.id === id)[0];

@@ -16,13 +16,293 @@ const App = () => {
   const [buttonPressed, setButtonPressed] = useState(false);
   const [datas, setDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [nightMode, setNightMode] = useState(true);
+  const [colorBlind, setColorBlind] = useState(false);
+  const [zoomInClicked, setZoomInClicked] = useState(false);
+  const [centerClicked, setCenterClicked] = useState(false);
+  const [zoomOutClicked, setZoomOutClicked] = useState(false);
+
+  const usaStates = [
+    {
+      name: "Alabama",
+      code: "AL",
+      countryCode: "US",
+    },
+    {
+      name: "Alaska",
+      code: "AK",
+      countryCode: "US",
+    },
+    {
+      name: "Arizona",
+      code: "AZ",
+      countryCode: "US",
+    },
+    {
+      name: "Arkansas",
+      code: "AR",
+      countryCode: "US",
+    },
+    {
+      name: "California",
+      code: "CA",
+      countryCode: "US",
+    },
+    {
+      name: "Colorado",
+      code: "CO",
+      countryCode: "US",
+    },
+    {
+      name: "Connecticut",
+      code: "CT",
+      countryCode: "US",
+    },
+    {
+      name: "Delaware",
+      code: "DE",
+      countryCode: "US",
+    },
+    {
+      name: "Florida",
+      code: "FL",
+      countryCode: "US",
+    },
+    {
+      name: "Georgia",
+      code: "GA",
+      countryCode: "US",
+    },
+    {
+      name: "Hawaii",
+      code: "HI",
+      countryCode: "US",
+    },
+    {
+      name: "Idaho",
+      code: "ID",
+      countryCode: "US",
+    },
+    {
+      name: "Illinois",
+      code: "IL",
+      countryCode: "US",
+    },
+    {
+      name: "Indiana",
+      code: "IN",
+      countryCode: "US",
+    },
+    {
+      name: "Iowa",
+      code: "IA",
+      countryCode: "US",
+    },
+    {
+      name: "Kansas",
+      code: "KS",
+      countryCode: "US",
+    },
+    {
+      name: "Kentucky",
+      code: "KY",
+      countryCode: "US",
+    },
+    {
+      name: "Louisiana",
+      code: "LA",
+      countryCode: "US",
+    },
+    {
+      name: "Maine",
+      code: "ME",
+      countryCode: "US",
+    },
+    {
+      name: "Maryland",
+      code: "MD",
+      countryCode: "US",
+    },
+    {
+      name: "Massachusetts",
+      code: "MA",
+      countryCode: "US",
+    },
+    {
+      name: "Michigan",
+      code: "MI",
+      countryCode: "US",
+    },
+    {
+      name: "Minnesota",
+      code: "MN",
+      countryCode: "US",
+    },
+    {
+      name: "Mississippi",
+      code: "MS",
+      countryCode: "US",
+    },
+    {
+      name: "Missouri",
+      code: "MO",
+      countryCode: "US",
+    },
+    {
+      name: "Montana",
+      code: "MT",
+      countryCode: "US",
+    },
+    {
+      name: "Nebraska",
+      code: "NE",
+      countryCode: "US",
+    },
+    {
+      name: "Nevada",
+      code: "NV",
+      countryCode: "US",
+    },
+    {
+      name: "New Hampshire",
+      code: "NH",
+      countryCode: "US",
+    },
+    {
+      name: "New Jersey",
+      code: "NJ",
+      countryCode: "US",
+    },
+    {
+      name: "New Mexico",
+      code: "NM",
+      countryCode: "US",
+    },
+    {
+      name: "New York",
+      code: "NY",
+      countryCode: "US",
+    },
+    {
+      name: "North Carolina",
+      code: "NC",
+      countryCode: "US",
+    },
+    {
+      name: "North Dakota",
+      code: "ND",
+      countryCode: "US",
+    },
+    {
+      name: "Ohio",
+      code: "OH",
+      countryCode: "US",
+    },
+    {
+      name: "Oklahoma",
+      code: "OK",
+      countryCode: "US",
+    },
+    {
+      name: "Oregon",
+      code: "OR",
+      countryCode: "US",
+    },
+    {
+      name: "Pennsylvania",
+      code: "PA",
+      countryCode: "US",
+    },
+    {
+      name: "Rhode Island",
+      code: "RI",
+      countryCode: "US",
+    },
+    {
+      name: "South Carolina",
+      code: "SC",
+      countryCode: "US",
+    },
+    {
+      name: "South Dakota",
+      code: "SD",
+      countryCode: "US",
+    },
+    {
+      name: "Tennessee",
+      code: "TN",
+      countryCode: "US",
+    },
+    {
+      name: "Texas",
+      code: "TX",
+      countryCode: "US",
+    },
+    {
+      name: "Utah",
+      code: "UT",
+      countryCode: "US",
+    },
+    {
+      name: "Vermont",
+      code: "VT",
+      countryCode: "US",
+    },
+    {
+      name: "Virginia",
+      code: "VA",
+      countryCode: "US",
+    },
+    {
+      name: "Washington",
+      code: "WA",
+      countryCode: "US",
+    },
+    {
+      name: "West Virginia",
+      code: "WV",
+      countryCode: "US",
+    },
+    {
+      name: "Wisconsin",
+      code: "WI",
+      countryCode: "US",
+    },
+    {
+      name: "Wyoming",
+      code: "WY",
+      countryCode: "US",
+    },
+  ];
+
+  const handleStopButton = () => {
+    setZoomInClicked(false);
+    setCenterClicked(false);
+    setZoomOutClicked(false);
+  };
+
+  const handleZoomInClick = () => {
+    setZoomInClicked(true);
+  };
+
+  const handleCenterClick = () => {
+    setCenterClicked(true);
+  };
+
+  const handleZoomOutClick = () => {
+    setZoomOutClicked(true);
+  };
+
+  const handleColorBlindClick = () => {
+    setColorBlind(!colorBlind);
+  };
+
+  const handleNightModeClick = () => {
+    setNightMode(!nightMode);
+  };
 
   const handleButtonClick = () => {
-    if (buttonPressed) {
-      setButtonPressed(false);
-    } else {
-      setButtonPressed(true);
-    }
+    setButtonPressed(!buttonPressed);
     setStateInfo(null);
   };
 
@@ -328,9 +608,6 @@ const App = () => {
             ]);
             for (let i = 0; i < dataR.features.length; i++) {
               const feature = dataR.features[i];
-              if (feature.properties.name == "Oregon") {
-              }
-
               feature.id = i;
               feature.lastUpdatedMe = formattedTime().toString(); //??
               const typeF = feature.geometry.type;
@@ -486,13 +763,31 @@ const App = () => {
               stateClicked={stateClicked}
               buttonPressed={buttonPressed}
               onButtonClick={handleButtonClick}
+              nightMode={nightMode}
+              colorBlind={colorBlind}
+              zoomInClicked={zoomInClicked}
+              centerClicked={centerClicked}
+              zoomOutClicked={zoomOutClicked}
+              stopButton={handleStopButton}
             ></MapComponent>
           )}
           {stateInfo && (
-            <Sidebar infos={stateInfo} onButtonClick={handleButtonClick} />
+            <Sidebar
+              infos={stateInfo}
+              onButtonClick={handleButtonClick}
+              nightMode={nightMode}
+              colorBlind={colorBlind}
+            />
           )}
-          <Legend></Legend>
-          <Toolbar></Toolbar>
+          <Legend nightMode={nightMode} colorBlind={colorBlind}></Legend>
+          <Toolbar
+            nightMode={nightMode}
+            onNightModeClick={handleNightModeClick}
+            onColorBlindClick={handleColorBlindClick}
+            onColorZoomInClick={handleZoomInClick}
+            onColorCenterClick={handleCenterClick}
+            onColorZoomOutClick={handleZoomOutClick}
+          ></Toolbar>
         </div>
       )}
     </div>

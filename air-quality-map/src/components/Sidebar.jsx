@@ -11,8 +11,15 @@ import CorrelationMatrix from "./CorrelationMatrix";
 import { linear } from "stats.js";
 import LinearRegression from "./LinearRegression";
 import MultipleRegression from "./MultipleRegression";
+import CountryFlag from "react-country-flag";
 
-const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
+const Sidebar = ({
+  infos,
+  onButtonClick,
+  setSliderValue,
+  nightMode,
+  colorBlind,
+}) => {
   const [name, setName] = useState("");
   const [AQI, setAQI] = useState("");
   const [lastUpdate, setLastUpdate] = useState("");
@@ -26,46 +33,17 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   const [cloud, setCloud] = useState(null);
   const [humidity, setHumidity] = useState(null);
   const sliderValue = useSelector((state) => state.sliderValue);
-  let countryPolluttans = {
-    CO: {
-      totalValue: 0,
-      times: 0,
-      fixedValue: 0,
-    },
-    NO2: {
-      totalValue: 0,
-      times: 0,
-      fixedValue: 0,
-    },
-    OZONE: {
-      totalValue: 0,
-      times: 0,
-      fixedValue: 0,
-    },
-    "PM2.5": {
-      totalValue: 0,
-      times: 0,
-      fixedValue: 0,
-    },
-    PM10: {
-      totalValue: 0,
-      times: 0,
-      fixedValue: 0,
-    },
-    SO2: {
-      totalValue: 0,
-      times: 0,
-      fixedValue: 0,
-    },
-  };
-  const colors = [
-    "#00D900",
-    "#B5B500",
-    "#F57300",
-    "#F50000",
-    "#83328C",
-    "#730017",
-  ];
+
+  const colors = colorBlind
+    ? [
+        "rgba(0, 147, 0, 1)", // Verde
+        "rgba(181, 140, 0, 1)", // Giallo
+        "rgba(245, 116, 0, 1)", // Arancione
+        "rgba(245, 0, 0, 1)", // Rosso
+        "rgba(131, 52, 140, 1)", // Viola
+        "rgba(115, 0, 23, 1)",
+      ]
+    : ["#00D900", "#B5B500", "#F57300", "#F50000", "#83328C", "#730017"];
 
   function getColoreByValore(value) {
     if (value >= 0 && value <= 51) {
@@ -92,21 +70,23 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
 
   // Funzione per calcolare il colore associato al valore in base all'interpolazione lineare
   const getColorForValue = (value) => {
-    const scale = d3
-      .scaleLinear()
-      .domain([0, 301])
-      .range([0, colors.length - 1]);
-    const index = scale(value);
-    const t = index % 1; // Frazione dell'indice
-    const colorInterpolator = d3.interpolate(
-      colors[Math.floor(index)],
-      colors[Math.ceil(index)]
-    );
-    const color = colorInterpolator(t);
-    // Ora aumenta la luminosità del colore
-    const brighterColor = d3.color(color).brighter(1).toString();
-
-    return brighterColor;
+    if (value && value > 0) {
+      const scale = d3
+        .scaleLinear()
+        .domain([0, 301])
+        .range([0, colors.length - 1]);
+      const index = scale(value);
+      const t = index % 1; // Frazione dell'indice
+      const colorInterpolator = d3.interpolate(
+        colors[Math.floor(index)],
+        colors[Math.ceil(index)]
+      );
+      const color = colorInterpolator(t);
+      // Ora aumenta la luminosità del colore
+      const brighterColor = d3.color(color).brighter(1).toString();
+      return brighterColor;
+    }
+    return "rgba(0,0,0,0)";
   };
 
   const handleChange = (value) => {
@@ -116,31 +96,42 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
   };
 
   useEffect(() => {
+    let colorToSet = null;
     if (!infos.isState) {
       setName("USA");
       setDataR(infos.datas[sliderValue].features[infos.id]);
       setAQI(dataR.properties.countryAQI);
       setLastUpdate(dataR.lastUpdatedMe);
-      infos.datas[sliderValue].features.forEach((feature) => {
-        Object.keys(feature.properties.measurements).forEach((poll) => {
-          if (feature.properties.measurements[poll].fixedValue != null) {
-            countryPolluttans[poll].totalValue +=
-              feature.properties.measurements[poll].fixedValue;
-            countryPolluttans[poll].times += 1;
-          }
-        });
-      });
-      let temp = [];
-      Object.keys(countryPolluttans).forEach((key) => {
-        countryPolluttans[key].fixedValue =
-          countryPolluttans[key].totalValue / countryPolluttans[key].times;
-        temp.push(countryPolluttans[key].fixedValue);
-      });
-      setValues(temp);
       setTempReal(dataR.properties.countryTemp);
       setHumidity(dataR.properties.countryHum);
       setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
       setAirQualityColor(getColoreByValore(dataR.properties.countryAQI)[1]);
+      if (!dataR.properties.countryAQI) {
+        colorToSet = "#00000000";
+      } else {
+        if (dataR.properties.countryAQI >= 301) {
+          ("#4b0b2c");
+        } else {
+          let stateColorArray = getColorForValue(dataR.properties.countryAQI);
+          const stateColorArrayRGB = stateColorArray
+            .replace("rgb(", "")
+            .replace(")", "")
+            .split(",");
+          const stateColorObjectRGB = {
+            r: Number(stateColorArrayRGB[0]),
+            g: Number(stateColorArrayRGB[1]),
+            b: Number(stateColorArrayRGB[2]),
+          };
+
+          const r = stateColorObjectRGB.r;
+          const g = stateColorObjectRGB.g;
+          const b = stateColorObjectRGB.b;
+          const hc = `#${r.toString(16).padStart(2, "0")}${g
+            .toString(16)
+            .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+          colorToSet = hc;
+        }
+      }
     } else {
       /* console.log("all data", infos.datas);
       console.log("today data", dataR); */
@@ -158,48 +149,76 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
       setHumidity(dataR.weather.data.humidity);
       setAirQualityText(getColoreByValore(dataR.properties.AQI)[0]);
       setAirQualityColor(getColoreByValore(dataR.properties.AQI)[1]);
-    }
-
-    if (dataR.properties.AQI >= 301 || dataR.properties.countryAQI >= 301) {
-      setHexColor("#4b0b2c");
-    } else {
-      let stateColorArray = null;
-      if (infos.isState) {
-        stateColorArray = getColorForValue(dataR.properties.AQI);
+      if (!dataR.properties.AQI) {
+        colorToSet = "#00000000";
       } else {
-        stateColorArray = getColorForValue(dataR.properties.countryAQI);
-      }
-      const stateColorArrayRGB = stateColorArray
-        .replace("rgb(", "")
-        .replace(")", "")
-        .split(",");
-      const stateColorObjectRGB = {
-        r: Number(stateColorArrayRGB[0]),
-        g: Number(stateColorArrayRGB[1]),
-        b: Number(stateColorArrayRGB[2]),
-      };
+        if (dataR.properties.AQI >= 301) {
+          ("#4b0b2c");
+        } else {
+          let stateColorArray = getColorForValue(dataR.properties.AQI);
+          const stateColorArrayRGB = stateColorArray
+            .replace("rgb(", "")
+            .replace(")", "")
+            .split(",");
+          const stateColorObjectRGB = {
+            r: Number(stateColorArrayRGB[0]),
+            g: Number(stateColorArrayRGB[1]),
+            b: Number(stateColorArrayRGB[2]),
+          };
 
-      const r = stateColorObjectRGB.r;
-      const g = stateColorObjectRGB.g;
-      const b = stateColorObjectRGB.b;
-      const hc = `#${r.toString(16).padStart(2, "0")}${g
-        .toString(16)
-        .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
-      setHexColor(hc);
+          const r = stateColorObjectRGB.r;
+          const g = stateColorObjectRGB.g;
+          const b = stateColorObjectRGB.b;
+          const hc = `#${r.toString(16).padStart(2, "0")}${g
+            .toString(16)
+            .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+          colorToSet = hc;
+        }
+      }
     }
-  }, [dataR]);
+    setHexColor(colorToSet);
+  }, [dataR, nightMode, colorBlind]);
 
   useEffect(() => {
     setDataR(infos.datas[sliderValue].features[infos.id]);
-  }, [infos]);
+  }, [infos, nightMode, colorBlind]);
 
   return (
-    <div className="sidebar h-screen w-600 p-5 bg-gray-600 z-30 fixed">
+    <div
+      className="sidebar h-screen w-600 p-5 z-30 fixed"
+      style={{
+        backgroundColor: nightMode
+          ? "rgba(75 ,85 ,99, 0.7)"
+          : "rgba(75 ,85 ,99, 1)",
+      }}
+    >
       <div className="mb-2">
         <button className="close-button" onClick={onButtonClick}>
           &#10005;
         </button>
         <div className="flex items-center">
+          <CountryFlag
+            className="m-5"
+            countryCode={
+              infos.isState
+                ? dataR.properties.code
+                : dataR.properties.countryCode
+            }
+            svg
+            style={{
+              width: "50px", // Imposta la larghezza desiderata per la bandiera
+              height: "auto",
+            }}
+          />
+          {/* <WorldFlag
+            className="m-5"
+            code={
+              infos.isState
+                ? dataR.properties.code
+                : dataR.properties.countryCode
+            }
+            style={{ width: 50, height: 25 }}
+          /> */}
           <span className="text-4xl text-white">{name}</span>
         </div>
       </div>
@@ -213,15 +232,17 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
               Air Quality Index (AQI):
             </h2>
             <div
-              className="rounded-2xl p-3 flex items-center justify-center "
+              className="rounded-2xl p-3 flex items-center justify-center whitespace-nowrap"
               style={{
                 backgroundColor: hexColor,
-                width: "60px",
+                width: Math.floor(AQI * 100) / 100 != 0 ? "60px" : "100px",
                 height: "60px",
               }}
             >
-              <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle">
-                {Math.floor(AQI * 100) / 100}
+              <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle whitespace-nowrap">
+                {Math.floor(AQI * 100) / 100 != 0
+                  ? Math.floor(AQI * 100) / 100
+                  : "No Data"}
               </h2>
             </div>
           </div>
@@ -229,12 +250,18 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             <h2 className="text-white text-xl items-center mr-5">
               Last Update:
             </h2>
-            <span className="text-l text-white">{lastUpdate}</span>
+            <span className="text-l text-white">
+              {lastUpdate ? lastUpdate : "No Data"}
+            </span>
           </div>
         </div>
-        <div>
-          <PollsLevelsChart datas={dataR}></PollsLevelsChart>
-        </div>
+        <PollsLevelsChart
+          dataR={dataR}
+          allDays={infos.datas}
+          isState={infos.isState}
+          sliderValue={sliderValue}
+          colorBlind={colorBlind}
+        ></PollsLevelsChart>
         <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
           <h2 className="text-white text-xl font-semibold mb-2">
             7 days past data
@@ -321,37 +348,44 @@ const Sidebar = ({ infos, onButtonClick, setSliderValue }) => {
             </div>
           )}
         </div>
-        {/* <div className="bg-black h-500 w-full mt-10 "></div> */}
-        <div className="mt-5">
-          <PollsTempCorrChart
-            datas={infos.datas}
-            id={infos.id}
-          ></PollsTempCorrChart>
-        </div>
-        <div className="mt-16 mr-0 w-fit items-center justify-center">
-          <CorrelationMatrix
-            datas={infos.datas}
-            id={infos.id}
-          ></CorrelationMatrix>
-        </div>
-        <div className="pl-5 pr-5 flex-col">
-          {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
-            (pollutant, index) => (
-              <LinearRegression
+        {infos.isState && (
+          <div>
+            <div className="mt-5">
+              <PollsTempCorrChart
                 datas={infos.datas}
                 id={infos.id}
-                pollutant={pollutant}
-                key={index}
-              />
-            )
-          )}
-        </div>
-        <div className="mt-5">
-          <MultipleRegression
-            datas={infos.datas}
-            id={infos.id}
-          ></MultipleRegression>
-        </div>
+                colorBlind={colorBlind}
+              ></PollsTempCorrChart>
+            </div>
+            <div className="mt-16 mr-0 w-fit items-center justify-center">
+              <CorrelationMatrix
+                datas={infos.datas}
+                id={infos.id}
+                colorBlind={colorBlind}
+              ></CorrelationMatrix>
+            </div>
+            <div className="pl-5 pr-5 flex-col">
+              {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
+                (pollutant, index) => (
+                  <LinearRegression
+                    datas={infos.datas}
+                    id={infos.id}
+                    pollutant={pollutant}
+                    key={index}
+                    colorBlind={colorBlind}
+                  />
+                )
+              )}
+            </div>
+            <div className="mt-5">
+              <MultipleRegression
+                datas={infos.datas}
+                id={infos.id}
+                colorBlind={colorBlind}
+              ></MultipleRegression>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

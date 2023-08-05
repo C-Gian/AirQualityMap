@@ -165,3 +165,34 @@ body {
 .heatmap-cell-value {
   pointer-events: none;
 }
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-btn {
+  border: none;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 150px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: -170px; /* Posizione a sinistra del bottone */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,12 +1,12 @@
 import React from "react";
 
-function PopupLegend({ position }) {
-  const startColor = "#00D900";
-  const mid1Color = "#B5B500";
-  const mid2Color = "#F57300";
-  const mid3Color = "#F50000";
-  const mid4Color = "#83328C";
-  const endColor = "#730017";
+function PopupLegend({ position, colorBlind }) {
+  const startColor = colorBlind ? "rgba(0, 147, 0, 1)" : "#00D900";
+  const mid1Color = colorBlind ? "rgba(181, 140, 0, 1)" : "#B5B500";
+  const mid2Color = colorBlind ? "rgba(245, 116, 0, 1)" : "#F57300";
+  const mid3Color = colorBlind ? "rgba(245, 0, 0, 1)" : "#F50000";
+  const mid4Color = colorBlind ? "rgba(131, 52, 140, 1)" : "#83328C";
+  const endColor = colorBlind ? "rgba(115, 0, 23, 1)" : "#730017";
   // Ottieni il colore associato al valore fornito
   return (
     <div

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PopupLegend from "./PopupLegend";
 import ReactDOM from "react-dom";
 
-function Legend() {
+function Legend({ nightMode, colorBlind }) {
   const [showPopup, setShowPopup] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -18,19 +18,24 @@ function Legend() {
     setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
-  const startColor = "#00D900";
-  const mid1Color = "#B5B500";
-  const mid2Color = "#F57300";
-  const mid3Color = "#F50000";
-  const mid4Color = "#83328C";
-  const endColor = "#730017";
+  const startColor = colorBlind ? "rgba(0, 147, 0, 1)" : "#00D900";
+  const mid1Color = colorBlind ? "rgba(181, 140, 0, 1)" : "#B5B500";
+  const mid2Color = colorBlind ? "rgba(245, 116, 0, 1)" : "#F57300";
+  const mid3Color = colorBlind ? "rgba(245, 0, 0, 1)" : "#F50000";
+  const mid4Color = colorBlind ? "rgba(131, 52, 140, 1)" : "#83328C";
+  const endColor = colorBlind ? "rgba(115, 0, 23, 1)" : "#730017";
 
   return (
     <div
-      className="m-3 p-3 h-fit w-250 bottom-0 right-0 bg-gray-700 shadow absolute z-99 cursor-default overflow-hidden"
+      className="m-3 p-3 h-fit w-250 bottom-0 right-0 shadow absolute z-99 cursor-default overflow-hidden"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
+      style={{
+        backgroundColor: nightMode
+          ? "rgba(55 ,65 ,81, 0.5)"
+          : "rgba(55 ,65 ,81, 1)",
+      }}
     >
       <h2 className="text-n text-white font-semibold">Valori AQI</h2>
       <div
@@ -49,7 +54,7 @@ function Legend() {
       </div>
       {showPopup &&
         ReactDOM.createPortal(
-          <PopupLegend position={mousePosition} />,
+          <PopupLegend position={mousePosition} colorBlind={colorBlind} />,
           document.getElementById("popup-portal")
         )}
     </div>

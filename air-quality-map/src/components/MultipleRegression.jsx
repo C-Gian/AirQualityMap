@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 import * as math from "mathjs";
 
-function MultipleRegression({ datas, id }) {
+function MultipleRegression({ datas, id, colorBlind }) {
   const chartRef = useRef(null);
   const [nullPolls, setNullPolls] = useState(null);
   const [activePollutants, setActivePollutants] = useState([
@@ -21,14 +21,23 @@ function MultipleRegression({ datas, id }) {
     });
     dataX.push(obj);
   });
-  const colors = {
-    CO: "rgba(255, 165, 0, 1)",
-    SO2: "rgba(128, 0, 128, 1)",
-    NO2: "rgba(255, 255, 0, 1) ",
-    "PM2.5": "rgba(0, 0, 255, 1)",
-    PM10: "red",
-    OZONE: "rgba(0, 128, 0, 1) ",
-  };
+  const colors = colorBlind
+    ? {
+        CO: "rgba(255, 149, 0, 1)",
+        SO2: "rgba(148, 0, 211, 1)",
+        NO2: "rgba(255, 205, 0, 1)",
+        "PM2.5": "rgba(0, 0, 255, 1)",
+        PM10: "rgba(255, 50, 50, 1)",
+        OZONE: "rgba(0, 255, 0, 1)",
+      }
+    : {
+        CO: "rgba(255, 165, 0, 1)",
+        SO2: "rgba(128, 0, 128, 1)",
+        NO2: "rgba(255, 255, 0, 1) ",
+        "PM2.5": "rgba(0, 0, 255, 1)",
+        PM10: "rgba(255, 0, 0, 1) ",
+        OZONE: "rgba(0, 128, 0, 1) ",
+      };
   const indexs = {
     PM10: 0,
     "PM2.5": 1,
@@ -115,10 +124,6 @@ function MultipleRegression({ datas, id }) {
     return results;
   }
 
-  useEffect(() => {
-    /* console.log("activePollutants", activePollutants); */
-  }, [activePollutants]);
-
   // Creazione del grafico all'interno di useEffect per assicurarci che il componente sia montato
   useEffect(() => {
     setNullPolls(multipleRegression(dataX)[0].coefficient.toFixed(2));
@@ -204,7 +209,7 @@ function MultipleRegression({ datas, id }) {
     return () => {
       myChart.destroy();
     };
-  }, [activePollutants, id]);
+  }, [activePollutants, id, colorBlind]);
 
   return (
     <div>

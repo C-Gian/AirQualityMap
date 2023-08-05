@@ -1,12 +1,81 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
-function PollsLevelsChart({ datas }) {
-  const labels = Object.keys(datas.properties.measurements);
-  const values = Object.values(datas.properties.measurements).map(
-    (item) => item.fixedValue
-  );
+function PollsLevelsChart({
+  dataR,
+  allDays,
+  isState,
+  sliderValue,
+  colorBlind,
+}) {
+  const labels = Object.keys(dataR.properties.measurements);
+  let values = [];
+  if (isState) {
+    values = Object.values(dataR.properties.measurements).map(
+      (item) => item.fixedValue
+    );
+  } else {
+    let countryPolluttans = {
+      CO: {
+        totalValue: 0,
+        times: 0,
+        fixedValue: 0,
+      },
+      NO2: {
+        totalValue: 0,
+        times: 0,
+        fixedValue: 0,
+      },
+      OZONE: {
+        totalValue: 0,
+        times: 0,
+        fixedValue: 0,
+      },
+      "PM2.5": {
+        totalValue: 0,
+        times: 0,
+        fixedValue: 0,
+      },
+      PM10: {
+        totalValue: 0,
+        times: 0,
+        fixedValue: 0,
+      },
+      SO2: {
+        totalValue: 0,
+        times: 0,
+        fixedValue: 0,
+      },
+    };
+    allDays[sliderValue].features.forEach((feature) => {
+      Object.keys(feature.properties.measurements).forEach((poll) => {
+        if (feature.properties.measurements[poll].fixedValue != null) {
+          countryPolluttans[poll].totalValue +=
+            feature.properties.measurements[poll].fixedValue;
+          countryPolluttans[poll].times += 1;
+        }
+      });
+    });
+    let temp = [];
+    Object.keys(countryPolluttans).forEach((key) => {
+      countryPolluttans[key].fixedValue =
+        countryPolluttans[key].totalValue / countryPolluttans[key].times;
+      temp.push(countryPolluttans[key].fixedValue);
+    });
+    values = [...temp];
+  }
   const chartRef = useRef(null);
+  const colors = colorBlind
+    ? [
+        "rgba(255, 50, 50, 1)",
+        "rgba(0, 0, 255, 1)",
+        "rgba(0, 255, 0, 1)",
+        "rgba(255, 205, 0, 1)",
+        "rgba(255, 149, 0, 1)",
+        "rgba(148, 0, 211, 1)",
+      ]
+    : ["red", "blue", "green", "yellow", "orange", "purple"];
+
   // Dati per il grafico
   const data = {
     labels: labels,
@@ -14,7 +83,7 @@ function PollsLevelsChart({ datas }) {
       {
         label: "Polluttans levels",
         data: values,
-        backgroundColor: ["red", "blue", "green", "yellow", "orange", "purple"], // Colore delle barre
+        backgroundColor: colors, // Colore delle barre
       },
     ],
   };
