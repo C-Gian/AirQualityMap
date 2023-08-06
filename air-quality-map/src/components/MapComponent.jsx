@@ -307,7 +307,7 @@ function MapComponent({
         : "mapbox://styles/mapbox/light-v11",
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
-      zoom: 2.5,
+      zoom: 1,
       attributionControl: false,
       logoPosition: "top-left",
     });
@@ -575,7 +575,7 @@ function MapComponent({
   }, [sliderValue, nightMode, colorBlind]);
 
   return (
-    <div>
+    <div style={{ zIndex: 0 }}>
       <div id="map"></div>
       {showPopup && (
         <Popup

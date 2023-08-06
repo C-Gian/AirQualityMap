@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.3",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^1.9.5",
     "@turf/turf": "^6.5.0",
@@ -38,9 +41,11 @@
     "react-dom": "^18.2.0",
     "react-heatmap-grid": "^0.9.0",
     "react-map-gl": "^7.1.2",
+    "react-native-switch-selector": "^2.3.0",
     "react-plotly.js": "^2.6.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.1",
+    "react-switch-selector": "^2.2.1",
     "react-world-flags": "^1.5.1",
     "redux": "^4.2.1",
     "regression": "^2.0.1",

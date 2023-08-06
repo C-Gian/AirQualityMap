@@ -1,7 +1,8 @@
 import React from "react";
+import SwitchButton from "./SwitchButton";
 
 function AnalysisPage() {
-  return <div>AnalysisPage</div>;
+  return <div></div>;
 }
 
 export default AnalysisPage;

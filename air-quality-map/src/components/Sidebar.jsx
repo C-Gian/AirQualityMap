@@ -184,6 +184,7 @@ const Sidebar = ({
     <div
       className="sidebar p-5 h-screen w-600 z-30 fixed"
       style={{
+        top: "50px",
         backgroundColor: nightMode
           ? "rgba(75 ,85 ,99, 0.7)"
           : "rgba(75 ,85 ,99, 1)",
@@ -281,7 +282,7 @@ const Sidebar = ({
               />
             </div>
           </div>
-          <div className="h-fit w-full mt-10 flex-col justify-between pl-5 pr-5">
+          <div className="h-fit w-full mt-10 flex-col justify-between">
             <div className="flex justify-between">
               <h2 className="text-xl text-white mr-5">Air Quality: </h2>
               <h2 className="text-xl" style={{ color: hexColor }}>
@@ -344,14 +345,14 @@ const Sidebar = ({
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
               </div>
-              <div className="mt-16 mr-0 w-fit items-center justify-center">
+              <div className="mt-16 w-fit items-center justify-center">
                 <CorrelationMatrix
                   datas={infos.datas}
                   id={infos.id}
                   colorBlind={colorBlind}
                 ></CorrelationMatrix>
               </div>
-              <div className="pl-5 pr-5 flex-col">
+              <div className="flex-col">
                 {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
                   (pollutant, index) => (
                     <LinearRegression

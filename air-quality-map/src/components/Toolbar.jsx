@@ -10,8 +10,9 @@ function Toolbar({
 }) {
   return (
     <div
-      className="flex-col mt-5 mr-5 absolute w-fit p-3 h-fit rounded-2xl right-0 items-center justify-center"
+      className="flex-col mr-5 absolute w-fit p-3 h-fit rounded-2xl right-0 items-center justify-center"
       style={{
+        marginTop: "100px",
         backgroundColor: nightMode
           ? "rgba(55 ,65 ,81, 0.5)"
           : "rgba(128, 128, 128, 0.5)",

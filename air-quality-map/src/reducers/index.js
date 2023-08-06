@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 
 const initialState = {
   sliderValue: 0,
-  // Altri stati globali se necessario
+  switchState: false,
 };
 
 const sliderValueReducer = (state = initialState.sliderValue, action) => {
@@ -13,9 +13,17 @@ const sliderValueReducer = (state = initialState.sliderValue, action) => {
   return state;
 };
 
+// reducers.js
+const switchStateReducer = (state = initialState.switchState, action) => {
+  if (action.type === "TOGGLE_SWITCH") {
+    return !state; // Toggle the switch state
+  }
+  return state;
+};
+
 const rootReducer = combineReducers({
   sliderValue: sliderValueReducer,
-  // Altri riduttori della tua app, se presenti
+  switchState: switchStateReducer,
 });
 
 export default rootReducer;
