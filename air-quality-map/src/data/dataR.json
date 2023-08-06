@@ -12,7 +12,7 @@
         "weather": {},
         "AQI": 61,
         "name": "Alabama",
-        "code": "AL",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -111,7 +111,7 @@
         "weather": {},
         "AQI": 24,
         "name": "Alaska",
-        "code": "AK",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -1405,7 +1405,7 @@
         "weather": {},
         "AQI": 60,
         "name": "Arizona",
-        "code": "AZ",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -1503,7 +1503,7 @@
         "weather": {},
         "AQI": 48,
         "name": "Arkansas",
-        "code": "AR",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -1605,7 +1605,7 @@
         "weather": {},
         "AQI": 182,
         "name": "California",
-        "code": "CA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -1764,7 +1764,7 @@
         "weather": {},
         "AQI": 55,
         "name": "Colorado",
-        "code": "CO",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -1846,7 +1846,7 @@
         "weather": {},
         "AQI": 52,
         "name": "Connecticut",
-        "code": "CT",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -1928,7 +1928,7 @@
         "weather": {},
         "AQI": 24,
         "name": "Delaware",
-        "code": "DE",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2006,7 +2006,7 @@
         "weather": {},
         "AQI": 61,
         "name": "Florida",
-        "code": "FL",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2150,7 +2150,7 @@
         "weather": {},
         "AQI": 43,
         "name": "Georgia",
-        "code": "GA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2267,7 +2267,7 @@
         "weather": {},
         "AQI": null,
         "name": "Hawaii",
-        "code": "HI",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2397,7 +2397,7 @@
         "weather": {},
         "AQI": 39,
         "name": "Idaho",
-        "code": "ID",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2529,7 +2529,7 @@
         "weather": {},
         "AQI": 157,
         "name": "Illinois",
-        "code": "IL",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2661,7 +2661,7 @@
         "weather": {},
         "AQI": 140,
         "name": "Indiana",
-        "code": "IN",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2773,7 +2773,7 @@
         "weather": {},
         "AQI": 163,
         "name": "Iowa",
-        "code": "IA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2889,7 +2889,7 @@
         "weather": {},
         "AQI": 84,
         "name": "Kansas",
-        "code": "KS",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -2968,7 +2968,7 @@
         "weather": {},
         "AQI": 56,
         "name": "Kentucky",
-        "code": "KY",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3109,7 +3109,7 @@
         "weather": {},
         "AQI": 82,
         "name": "Louisiana",
-        "code": "LA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3250,7 +3250,7 @@
         "weather": {},
         "AQI": 52,
         "name": "Maine",
-        "code": "ME",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3382,7 +3382,7 @@
         "weather": {},
         "AQI": 40,
         "name": "Maryland",
-        "code": "MD",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3518,7 +3518,7 @@
         "weather": {},
         "AQI": 35,
         "name": "Massachusetts",
-        "code": "MA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3618,7 +3618,7 @@
         "weather": {},
         "AQI": 97,
         "name": "Michigan",
-        "code": "MI",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3850,7 +3850,7 @@
         "weather": {},
         "AQI": 155,
         "name": "Minnesota",
-        "code": "MN",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -3999,7 +3999,7 @@
         "weather": {},
         "AQI": 64,
         "name": "Mississippi",
-        "code": "MS",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4111,7 +4111,7 @@
         "weather": {},
         "AQI": 109,
         "name": "Missouri",
-        "code": "MO",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4230,7 +4230,6 @@
         "weather": {},
         "AQI": 176,
         "name": "Montana",
-        "code": "MT",
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4348,7 +4347,7 @@
         "weather": {},
         "AQI": 137,
         "name": "Nebraska",
-        "code": "NE",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4443,7 +4442,7 @@
         "weather": {},
         "AQI": 43,
         "name": "Nevada",
-        "code": "NV",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4530,7 +4529,7 @@
         "weather": {},
         "AQI": 33,
         "name": "New Hampshire",
-        "code": "NH",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4624,7 +4623,7 @@
         "weather": {},
         "AQI": 50,
         "name": "New Jersey",
-        "code": "NJ",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4721,7 +4720,7 @@
         "weather": {},
         "AQI": 29,
         "name": "New Mexico",
-        "code": "NM",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4804,7 +4803,7 @@
         "weather": {},
         "AQI": 35,
         "name": "New York",
-        "code": "NY",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -4938,7 +4937,7 @@
         "weather": {},
         "AQI": 54,
         "name": "North Carolina",
-        "code": "NC",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5065,7 +5064,7 @@
         "weather": {},
         "AQI": 172,
         "name": "North Dakota",
-        "code": "ND",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5147,7 +5146,7 @@
         "weather": {},
         "AQI": 55,
         "name": "Ohio",
-        "code": "OH",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5260,7 +5259,7 @@
         "weather": {},
         "AQI": 58,
         "name": "Oklahoma",
-        "code": "OK",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5371,7 +5370,7 @@
         "weather": {},
         "AQI": 35,
         "name": "Oregon",
-        "code": "OR",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5492,7 +5491,7 @@
         "weather": {},
         "AQI": 40,
         "name": "Pennsylvania",
-        "code": "PA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5591,7 +5590,7 @@
         "weather": {},
         "AQI": 29,
         "name": "Rhode Island",
-        "code": "RI",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5677,7 +5676,7 @@
         "weather": {},
         "AQI": 30,
         "name": "South Carolina",
-        "code": "SC",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5787,7 +5786,7 @@
         "weather": {},
         "AQI": 170,
         "name": "South Dakota",
-        "code": "SD",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5882,7 +5881,7 @@
         "weather": {},
         "AQI": 35,
         "name": "Tennessee",
-        "code": "TN",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -5990,7 +5989,7 @@
         "weather": {},
         "AQI": 75,
         "name": "Texas",
-        "code": "TX",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6208,7 +6207,7 @@
         "weather": {},
         "AQI": 43,
         "name": "Utah",
-        "code": "UT",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6285,7 +6284,7 @@
         "weather": {},
         "AQI": 33,
         "name": "Vermont",
-        "code": "VT",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6379,7 +6378,7 @@
         "weather": {},
         "AQI": 38,
         "name": "Virginia",
-        "code": "VA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6535,7 +6534,7 @@
         "weather": {},
         "AQI": 44,
         "name": "Washington",
-        "code": "WA",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6683,7 +6682,7 @@
         "weather": {},
         "AQI": 34,
         "name": "West Virginia",
-        "code": "WV",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6814,7 +6813,7 @@
         "weather": {},
         "AQI": 162,
         "name": "Wisconsin",
-        "code": "WI",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {
@@ -6955,7 +6954,7 @@
         "weather": {},
         "AQI": 117,
         "name": "Wyoming",
-        "code": "WY",
+
         "countryCode": "US",
         "measurements": {
           "PM10": {

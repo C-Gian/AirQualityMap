@@ -26,7 +26,6 @@ const Sidebar = ({
   const [dataR, setDataR] = useState(infos.datas[0].features[infos.id]);
   const [hexColor, setHexColor] = useState("");
   const [airQualityText, setAirQualityText] = useState(null);
-  const [airQualityColor, setAirQualityColor] = useState(null);
   const [weatherCondition, setWeatherCondition] = useState(null);
   const [tempFeel, setTempFeel] = useState(null);
   const [tempReal, setTempReal] = useState(null);
@@ -105,7 +104,6 @@ const Sidebar = ({
       setTempReal(dataR.properties.countryTemp);
       setHumidity(dataR.properties.countryHum);
       setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
-      setAirQualityColor(getColoreByValore(dataR.properties.countryAQI)[1]);
       if (!dataR.properties.countryAQI) {
         colorToSet = "#00000000";
       } else {
@@ -148,7 +146,6 @@ const Sidebar = ({
       setCloud(dataR.weather.data.cloud);
       setHumidity(dataR.weather.data.humidity);
       setAirQualityText(getColoreByValore(dataR.properties.AQI)[0]);
-      setAirQualityColor(getColoreByValore(dataR.properties.AQI)[1]);
       if (!dataR.properties.AQI) {
         colorToSet = "#00000000";
       } else {
@@ -185,7 +182,7 @@ const Sidebar = ({
 
   return (
     <div
-      className="sidebar h-screen w-600 p-5 z-30 fixed"
+      className="sidebar p-5 h-screen w-600 z-30 fixed"
       style={{
         backgroundColor: nightMode
           ? "rgba(75 ,85 ,99, 0.7)"
@@ -198,194 +195,185 @@ const Sidebar = ({
         </button>
         <div className="flex items-center">
           <CountryFlag
-            className="m-5"
-            countryCode={
-              infos.isState
-                ? dataR.properties.code
-                : dataR.properties.countryCode
-            }
+            className="mr-3"
+            countryCode={dataR.properties.countryCode}
             svg
             style={{
               width: "50px", // Imposta la larghezza desiderata per la bandiera
               height: "auto",
             }}
           />
-          {/* <WorldFlag
-            className="m-5"
-            code={
-              infos.isState
-                ? dataR.properties.code
-                : dataR.properties.countryCode
-            }
-            style={{ width: 50, height: 25 }}
-          /> */}
           <span className="text-4xl text-white">{name}</span>
         </div>
       </div>
       <div
-        className="sidebar p-4 overflow-y-auto h-full"
+        className="sidebar overflow-y-auto h-full"
         style={{ height: `calc(100% - 4rem)` }}
       >
-        <div className="flex flex-col w-fit h-fit items-center  justify-between ">
-          <div className="flex w-full h-fit items-center mt-4 overflow-hidden">
-            <h2 className="text-white  text-xl items-center mr-5">
-              Air Quality Index (AQI):
-            </h2>
-            <div
-              className="rounded-2xl p-3 flex items-center justify-center whitespace-nowrap"
-              style={{
-                backgroundColor: hexColor,
-                width: Math.floor(AQI * 100) / 100 != 0 ? "60px" : "100px",
-                height: "60px",
-              }}
-            >
-              <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle whitespace-nowrap">
-                {Math.floor(AQI * 100) / 100 != 0
-                  ? Math.floor(AQI * 100) / 100
-                  : "No Data"}
+        <div className="mr-5">
+          <div className="flex flex-col w-fit h-fit items-center  justify-between ">
+            <div className="flex w-full h-fit items-center mt-4 overflow-hidden">
+              <h2 className="text-white  text-xl items-center mr-5">
+                Air Quality Index (AQI):
               </h2>
+              <div
+                className="rounded-2xl p-3 flex items-center justify-center whitespace-nowrap"
+                style={{
+                  backgroundColor: hexColor,
+                  width: Math.floor(AQI * 100) / 100 != 0 ? "60px" : "100px",
+                  height: "60px",
+                }}
+              >
+                <h2 className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle whitespace-nowrap">
+                  {Math.floor(AQI * 100) / 100 != 0
+                    ? Math.floor(AQI * 100) / 100
+                    : "No Data"}
+                </h2>
+              </div>
+            </div>
+            <div className="flex w-full h-fit justify-between items-center mt-3">
+              <h2 className="text-white text-xl items-center mr-5">
+                Last Update:
+              </h2>
+              <span className="text-l text-white">
+                {lastUpdate ? lastUpdate : "No Data"}
+              </span>
             </div>
           </div>
-          <div className="flex w-full h-fit justify-between items-center mt-3">
-            <h2 className="text-white text-xl items-center mr-5">
-              Last Update:
+          <div className="">
+            <PollsLevelsChart
+              dataR={dataR}
+              allDays={infos.datas}
+              isState={infos.isState}
+              sliderValue={sliderValue}
+              colorBlind={colorBlind}
+            ></PollsLevelsChart>
+          </div>
+          <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
+            <h2 className="text-white text-xl font-semibold mb-2">
+              7 days past data
             </h2>
-            <span className="text-l text-white">
-              {lastUpdate ? lastUpdate : "No Data"}
-            </span>
+            <div className="temporal-slider-container">
+              <Slider
+                min={1}
+                max={7}
+                marks={{
+                  1: <span className="slider-mark">1</span>,
+                  2: <span className="slider-mark">2</span>,
+                  3: <span className="slider-mark">3</span>,
+                  4: <span className="slider-mark">4</span>,
+                  5: <span className="slider-mark">5</span>,
+                  6: <span className="slider-mark">6</span>,
+                  7: <span className="slider-mark">7</span>,
+                }}
+                defaultValue={sliderValue + 1}
+                railStyle={{ backgroundColor: "#FFF", height: 6 }}
+                trackStyle={{ backgroundColor: "#FFF", height: 6 }}
+                handleStyle={{
+                  borderColor: "#FFF",
+                  height: 16,
+                  width: 16,
+                  backgroundColor: "#fff",
+                }}
+                dotStyle={{ visibility: "hidden" }}
+                activeDotStyle={{ visibility: "hidden" }}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <PollsLevelsChart
-          dataR={dataR}
-          allDays={infos.datas}
-          isState={infos.isState}
-          sliderValue={sliderValue}
-          colorBlind={colorBlind}
-        ></PollsLevelsChart>
-        <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
-          <h2 className="text-white text-xl font-semibold mb-2">
-            7 days past data
-          </h2>
-          <div className="temporal-slider-container">
-            <Slider
-              min={1}
-              max={7}
-              marks={{
-                1: <span className="slider-mark">1</span>,
-                2: <span className="slider-mark">2</span>,
-                3: <span className="slider-mark">3</span>,
-                4: <span className="slider-mark">4</span>,
-                5: <span className="slider-mark">5</span>,
-                6: <span className="slider-mark">6</span>,
-                7: <span className="slider-mark">7</span>,
-              }}
-              defaultValue={sliderValue + 1}
-              railStyle={{ backgroundColor: "#FFF", height: 6 }}
-              trackStyle={{ backgroundColor: "#FFF", height: 6 }}
-              handleStyle={{
-                borderColor: "#FFF",
-                height: 16,
-                width: 16,
-                backgroundColor: "#fff",
-              }}
-              dotStyle={{ visibility: "hidden" }}
-              activeDotStyle={{ visibility: "hidden" }}
-              onChange={handleChange}
-            />
+          <div className="h-fit w-full mt-10 flex-col justify-between pl-5 pr-5">
+            <div className="flex justify-between">
+              <h2 className="text-xl text-white mr-5">Air Quality: </h2>
+              <h2 className="text-xl" style={{ color: hexColor }}>
+                {airQualityText}
+              </h2>
+            </div>
+            {weatherCondition != null && infos.isState && (
+              <div className="flex justify-between mt-5 items-center">
+                <h2 className="text-xl text-white mr-5">Weather: </h2>
+                <div className="flex items-center">
+                  <img
+                    className=" mr-2 "
+                    src={`${weatherCondition.condIcon}`}
+                    width={50}
+                    height={50}
+                  />
+                  <h2 className="text-xl text-white">{`${weatherCondition.condText}`}</h2>
+                </div>
+              </div>
+            )}
+            {cloud != null && infos.isState && (
+              <div className="flex justify-between mt-5">
+                <h2 className="text-xl text-white mr-5">Cloud: </h2>
+                <h2 className="text-xl text-white">
+                  {Math.floor(cloud * 100) / 100}
+                </h2>
+              </div>
+            )}
+            {tempFeel != null && infos.isState && (
+              <div className="flex justify-between mt-5">
+                <h2 className="text-xl text-white mr-5">Temp. Feel: </h2>
+                <h2 className="text-xl text-white">{`${
+                  Math.floor(tempFeel * 100) / 100
+                }°`}</h2>
+              </div>
+            )}
+            {tempReal != null && (
+              <div className="flex justify-between mt-5">
+                <h2 className="text-xl text-white mr-5">Temp. Real: </h2>
+                <h2 className="text-xl text-white">{`${
+                  Math.floor(tempReal * 100) / 100
+                }°`}</h2>
+              </div>
+            )}
+            {humidity != null && (
+              <div className="flex justify-between mt-5">
+                <h2 className="text-xl text-white mr-5">Humidity: </h2>
+                <h2 className="text-xl text-white">{`${
+                  Math.floor(humidity * 100) / 100
+                }%`}</h2>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="h-fit w-full mt-10 flex-col justify-between pl-5 pr-5">
-          <div className="flex justify-between">
-            <h2 className="text-xl text-white mr-5">Air Quality: </h2>
-            <h2 className="text-xl" style={{ color: airQualityColor }}>
-              {airQualityText}
-            </h2>
-          </div>
-          {weatherCondition != null && infos.isState && (
-            <div className="flex justify-between mt-5 items-center">
-              <h2 className="text-xl text-white mr-5">Weather: </h2>
-              <div className="flex items-center">
-                <img
-                  className=" mr-2 "
-                  src={`${weatherCondition.condIcon}`}
-                  width={50}
-                  height={50}
-                />
-                <h2 className="text-xl text-white">{`${weatherCondition.condText}`}</h2>
+          {infos.isState && (
+            <div>
+              <div className="mt-5">
+                <PollsTempCorrChart
+                  datas={infos.datas}
+                  id={infos.id}
+                  colorBlind={colorBlind}
+                ></PollsTempCorrChart>
+              </div>
+              <div className="mt-16 mr-0 w-fit items-center justify-center">
+                <CorrelationMatrix
+                  datas={infos.datas}
+                  id={infos.id}
+                  colorBlind={colorBlind}
+                ></CorrelationMatrix>
+              </div>
+              <div className="pl-5 pr-5 flex-col">
+                {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
+                  (pollutant, index) => (
+                    <LinearRegression
+                      datas={infos.datas}
+                      id={infos.id}
+                      pollutant={pollutant}
+                      key={index}
+                      colorBlind={colorBlind}
+                    />
+                  )
+                )}
+              </div>
+              <div className="mt-5">
+                <MultipleRegression
+                  datas={infos.datas}
+                  id={infos.id}
+                  colorBlind={colorBlind}
+                ></MultipleRegression>
               </div>
             </div>
           )}
-          {cloud != null && infos.isState && (
-            <div className="flex justify-between mt-5">
-              <h2 className="text-xl text-white mr-5">Cloud: </h2>
-              <h2 className="text-xl text-white">
-                {Math.floor(cloud * 100) / 100}
-              </h2>
-            </div>
-          )}
-          {tempFeel != null && infos.isState && (
-            <div className="flex justify-between mt-5">
-              <h2 className="text-xl text-white mr-5">Temp. Feel: </h2>
-              <h2 className="text-xl text-white">{`${
-                Math.floor(tempFeel * 100) / 100
-              }°`}</h2>
-            </div>
-          )}
-          {tempReal != null && (
-            <div className="flex justify-between mt-5">
-              <h2 className="text-xl text-white mr-5">Temp. Real: </h2>
-              <h2 className="text-xl text-white">{`${
-                Math.floor(tempReal * 100) / 100
-              }°`}</h2>
-            </div>
-          )}
-          {humidity != null && (
-            <div className="flex justify-between mt-5">
-              <h2 className="text-xl text-white mr-5">Humidity: </h2>
-              <h2 className="text-xl text-white">{`${
-                Math.floor(humidity * 100) / 100
-              }%`}</h2>
-            </div>
-          )}
         </div>
-        {infos.isState && (
-          <div>
-            <div className="mt-5">
-              <PollsTempCorrChart
-                datas={infos.datas}
-                id={infos.id}
-                colorBlind={colorBlind}
-              ></PollsTempCorrChart>
-            </div>
-            <div className="mt-16 mr-0 w-fit items-center justify-center">
-              <CorrelationMatrix
-                datas={infos.datas}
-                id={infos.id}
-                colorBlind={colorBlind}
-              ></CorrelationMatrix>
-            </div>
-            <div className="pl-5 pr-5 flex-col">
-              {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
-                (pollutant, index) => (
-                  <LinearRegression
-                    datas={infos.datas}
-                    id={infos.id}
-                    pollutant={pollutant}
-                    key={index}
-                    colorBlind={colorBlind}
-                  />
-                )
-              )}
-            </div>
-            <div className="mt-5">
-              <MultipleRegression
-                datas={infos.datas}
-                id={infos.id}
-                colorBlind={colorBlind}
-              ></MultipleRegression>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
