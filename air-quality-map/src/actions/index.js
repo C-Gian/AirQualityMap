@@ -6,6 +6,13 @@ export const setSliderValue = (value) => {
   };
 };
 
+export const setLayerToShow = (value) => {
+  return {
+    type: "SET_LAYER_TO_SHOW",
+    payload: value,
+  };
+};
+
 // actions.js
 export const toggleSidebar = () => ({
   type: "TOGGLE_SIDEBAR",

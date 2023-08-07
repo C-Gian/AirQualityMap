@@ -31,7 +31,7 @@ const SwitchButton = () => {
         initialSelectedIndex={switchState}
         backgroundColor={"#353b48"}
         fontColor={"#f5f6fa"}
-        optionBorderRadius={15}
+        optionBorderRadius={0}
       />
     </div>
   );

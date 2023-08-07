@@ -4,10 +4,18 @@ import { combineReducers } from "redux";
 const initialState = {
   sliderValue: 0,
   switchState: false,
+  layerToSet: "AQI",
 };
 
 const sliderValueReducer = (state = initialState.sliderValue, action) => {
   if (action.type === "SET_SLIDER_VALUE") {
+    return action.payload;
+  }
+  return state;
+};
+
+const layerToSedReducer = (state = initialState.layerToSet, action) => {
+  if (action.type === "SET_LAYER_TO_SHOW") {
     return action.payload;
   }
   return state;
@@ -23,6 +31,7 @@ const switchStateReducer = (state = initialState.switchState, action) => {
 
 const rootReducer = combineReducers({
   sliderValue: sliderValueReducer,
+  layerToSet: layerToSedReducer,
   switchState: switchStateReducer,
 });
 

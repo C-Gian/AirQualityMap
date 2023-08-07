@@ -181,8 +181,8 @@ body {
   padding: 5px;
   position: absolute;
   z-index: 1;
-  top: 50%;
-  left: -170px; /* Posizione a sinistra del bottone */
+  top: -25px;
+  left: -100px; /* Posizione a sinistra del bottone */
   transform: translateY(-50%);
   opacity: 0;
   transition: opacity 0.3s, visibility 0.3s;

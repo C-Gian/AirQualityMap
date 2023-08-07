@@ -16,6 +16,7 @@ function MapComponent({
   centerClicked,
   zoomOutClicked,
   stopButton,
+  layerToShow,
 }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
@@ -367,6 +368,102 @@ function MapComponent({
       });
 
       map.addLayer({
+        id: "state-pm25aqi",
+        source: "pm25aqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": colorsStates,
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "state-pm10aqi",
+        source: "pm10aqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": colorsStates,
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "state-ozoneaqi",
+        source: "ozoneaqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": colorsStates,
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "state-so2aqi",
+        source: "so2aqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": colorsStates,
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "state-no2aqi",
+        source: "no2aqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": colorsStates,
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "state-coaqi",
+        source: "coaqi",
+        minzoom: zoomThreshold,
+        type: "fill",
+        paint: {
+          "fill-color": colorsStates,
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
         id: "state-outline-layer",
         minzoom: zoomThreshold,
         type: "line",
@@ -573,6 +670,10 @@ function MapComponent({
     setDataR(datas[sliderValue]);
     mapRef.current.getSource("aqi").setData(datas[sliderValue]);
   }, [sliderValue, nightMode, colorBlind]);
+
+  useEffect(() => {
+    /* mapRef.current. */
+  }, [layerToShow]);
 
   return (
     <div style={{ zIndex: 0 }}>

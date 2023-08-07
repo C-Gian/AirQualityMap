@@ -26,6 +26,7 @@ const Navbar = () => {
           Air Quality Map
         </span>
       </div>
+
       <div className="items-center">
         <SwitchButton></SwitchButton>
       </div>

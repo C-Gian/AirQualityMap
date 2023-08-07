@@ -24,6 +24,9 @@ const App = () => {
   const [centerClicked, setCenterClicked] = useState(false);
   const [zoomOutClicked, setZoomOutClicked] = useState(false);
   const switchState = useSelector((state) => state.switchState);
+  const layerToSet = useSelector((state) => state.layerToSet);
+
+  const handleLayerChange = (layer) => {};
 
   const handleStopButton = () => {
     setZoomInClicked(false);
@@ -499,6 +502,10 @@ const App = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log(layerToSet);
+  }, [layerToSet]);
+
   return (
     <div className="flex-col">
       <Navbar></Navbar>
@@ -524,6 +531,7 @@ const App = () => {
                   centerClicked={centerClicked}
                   zoomOutClicked={zoomOutClicked}
                   stopButton={handleStopButton}
+                  layerToShow={layerToSet}
                 ></MapComponent>
               )}
               {stateInfo && (
