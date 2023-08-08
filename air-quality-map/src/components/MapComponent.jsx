@@ -187,6 +187,11 @@ function MapComponent({
             "visibility",
             "visible"
           );
+          mapRef.current.setLayoutProperty(
+            "country-aqi",
+            "visibility",
+            "visible"
+          );
           break;
         case "PM2.5":
           mapRef.current.setLayoutProperty(
