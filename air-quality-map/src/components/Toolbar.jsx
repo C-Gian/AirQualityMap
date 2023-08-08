@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { setLayerToShow } from "../actions/index.js";
-import { connect } from "react-redux";
-import { useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
   nightMode,
@@ -11,9 +10,10 @@ function Toolbar({
   onColorCenterClick,
   onColorZoomOutClick,
 }) {
-  const layerToSet = useSelector((state) => state.layerToSet);
+  const dispatch = useDispatch();
+  const layerToShow = useSelector((state) => state.layerToShow);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [checkedItem, setCheckedItem] = useState(layerToSet);
+  const [checkedItem, setCheckedItem] = useState(layerToShow);
 
   const handleMenuOpen = () => {
     setIsMenuOpen(true);
@@ -21,6 +21,8 @@ function Toolbar({
 
   const handleMenuClose = () => {
     setIsMenuOpen(false);
+    setCheckedItem("AQI");
+    dispatch(setLayerToShow(checkedItem));
   };
 
   const handleCheckboxChange = (optionKey) => {
@@ -38,8 +40,7 @@ function Toolbar({
   };
 
   useEffect(() => {
-    console.log(checkedItem);
-    setLayerToShow(checkedItem);
+    dispatch(setLayerToShow(checkedItem));
   }, [checkedItem]);
 
   return (
@@ -159,9 +160,9 @@ function Toolbar({
         </button>
         {isMenuOpen && (
           <div
-            className="absolute  bg-white border border-gray-300 p-4 rounded shadow w-300 cursor-pointer"
+            className="absolute  bg-white border border-gray-300 rounded shadow w-300 cursor-pointer"
             style={{
-              top: "-340px",
+              top: "-310px",
               right: "0px",
             }}
             onMouseEnter={handleMenuOpen}
@@ -170,16 +171,20 @@ function Toolbar({
             {Object.keys(options).map((optionKey) => (
               <div
                 key={optionKey}
-                className="flex items-center space-x-2 font-semibold pt-2 pb-2 text-xl cursor-pointer"
+                className={`flex items-center space-x-2 font-semibold pt-2 pb-2 text-xl cursor-pointer ${
+                  checkedItem === optionKey ? "bg-blue-300" : "" // Aggiungiamo la classe 'selected' se l'opzione è selezionata
+                }`}
                 onClick={() => handleCheckboxChange(optionKey)}
               >
-                <input
+                {/* <input
                   type="checkbox"
                   className="w-4 h-4"
                   checked={checkedItem === optionKey}
                   onChange={() => handleCheckboxChange(optionKey)}
-                />
-                <span className="ml-2 select-none">{options[optionKey]}</span>
+                /> */}
+                <span className="ml-2 select-none pl-2 pr-2">
+                  {options[optionKey]}
+                </span>
               </div>
             ))}
           </div>

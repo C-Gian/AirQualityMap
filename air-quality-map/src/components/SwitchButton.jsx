@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSwitch } from "../actions";
 import SwitchSelector from "react-switch-selector";
@@ -38,3 +38,4 @@ const SwitchButton = () => {
 };
 
 export default SwitchButton;
+ */

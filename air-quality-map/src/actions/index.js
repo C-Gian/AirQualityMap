@@ -18,11 +18,6 @@ export const toggleSidebar = () => ({
   type: "TOGGLE_SIDEBAR",
 });
 
-// actions.js
-export const toggleSwitch = () => ({
-  type: "TOGGLE_SWITCH",
-});
-
 export const updateMapPosition = (position) => ({
   type: "UPDATE_MAP_POSITION",
   payload: position,

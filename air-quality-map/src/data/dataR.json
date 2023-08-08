@@ -7,6 +7,7 @@
       "id": 0,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -106,6 +107,7 @@
       "id": 1,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -1400,6 +1402,7 @@
       "id": 2,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -1498,6 +1501,7 @@
       "id": 3,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -1600,6 +1604,7 @@
       "id": 4,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -1759,6 +1764,7 @@
       "id": 5,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -1841,6 +1847,7 @@
       "id": 6,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -1923,6 +1930,7 @@
       "id": 7,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2001,6 +2009,7 @@
       "id": 8,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2145,6 +2154,7 @@
       "id": 9,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2262,6 +2272,7 @@
       "id": 10,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2392,6 +2403,7 @@
       "id": 11,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2524,6 +2536,7 @@
       "id": 12,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2656,6 +2669,7 @@
       "id": 13,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2768,6 +2782,7 @@
       "id": 14,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2884,6 +2899,7 @@
       "id": 15,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -2963,6 +2979,7 @@
       "id": 16,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3104,6 +3121,7 @@
       "id": 17,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3245,6 +3263,7 @@
       "id": 18,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3377,6 +3396,7 @@
       "id": 19,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3513,6 +3533,7 @@
       "id": 20,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3613,6 +3634,7 @@
       "id": 21,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3845,6 +3867,7 @@
       "id": 22,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -3994,6 +4017,7 @@
       "id": 23,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4106,6 +4130,7 @@
       "id": 24,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4225,6 +4250,7 @@
       "id": 25,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4342,6 +4368,7 @@
       "id": 26,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4437,6 +4464,7 @@
       "id": 27,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4524,6 +4552,7 @@
       "id": 28,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4618,6 +4647,7 @@
       "id": 29,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4715,6 +4745,7 @@
       "id": 30,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4798,6 +4829,7 @@
       "id": 31,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -4932,6 +4964,7 @@
       "id": 32,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5059,6 +5092,7 @@
       "id": 33,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5141,6 +5175,7 @@
       "id": 34,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5254,6 +5289,7 @@
       "id": 35,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5365,6 +5401,7 @@
       "id": 36,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5486,6 +5523,7 @@
       "id": 37,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5585,6 +5623,7 @@
       "id": 38,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5671,6 +5710,7 @@
       "id": 39,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5781,6 +5821,7 @@
       "id": 40,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5876,6 +5917,7 @@
       "id": 41,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -5984,6 +6026,7 @@
       "id": 42,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6202,6 +6245,7 @@
       "id": 43,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6279,6 +6323,7 @@
       "id": 44,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6373,6 +6418,7 @@
       "id": 45,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6529,6 +6575,7 @@
       "id": 46,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6677,6 +6724,7 @@
       "id": 47,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6808,6 +6856,7 @@
       "id": 48,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},
@@ -6949,6 +6998,7 @@
       "id": 49,
       "properties": {
         "countryAQI": 0,
+        "state-pm10-aqi": 0,
         "countryTemp": 0,
         "countryHum": 0,
         "weather": {},

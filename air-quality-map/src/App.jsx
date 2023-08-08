@@ -10,12 +10,12 @@ import MapComponent from "./components/MapComponent";
 import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
-import AnalysisPage from "./components/AnalysisPage";
 import { useSelector } from "react-redux";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
-  const [buttonPressed, setButtonPressed] = useState(false);
+  const [siderbarCloseButtonPressed, setSiderbarCloseButtonPressed] =
+    useState(false);
   const [datas, setDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
@@ -23,7 +23,6 @@ const App = () => {
   const [zoomInClicked, setZoomInClicked] = useState(false);
   const [centerClicked, setCenterClicked] = useState(false);
   const [zoomOutClicked, setZoomOutClicked] = useState(false);
-  const switchState = useSelector((state) => state.switchState);
 
   const handleStopButton = () => {
     setZoomInClicked(false);
@@ -51,8 +50,8 @@ const App = () => {
     setNightMode(!nightMode);
   };
 
-  const handleButtonClick = () => {
-    setButtonPressed(!buttonPressed);
+  const handleSiderbarCloseButtonClick = () => {
+    setSiderbarCloseButtonPressed(!siderbarCloseButtonPressed);
     setStateInfo(null);
   };
 
@@ -344,7 +343,7 @@ const App = () => {
         /* const prova = await getAirQualityDataEurope();
         console.log(prova); */
 
-        const todayIsUpdated = await axios.get(
+        /* const todayIsUpdated = await axios.get(
           `http://localhost:4000/is-daily-update-done`
         );
         if (!todayIsUpdated.data) {
@@ -459,8 +458,24 @@ const App = () => {
           console.log("Daily Data Updated");
         }
         const datas = await getDatas();
-        console.log(datas);
-        setDatas(datas); //getting the whole db data (7 days data)
+        console.log(datas); */
+        const layersToShow = [
+          "state-pm2.5-aqi",
+          "state-pm10-aqi",
+          "state-ozone-aqi",
+          "state-no2-aqi",
+          "state-co-aqi",
+          "state-so2-aqi",
+        ];
+        datasBackup.forEach((day) => {
+          day.features.forEach((state) => {
+            layersToShow.forEach((layer) => {
+              state.properties[layer] = Math.floor(Math.random() * 500) + 1;
+            });
+          });
+        });
+        console.log(datasBackup);
+        setDatas(datasBackup); //datas); //getting the whole db data (7 days data)
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
@@ -508,43 +523,37 @@ const App = () => {
         </div>
       ) : (
         <div>
-          {switchState ? (
-            <AnalysisPage></AnalysisPage>
-          ) : (
-            <div>
-              {datas.length > 0 && (
-                <MapComponent
-                  datas={datas}
-                  stateClicked={stateClicked}
-                  buttonPressed={buttonPressed}
-                  onButtonClick={handleButtonClick}
-                  nightMode={nightMode}
-                  colorBlind={colorBlind}
-                  zoomInClicked={zoomInClicked}
-                  centerClicked={centerClicked}
-                  zoomOutClicked={zoomOutClicked}
-                  stopButton={handleStopButton}
-                ></MapComponent>
-              )}
-              {stateInfo && (
-                <Sidebar
-                  infos={stateInfo}
-                  onButtonClick={handleButtonClick}
-                  nightMode={nightMode}
-                  colorBlind={colorBlind}
-                />
-              )}
-              <Legend nightMode={nightMode} colorBlind={colorBlind}></Legend>
-              <Toolbar
-                nightMode={nightMode}
-                onNightModeClick={handleNightModeClick}
-                onColorBlindClick={handleColorBlindClick}
-                onColorZoomInClick={handleZoomInClick}
-                onColorCenterClick={handleCenterClick}
-                onColorZoomOutClick={handleZoomOutClick}
-              ></Toolbar>
-            </div>
+          {datas.length > 0 && (
+            <MapComponent
+              datas={datas}
+              stateClicked={stateClicked}
+              siderbarCloseButton={siderbarCloseButtonPressed}
+              siderbarCloseButtonClick={handleSiderbarCloseButtonClick}
+              nightMode={nightMode}
+              colorBlind={colorBlind}
+              zoomInClicked={zoomInClicked}
+              centerClicked={centerClicked}
+              zoomOutClicked={zoomOutClicked}
+              stopButton={handleStopButton}
+            ></MapComponent>
           )}
+          {stateInfo && (
+            <Sidebar
+              infos={stateInfo}
+              onButtonClick={handleSiderbarCloseButtonClick}
+              nightMode={nightMode}
+              colorBlind={colorBlind}
+            />
+          )}
+          <Legend nightMode={nightMode} colorBlind={colorBlind}></Legend>
+          <Toolbar
+            nightMode={nightMode}
+            onNightModeClick={handleNightModeClick}
+            onColorBlindClick={handleColorBlindClick}
+            onColorZoomInClick={handleZoomInClick}
+            onColorCenterClick={handleCenterClick}
+            onColorZoomOutClick={handleZoomOutClick}
+          ></Toolbar>
         </div>
       )}
     </div>
