@@ -16,7 +16,6 @@ function MapComponent({
   centerClicked,
   zoomOutClicked,
   stopButton,
-  layerToShow,
 }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
@@ -25,11 +24,8 @@ function MapComponent({
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
-  const colorsCountry = colorBlind
+  const colorsLayers = colorBlind
     ? [
-        "interpolate",
-        ["linear"],
-        ["get", "countryAQI"],
         0,
         "#FFFFFF",
         16.8,
@@ -83,123 +79,6 @@ function MapComponent({
         "#00494e",
       ]
     : [
-        "interpolate",
-        ["linear"],
-        ["get", "countryAQI"],
-        0,
-        "#FFFFFF",
-        16.8,
-        "#00ff04",
-        33.4,
-        "#a2ff00",
-        50,
-        "#bbff00",
-
-        51,
-        "#f6ff00",
-        67.4,
-        "#ffea00",
-        83.7,
-        "#ffd000",
-        100,
-        "#ffb300",
-
-        101,
-        "#ff9900",
-        117.4,
-        "#ff8000",
-        133.7,
-        "#ff6600",
-        150,
-        "#ff4800",
-
-        151,
-        "#ff0000",
-        167.4,
-        "#ff003c",
-        183.7,
-        "#ff0066",
-        200,
-        "#d6006f",
-
-        201,
-        "#db0072",
-        220.8,
-        "#b50460",
-        240.6,
-        "#9e0253",
-        260.4,
-        "#8a0349",
-        280.2,
-        "#7a0140",
-        300,
-        "#690137",
-
-        301,
-        "#57012d",
-      ];
-
-  const colorsStates = colorBlind
-    ? [
-        "interpolate",
-        ["linear"],
-        ["get", "AQI"],
-        0,
-        "#FFFFFF",
-        16.8,
-        "#00ff04",
-        33.4,
-        "#d3ff00",
-        50,
-        "#ffee00",
-
-        51,
-        "#ffa500",
-        67.4,
-        "#ffab00",
-        83.7,
-        "#ff6b00",
-        100,
-        "#ff0000",
-
-        101,
-        "#e60031",
-        117.4,
-        "#e8006f",
-        133.7,
-        "#ca3367",
-        150,
-        "#a7005b",
-
-        151,
-        "#6f00a4",
-        167.4,
-        "#3b00b3",
-        183.7,
-        "#004dd1",
-        200,
-        "#0071ce",
-
-        201,
-        "#00a2ff",
-        220.8,
-        "#00e0ff",
-        240.6,
-        "#00ffbf",
-        260.4,
-        "#00ff7b",
-        280.2,
-        "#00b34e",
-        300,
-        "#00734e",
-
-        301,
-        "#00494e",
-      ]
-    : [
-        "interpolate",
-        ["linear"],
-        ["get", "AQI"],
         0,
         "#FFFFFF",
         16.8,
@@ -292,11 +171,6 @@ function MapComponent({
     onButtonClick();
   }
 
-  /* useEffect(() => {
-    console.log("update!!");
-    dataR = datas[selectedDay];
-  }, [selectedDay]); */
-
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
@@ -341,7 +215,12 @@ function MapComponent({
         maxzoom: zoomThreshold,
         type: "fill",
         paint: {
-          "fill-color": colorsCountry,
+          "fill-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "countryAQI"],
+            ...colorsLayers,
+          ],
           "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -357,103 +236,12 @@ function MapComponent({
         minzoom: zoomThreshold,
         type: "fill",
         paint: {
-          "fill-color": colorsStates,
-          "fill-opacity": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.75,
+          "fill-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "AQI"],
+            ...colorsLayers,
           ],
-        },
-      });
-
-      map.addLayer({
-        id: "state-pm25aqi",
-        source: "pm25aqi",
-        minzoom: zoomThreshold,
-        type: "fill",
-        paint: {
-          "fill-color": colorsStates,
-          "fill-opacity": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.75,
-          ],
-        },
-      });
-
-      map.addLayer({
-        id: "state-pm10aqi",
-        source: "pm10aqi",
-        minzoom: zoomThreshold,
-        type: "fill",
-        paint: {
-          "fill-color": colorsStates,
-          "fill-opacity": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.75,
-          ],
-        },
-      });
-
-      map.addLayer({
-        id: "state-ozoneaqi",
-        source: "ozoneaqi",
-        minzoom: zoomThreshold,
-        type: "fill",
-        paint: {
-          "fill-color": colorsStates,
-          "fill-opacity": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.75,
-          ],
-        },
-      });
-
-      map.addLayer({
-        id: "state-so2aqi",
-        source: "so2aqi",
-        minzoom: zoomThreshold,
-        type: "fill",
-        paint: {
-          "fill-color": colorsStates,
-          "fill-opacity": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.75,
-          ],
-        },
-      });
-
-      map.addLayer({
-        id: "state-no2aqi",
-        source: "no2aqi",
-        minzoom: zoomThreshold,
-        type: "fill",
-        paint: {
-          "fill-color": colorsStates,
-          "fill-opacity": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.75,
-          ],
-        },
-      });
-
-      map.addLayer({
-        id: "state-coaqi",
-        source: "coaqi",
-        minzoom: zoomThreshold,
-        type: "fill",
-        paint: {
-          "fill-color": colorsStates,
           "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -670,10 +458,6 @@ function MapComponent({
     setDataR(datas[sliderValue]);
     mapRef.current.getSource("aqi").setData(datas[sliderValue]);
   }, [sliderValue, nightMode, colorBlind]);
-
-  useEffect(() => {
-    /* mapRef.current. */
-  }, [layerToShow]);
 
   return (
     <div style={{ zIndex: 0 }}>
