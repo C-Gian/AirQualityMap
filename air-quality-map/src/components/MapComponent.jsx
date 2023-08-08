@@ -174,6 +174,7 @@ function MapComponent({
 
   useEffect(() => {
     console.log("map", layerToShow);
+<<<<<<< HEAD
     if (mapRef.current) {
       mapRef.current.getStyle().layers.forEach((layer) => {
         if (layer.source == "aqi" && layer.type !== "line") {
@@ -232,6 +233,8 @@ function MapComponent({
           break;
       }
     }
+=======
+>>>>>>> 666939bbb46a717eb400a732f1f115f6af786132
   }, [layerToShow]);
 
   useEffect(() => {
