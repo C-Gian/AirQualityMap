@@ -10,12 +10,12 @@ import MapComponent from "./components/MapComponent";
 import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
-import AnalysisPage from "./components/AnalysisPage";
 import { useSelector } from "react-redux";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
-  const [buttonPressed, setButtonPressed] = useState(false);
+  const [siderbarCloseButtonPressed, setSiderbarCloseButtonPressed] =
+    useState(false);
   const [datas, setDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
@@ -23,7 +23,6 @@ const App = () => {
   const [zoomInClicked, setZoomInClicked] = useState(false);
   const [centerClicked, setCenterClicked] = useState(false);
   const [zoomOutClicked, setZoomOutClicked] = useState(false);
-  const switchState = useSelector((state) => state.switchState);
 
   const handleStopButton = () => {
     setZoomInClicked(false);
@@ -51,8 +50,8 @@ const App = () => {
     setNightMode(!nightMode);
   };
 
-  const handleButtonClick = () => {
-    setButtonPressed(!buttonPressed);
+  const handleSiderbarCloseButtonClick = () => {
+    setSiderbarCloseButtonPressed(!siderbarCloseButtonPressed);
     setStateInfo(null);
   };
 
@@ -508,43 +507,37 @@ const App = () => {
         </div>
       ) : (
         <div>
-          {switchState ? (
-            <AnalysisPage></AnalysisPage>
-          ) : (
-            <div>
-              {datas.length > 0 && (
-                <MapComponent
-                  datas={datas}
-                  stateClicked={stateClicked}
-                  buttonPressed={buttonPressed}
-                  onButtonClick={handleButtonClick}
-                  nightMode={nightMode}
-                  colorBlind={colorBlind}
-                  zoomInClicked={zoomInClicked}
-                  centerClicked={centerClicked}
-                  zoomOutClicked={zoomOutClicked}
-                  stopButton={handleStopButton}
-                ></MapComponent>
-              )}
-              {stateInfo && (
-                <Sidebar
-                  infos={stateInfo}
-                  onButtonClick={handleButtonClick}
-                  nightMode={nightMode}
-                  colorBlind={colorBlind}
-                />
-              )}
-              <Legend nightMode={nightMode} colorBlind={colorBlind}></Legend>
-              <Toolbar
-                nightMode={nightMode}
-                onNightModeClick={handleNightModeClick}
-                onColorBlindClick={handleColorBlindClick}
-                onColorZoomInClick={handleZoomInClick}
-                onColorCenterClick={handleCenterClick}
-                onColorZoomOutClick={handleZoomOutClick}
-              ></Toolbar>
-            </div>
+          {datas.length > 0 && (
+            <MapComponent
+              datas={datas}
+              stateClicked={stateClicked}
+              siderbarCloseButton={siderbarCloseButtonPressed}
+              siderbarCloseButtonClick={handleSiderbarCloseButtonClick}
+              nightMode={nightMode}
+              colorBlind={colorBlind}
+              zoomInClicked={zoomInClicked}
+              centerClicked={centerClicked}
+              zoomOutClicked={zoomOutClicked}
+              stopButton={handleStopButton}
+            ></MapComponent>
           )}
+          {stateInfo && (
+            <Sidebar
+              infos={stateInfo}
+              onButtonClick={handleSiderbarCloseButtonClick}
+              nightMode={nightMode}
+              colorBlind={colorBlind}
+            />
+          )}
+          <Legend nightMode={nightMode} colorBlind={colorBlind}></Legend>
+          <Toolbar
+            nightMode={nightMode}
+            onNightModeClick={handleNightModeClick}
+            onColorBlindClick={handleColorBlindClick}
+            onColorZoomInClick={handleZoomInClick}
+            onColorCenterClick={handleCenterClick}
+            onColorZoomOutClick={handleZoomOutClick}
+          ></Toolbar>
         </div>
       )}
     </div>

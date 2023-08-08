@@ -1,5 +1,4 @@
 import React from "react";
-import SwitchButton from "./SwitchButton";
 
 const Navbar = () => {
   return (

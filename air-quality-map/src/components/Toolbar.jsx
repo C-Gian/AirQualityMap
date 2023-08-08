@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { setLayerToShow } from "../actions/index.js";
-import { connect } from "react-redux";
-import { useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
   nightMode,
@@ -11,9 +10,10 @@ function Toolbar({
   onColorCenterClick,
   onColorZoomOutClick,
 }) {
-  const layerToSet = useSelector((state) => state.layerToSet);
+  const dispatch = useDispatch();
+  const layerToShow = useSelector((state) => state.layerToShow);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [checkedItem, setCheckedItem] = useState(layerToSet);
+  const [checkedItem, setCheckedItem] = useState(layerToShow);
 
   const handleMenuOpen = () => {
     setIsMenuOpen(true);
@@ -38,8 +38,7 @@ function Toolbar({
   };
 
   useEffect(() => {
-    console.log(checkedItem);
-    setLayerToShow(checkedItem);
+    dispatch(setLayerToShow(checkedItem));
   }, [checkedItem]);
 
   return (

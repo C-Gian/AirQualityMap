@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Popup from "./Popup";
 import * as turf from "@turf/turf";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 function MapComponent({
   datas,
   stateClicked,
-  buttonPressed,
-  onButtonClick,
-  sliderValue,
+  siderbarCloseButton,
+  siderbarCloseButtonClick,
   nightMode,
   colorBlind,
   zoomInClicked,
@@ -19,6 +18,8 @@ function MapComponent({
 }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
+  const sliderValue = useSelector((state) => state.sliderValue);
+  const layerToShow = useSelector((state) => state.layerToShow);
   const [dataR, setDataR] = useState(datas[sliderValue]);
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
@@ -154,7 +155,7 @@ function MapComponent({
   }
 
   //close button sidebar actions
-  if (buttonPressed) {
+  if (siderbarCloseButton) {
     mapRef.current.flyTo({
       center: [-100.86857959024933, 38.482552979137004],
       zoom: 2.5, // Livello di zoom desiderato
@@ -168,8 +169,12 @@ function MapComponent({
         { selected: false }
       );
     }
-    onButtonClick();
+    siderbarCloseButtonClick();
   }
+
+  useEffect(() => {
+    console.log("map", layerToShow);
+  }, [layerToShow]);
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -429,7 +434,7 @@ function MapComponent({
           curve: 1.5, // Curva di accelerazione dell'animazione
           essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
         });
-        onButtonClick();
+        siderbarCloseButtonClick();
       }
     });
 
@@ -474,10 +479,4 @@ function MapComponent({
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    sliderValue: state.sliderValue,
-  };
-};
-
-export default connect(mapStateToProps)(MapComponent);
+export default MapComponent;
