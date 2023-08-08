@@ -343,7 +343,7 @@ const App = () => {
         /* const prova = await getAirQualityDataEurope();
         console.log(prova); */
 
-        /* const todayIsUpdated = await axios.get(
+        const todayIsUpdated = await axios.get(
           `http://localhost:4000/is-daily-update-done`
         );
         if (!todayIsUpdated.data) {
@@ -458,7 +458,7 @@ const App = () => {
           console.log("Daily Data Updated");
         }
         const datas = await getDatas();
-        console.log(datas); */
+        console.log(datas);
         const layersToShow = [
           "state-pm2.5-aqi",
           "state-pm10-aqi",
