@@ -11,6 +11,7 @@ import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
+import TemporalSlider from "./components/TemporalSlider";
 
 const App = () => {
   const [stateInfo, setStateInfo] = useState(null);
@@ -622,6 +623,7 @@ const App = () => {
               stopButton={handleStopButton}
             ></MapComponent>
           )}
+          <TemporalSlider nightMode={nightMode}></TemporalSlider>
           {stateInfo && (
             <Sidebar
               infos={stateInfo}

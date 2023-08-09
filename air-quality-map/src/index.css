@@ -34,29 +34,12 @@ body {
   width: 10px;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-size: 20px;
-  color: #bfbfbf;
-}
-
 .mapbox-logo {
   display: none !important;
 }
 
 .mapboxgl-ctrl-logo {
   display: none !important;
-}
-
-.temporal-slider-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .temporal-slider {
@@ -130,6 +113,11 @@ body {
   background-color: #9f9f9f; /* Colore della barra di scorrimento grigia */
   height: 5px;
   border-radius: 100px; /* Smussatura dei bordi */
+}
+
+/* Cambia colore quando si passa sopra con il mouse */
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #c0c0c0; /* Cambia il colore al passaggio del mouse */
 }
 
 /* Stili per lo schermo di caricamento */

@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import PollsLevelsChart from "./PollsLevelsChart";
-import { connect } from "react-redux";
-import { setSliderValue } from "../actions/index.js";
 import { useSelector } from "react-redux";
 import * as d3 from "d3";
 import PollsTempCorrChart from "./PollsTempCorrChart";
 import CorrelationMatrix from "./CorrelationMatrix";
-import { linear } from "stats.js";
 import LinearRegression from "./LinearRegression";
 import MultipleRegression from "./MultipleRegression";
 import CountryFlag from "react-country-flag";
@@ -88,11 +84,9 @@ const Sidebar = ({
     return "rgba(0,0,0,0)";
   };
 
-  const handleChange = (value) => {
-    setDataR(infos.datas[value - 1].features[infos.id]);
-    setSliderValue(value - 1);
-    //setSValue(sValue - 1);
-  };
+  useEffect(() => {
+    setDataR(infos.datas[sliderValue].features[infos.id]);
+  }, [sliderValue]);
 
   useEffect(() => {
     let colorToSet = null;
@@ -182,7 +176,7 @@ const Sidebar = ({
 
   return (
     <div
-      className="sidebar p-5 h-screen w-600 z-30 fixed"
+      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed"
       style={{
         top: "50px",
         backgroundColor: nightMode
@@ -190,10 +184,7 @@ const Sidebar = ({
           : "rgba(75 ,85 ,99, 1)",
       }}
     >
-      <div className="mb-2">
-        <button className="close-button" onClick={onButtonClick}>
-          &#10005;
-        </button>
+      <div className="mb-2 flex justify-between">
         <div className="flex items-center">
           <CountryFlag
             className="mr-3"
@@ -206,9 +197,28 @@ const Sidebar = ({
           />
           <span className="text-4xl text-white">{name}</span>
         </div>
+        <button
+          className="absolute top-0 right-0 mt-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+          onClick={onButtonClick}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
       <div
-        className="sidebar overflow-y-auto h-full"
+        className="sidebar overflow-y-auto h-full mr-1"
         style={{ height: `calc(100% - 4rem)` }}
       >
         <div className="mr-5">
@@ -249,38 +259,6 @@ const Sidebar = ({
               sliderValue={sliderValue}
               colorBlind={colorBlind}
             ></PollsLevelsChart>
-          </div>
-          <div className=" mt-10 flex-col bg-slate-500 pl-5 pr-5 pt-3 pb-7">
-            <h2 className="text-white text-xl font-semibold mb-2">
-              7 days past data
-            </h2>
-            <div className="temporal-slider-container">
-              <Slider
-                min={1}
-                max={7}
-                marks={{
-                  1: <span className="slider-mark">1</span>,
-                  2: <span className="slider-mark">2</span>,
-                  3: <span className="slider-mark">3</span>,
-                  4: <span className="slider-mark">4</span>,
-                  5: <span className="slider-mark">5</span>,
-                  6: <span className="slider-mark">6</span>,
-                  7: <span className="slider-mark">7</span>,
-                }}
-                defaultValue={sliderValue + 1}
-                railStyle={{ backgroundColor: "#FFF", height: 6 }}
-                trackStyle={{ backgroundColor: "#FFF", height: 6 }}
-                handleStyle={{
-                  borderColor: "#FFF",
-                  height: 16,
-                  width: 16,
-                  backgroundColor: "#fff",
-                }}
-                dotStyle={{ visibility: "hidden" }}
-                activeDotStyle={{ visibility: "hidden" }}
-                onChange={handleChange}
-              />
-            </div>
           </div>
           <div className="h-fit w-full mt-10 flex-col justify-between">
             <div className="flex justify-between">
@@ -380,14 +358,4 @@ const Sidebar = ({
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    sliderValue: state.sliderValue,
-  };
-};
-
-const mapDispatchToProps = {
-  setSliderValue,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default Sidebar;
