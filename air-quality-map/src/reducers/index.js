@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 const initialState = {
   sliderValue: 0,
   layerToShow: "AQI",
+  currentLayer: "country",
 };
 
 const sliderValueReducer = (state = initialState.sliderValue, action) => {
@@ -20,9 +21,17 @@ const layerToShowReducer = (state = initialState.layerToShow, action) => {
   return state;
 };
 
+const currentLayerToShow = (state = initialState.currentLayer, action) => {
+  if (action.type === "SET_CURRENT_LAYER") {
+    return action.payload;
+  }
+  return state;
+};
+
 const rootReducer = combineReducers({
   sliderValue: sliderValueReducer,
   layerToShow: layerToShowReducer,
+  currentLayer: currentLayerToShow,
 });
 
 export default rootReducer;

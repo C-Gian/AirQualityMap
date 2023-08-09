@@ -13,6 +13,13 @@ export const setLayerToShow = (value) => {
   };
 };
 
+export const setCurrentLayer = (value) => {
+  return {
+    type: "SET_CURRENT_LAYER",
+    payload: value,
+  };
+};
+
 // actions.js
 export const toggleSidebar = () => ({
   type: "TOGGLE_SIDEBAR",

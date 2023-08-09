@@ -23,6 +23,70 @@ const App = () => {
   const [zoomInClicked, setZoomInClicked] = useState(false);
   const [centerClicked, setCenterClicked] = useState(false);
   const [zoomOutClicked, setZoomOutClicked] = useState(false);
+  const layersToShow = {
+    "PM2.5": "state-pm2.5-aqi",
+    PM10: "state-pm10-aqi",
+    OZONE: "state-ozone-aqi",
+    NO2: "state-no2-aqi",
+    CO: "state-co-aqi",
+    SO2: "state-so2-aqi",
+  };
+  const aqiBreakpoints = {
+    OZONE: [
+      [0.0, 0.054],
+      [0.055, 0.07],
+      [0.071, 0.085],
+      [0.086, 0.105],
+      [0.106, 0.2],
+      [0.201, 0.504],
+      [0.505, 0.604],
+    ],
+    "PM2.5": [
+      [0, 12.0],
+      [12.1, 35.4],
+      [35.5, 55.4],
+      [55.5, 150.4],
+      [150.5, 250.4],
+      [250.5, 350.4],
+      [350.5, 500.4],
+    ],
+    PM10: [
+      [0, 54],
+      [55, 154],
+      [155, 254],
+      [255, 354],
+      [355, 424],
+      [425, 504],
+      [505, 604],
+    ],
+    CO: [
+      [0.0, 4.4],
+      [4.5, 9.4],
+      [9.5, 12.4],
+      [12.5, 15.4],
+      [15.5, 30.4],
+      [30.5, 40.4],
+      [40.5, 50.4],
+    ],
+    SO2: [
+      [0, 35],
+      [36, 75],
+      [76, 185],
+      [186, 304],
+      [305, 604],
+      [605, 804],
+      [805, 1004],
+    ],
+    NO2: [
+      [0, 53],
+      [54, 100],
+      [101, 150],
+      [151, 200],
+      [201, 300],
+      [301, 400],
+      [401, 500],
+    ],
+  };
 
   const handleStopButton = () => {
     setZoomInClicked(false);
@@ -87,6 +151,31 @@ const App = () => {
 
     // Creare la stringa di data e ora formattata
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  }
+
+  function calculateAQI(pollutant, concentration) {
+    const breakpoints = aqiBreakpoints[pollutant];
+
+    let i;
+    for (i = 0; i < breakpoints.length; i++) {
+      if (
+        concentration >= breakpoints[i][0] &&
+        concentration <= breakpoints[i][1]
+      ) {
+        break;
+      }
+    }
+    if (i >= breakpoints.length) {
+      i = breakpoints.length - 1;
+    }
+    const AQILo = breakpoints[i][0];
+    const AQIHi = breakpoints[i][1];
+    const aqi =
+      ((AQIHi - AQILo) / (breakpoints[i][1] - breakpoints[i][0])) *
+        (concentration - AQILo) +
+      AQILo;
+
+    return Math.round(aqi);
   }
 
   async function getFirstUS() {
@@ -221,15 +310,10 @@ const App = () => {
           dataR,
         }); */
 
-    const response = await axios.get(
-      `http://localhost:4000/is-daily-update-done`
-    );
-    if (!response.data) {
-      await axios.post(`http://localhost:4000/daily-update`, {
-        dataToUpdate,
-      });
-      console.log("Daily update to do");
-    }
+    await axios.post(`http://localhost:4000/daily-update`, {
+      dataToUpdate,
+    });
+    console.log("Daily update to do");
     console.log("Daily check done");
   }
 
@@ -347,7 +431,8 @@ const App = () => {
           `http://localhost:4000/is-daily-update-done`
         );
         if (!todayIsUpdated.data) {
-          const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
+          const dailyData = dailyDataProxy; //await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
+          console.log("daily data raw", dailyData);
           const weatherDailyData = await getWeatherDataStates();
           initilizeJson(); //initialize json to be sure that adding field are correct
           dailyData.forEach((measurement) => {
@@ -405,6 +490,19 @@ const App = () => {
                       measurement.Parameter
                     ].times = 1;
                   }
+                  if (measurement.Parameter !== null) {
+                    const singleAQIPoll = calculateAQI(
+                      measurement.Parameter,
+                      measurement.Value
+                    );
+                    if (
+                      feature.properties[layersToShow[measurement.Parameter]] <
+                      singleAQIPoll
+                    ) {
+                      feature.properties[layersToShow[measurement.Parameter]] =
+                        singleAQIPoll;
+                    }
+                  }
                 }
                 break;
               }
@@ -454,28 +552,15 @@ const App = () => {
             el.properties.countryTemp = tem / dataR.features.length;
             el.properties.countryHum = hum / dataR.features.length;
           });
+          console.log("R", dataR);
           await dailyUpdate(dataR);
           console.log("Daily Data Updated");
         }
         const datas = await getDatas();
         console.log(datas);
-        const layersToShow = [
-          "state-pm2.5-aqi",
-          "state-pm10-aqi",
-          "state-ozone-aqi",
-          "state-no2-aqi",
-          "state-co-aqi",
-          "state-so2-aqi",
-        ];
-        datasBackup.forEach((day) => {
-          day.features.forEach((state) => {
-            layersToShow.forEach((layer) => {
-              state.properties[layer] = Math.floor(Math.random() * 500) + 1;
-            });
-          });
-        });
-        console.log(datasBackup);
-        setDatas(datasBackup); //datas); //getting the whole db data (7 days data)
+
+        console.log(datas);
+        setDatas(datas); //getting the whole db data (7 days data)
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL

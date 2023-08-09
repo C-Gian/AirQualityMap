@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { setLayerToShow } from "../actions/index.js";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
   nightMode,
@@ -12,11 +12,15 @@ function Toolbar({
 }) {
   const dispatch = useDispatch();
   const layerToShow = useSelector((state) => state.layerToShow);
+  const currentLayerBool =
+    useSelector((state) => state.currentLayer) == "country";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [checkedItem, setCheckedItem] = useState(layerToShow);
 
   const handleMenuOpen = () => {
-    setIsMenuOpen(true);
+    if (!currentLayerBool) {
+      setIsMenuOpen(true);
+    }
   };
 
   const handleMenuClose = () => {
@@ -127,7 +131,11 @@ function Toolbar({
         </div>
       </div>
 
-      <div className="tooltip-container">
+      <div
+        className={`tooltip-container ${
+          currentLayerBool ? "disabled-div" : ""
+        }`}
+      >
         <button
           className="bg-white p-1 rounded flex items-center tooltip-btn"
           onMouseEnter={handleMenuOpen}
@@ -160,7 +168,7 @@ function Toolbar({
         </button>
         {isMenuOpen && (
           <div
-            className="absolute  bg-white border border-gray-300 rounded shadow w-300 cursor-pointer"
+            className="absolute bg-white border border-gray-300 rounded shadow w-300 cursor-pointer"
             style={{
               top: "-310px",
               right: "0px",
@@ -241,14 +249,4 @@ function Toolbar({
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    layerToSet: state.layerToSet,
-  };
-};
-
-const mapDispatchToProps = {
-  setLayerToShow,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);
+export default Toolbar;

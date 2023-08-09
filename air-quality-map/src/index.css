@@ -192,3 +192,10 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
+.disabled-div {
+  pointer-events: none;
+  opacity: 0.6; /* Riduci l'opacità per indicare che il div è disattivato */
+  cursor: not-allowed; /* Cambia il cursore per indicare che il div non è interattivo */
+  /* Aggiungi ulteriori stili per rendere il div visivamente disabilitato */
+}

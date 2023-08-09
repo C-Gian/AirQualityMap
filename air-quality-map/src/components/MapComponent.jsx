@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Popup from "./Popup";
 import * as turf from "@turf/turf";
-import { useSelector } from "react-redux";
+import { setCurrentLayer } from "../actions/index.js";
+import { useDispatch, useSelector } from "react-redux";
 
 function MapComponent({
   datas,
@@ -18,6 +19,8 @@ function MapComponent({
 }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
+  const zoomThreshold = 3;
+  const dispatch = useDispatch();
   const sliderValue = useSelector((state) => state.sliderValue);
   const layerToShow = useSelector((state) => state.layerToShow);
   const [dataR, setDataR] = useState(datas[sliderValue]);
@@ -173,7 +176,6 @@ function MapComponent({
   }
 
   useEffect(() => {
-    console.log("map", layerToShow);
     if (mapRef.current) {
       mapRef.current.getStyle().layers.forEach((layer) => {
         if (layer.source == "aqi" && layer.type !== "line") {
@@ -255,8 +257,6 @@ function MapComponent({
       logoPosition: "top-left",
     });
     mapRef.current = map;
-
-    const zoomThreshold = 3;
 
     map.on("load", () => {
       let show = false;
@@ -546,6 +546,14 @@ function MapComponent({
         );
       }
       hoveredPolygonId = null;
+    });
+
+    mapRef.current.on("zoom", () => {
+      if (mapRef.current.getZoom() < zoomThreshold) {
+        dispatch(setCurrentLayer("country"));
+      } else {
+        dispatch(setCurrentLayer("state"));
+      }
     });
   }, [dataR, nightMode, colorBlind]);
 
