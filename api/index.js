@@ -59,6 +59,31 @@ app.get("/is-daily-update-done", async (req, res) => {
   }
 });
 
+app.post("/daily-bulk-update", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for /daily-bulk-update successfull");
+    const { todayBulkData } = req.body;
+    const db = client.db(dbName);
+    const collection = db.collection("bulkdata");
+    const previousBulkData = await collection.findOne();
+    if (previousBulkData) {
+      const number = Object.keys(previousBulkData.data).length + 1;
+      previousBulkData.data[number] = todayBulkData;
+      await collection.deleteMany({});
+      await collection.insertOne(previousBulkData);
+      console.log("Bulk Update Done");
+      res.send(true);
+    } else {
+      console.log("Bulk Update Error");
+      res.status(500).send(false);
+    }
+  } catch (error) {
+    console.error("Errore durante la connessione o l'inserimento:", error);
+    res.status(500).send(false);
+  }
+});
+
 app.post("/daily-update", async (req, res) => {
   try {
     const client = await MongoClient.connect(url, { useUnifiedTopology: true });
@@ -86,6 +111,21 @@ app.post("/daily-update", async (req, res) => {
     // Invia una risposta al client con un messaggio di errore
     res.status(500).send(false);
   }
+});
+
+app.get("/bulk-datas", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for /bulk-datas successfull");
+    const db = client.db(dbName);
+    const collection = db.collection("bulkdata");
+    const bulkData = await collection.findOne();
+    if (bulkData) {
+      res.json(bulkData);
+    } else {
+      res.status(500).send(false);
+    }
+  } catch (error) {}
 });
 
 app.get("/datas", async (req, res) => {

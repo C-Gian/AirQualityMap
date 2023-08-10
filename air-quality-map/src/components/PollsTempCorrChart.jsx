@@ -23,31 +23,59 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         OZONE: "rgba(0, 128, 0, 1) ",
       };
 
-  datas.forEach((day, index) => {
-    const dayToGet = day.features.filter((item) => item.id === id)[0];
-    data.push({
-      day: "Day " + (index + 1),
-      temp: dayToGet.weather.data.tempReal ? dayToGet.weather.data.tempReal : 0,
-      co: dayToGet.properties.measurements.CO.fixedValue
-        ? dayToGet.properties.measurements.CO.fixedValue
-        : 0,
-      no2: dayToGet.properties.measurements.NO2.fixedValue
-        ? dayToGet.properties.measurements.NO2.fixedValue
-        : 0,
-      ozone: dayToGet.properties.measurements.OZONE.fixedValue
-        ? dayToGet.properties.measurements.OZONE.fixedValue
-        : 0,
-      so2: dayToGet.properties.measurements.SO2.fixedValue
-        ? dayToGet.properties.measurements.SO2.fixedValue
-        : 0,
-      pm25: dayToGet.properties.measurements["PM2.5"].fixedValue
-        ? dayToGet.properties.measurements["PM2.5"].fixedValue
-        : 0,
-      pm10: dayToGet.properties.measurements.PM10.fixedValue
-        ? dayToGet.properties.measurements.PM10.fixedValue
-        : 0,
+  function transformData(inputObj) {
+    const outputArr = [];
+
+    for (const key in inputObj) {
+      const dayData = inputObj[key];
+      const transformedData = {
+        day: `Day ${key}`,
+        temp: parseFloat(dayData.TEMP),
+        co: parseFloat(dayData.CO),
+        no2: parseFloat(dayData.NO2),
+        ozone: parseFloat(dayData.OZONE),
+        so2: parseFloat(dayData.SO2),
+        pm25: parseFloat(dayData["PM2.5"]),
+        pm10: parseFloat(dayData.PM10),
+      };
+
+      outputArr.push(transformedData);
+    }
+
+    return outputArr;
+  }
+
+  if (id) {
+    datas.forEach((day, index) => {
+      const dayToGet = day.features.filter((item) => item.id === id)[0];
+      data.push({
+        day: "Day " + (index + 1),
+        temp: dayToGet.weather.data.tempReal
+          ? dayToGet.weather.data.tempReal
+          : 0,
+        co: dayToGet.properties.measurements.CO.fixedValue
+          ? dayToGet.properties.measurements.CO.fixedValue
+          : 0,
+        no2: dayToGet.properties.measurements.NO2.fixedValue
+          ? dayToGet.properties.measurements.NO2.fixedValue
+          : 0,
+        ozone: dayToGet.properties.measurements.OZONE.fixedValue
+          ? dayToGet.properties.measurements.OZONE.fixedValue
+          : 0,
+        so2: dayToGet.properties.measurements.SO2.fixedValue
+          ? dayToGet.properties.measurements.SO2.fixedValue
+          : 0,
+        pm25: dayToGet.properties.measurements["PM2.5"].fixedValue
+          ? dayToGet.properties.measurements["PM2.5"].fixedValue
+          : 0,
+        pm10: dayToGet.properties.measurements.PM10.fixedValue
+          ? dayToGet.properties.measurements.PM10.fixedValue
+          : 0,
+      });
     });
-  });
+  } else {
+    data = transformData(datas);
+  }
 
   // Estrai le labels (giorni) dall'array di dati
   const labels = data.map((item) => item.day);

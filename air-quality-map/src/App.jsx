@@ -18,6 +18,7 @@ const App = () => {
   const [siderbarCloseButtonPressed, setSiderbarCloseButtonPressed] =
     useState(false);
   const [datas, setDatas] = useState([]);
+  const [bulkDatas, setBulkDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
   const [colorBlind, setColorBlind] = useState(false);
@@ -314,8 +315,14 @@ const App = () => {
     await axios.post(`http://localhost:4000/daily-update`, {
       dataToUpdate,
     });
-    console.log("Daily update to do");
-    console.log("Daily check done");
+    console.log("Daily update done");
+  }
+
+  async function dailyBulkDataUpdate(todayBulkData) {
+    await axios.post(`http://localhost:4000/daily-bulk-update`, {
+      todayBulkData,
+    });
+    console.log("Daily bulk update done");
   }
 
   async function getDailyData() {
@@ -346,6 +353,11 @@ const App = () => {
 
   async function getDatas() {
     const response = await axios.get(`http://localhost:4000/datas`);
+    return response.data;
+  }
+
+  async function getBulkDatas() {
+    const response = await axios.get(`http://localhost:4000/bulk-datas`);
     return response.data;
   }
 
@@ -432,10 +444,46 @@ const App = () => {
           `http://localhost:4000/is-daily-update-done`
         );
         if (!todayIsUpdated.data) {
-          const dailyData = dailyDataProxy; //await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
-          console.log("daily data raw", dailyData);
+          const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
           const weatherDailyData = await getWeatherDataStates();
           initilizeJson(); //initialize json to be sure that adding field are correct
+          let todayBulkData = {
+            PM10: {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+            "PM2.5": {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+            OZONE: {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+            NO2: {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+            CO: {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+            SO2: {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+            TEMP: {
+              tempValue: 0,
+              finalValue: 0,
+              times: 0,
+            },
+          };
           dailyData.forEach((measurement) => {
             const point = turf.point([
               measurement.Longitude,
@@ -464,6 +512,9 @@ const App = () => {
                     measurement.Parameter
                   )
                 ) {
+                  todayBulkData[measurement.Parameter].tempValue +=
+                    measurement.Value;
+                  todayBulkData[measurement.Parameter].times += 1;
                   if (feature.properties.AQI < measurement.AQI) {
                     feature.properties.AQI = measurement.AQI;
                   }
@@ -530,6 +581,8 @@ const App = () => {
             const weatherStateData = weatherDailyData[weatherNameState];
             const cloud = weatherStateData.current.cloud;
             const tempReal = weatherStateData.current.temp_c;
+            todayBulkData["TEMP"].tempValue += tempReal;
+            todayBulkData["TEMP"].times += 1;
             const tempFeel = weatherStateData.current.feelslike_c;
             const humidity = weatherStateData.current.humidity;
             const conditionIcon = weatherStateData.current.condition.icon;
@@ -548,20 +601,27 @@ const App = () => {
             };
             med += el.properties.AQI;
           });
+          Object.keys(todayBulkData).forEach((el) => {
+            todayBulkData[el] = (
+              todayBulkData[el].tempValue / todayBulkData[el].times
+            ).toFixed(2);
+          });
           dataR.features.forEach((el) => {
             el.properties.countryAQI = med / dataR.features.length;
             el.properties.countryTemp = tem / dataR.features.length;
             el.properties.countryHum = hum / dataR.features.length;
           });
-          console.log("R", dataR);
           await dailyUpdate(dataR);
           console.log("Daily Data Updated");
+          await dailyBulkDataUpdate(todayBulkData);
+          console.log("Daily Bulk Data Updated");
         }
         const datas = await getDatas();
         console.log(datas);
-
-        console.log(datas);
+        const bulkDatas = await getBulkDatas();
+        console.log(bulkDatas.data);
         setDatas(datas); //getting the whole db data (7 days data)
+        setBulkDatas(bulkDatas.data);
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
@@ -627,6 +687,7 @@ const App = () => {
           {stateInfo && (
             <Sidebar
               infos={stateInfo}
+              bulkDatas={bulkDatas}
               onButtonClick={handleSiderbarCloseButtonClick}
               nightMode={nightMode}
               colorBlind={colorBlind}

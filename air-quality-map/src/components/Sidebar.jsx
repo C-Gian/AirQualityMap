@@ -11,8 +11,8 @@ import CountryFlag from "react-country-flag";
 
 const Sidebar = ({
   infos,
+  bulkDatas,
   onButtonClick,
-  setSliderValue,
   nightMode,
   colorBlind,
 }) => {
@@ -311,7 +311,7 @@ const Sidebar = ({
               </div>
             )}
           </div>
-          {infos.isState && (
+          {infos.isState ? (
             <div>
               <div className="mt-5">
                 <PollsTempCorrChart
@@ -319,13 +319,6 @@ const Sidebar = ({
                   id={infos.id}
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
-              </div>
-              <div className="mt-16 w-fit items-center justify-center">
-                <CorrelationMatrix
-                  datas={infos.datas}
-                  id={infos.id}
-                  colorBlind={colorBlind}
-                ></CorrelationMatrix>
               </div>
               <div className="flex-col">
                 {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
@@ -347,6 +340,42 @@ const Sidebar = ({
                   colorBlind={colorBlind}
                 ></MultipleRegression>
               </div>
+            </div>
+          ) : (
+            <div>
+              <div className="mt-5">
+                <PollsTempCorrChart
+                  datas={bulkDatas}
+                  id={null}
+                  colorBlind={colorBlind}
+                ></PollsTempCorrChart>
+              </div>
+              <div className="mt-16 w-fit items-center justify-center">
+                <CorrelationMatrix
+                  datas={bulkDatas}
+                  colorBlind={colorBlind}
+                ></CorrelationMatrix>
+              </div>
+              {/* <div className="flex-col">
+                {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
+                  (pollutant, index) => (
+                    <LinearRegression
+                      datas={infos.datas}
+                      id={infos.id}
+                      pollutant={pollutant}
+                      key={index}
+                      colorBlind={colorBlind}
+                    />
+                  )
+                )}
+              </div>
+              <div className="mt-5">
+                <MultipleRegression
+                  datas={infos.datas}
+                  id={infos.id}
+                  colorBlind={colorBlind}
+                ></MultipleRegression>
+              </div> */}
             </div>
           )}
         </div>

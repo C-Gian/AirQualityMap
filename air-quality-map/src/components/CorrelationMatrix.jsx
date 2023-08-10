@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-const CorrelationMatrix = ({ datas, id, colorBlind }) => {
+const CorrelationMatrix = ({ datas, colorBlind }) => {
   const [matrix, setMatrix] = useState([]);
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,6 +15,30 @@ const CorrelationMatrix = ({ datas, id, colorBlind }) => {
         "rgba(106, 58, 122, 1)",
       ]
     : ["white", "#318765"];
+
+  function transformData(inputObj) {
+    const transformedArray = [];
+
+    for (const key in inputObj) {
+      if (inputObj.hasOwnProperty(key)) {
+        const data = inputObj[key];
+        const temp = parseFloat(data.TEMP);
+
+        const polls = {
+          co2: parseFloat(data.CO),
+          no2: parseFloat(data.NO2),
+          o3: parseFloat(data.OZONE),
+          so2: parseFloat(data.SO2),
+          pm25: parseFloat(data["PM2.5"]),
+          pm10: parseFloat(data.PM10),
+        };
+
+        transformedArray.push({ temp, polls });
+      }
+    }
+
+    return transformedArray;
+  }
 
   // Funzione per calcolare il coefficiente di correlazione di Pearson tra due array di dati
   const calculateCorrelationPearson = (xData, yData) => {
@@ -88,16 +112,18 @@ const CorrelationMatrix = ({ datas, id, colorBlind }) => {
     setIsLoaded(true);
   }, []);
 
+  /* CODE FOR SINGLE STATE, TO UPDATE WHEN ANOTHER STATE IS CLICKED
   useEffect(() => {
     // Clear existing content before drawing the heatmap
     if (svgRef.current) {
       d3.select(svgRef.current).selectAll("*").remove();
     }
   }, [id]);
-
+ */
   useEffect(() => {
-    let data = [];
+    let data = transformData(datas);
 
+    /* CODE FOR SINGLE STATES!
     datas.forEach((day) => {
       const dayToGet = day.features.filter((item) => item.id === id)[0];
       data.push({
@@ -125,7 +151,7 @@ const CorrelationMatrix = ({ datas, id, colorBlind }) => {
             : 0,
         },
       });
-    });
+    }); */
 
     // Estraiamo i dati di temperatura e inquinanti dagli oggetti all'interno dell'array
     const temperatureData = data.map((item) => item.temp);
@@ -213,7 +239,7 @@ const CorrelationMatrix = ({ datas, id, colorBlind }) => {
       pm10Data,
       pm25Data
     ); */
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     if (isLoaded) {
@@ -301,7 +327,7 @@ const CorrelationMatrix = ({ datas, id, colorBlind }) => {
           svg.selectAll(".heatmap-cell-value").remove();
         });
     }
-  }, [isLoaded, id, colorBlind]);
+  }, [isLoaded, colorBlind]);
 
   return (
     <div className="w-fit  items-center justify-center">
