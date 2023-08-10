@@ -12,13 +12,13 @@ function TemporalSlider({ nightMode }) {
 
   return (
     <div
-      className="absolute bottom-0 left-0 m-3 mt-10 pl-5 pr-5 pt-3 pb-7 z-999"
+      className={`absolute bottom-0 left-0 m-3 mt-10 pl-5 pr-5 pt-3 pb-7  ${
+        nightMode ? "sfondo bg-opacity-50 backdrop-blur-md" : "bg-red-500"
+      }`}
       style={{
-        width: "570px",
+        zIndex: 999,
+        width: "552px",
         height: "150px",
-        backgroundColor: nightMode
-          ? "rgba(55 ,65 ,81, 0.5)"
-          : "rgba(55 ,65 ,81, 1)",
       }}
     >
       <div className="flex-col justify-between">

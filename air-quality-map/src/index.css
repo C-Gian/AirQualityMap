@@ -187,3 +187,7 @@ body {
   cursor: not-allowed; /* Cambia il cursore per indicare che il div non è interattivo */
   /* Aggiungi ulteriori stili per rendere il div visivamente disabilitato */
 }
+
+.sfondo {
+  background-color: rgba(55, 65, 81, 0.5);
+}

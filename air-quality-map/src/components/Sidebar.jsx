@@ -198,7 +198,7 @@ const Sidebar = ({
           <span className="text-4xl text-white">{name}</span>
         </div>
         <button
-          className="absolute top-0 right-0 mt-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+          className="absolute top-0 right-0 mt-2 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
           onClick={onButtonClick}
         >
           <svg
@@ -217,11 +217,8 @@ const Sidebar = ({
           </svg>
         </button>
       </div>
-      <div
-        className="sidebar overflow-y-auto h-full mr-1"
-        style={{ height: `calc(100% - 4rem)` }}
-      >
-        <div className="mr-5">
+      <div className="sidebar mr-1 h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-2 sm:h-[calc(100%-130px)]">
+        <div className="mr-4">
           <div className="flex flex-col w-fit h-fit items-center  justify-between ">
             <div className="flex w-full h-fit items-center mt-4 overflow-hidden">
               <h2 className="text-white  text-xl items-center mr-5">
@@ -353,6 +350,7 @@ const Sidebar = ({
             </div>
           )}
         </div>
+        <hr className="my-2 h-px border-none bg-gray-200/50 dark:bg-gray-700/50"></hr>
       </div>
     </div>
   );

@@ -161,7 +161,7 @@ function MapComponent({
   if (siderbarCloseButton) {
     mapRef.current.flyTo({
       center: [-100.86857959024933, 38.482552979137004],
-      zoom: 2.5, // Livello di zoom desiderato
+      zoom: mapRef.current.getZoom() - 0.5,
       speed: 1.5, // Velocità dell'animazione
       curve: 1.5, // Curva di accelerazione dell'animazione
       essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
@@ -248,10 +248,10 @@ function MapComponent({
       container: "map",
       //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
       style: nightMode
-        ? //? "mapbox://styles/mapbox/dark-v11" //3d map
-          //: "mapbox://styles/mapbox/light-v11", //3d map
-          "mapbox://styles/mapbox/dark-v10" //2d map
-        : "mapbox://styles/mapbox/light-v10", //2d map
+        ? "mapbox://styles/mapbox/dark-v11" //3d map
+        : "mapbox://styles/mapbox/light-v11", //3d map
+      //? "mapbox://styles/mapbox/dark-v10" //2d map
+      //: "mapbox://styles/mapbox/light-v10", //2d map
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
       zoom: 0,
