@@ -330,8 +330,72 @@ const CorrelationMatrix = ({ datas, colorBlind }) => {
   }, [isLoaded, colorBlind]);
 
   return (
-    <div className="w-fit  items-center justify-center">
-      {matrix.length > 0 && <svg ref={svgRef} />}
+    <div className="flex flex-col w-full items-center justify-center mr-10">
+      <div
+        className="flex-col mb-5 items-center justify-center"
+        style={{ width: "400px" }}
+      >
+        <div className=" text-white text-xl flex justify-between mb-3">
+          Value Near 1: Strong Correlation
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-arrows-up"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M17 3l0 18"></path>
+            <path d="M4 6l3 -3l3 3"></path>
+            <path d="M20 6l-3 -3l-3 3"></path>
+            <path d="M7 3l0 18"></path>
+          </svg>
+        </div>
+        <div className=" text-white text-xl flex justify-between mb-3">
+          Value Near 0: No Correlation
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+            />
+          </svg>
+        </div>
+        <div className=" text-white text-xl flex justify-between mb-3">
+          Value Near -1: Opposite Correlation
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-arrows-down-up"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M17 3l0 18"></path>
+            <path d="M10 18l-3 3l-3 -3"></path>
+            <path d="M7 21l0 -18"></path>
+            <path d="M20 6l-3 -3l-3 3"></path>
+          </svg>
+        </div>
+      </div>
+      <div>{matrix.length > 0 && <svg ref={svgRef} />}</div>
     </div>
   );
 };

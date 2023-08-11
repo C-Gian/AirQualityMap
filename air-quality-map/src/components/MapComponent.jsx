@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function MapComponent({
   datas,
+  dotsDatas,
   stateClicked,
   siderbarCloseButton,
   siderbarCloseButtonClick,

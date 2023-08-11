@@ -84,6 +84,48 @@ app.post("/daily-bulk-update", async (req, res) => {
   }
 });
 
+app.post("/daily-dots-update", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for /daily-dots-update successfull");
+    const { todayDots } = req.body;
+    const db = client.db(dbName);
+    const collection = db.collection("dotsdata");
+    /* await collection.deleteMany({});
+    await collection.insertOne({
+      data: {
+        1: todayDots,
+        2: todayDots,
+        3: todayDots,
+        4: todayDots,
+        5: todayDots,
+        6: todayDots,
+        7: todayDots,
+      },
+    }); */
+    const previousDotsData = await collection.findOne().data;
+    if (previousDotsData) {
+      previousDotsData["7"] = previousDotsData["6"];
+      previousDotsData["6"] = previousDotsData["5"];
+      previousDotsData["5"] = previousDotsData["4"];
+      previousDotsData["4"] = previousDotsData["3"];
+      previousDotsData["3"] = previousDotsData["2"];
+      previousDotsData["2"] = previousDotsData["1"];
+      previousDotsData["1"] = todayDots;
+      await collection.deleteMany({});
+      await collection.insertOne(previousDotsData);
+      console.log("Dots Update Done");
+      res.send(true);
+    } else {
+      console.log("Dots Update Error");
+      res.status(500).send(false);
+    }
+  } catch (error) {
+    console.error("Errore durante la connessione o l'inserimento:", error);
+    res.status(500).send(false);
+  }
+});
+
 app.post("/daily-update", async (req, res) => {
   try {
     const client = await MongoClient.connect(url, { useUnifiedTopology: true });
@@ -122,6 +164,21 @@ app.get("/bulk-datas", async (req, res) => {
     const bulkData = await collection.findOne();
     if (bulkData) {
       res.json(bulkData);
+    } else {
+      res.status(500).send(false);
+    }
+  } catch (error) {}
+});
+
+app.get("/dots-datas", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("connection mongodb for /dots-datas successfull");
+    const db = client.db(dbName);
+    const collection = db.collection("dotsdata");
+    const dotsdata = await collection.findOne();
+    if (dotsdata) {
+      res.json(dotsdata);
     } else {
       res.status(500).send(false);
     }

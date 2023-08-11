@@ -2,19 +2,18 @@ import React from "react";
 import { Scatter } from "react-chartjs-2";
 import regression from "regression";
 
-const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
-  let temperatures = [];
-  let pollutantValues = [];
-  let objData = [];
-  Object.keys(datas).forEach((day, index) => {
-    const sDay = datas[day];
-    const tempValue = Number(sDay["TEMP"]);
-    const pollValue = Number(sDay[pollutant]);
-    temperatures.push(tempValue);
-    pollutantValues.push(pollValue);
-    objData.push({ x: tempValue, y: pollValue });
-  });
+function PredictionRegression({ datas, id, pollutant, index, colorBlind }) {
+  const temperatures = datas.map(
+    (item) => item.features[id].weather.data.tempReal
+  );
+  const pollutantValues = datas.map(
+    (item) => item.features[id].properties.measurements[pollutant].fixedValue
+  );
 
+  const objData = datas.map((item) => ({
+    x: item.features[id].weather.data.tempReal,
+    y: item.features[id].properties.measurements[pollutant].fixedValue,
+  }));
   // Calcola la regressione lineare per l'inquinante corrente
   const result = regression.linear(
     temperatures.map((temp, index) => [temp, pollutantValues[index]])
@@ -143,5 +142,6 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
   };
 
   return <Scatter className="mt-10" data={chartData} options={chartOptions} />;
-};
-export default LinearRegression;
+}
+
+export default PredictionRegression;

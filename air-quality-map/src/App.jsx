@@ -19,6 +19,7 @@ const App = () => {
     useState(false);
   const [datas, setDatas] = useState([]);
   const [bulkDatas, setBulkDatas] = useState([]);
+  const [dotsDatas, setDotsDatas] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
   const [colorBlind, setColorBlind] = useState(false);
@@ -325,6 +326,13 @@ const App = () => {
     console.log("Daily bulk update done");
   }
 
+  async function dailyDotsDataUpdate(todayDots) {
+    await axios.post(`http://localhost:4000/daily-dots-update`, {
+      todayDots,
+    });
+    console.log("Daily dots update done");
+  }
+
   async function getDailyData() {
     let data = [];
     const d1 = await getFirstUS();
@@ -358,6 +366,11 @@ const App = () => {
 
   async function getBulkDatas() {
     const response = await axios.get(`http://localhost:4000/bulk-datas`);
+    return response.data;
+  }
+
+  async function getDotsDatas() {
+    const response = await axios.get(`http://localhost:4000/dots-datas`);
     return response.data;
   }
 
@@ -484,11 +497,13 @@ const App = () => {
               times: 0,
             },
           };
+          let todayDots = [];
           dailyData.forEach((measurement) => {
             const point = turf.point([
               measurement.Longitude,
               measurement.Latitude,
             ]);
+            todayDots.push(point);
             for (let i = 0; i < dataR.features.length; i++) {
               const feature = dataR.features[i];
               feature.id = i;
@@ -615,13 +630,18 @@ const App = () => {
           console.log("Daily Data Updated");
           await dailyBulkDataUpdate(todayBulkData);
           console.log("Daily Bulk Data Updated");
+          await dailyDotsDataUpdate(todayDots);
+          console.log("Daily Dots Updated");
         }
         const datas = await getDatas();
-        console.log(datas);
+        console.log("1", datas);
         const bulkDatas = await getBulkDatas();
-        console.log(bulkDatas.data);
+        console.log("2", bulkDatas.data);
+        const dotsDatas = await getDotsDatas();
+        console.log("3", dotsDatas.data);
         setDatas(datas); //getting the whole db data (7 days data)
         setBulkDatas(bulkDatas.data);
+        setDotsDatas(dotsDatas.data);
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
@@ -672,6 +692,7 @@ const App = () => {
           {datas.length > 0 && (
             <MapComponent
               datas={datas}
+              dotsDatas={dotsDatas}
               stateClicked={stateClicked}
               siderbarCloseButton={siderbarCloseButtonPressed}
               siderbarCloseButtonClick={handleSiderbarCloseButtonClick}

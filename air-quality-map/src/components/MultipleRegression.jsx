@@ -14,13 +14,18 @@ function MultipleRegression({ datas, id, colorBlind }) {
     "SO2",
   ]);
   let dataX = [];
-  datas.forEach((day) => {
-    let obj = { temperatura: day.features[id].weather.data.tempReal };
-    Object.keys(day.features[id].properties.measurements).forEach((key) => {
-      obj[key] = day.features[id].properties.measurements[key].fixedValue;
+  if (id) {
+    datas.forEach((day) => {
+      let obj = { temperatura: day.features[id].weather.data.tempReal };
+      Object.keys(day.features[id].properties.measurements).forEach((key) => {
+        obj[key] = day.features[id].properties.measurements[key].fixedValue;
+      });
+      dataX.push(obj);
     });
-    dataX.push(obj);
-  });
+  } else {
+    dataX = transformData(datas);
+  }
+
   const colors = colorBlind
     ? {
         CO: "rgba(255, 149, 0, 1)",
@@ -46,6 +51,27 @@ function MultipleRegression({ datas, id, colorBlind }) {
     CO: 4,
     SO2: 5,
   };
+
+  function transformData(inputObj) {
+    const outputArr = [];
+
+    for (const key in inputObj) {
+      const dayData = inputObj[key];
+      const transformedData = {
+        temperatura: parseFloat(dayData.TEMP),
+        PM10: parseFloat(dayData.PM10),
+        "PM2.5": parseFloat(dayData["PM2.5"]),
+        OZONE: dayData.OZONE !== undefined ? parseFloat(dayData.OZONE) : null,
+        NO2: parseFloat(dayData.NO2),
+        CO: parseFloat(dayData.CO),
+        SO2: parseFloat(dayData.SO2),
+      };
+
+      outputArr.push(transformedData);
+    }
+
+    return outputArr;
+  }
 
   const handlePollutantClick = (pollutant, hidden) => {
     if (hidden) {
