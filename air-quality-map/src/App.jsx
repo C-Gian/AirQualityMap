@@ -20,6 +20,7 @@ const App = () => {
   const [datas, setDatas] = useState([]);
   const [bulkDatas, setBulkDatas] = useState([]);
   const [dotsDatas, setDotsDatas] = useState({});
+  const [windDatas, setWindDatas] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [nightMode, setNightMode] = useState(true);
   const [colorBlind, setColorBlind] = useState(false);
@@ -373,6 +374,17 @@ const App = () => {
     return data;
   }
 
+  async function getWindDatas() {
+    const data = await axios.get(`http://localhost:4000/daily-wind-update`);
+    if (data) {
+      console.log("wind data got");
+      return data;
+    } else {
+      console.log("wind data error");
+      return null;
+    }
+  }
+
   async function getDatas() {
     const response = await axios.get(`http://localhost:4000/datas`);
     return response.data;
@@ -653,9 +665,12 @@ const App = () => {
         console.log("2", bulkDatas.data);
         const dotsDatas = await getDotsDatas();
         console.log("3", dotsDatas.data);
+        const windData = await getWindDatas();
+        console.log("4", windData);
         setDatas(datas); //getting the whole db data (7 days data)
         setBulkDatas(bulkDatas.data);
         setDotsDatas(dotsDatas.data);
+        setWindDatas(windData);
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
@@ -707,6 +722,7 @@ const App = () => {
             <MapComponent
               datas={datas}
               dotsDatas={dotsDatas}
+              windDatas={windDatas}
               stateClicked={stateClicked}
               siderbarCloseButton={siderbarCloseButtonPressed}
               siderbarCloseButtonClick={handleSiderbarCloseButtonClick}

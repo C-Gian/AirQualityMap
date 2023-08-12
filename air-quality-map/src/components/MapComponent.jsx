@@ -4,10 +4,13 @@ import Popup from "./Popup";
 import * as turf from "@turf/turf";
 import { setCurrentLayer } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
+import { WindLayer } from "@sakitam-gis/mapbox-wind";
+import axios from "axios";
 
 function MapComponent({
   datas,
   dotsDatas,
+  windDatas,
   stateClicked,
   siderbarCloseButton,
   siderbarCloseButtonClick,
@@ -24,6 +27,7 @@ function MapComponent({
   const dispatch = useDispatch();
   const sliderValue = useSelector((state) => state.sliderValue);
   const layerToShow = useSelector((state) => state.layerToShow);
+  const wind = useSelector((state) => state.wind);
   const [dataR, setDataR] = useState(datas[sliderValue]);
   const [dataRDots, setDataRDots] = useState(dotsDatas[sliderValue + 1]);
   const [showPopup, setShowPopup] = useState(false);
@@ -138,6 +142,46 @@ function MapComponent({
         "#57012d",
       ];
 
+  const color = {
+    temp: [
+      [203, [115, 70, 105, 255]],
+      [218, [202, 172, 195, 255]],
+      [233, [162, 70, 145, 255]],
+      [248, [143, 89, 169, 255]],
+      [258, [157, 219, 217, 255]],
+      [265, [106, 191, 181, 255]],
+      [269, [100, 166, 189, 255]],
+      [273.15, [93, 133, 198, 255]],
+      [274, [68, 125, 99, 255]],
+      [283, [128, 147, 24, 255]],
+      [294, [243, 183, 4, 255]],
+      [303, [232, 83, 25, 255]],
+      [320, [71, 14, 0, 255]],
+    ],
+    wind: [
+      [0, [98, 113, 183, 255]],
+      [1, [57, 97, 159, 255]],
+      [3, [74, 148, 169, 255]],
+      [5, [77, 141, 123, 255]],
+      [7, [83, 165, 83, 255]],
+      [9, [53, 159, 53, 255]],
+      [11, [167, 157, 81, 255]],
+      [13, [159, 127, 58, 255]],
+      [15, [161, 108, 92, 255]],
+      [17, [129, 58, 78, 255]],
+      [19, [175, 80, 136, 255]],
+      [21, [117, 74, 147, 255]],
+      [24, [109, 97, 163, 255]],
+      [27, [68, 105, 141, 255]],
+      [29, [92, 144, 152, 255]],
+      [36, [125, 68, 165, 255]],
+      [46, [231, 215, 215, 255]],
+      [51, [219, 212, 135, 255]],
+      [77, [205, 202, 112, 255]],
+      [104, [128, 128, 128, 255]],
+    ],
+  };
+
   if (zoomInClicked) {
     mapRef.current.zoomIn();
     stopButton();
@@ -178,7 +222,7 @@ function MapComponent({
   }
 
   useEffect(() => {
-    if (mapRef.current) {
+    if (mapRef.current && mapRef.current.getStyle()) {
       mapRef.current.getStyle().layers.forEach((layer) => {
         if (layer.source == "aqi" && layer.type !== "line") {
           mapRef.current.setLayoutProperty(layer.id, "visibility", "none");
@@ -267,6 +311,12 @@ function MapComponent({
     }
   }, [layerToShow]);
 
+  /* useEffect(() => {
+    if (window.windLayer) {
+      window.windLayer.setVisibility(true); // Imposta la visibilità a true per attivare il layer
+    }
+  }, [wind]); */
+
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
@@ -274,10 +324,10 @@ function MapComponent({
       container: "map",
       //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
       style: nightMode
-        ? "mapbox://styles/mapbox/dark-v11" //3d map
-        : "mapbox://styles/mapbox/light-v11", //3d map
-      //? "mapbox://styles/mapbox/dark-v10" //2d map
-      //: "mapbox://styles/mapbox/light-v10", //2d map
+        ? //? "mapbox://styles/mapbox/dark-v11" //3d map
+          //: "mapbox://styles/mapbox/light-v11", //3d map
+          "mapbox://styles/mapbox/dark-v10" //2d map
+        : "mapbox://styles/mapbox/light-v10", //2d map
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
       zoom: 0,
@@ -287,6 +337,8 @@ function MapComponent({
       logoPosition: "top-left",
     });
     mapRef.current = map;
+
+    map.doubleClickZoom.disable();
 
     map.on("load", () => {
       let show = false;
@@ -299,6 +351,106 @@ function MapComponent({
           );
         }
       });
+
+      /* const GFS_DATE = "20230811";
+      const GFS_TIME = "00";
+      const RES = "1p00";
+      const BBOX = "leftlon=0&rightlon=360&toplat=90&bottomlat=-90";
+      const LEVEL = "lev_10_m_above_ground=on";
+      const urlssss =
+        "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?dir=%2Fgfs.20230812%2F06%2Fatmos&file=gfs.t06z.pgrb2.1p00.anl&all_var=on&lev_10_m_above_ground=on";
+      const GFS_URL = `https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?file=gfs.t00z.pgrb2.1p00.f000&lev_10_m_above_ground=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fgfs.2023081100`;
+      //const GFS_URL = `http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_${RES}.pl?file=gfs.t${GFS_TIME}z.pgrb2.${RES}.f000&${LEVEL}&${BBOX}&dir=%2Fgfs.${GFS_DATE}${GFS_TIME}`;
+      console.log(GFS_URL);
+      axios.get(urlssss).then((response) => {
+        console.log("response", response);
+      }); */
+
+      console.log(window);
+
+      window.windLayer = new WindLayer("wind", windDatas.data, {
+        windOptions: {
+          colorScale: (m) => {
+            return "#fff";
+          },
+          colorScale: [
+            "rgb(36,104, 180)",
+            "rgb(60,157, 194)",
+            "rgb(128,205,193 )",
+            "rgb(151,218,168 )",
+            "rgb(198,231,181)",
+            "rgb(238,247,217)",
+            "rgb(255,238,159)",
+            "rgb(252,217,125)",
+            "rgb(255,182,100)",
+            "rgb(252,150,75)",
+            "rgb(250,112,52)",
+            "rgb(245,64,32)",
+            "rgb(237,45,28)",
+            "rgb(220,24,32)",
+            "rgb(180,0,35)",
+          ],
+          velocityScale: 1 / 20,
+          paths: 5000,
+          frameRate: 10,
+          maxAge: 60,
+          globalAlpha: 0.9,
+          velocityScale: 0.03,
+          //paths: 10000,
+          paths: 10000,
+        },
+        fieldOptions: {
+          wrapX: true,
+        },
+        visibility: false, // Imposta la visibilità iniziale a false
+      });
+
+      window.windLayer.addTo(map);
+
+      /* fetch(
+        "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json"
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          window.windLayer = new WindLayer("wind", data, {
+            windOptions: {
+              colorScale: (m) => {
+                return "#fff";
+              },
+              colorScale: [
+                "rgb(36,104, 180)",
+                "rgb(60,157, 194)",
+                "rgb(128,205,193 )",
+                "rgb(151,218,168 )",
+                "rgb(198,231,181)",
+                "rgb(238,247,217)",
+                "rgb(255,238,159)",
+                "rgb(252,217,125)",
+                "rgb(255,182,100)",
+                "rgb(252,150,75)",
+                "rgb(250,112,52)",
+                "rgb(245,64,32)",
+                "rgb(237,45,28)",
+                "rgb(220,24,32)",
+                "rgb(180,0,35)",
+              ],
+              velocityScale: 1 / 20,
+              paths: 5000,
+              frameRate: 10,
+              maxAge: 60,
+              globalAlpha: 0.9,
+              velocityScale: 0.03,
+              //paths: 10000,
+              paths: 10000,
+            },
+            fieldOptions: {
+              wrapX: true,
+            },
+          });
+
+          window.windLayer.addTo(map);
+        }); */
 
       //map.addControl(new NavigationControl(), "top-right");
 

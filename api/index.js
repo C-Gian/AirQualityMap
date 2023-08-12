@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+const axios = require("axios");
 const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 
@@ -165,6 +166,30 @@ app.get("/bulk-datas", async (req, res) => {
     if (bulkData) {
       res.json(bulkData);
     } else {
+      res.status(500).send(false);
+    }
+  } catch (error) {}
+});
+
+app.get("/daily-wind-update", async (req, res) => {
+  console.log("getting wind datas");
+  try {
+    const GFS_DATE = "20230811";
+    const GFS_TIME = "00";
+    const RES = "1p00";
+    const BBOX = "leftlon=0&rightlon=360&toplat=90&bottomlat=-90";
+    const LEVEL = "lev_10_m_above_ground=on";
+    /* const response = await axios.get(
+      `http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_${RES}.pl?file=gfs.t${GFS_TIME}z.pgrb2.${RES}.f000&${LEVEL}&${BBOX}&dir=%2Fgfs.${GFS_DATE}${GFS_TIME}`
+    ); */
+    const response = await axios.get(
+      "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json"
+    );
+    if (response) {
+      console.log("getting wind done");
+      res.json(response.data);
+    } else {
+      console.log("getting wind error");
       res.status(500).send(false);
     }
   } catch (error) {}

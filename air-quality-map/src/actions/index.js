@@ -20,6 +20,13 @@ export const setCurrentLayer = (value) => {
   };
 };
 
+export const setWind = (value) => {
+  return {
+    type: "SET_WIND",
+    payload: value,
+  };
+};
+
 // actions.js
 export const toggleSidebar = () => ({
   type: "TOGGLE_SIDEBAR",

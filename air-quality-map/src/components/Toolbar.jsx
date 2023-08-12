@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { setLayerToShow } from "../actions/index.js";
+import { setLayerToShow, setWind } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
@@ -13,6 +13,7 @@ function Toolbar({
   const dispatch = useDispatch();
   const currentLayer = useSelector((state) => state.currentLayer);
   const layerToShow = useSelector((state) => state.layerToShow);
+  const wind = useSelector((state) => state.wind);
   const [dotsActive, setDotsActive] = useState(false);
   const [currentLayerBool, setCurrentLayerBool] = useState(
     currentLayer == "country" || dotsActive
@@ -46,6 +47,10 @@ function Toolbar({
 
   const handleCheckboxChange = (optionKey) => {
     setCheckedItem(optionKey);
+  };
+
+  const handleWindButtonClick = () => {
+    dispatch(setWind(!wind));
   };
 
   const options = {
@@ -192,12 +197,11 @@ function Toolbar({
           )}
         </div>
 
-        <div
-          className={`mr-1 tooltip-container ${
-            currentLayerBool ? "disabled-div" : ""
-          }`}
-        >
-          <button className="bg-white p-1 rounded flex items-center tooltip-btn">
+        <div className={`mr-1 tooltip-container`}>
+          <button
+            className="bg-white p-1 rounded flex items-center tooltip-btn"
+            onClick={handleWindButtonClick}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
