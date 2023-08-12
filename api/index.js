@@ -103,15 +103,15 @@ app.post("/daily-dots-update", async (req, res) => {
         7: todayDots,
       },
     }); */
-    const previousDotsData = await collection.findOne().data;
+    const previousDotsData = await collection.findOne();
     if (previousDotsData) {
-      previousDotsData["7"] = previousDotsData["6"];
-      previousDotsData["6"] = previousDotsData["5"];
-      previousDotsData["5"] = previousDotsData["4"];
-      previousDotsData["4"] = previousDotsData["3"];
-      previousDotsData["3"] = previousDotsData["2"];
-      previousDotsData["2"] = previousDotsData["1"];
-      previousDotsData["1"] = todayDots;
+      previousDotsData.data["7"] = previousDotsData.data["6"];
+      previousDotsData.data["6"] = previousDotsData.data["5"];
+      previousDotsData.data["5"] = previousDotsData.data["4"];
+      previousDotsData.data["4"] = previousDotsData.data["3"];
+      previousDotsData.data["3"] = previousDotsData.data["2"];
+      previousDotsData.data["2"] = previousDotsData.data["1"];
+      previousDotsData.data["1"] = todayDots;
       await collection.deleteMany({});
       await collection.insertOne(previousDotsData);
       console.log("Dots Update Done");

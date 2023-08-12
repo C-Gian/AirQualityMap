@@ -18,7 +18,6 @@ const CorrelationMatrix = ({ datas, colorBlind }) => {
 
   function transformData(inputObj) {
     const transformedArray = [];
-
     for (const key in inputObj) {
       if (inputObj.hasOwnProperty(key)) {
         const data = inputObj[key];
