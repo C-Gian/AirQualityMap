@@ -479,6 +479,8 @@ function MapComponent({
         },
       }); */
     });
+
+    return () => map.remove(); // Cleanup della mappa
   }, [nightMode, colorBlind]); //dataR added to prevent map to be black at the start, if problems delete this
 
   useEffect(() => {
