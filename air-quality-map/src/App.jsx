@@ -240,6 +240,20 @@ const App = () => {
       return null;
     }
   }
+  async function getFifthUS() {
+    //hawaii
+    const apiURL =
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-160.220000,18.910000,-154.800000,20.320000&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
+    try {
+      const response = await fetch(apiURL);
+      const data = await response.json();
+      console.log("fifth data US got correctly");
+      return data;
+    } catch (error) {
+      console.log("error fetching fifth US data", error);
+      return null;
+    }
+  }
 
   /* async function getAirQualityDataEurope() {
   const API_TOKEN = "551302aec928205074ba444ee505af1db545b83c";
@@ -339,23 +353,23 @@ const App = () => {
     d1.forEach((measurement) => {
       data.push(measurement);
     });
-    console.log("data after first: ", data);
     const d2 = await getSecondUS();
     d2.forEach((measurement) => {
       data.push(measurement);
     });
-    console.log("data after second: ", data);
     const d3 = await getThirdUS();
     d3.forEach((measurement) => {
       data.push(measurement);
     });
-    console.log("data after third: ", data);
     const d4 = await getFourthUS();
     d4.forEach((measurement) => {
       data.push(measurement);
     });
-    console.log("data after fourth: ", data);
-    console.log("Daily data got");
+    const d5 = await getFifthUS();
+    d5.forEach((measurement) => {
+      data.push(measurement);
+    });
+    console.log("Daily data got", data);
     return data;
   }
 
@@ -503,7 +517,6 @@ const App = () => {
               measurement.Longitude,
               measurement.Latitude,
             ]);
-            todayDots.push(point);
             for (let i = 0; i < dataR.features.length; i++) {
               const feature = dataR.features[i];
               feature.id = i;
@@ -520,6 +533,7 @@ const App = () => {
                   ignoreBoundary: false,
                 })
               ) {
+                todayDots.push(point);
                 feature.properties.nDetections =
                   feature.properties.nDetections + 1;
                 if (
@@ -719,9 +733,9 @@ const App = () => {
             nightMode={nightMode}
             onNightModeClick={handleNightModeClick}
             onColorBlindClick={handleColorBlindClick}
-            onColorZoomInClick={handleZoomInClick}
-            onColorCenterClick={handleCenterClick}
-            onColorZoomOutClick={handleZoomOutClick}
+            onZoomInClick={handleZoomInClick}
+            onCenterClick={handleCenterClick}
+            onZoomOutClick={handleZoomOutClick}
           ></Toolbar>
         </div>
       )}

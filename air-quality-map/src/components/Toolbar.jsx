@@ -6,14 +6,17 @@ function Toolbar({
   nightMode,
   onNightModeClick,
   onColorBlindClick,
-  onColorZoomInClick,
-  onColorCenterClick,
-  onColorZoomOutClick,
+  onZoomInClick,
+  onCenterClick,
+  onZoomOutClick,
 }) {
   const dispatch = useDispatch();
+  const currentLayer = useSelector((state) => state.currentLayer);
   const layerToShow = useSelector((state) => state.layerToShow);
-  const currentLayerBool =
-    useSelector((state) => state.currentLayer) == "country";
+  const [dotsActive, setDotsActive] = useState(false);
+  const [currentLayerBool, setCurrentLayerBool] = useState(
+    currentLayer == "country" || dotsActive
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [checkedItem, setCheckedItem] = useState(layerToShow);
 
@@ -23,10 +26,22 @@ function Toolbar({
     }
   };
 
+  const handleDotsButtonClick = () => {
+    if (dotsActive) {
+      setDotsActive(false);
+      setCheckedItem("AQI");
+      setCurrentLayerBool(false);
+    } else {
+      setDotsActive(true);
+      setCheckedItem("DOTS");
+      setCurrentLayerBool(true);
+    }
+  };
+
   const handleMenuClose = () => {
     setIsMenuOpen(false);
     setCheckedItem("AQI");
-    dispatch(setLayerToShow(checkedItem));
+    //dispatch(setLayerToShow(checkedItem));
   };
 
   const handleCheckboxChange = (optionKey) => {
@@ -46,6 +61,10 @@ function Toolbar({
   useEffect(() => {
     dispatch(setLayerToShow(checkedItem));
   }, [checkedItem]);
+
+  useEffect(() => {
+    setCurrentLayerBool(currentLayer == "country" || dotsActive);
+  }, [currentLayer]);
 
   return (
     <div
@@ -104,27 +123,28 @@ function Toolbar({
         </div>
       </div>
 
-      <div
-        className={`mr-2 tooltip-container ${
-          currentLayerBool ? "disabled-div" : ""
-        }`}
-      >
-        <button
-          className="bg-white p-1 rounded flex items-center tooltip-btn"
-          onMouseEnter={handleMenuOpen}
-          onMouseLeave={handleMenuClose}
+      <div className="flex w-fit justify-between">
+        <div
+          className={`mr-1 tooltip-container ${
+            currentLayerBool ? "disabled-div" : ""
+          }`}
         >
-          <svg
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 421.59 421.59"
+          <button
+            className="bg-white p-1 rounded flex items-center tooltip-btn"
+            onMouseEnter={handleMenuOpen}
+            onMouseLeave={handleMenuClose}
           >
-            <g>
+            <svg
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 421.59 421.59"
+            >
               <g>
-                <path
-                  d="M400.491,291.098l-58.865-36.976l58.864-36.971c2.185-1.372,3.511-3.771,3.511-6.351s-1.326-4.979-3.511-6.352
+                <g>
+                  <path
+                    d="M400.491,291.098l-58.865-36.976l58.864-36.971c2.185-1.372,3.511-3.771,3.511-6.351s-1.326-4.979-3.511-6.352
 			l-58.865-36.977l58.862-36.973c2.185-1.373,3.511-3.771,3.511-6.351s-1.326-4.979-3.511-6.351L214.783,1.149
 			c-2.438-1.532-5.54-1.532-7.979,0L21.1,117.796c-2.185,1.373-3.511,3.771-3.511,6.351c0,2.58,1.326,4.979,3.511,6.351
 			l58.861,36.972l-58.859,36.978c-2.185,1.373-3.51,3.771-3.51,6.351c0,2.58,1.326,4.979,3.511,6.351l58.859,36.97l-58.859,36.979
@@ -134,97 +154,97 @@ function Toolbar({
 			c1.219,0.766,2.604,1.149,3.989,1.149c1.385,0,2.77-0.383,3.989-1.149l112.742-70.817l54.875,34.47L210.792,318.582
 			L39.191,210.798z M210.792,405.232L39.191,297.448l54.87-34.472l112.742,70.814c1.22,0.766,2.604,1.149,3.989,1.149
 			s2.77-0.383,3.989-1.149l112.744-70.812l54.876,34.47L210.792,405.232z"
-                />
+                  />
+                </g>
               </g>
-            </g>
-          </svg>
-        </button>
-        {isMenuOpen && (
-          <div
-            className="absolute bg-white border border-gray-300 rounded shadow w-300 cursor-pointer"
-            style={{
-              top: "-310px",
-              right: "0px",
-            }}
-            onMouseEnter={handleMenuOpen}
-            onMouseLeave={handleMenuClose}
-          >
-            {Object.keys(options).map((optionKey) => (
-              <div
-                key={optionKey}
-                className={`flex items-center space-x-2 font-semibold pt-2 pb-2 text-xl cursor-pointer ${
-                  checkedItem === optionKey ? "bg-blue-300" : "" // Aggiungiamo la classe 'selected' se l'opzione è selezionata
-                }`}
-                onClick={() => handleCheckboxChange(optionKey)}
-              >
-                {/* <input
+            </svg>
+          </button>
+          {isMenuOpen && (
+            <div
+              className="absolute bg-white border border-gray-300 rounded shadow w-300 cursor-pointer"
+              style={{
+                top: "-310px",
+                right: "0px",
+              }}
+              onMouseEnter={handleMenuOpen}
+              onMouseLeave={handleMenuClose}
+            >
+              {Object.keys(options).map((optionKey) => (
+                <div
+                  key={optionKey}
+                  className={`flex items-center space-x-2 font-semibold pt-2 pb-2 text-xl cursor-pointer ${
+                    checkedItem === optionKey ? "bg-blue-300" : "" // Aggiungiamo la classe 'selected' se l'opzione è selezionata
+                  }`}
+                  onClick={() => handleCheckboxChange(optionKey)}
+                >
+                  {/* <input
                   type="checkbox"
                   className="w-4 h-4"
                   checked={checkedItem === optionKey}
                   onChange={() => handleCheckboxChange(optionKey)}
                 /> */}
-                <span className="ml-2 select-none pl-2 pr-2">
-                  {options[optionKey]}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+                  <span className="ml-2 select-none pl-2 pr-2">
+                    {options[optionKey]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
-      <div
-        className={`mr-2 tooltip-container ${
-          currentLayerBool ? "disabled-div" : ""
-        }`}
-      >
-        <button className="bg-white p-1 rounded flex items-center tooltip-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181"
-            />
-          </svg>
-        </button>
-        <span className="tooltip-text p-2">Wind</span>
-      </div>
+        <div
+          className={`mr-1 tooltip-container ${
+            currentLayerBool ? "disabled-div" : ""
+          }`}
+        >
+          <button className="bg-white p-1 rounded flex items-center tooltip-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181"
+              />
+            </svg>
+          </button>
+          <span className="tooltip-text p-2">Wind</span>
+        </div>
 
-      <div
-        className={`mr-2 tooltip-container ${
-          currentLayerBool ? "disabled-div" : ""
-        }`}
-      >
-        <button className="bg-white p-1 rounded flex items-center tooltip-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+        <div className={`mr-2 tooltip-container `}>
+          <button
+            className="bg-white p-1 rounded flex items-center tooltip-btn"
+            onClick={handleDotsButtonClick}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
-        <span className="tooltip-text p-2">Circle Layer</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </button>
+          <span className="tooltip-text p-2">Circle Layer</span>
+        </div>
       </div>
 
       <div className="flex items-center">
         <div className="tooltip-container">
           <button
             className="bg-white p-1 flex items-center tooltip-btn  rounded-l"
-            onClick={onColorZoomInClick}
+            onClick={onZoomInClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +266,7 @@ function Toolbar({
         <div className="tooltip-container">
           <button
             className="bg-white p-1 flex items-center tooltip-btn"
-            onClick={onColorCenterClick}
+            onClick={onCenterClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -273,7 +293,7 @@ function Toolbar({
         <div className="tooltip-container">
           <button
             className="bg-white mt-1 mb-1 p-1 flex items-center tooltip-btn rounded-r"
-            onClick={onColorZoomOutClick}
+            onClick={onZoomOutClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

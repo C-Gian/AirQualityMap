@@ -25,6 +25,7 @@ function MapComponent({
   const sliderValue = useSelector((state) => state.sliderValue);
   const layerToShow = useSelector((state) => state.layerToShow);
   const [dataR, setDataR] = useState(datas[sliderValue]);
+  const [dataRDots, setDataRDots] = useState(dotsDatas[sliderValue + 1]);
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
@@ -182,6 +183,13 @@ function MapComponent({
         if (layer.source == "aqi" && layer.type !== "line") {
           mapRef.current.setLayoutProperty(layer.id, "visibility", "none");
         }
+        if (
+          layer.id == "glowy-things-1" ||
+          layer.id == "glowy-things-2" ||
+          layer.id == "glowy-things-3"
+        ) {
+          mapRef.current.setLayoutProperty(layer.id, "visibility", "none");
+        }
       });
       switch (layerToShow) {
         case "AQI":
@@ -238,6 +246,23 @@ function MapComponent({
             "visible"
           );
           break;
+        case "DOTS":
+          mapRef.current.setLayoutProperty(
+            "glowy-things-1",
+            "visibility",
+            "visible"
+          );
+          mapRef.current.setLayoutProperty(
+            "glowy-things-2",
+            "visibility",
+            "visible"
+          );
+          mapRef.current.setLayoutProperty(
+            "glowy-things-3",
+            "visibility",
+            "visible"
+          );
+          break;
       }
     }
   }, [layerToShow]);
@@ -277,6 +302,64 @@ function MapComponent({
 
       //map.addControl(new NavigationControl(), "top-right");
 
+      map.addSource("glowy-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: dataRDots.map((coord) => ({
+            type: "Feature",
+            geometry: coord.geometry,
+          })),
+        },
+      });
+
+      map.addLayer({
+        id: "glowy-things-1",
+        type: "circle",
+        layout: {
+          visibility: "none",
+        },
+        source: "glowy-source",
+        paint: {
+          "circle-radius": 10,
+          "circle-color": "rgb(0, 255, 0)", //"rgb(255, 50, 0)",
+          "circle-opacity": 0.4,
+          "circle-blur": 3,
+        },
+      });
+
+      // Aggiungi il secondo layer "Glowy things 2"
+      map.addLayer({
+        id: "glowy-things-2",
+        type: "circle",
+        layout: {
+          visibility: "none",
+        },
+        source: "glowy-source",
+        paint: {
+          "circle-radius": 5,
+          "circle-color": "rgb(0, 255, 0)", //"rgb(255, 50, 0)",
+          "circle-opacity": 0.4,
+          "circle-blur": 3,
+        },
+      });
+
+      // Aggiungi il terzo layer "Glowy things 3"
+      map.addLayer({
+        id: "glowy-things-3",
+        type: "circle",
+        layout: {
+          visibility: "none",
+        },
+        source: "glowy-source",
+        paint: {
+          "circle-radius": 1,
+          "circle-color": "white",
+          "circle-opacity": 1,
+          "circle-blur": 0,
+        },
+      });
+
       map.addSource("aqi", {
         type: "geojson",
         data: dataR,
@@ -287,6 +370,9 @@ function MapComponent({
         source: "aqi",
         maxzoom: zoomThreshold,
         type: "fill",
+        layout: {
+          visibility: "visible",
+        },
         paint: {
           "fill-color": [
             "interpolate",
@@ -572,6 +658,15 @@ function MapComponent({
       return;
     setDataR(datas[sliderValue]);
     mapRef.current.getSource("aqi").setData(datas[sliderValue]);
+    const data = {
+      type: "FeatureCollection",
+      features: dotsDatas[sliderValue + 1].map((coord) => ({
+        type: "Feature",
+        geometry: coord.geometry,
+      })),
+    };
+    setDataRDots(dotsDatas[sliderValue + 1]);
+    mapRef.current.getSource("glowy-source").setData(data);
   }, [sliderValue, nightMode, colorBlind]);
 
   return (

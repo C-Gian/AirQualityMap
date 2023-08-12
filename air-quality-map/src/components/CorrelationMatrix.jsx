@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-const CorrelationMatrix = ({ datas, colorBlind }) => {
+const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
   const [matrix, setMatrix] = useState([]);
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -120,7 +120,7 @@ const CorrelationMatrix = ({ datas, colorBlind }) => {
   }, [id]);
  */
   useEffect(() => {
-    let data = transformData(datas);
+    let data = transformData(bulkDatas);
 
     /* CODE FOR SINGLE STATES!
     datas.forEach((day) => {
@@ -338,15 +338,15 @@ const CorrelationMatrix = ({ datas, colorBlind }) => {
           Value Near 1: Strong Correlation
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-arrows-up"
+            className="icon icon-tabler icon-tabler-arrows-up"
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="currentColor"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M17 3l0 18"></path>
@@ -376,15 +376,15 @@ const CorrelationMatrix = ({ datas, colorBlind }) => {
           Value Near -1: Opposite Correlation
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-arrows-down-up"
+            className="icon icon-tabler icon-tabler-arrows-down-up"
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            stroke-width="2"
+            strokeWidth="2"
             stroke="currentColor"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M17 3l0 18"></path>

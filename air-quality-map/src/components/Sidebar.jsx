@@ -351,13 +351,81 @@ const Sidebar = ({
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
               </div>
-              <div className="flex mt-16 items-center justify-center">
+              <div className="flex mt-16 items-center">
                 <CorrelationMatrix
-                  datas={bulkDatas}
+                  bulkDatas={bulkDatas}
                   colorBlind={colorBlind}
                 ></CorrelationMatrix>
               </div>
-              <div className="flex-col">
+              <div className="flex-col mt-10">
+                <div className="flex-col items-center text-white text-xl mx-10">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mr-3"
+                      >
+                        <line
+                          x1="0"
+                          y1="100"
+                          x2="100"
+                          y2="0"
+                          stroke="white"
+                          strokeWidth="10"
+                        />
+                      </svg>
+                      <h2 className="mb-1">Up Line</h2>
+                    </div>
+                    <h2 className="mb-1">Correlation</h2>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mr-3"
+                      >
+                        <line
+                          x1="0"
+                          y1="50"
+                          x2="100"
+                          y2="50"
+                          stroke="white"
+                          strokeWidth="10"
+                        />
+                      </svg>
+                      <h2 className="mb-1">Straight Line</h2>
+                    </div>
+                    <h2 className="mb-1">No Correlation</h2>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mr-3"
+                      >
+                        <line
+                          x1="0"
+                          y1="0"
+                          x2="100"
+                          y2="100"
+                          stroke="white"
+                          strokeWidth="10"
+                        />
+                      </svg>
+                      <h2 className="mb-1">Down Line</h2>
+                    </div>
+                    <h2>Opposite Correlation</h2>
+                  </div>
+                </div>
                 {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
                   (pollutant, index) => (
                     <LinearRegression

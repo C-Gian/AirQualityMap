@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "rc-slider";
 import { setSliderValue } from "../actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 
 function TemporalSlider({ nightMode }) {
+  const [selectedDay, setSelectedDay] = useState("Today");
   const dispatch = useDispatch();
   const sliderValue = useSelector((state) => state.sliderValue);
+
   const handleChange = (value) => {
     dispatch(setSliderValue(value - 1));
   };
+
+  function calculateScaledDate(daysToSubtract) {
+    const currentDate = new Date();
+
+    // Calcola il numero totale di giorni da sottrarre
+    const totalDaysToSubtract =
+      currentDate.getDate() >= daysToSubtract
+        ? daysToSubtract
+        : currentDate.getDate() + daysToSubtract;
+    currentDate.setDate(currentDate.getDate() - totalDaysToSubtract);
+
+    /* // Formatta la data in modo leggibile (esempio: "2023-08-05")
+    const formattedDate = currentDate.toISOString().split("T")[0]; */
+    return currentDate;
+  }
+
+  function formatDateAsDMY(date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Aggiungi 1 perché i mesi sono indicizzati da 0 a 11
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+  }
+
+  useEffect(() => {
+    const scaledDate = calculateScaledDate(sliderValue);
+    if (sliderValue != 0) {
+      setSelectedDay(formatDateAsDMY(scaledDate));
+    } else {
+      setSelectedDay("Today");
+    }
+  }, [sliderValue]);
 
   return (
     <div
@@ -22,9 +56,14 @@ function TemporalSlider({ nightMode }) {
       }}
     >
       <div className="flex-col justify-between">
-        <h2 className="text-white text-2xl font-semibold mt-2">
-          7 days past data
-        </h2>
+        <div className="flex justify-between">
+          <h2 className="text-white text-2xl font-semibold mt-2">
+            7 days past data
+          </h2>
+          <h2 className="text-white text-xl font-semibold mt-2 mr-10">
+            {selectedDay}
+          </h2>
+        </div>
         <div className="mt-8 mb-10">
           <Slider
             min={1}

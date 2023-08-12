@@ -142,6 +142,6 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
     }, */
   };
 
-  return <Scatter className="mt-10" data={chartData} options={chartOptions} />;
+  return <Scatter className="mt-5" data={chartData} options={chartOptions} />;
 };
 export default LinearRegression;
