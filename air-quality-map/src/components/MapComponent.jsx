@@ -33,6 +33,7 @@ function MapComponent({
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
+  const [porcodio, setPorcodio] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
   const colorsLayers = colorBlind
     ? [
@@ -141,46 +142,6 @@ function MapComponent({
         301,
         "#57012d",
       ];
-
-  const color = {
-    temp: [
-      [203, [115, 70, 105, 255]],
-      [218, [202, 172, 195, 255]],
-      [233, [162, 70, 145, 255]],
-      [248, [143, 89, 169, 255]],
-      [258, [157, 219, 217, 255]],
-      [265, [106, 191, 181, 255]],
-      [269, [100, 166, 189, 255]],
-      [273.15, [93, 133, 198, 255]],
-      [274, [68, 125, 99, 255]],
-      [283, [128, 147, 24, 255]],
-      [294, [243, 183, 4, 255]],
-      [303, [232, 83, 25, 255]],
-      [320, [71, 14, 0, 255]],
-    ],
-    wind: [
-      [0, [98, 113, 183, 255]],
-      [1, [57, 97, 159, 255]],
-      [3, [74, 148, 169, 255]],
-      [5, [77, 141, 123, 255]],
-      [7, [83, 165, 83, 255]],
-      [9, [53, 159, 53, 255]],
-      [11, [167, 157, 81, 255]],
-      [13, [159, 127, 58, 255]],
-      [15, [161, 108, 92, 255]],
-      [17, [129, 58, 78, 255]],
-      [19, [175, 80, 136, 255]],
-      [21, [117, 74, 147, 255]],
-      [24, [109, 97, 163, 255]],
-      [27, [68, 105, 141, 255]],
-      [29, [92, 144, 152, 255]],
-      [36, [125, 68, 165, 255]],
-      [46, [231, 215, 215, 255]],
-      [51, [219, 212, 135, 255]],
-      [77, [205, 202, 112, 255]],
-      [104, [128, 128, 128, 255]],
-    ],
-  };
 
   if (zoomInClicked) {
     mapRef.current.zoomIn();
@@ -311,11 +272,63 @@ function MapComponent({
     }
   }, [layerToShow]);
 
-  /* useEffect(() => {
-    if (window.windLayer) {
-      window.windLayer.setVisibility(true); // Imposta la visibilità a true per attivare il layer
+  useEffect(() => {
+    if (mapRef.current) {
+      if (wind) {
+        //window.windLayer.stop();
+        window.windLayer.setWindOptions({
+          colorScale: [
+            "rgb(36,104, 180)",
+            "rgb(60,157, 194)",
+            "rgb(128,205,193 )",
+            "rgb(151,218,168 )",
+            "rgb(198,231,181)",
+            "rgb(238,247,217)",
+            "rgb(255,238,159)",
+            "rgb(252,217,125)",
+            "rgb(255,182,100)",
+            "rgb(252,150,75)",
+            "rgb(250,112,52)",
+            "rgb(245,64,32)",
+            "rgb(237,45,28)",
+            "rgb(220,24,32)",
+            "rgb(180,0,35)",
+          ],
+          frameRate: 20,
+          maxAge: 60,
+          globalAlpha: 0.9,
+          velocityScale: 0.01,
+          paths: 0,
+        });
+      } else {
+        //window.windLayer.render();
+        window.windLayer.setWindOptions({
+          colorScale: [
+            "rgb(36,104, 180)",
+            "rgb(60,157, 194)",
+            "rgb(128,205,193 )",
+            "rgb(151,218,168 )",
+            "rgb(198,231,181)",
+            "rgb(238,247,217)",
+            "rgb(255,238,159)",
+            "rgb(252,217,125)",
+            "rgb(255,182,100)",
+            "rgb(252,150,75)",
+            "rgb(250,112,52)",
+            "rgb(245,64,32)",
+            "rgb(237,45,28)",
+            "rgb(220,24,32)",
+            "rgb(180,0,35)",
+          ],
+          frameRate: 20,
+          maxAge: 60,
+          globalAlpha: 0.9,
+          velocityScale: 0.01,
+          paths: 5000,
+        });
+      }
     }
-  }, [wind]); */
+  }, [wind]);
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -351,61 +364,6 @@ function MapComponent({
           );
         }
       });
-
-      /* const GFS_DATE = "20230811";
-      const GFS_TIME = "00";
-      const RES = "1p00";
-      const BBOX = "leftlon=0&rightlon=360&toplat=90&bottomlat=-90";
-      const LEVEL = "lev_10_m_above_ground=on";
-      const urlssss =
-        "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?dir=%2Fgfs.20230812%2F06%2Fatmos&file=gfs.t06z.pgrb2.1p00.anl&all_var=on&lev_10_m_above_ground=on";
-      const GFS_URL = `https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?file=gfs.t00z.pgrb2.1p00.f000&lev_10_m_above_ground=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fgfs.2023081100`;
-      //const GFS_URL = `http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_${RES}.pl?file=gfs.t${GFS_TIME}z.pgrb2.${RES}.f000&${LEVEL}&${BBOX}&dir=%2Fgfs.${GFS_DATE}${GFS_TIME}`;
-      console.log(GFS_URL);
-      axios.get(urlssss).then((response) => {
-        console.log("response", response);
-      }); */
-
-      console.log(window);
-
-      window.windLayer = new WindLayer("wind", windDatas.data, {
-        windOptions: {
-          colorScale: (m) => {
-            return "#fff";
-          },
-          colorScale: [
-            "rgb(36,104, 180)",
-            "rgb(60,157, 194)",
-            "rgb(128,205,193 )",
-            "rgb(151,218,168 )",
-            "rgb(198,231,181)",
-            "rgb(238,247,217)",
-            "rgb(255,238,159)",
-            "rgb(252,217,125)",
-            "rgb(255,182,100)",
-            "rgb(252,150,75)",
-            "rgb(250,112,52)",
-            "rgb(245,64,32)",
-            "rgb(237,45,28)",
-            "rgb(220,24,32)",
-            "rgb(180,0,35)",
-          ],
-          velocityScale: 1 / 20,
-          paths: 5000,
-          frameRate: 10,
-          maxAge: 60,
-          globalAlpha: 0.9,
-          velocityScale: 0.03,
-          //paths: 10000,
-          paths: 10000,
-        },
-        fieldOptions: {
-          wrapX: true,
-        },
-        visibility: false, // Imposta la visibilità iniziale a false
-      });
-
-      window.windLayer.addTo(map);
 
       /* fetch(
         "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json"
@@ -617,6 +575,38 @@ function MapComponent({
           ],
         },
       });
+
+      window.windLayer = new WindLayer("wind", windDatas.data, {
+        windOptions: {
+          colorScale: [
+            "rgb(36,104, 180)",
+            "rgb(60,157, 194)",
+            "rgb(128,205,193 )",
+            "rgb(151,218,168 )",
+            "rgb(198,231,181)",
+            "rgb(238,247,217)",
+            "rgb(255,238,159)",
+            "rgb(252,217,125)",
+            "rgb(255,182,100)",
+            "rgb(252,150,75)",
+            "rgb(250,112,52)",
+            "rgb(245,64,32)",
+            "rgb(237,45,28)",
+            "rgb(220,24,32)",
+            "rgb(180,0,35)",
+          ],
+          frameRate: 20,
+          maxAge: 60,
+          globalAlpha: 0.9,
+          velocityScale: 0.01,
+          paths: 0,
+        },
+        fieldOptions: {
+          wrapX: true,
+        },
+      });
+
+      window.windLayer.addTo(map);
 
       /* map.addLayer({
         id: "state-aqi-line",

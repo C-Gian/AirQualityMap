@@ -377,7 +377,7 @@ const App = () => {
   async function getWindDatas() {
     const data = await axios.get(`http://localhost:4000/daily-wind-update`);
     if (data) {
-      console.log("wind data got");
+      console.log("wind data got".data);
       return data;
     } else {
       console.log("wind data error");

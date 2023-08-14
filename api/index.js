@@ -173,26 +173,24 @@ app.get("/bulk-datas", async (req, res) => {
 
 app.get("/daily-wind-update", async (req, res) => {
   console.log("getting wind datas");
+  const opendapURL =
+    "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?dir=%2Fgfs.20230814%2F06%2Fatmos&file=gfs.t06z.pgrb2.1p00.anl&all_var=on&lev_10_m_above_ground=on";
   try {
-    const GFS_DATE = "20230811";
-    const GFS_TIME = "00";
-    const RES = "1p00";
-    const BBOX = "leftlon=0&rightlon=360&toplat=90&bottomlat=-90";
-    const LEVEL = "lev_10_m_above_ground=on";
-    /* const response = await axios.get(
-      `http://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_${RES}.pl?file=gfs.t${GFS_TIME}z.pgrb2.${RES}.f000&${LEVEL}&${BBOX}&dir=%2Fgfs.${GFS_DATE}${GFS_TIME}`
-    ); */
-    const response = await axios.get(
-      "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json"
-    );
-    if (response) {
-      console.log("getting wind done");
-      res.json(response.data);
+    const response = await fetch(opendapURL);
+    if (response.ok) {
+      const data = await response.text();
+      console.log(data);
+      res.json(data);
     } else {
-      console.log("getting wind error");
-      res.status(500).send(false);
+      console.error(
+        "Errore nella richiesta:",
+        response.status,
+        response.statusText
+      );
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error("Errore nel recupero dei dati:", error);
+  }
 });
 
 app.get("/dots-datas", async (req, res) => {
