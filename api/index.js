@@ -174,21 +174,14 @@ app.get("/bulk-datas", async (req, res) => {
 app.get("/daily-wind-update", async (req, res) => {
   console.log("getting wind datas");
   const opendapURL =
-    "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?dir=%2Fgfs.20230814%2F06%2Fatmos&file=gfs.t06z.pgrb2.1p00.anl&all_var=on&lev_10_m_above_ground=on";
-  //"https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json";
+    //"https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_1p00.pl?dir=%2Fgfs.20230814%2F06%2Fatmos&file=gfs.t06z.pgrb2.1p00.anl&all_var=on&lev_10_m_above_ground=on";
+    "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json";
   try {
-    const response = await fetch(opendapURL);
-    if (response.ok) {
-      const data = await response.text();
-      console.log(data);
-      res.json(data);
-    } else {
-      console.error(
-        "Errore nella richiesta:",
-        response.status,
-        response.statusText
-      );
-    }
+    fetch(opendapURL)
+      .then((res) => res.json())
+      .then((data) => {
+        res.json(data);
+      });
   } catch (error) {
     console.error("Errore nel recupero dei dati:", error);
   }
