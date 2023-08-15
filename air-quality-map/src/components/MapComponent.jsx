@@ -33,7 +33,6 @@ function MapComponent({
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({});
   const [hoveredState, setHoveredState] = useState(null);
-  const [porcodio, setPorcodio] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
   const colorsLayers = colorBlind
     ? [
@@ -298,7 +297,7 @@ function MapComponent({
           maxAge: 60,
           globalAlpha: 0.9,
           velocityScale: 0.01,
-          paths: 0,
+          paths: 5000,
         });
       } else {
         //window.windLayer.render();
@@ -324,7 +323,7 @@ function MapComponent({
           maxAge: 60,
           globalAlpha: 0.9,
           velocityScale: 0.01,
-          paths: 5000,
+          paths: 0,
         });
       }
     }
@@ -337,10 +336,10 @@ function MapComponent({
       container: "map",
       //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
       style: nightMode
-        ? /* ? "mapbox://styles/mapbox/dark-v11" //3d map
-        : "mapbox://styles/mapbox/light-v11", //3d map */
-          "mapbox://styles/mapbox/dark-v10" //2d map
+        ? "mapbox://styles/mapbox/dark-v10" //2d map
         : "mapbox://styles/mapbox/light-v10", //2d map
+      /* ? "mapbox://styles/mapbox/dark-v11" //3d map
+        : "mapbox://styles/mapbox/light-v11", //3d map */
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
       zoom: 0,
