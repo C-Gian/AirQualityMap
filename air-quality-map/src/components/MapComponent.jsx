@@ -493,7 +493,7 @@ function MapComponent({
             "case",
             ["boolean", ["feature-state", "hover"], false],
             1,
-            0.75,
+            1,
           ],
         },
       });
@@ -515,6 +515,28 @@ function MapComponent({
             ["boolean", ["feature-state", "hover"], false],
             1,
             0.75,
+          ],
+        },
+      });
+
+      map.addLayer({
+        id: "state-outline-layer",
+        minzoom: zoomThreshold,
+        type: "line",
+        interactive: false,
+        source: "aqi",
+        paint: {
+          "line-color": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false],
+            "white", // Stato selezionato: bianco
+            "black", // Stato non selezionato: nero
+          ],
+          "line-width": [
+            "case",
+            ["boolean", ["feature-state", "selected"], false], // Lo stato selezionato avrà true per 'selected'
+            4, // Larghezza del contorno per lo stato selezionato (modifica questo valore come preferisci)
+            0.3, // Larghezza del contorno per gli stati non selezionati
           ],
         },
       });
@@ -551,28 +573,6 @@ function MapComponent({
             ],
           },
         });
-      });
-
-      map.addLayer({
-        id: "state-outline-layer",
-        minzoom: zoomThreshold,
-        type: "line",
-        interactive: false,
-        source: "aqi",
-        paint: {
-          "line-color": [
-            "case",
-            ["boolean", ["feature-state", "selected"], false],
-            "white", // Stato selezionato: bianco
-            "black", // Stato non selezionato: nero
-          ],
-          "line-width": [
-            "case",
-            ["boolean", ["feature-state", "selected"], false], // Lo stato selezionato avrà true per 'selected'
-            4, // Larghezza del contorno per lo stato selezionato (modifica questo valore come preferisci)
-            0.1, // Larghezza del contorno per gli stati non selezionati
-          ],
-        },
       });
 
       window.windLayer = new WindLayer("wind", windDatas.data, {
