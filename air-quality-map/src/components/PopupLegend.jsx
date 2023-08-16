@@ -10,21 +10,21 @@ function PopupLegend({ position, colorBlind }) {
   // Ottieni il colore associato al valore fornito
   return (
     <div
-      className="absolute w-500 h-fit bg-gray-700 rounded-lg flex-col"
-      style={{ top: position.y - 500, left: position.x - 510 }}
+      className="absolute w-500 h-fit rounded-lg flex flex-col sfondo backdrop-blur-md"
+      style={{ top: position.y - 500, left: position.x - 510, zIndex: "500" }}
     >
-      <div className="flex p-3 items-center">
+      <div className="flex items-center py-3">
         <div
-          className="w-4 h-4 mr-5"
+          className="w-6 h-6 flex-shrink-0 mx-3"
           style={{ background: `${startColor}` }}
         ></div>
         <h2 className="text-white">
           Air quality is satisfactory, and air pollution poses little or no risk
         </h2>
       </div>
-      <div className="flex p-3 items-center">
+      <div className="flex items-center py-3">
         <div
-          className="w-4 h-4 mr-5 flex-shrink-0"
+          className="w-6 h-6 flex-shrink-0 mx-3"
           style={{ background: `${mid1Color}` }}
         ></div>
         <h2 className="text-white">
@@ -33,9 +33,9 @@ function PopupLegend({ position, colorBlind }) {
           pollution
         </h2>
       </div>
-      <div className="flex p-3 items-center">
+      <div className="flex items-center py-3">
         <div
-          className="w-4 h-4 mr-5  flex-shrink-0"
+          className="w-6 h-6 flex-shrink-0 mx-3"
           style={{ background: `${mid2Color}` }}
         ></div>
         <h2 className="text-white">
@@ -43,9 +43,9 @@ function PopupLegend({ position, colorBlind }) {
           public is less likely to be affected
         </h2>
       </div>
-      <div className="flex p-3 items-center">
+      <div className="flex items-center py-3">
         <div
-          className="w-4 h-4 mr-5  flex-shrink-0"
+          className="w-6 h-6 flex-shrink-0 mx-3"
           style={{ background: `${mid3Color}` }}
         ></div>
         <h2 className="text-white">
@@ -53,18 +53,18 @@ function PopupLegend({ position, colorBlind }) {
           members of sensitive groups may experience more serious health effects
         </h2>
       </div>
-      <div className="flex p-3 items-center">
+      <div className="flex items-center py-3">
         <div
-          className="w-4 h-4 mr-5  flex-shrink-0"
+          className="w-6 h-6 flex-shrink-0 mx-3"
           style={{ background: `${mid4Color}` }}
         ></div>
         <h2 className="text-white">
           Health alert: The risk of health effects is increased for everyone
         </h2>
       </div>
-      <div className="flex p-3 items-center">
+      <div className="flex items-center py-3">
         <div
-          className="w-4 h-4 mr-5  flex-shrink-0"
+          className="w-6 h-6 flex-shrink-0 mx-3"
           style={{ background: `${endColor}` }}
         ></div>
         <h2 className="text-white">

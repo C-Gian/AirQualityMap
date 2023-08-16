@@ -8,7 +8,6 @@ import CorrelationMatrix from "./CorrelationMatrix";
 import LinearRegression from "./LinearRegression";
 import MultipleRegression from "./MultipleRegression";
 import CountryFlag from "react-country-flag";
-import PredictionRegression from "./PredictionRegression";
 
 const Sidebar = ({
   infos,
@@ -28,6 +27,7 @@ const Sidebar = ({
   const [tempReal, setTempReal] = useState(null);
   const [cloud, setCloud] = useState(null);
   const [humidity, setHumidity] = useState(null);
+  const [nStations, setNStation] = useState(0);
   const sliderValue = useSelector((state) => state.sliderValue);
 
   const colors = colorBlind
@@ -87,7 +87,7 @@ const Sidebar = ({
 
   useEffect(() => {
     setDataR(infos.datas[sliderValue].features[infos.id]);
-  }, [sliderValue]);
+  }, [sliderValue, infos, nightMode, colorBlind]);
 
   useEffect(() => {
     let colorToSet = null;
@@ -99,6 +99,12 @@ const Sidebar = ({
       setTempReal(dataR.properties.countryTemp);
       setHumidity(dataR.properties.countryHum);
       setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
+      setNStation(
+        infos.datas[sliderValue].features.reduce(
+          (total, obj) => total + obj.properties.nDetections,
+          0
+        )
+      );
       if (!dataR.properties.countryAQI) {
         colorToSet = "#00000000";
       } else {
@@ -141,6 +147,7 @@ const Sidebar = ({
       setCloud(dataR.weather.data.cloud);
       setHumidity(dataR.weather.data.humidity);
       setAirQualityText(getColoreByValore(dataR.properties.AQI)[0]);
+      setNStation(dataR.properties.nDetections);
       if (!dataR.properties.AQI) {
         colorToSet = "#00000000";
       } else {
@@ -170,10 +177,6 @@ const Sidebar = ({
     }
     setHexColor(colorToSet);
   }, [dataR, nightMode, colorBlind]);
-
-  useEffect(() => {
-    setDataR(infos.datas[sliderValue].features[infos.id]);
-  }, [infos, nightMode, colorBlind]);
 
   return (
     <div
@@ -264,6 +267,10 @@ const Sidebar = ({
               <h2 className="text-xl" style={{ color: hexColor }}>
                 {airQualityText}
               </h2>
+            </div>
+            <div className="flex justify-between mt-5">
+              <h2 className="text-xl text-white mr-5">Total Stations: </h2>
+              <h2 className="text-xl text-white">{nStations}</h2>
             </div>
             {weatherCondition != null && infos.isState && (
               <div className="flex justify-between mt-5 items-center">

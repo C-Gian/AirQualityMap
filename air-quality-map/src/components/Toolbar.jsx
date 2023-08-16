@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { setLayerToShow, setWind } from "../actions/index.js";
+import {
+  setLayerToShow,
+  setWind,
+  setWindHeatmap,
+  set3DMap,
+} from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
@@ -14,6 +19,8 @@ function Toolbar({
   const currentLayer = useSelector((state) => state.currentLayer);
   const layerToShow = useSelector((state) => state.layerToShow);
   const wind = useSelector((state) => state.wind);
+  const windHeatmap = useSelector((state) => state.windHeatmap);
+  const map3d = useSelector((state) => state.map3d);
   const [dotsActive, setDotsActive] = useState(false);
   const [currentLayerBool, setCurrentLayerBool] = useState(
     currentLayer == "country" || dotsActive
@@ -51,6 +58,14 @@ function Toolbar({
 
   const handleWindButtonClick = () => {
     dispatch(setWind(!wind));
+  };
+
+  const handleWindHeatmapButtonClick = () => {
+    dispatch(setWindHeatmap(!windHeatmap));
+  };
+
+  const handle3DButtonClick = () => {
+    dispatch(set3DMap(!map3d));
   };
 
   const options = {
@@ -197,7 +212,9 @@ function Toolbar({
           )}
         </div>
 
-        <div className={`mr-1 tooltip-container`}>
+        <div
+          className={`mr-1 tooltip-container ${map3d ? "disabled-div" : ""}`}
+        >
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
             onClick={handleWindButtonClick}
@@ -218,6 +235,57 @@ function Toolbar({
             </svg>
           </button>
           <span className="tooltip-text p-2">Wind</span>
+        </div>
+
+        <div
+          className={`mr-1 tooltip-container ${map3d ? "disabled-div" : ""}`}
+        >
+          <button
+            className="bg-white p-1 rounded flex items-center tooltip-btn"
+            onClick={handleWindHeatmapButtonClick}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+              />
+            </svg>
+          </button>
+          <span className="tooltip-text p-2">Wind</span>
+        </div>
+
+        <div className={`mr-1 tooltip-container `}>
+          <button
+            className="bg-white p-1 rounded flex items-center tooltip-btn"
+            onClick={handle3DButtonClick}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-badge-3d"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+              <path d="M7 9.5a.5 .5 0 0 1 .5 -.5h1a1.5 1.5 0 0 1 0 3h-.5h.5a1.5 1.5 0 0 1 0 3h-1a.5 .5 0 0 1 -.5 -.5"></path>
+              <path d="M14 9v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"></path>
+            </svg>
+          </button>
+          <span className="tooltip-text p-2">Circle Layer</span>
         </div>
 
         <div className={`mr-2 tooltip-container `}>

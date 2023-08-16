@@ -50,7 +50,7 @@ function TemporalSlider({ nightMode }) {
         nightMode ? "sfondo bg-opacity-50 backdrop-blur-md" : "bg-red-500"
       }`}
       style={{
-        zIndex: 999,
+        zIndex: 300,
         width: "552px",
         height: "150px",
       }}

@@ -108,6 +108,9 @@ function PollsLevelsChart({
         },
       },
       x: {
+        grid: {
+          color: "rgba(255, 255, 255, 0)", // Colore delle linee di griglia sull'asse Y
+        },
         ticks: {
           autoSkip: false,
           maxRotation: 0,

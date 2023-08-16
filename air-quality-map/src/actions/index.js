@@ -27,6 +27,20 @@ export const setWind = (value) => {
   };
 };
 
+export const setWindHeatmap = (value) => {
+  return {
+    type: "SET_WIND_HEATMAP",
+    payload: value,
+  };
+};
+
+export const set3DMap = (value) => {
+  return {
+    type: "SET_3D_MAP",
+    payload: value,
+  };
+};
+
 // actions.js
 export const toggleSidebar = () => ({
   type: "TOGGLE_SIDEBAR",

@@ -6,6 +6,8 @@ const initialState = {
   layerToShow: "AQI",
   currentLayer: "country",
   wind: false,
+  windHeatmap: false,
+  map3d: false,
 };
 
 const sliderValueReducer = (state = initialState.sliderValue, action) => {
@@ -17,6 +19,20 @@ const sliderValueReducer = (state = initialState.sliderValue, action) => {
 
 const windReducer = (state = initialState.wind, action) => {
   if (action.type === "SET_WIND") {
+    return action.payload;
+  }
+  return state;
+};
+
+const windHeatmapReducer = (state = initialState.windHeatmap, action) => {
+  if (action.type === "SET_WIND_HEATMAP") {
+    return action.payload;
+  }
+  return state;
+};
+
+const map3DReducer = (state = initialState.map3d, action) => {
+  if (action.type === "SET_3D_MAP") {
     return action.payload;
   }
   return state;
@@ -41,6 +57,8 @@ const rootReducer = combineReducers({
   layerToShow: layerToShowReducer,
   currentLayer: currentLayerToShow,
   wind: windReducer,
+  windHeatmap: windHeatmapReducer,
+  map3d: map3DReducer,
 });
 
 export default rootReducer;

@@ -4,7 +4,7 @@ import Popup from "./Popup";
 import * as turf from "@turf/turf";
 import { setCurrentLayer } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
-import { WindLayer } from "@sakitam-gis/mapbox-wind";
+import { WindLayer, ScalarFill } from "@sakitam-gis/mapbox-wind";
 import axios from "axios";
 
 function MapComponent({
@@ -28,6 +28,8 @@ function MapComponent({
   const sliderValue = useSelector((state) => state.sliderValue);
   const layerToShow = useSelector((state) => state.layerToShow);
   const wind = useSelector((state) => state.wind);
+  const windHeatmap = useSelector((state) => state.windHeatmap);
+  const map3D = useSelector((state) => state.map3d);
   const [dataR, setDataR] = useState(datas[sliderValue]);
   const [dataRDots, setDataRDots] = useState(dotsDatas[sliderValue + 1]);
   const [showPopup, setShowPopup] = useState(false);
@@ -330,16 +332,32 @@ function MapComponent({
   }, [wind]);
 
   useEffect(() => {
+    if (mapRef.current) {
+      if (windHeatmap) {
+        mapRef.current.setLayoutProperty("wind-fill", "visibility", "visible");
+      } else {
+        mapRef.current.setLayoutProperty("wind-fill", "visibility", "none");
+      }
+    }
+  }, [windHeatmap]);
+
+  useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
+    let style = "mapbox://styles/mapbox/dark-v10";
+    if (map3D) {
+      style = nightMode
+        ? "mapbox://styles/mapbox/dark-v11" //3d map
+        : "mapbox://styles/mapbox/light-v11"; //3d map
+    } else {
+      style = nightMode
+        ? "mapbox://styles/mapbox/dark-v10" //2d map
+        : "mapbox://styles/mapbox/light-v10"; //2d map
+    }
     const map = new mapboxgl.Map({
       container: "map",
       //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
-      style: nightMode
-        ? "mapbox://styles/mapbox/dark-v10" //2d map
-        : "mapbox://styles/mapbox/light-v10", //2d map
-      /* ? "mapbox://styles/mapbox/dark-v11" //3d map
-        : "mapbox://styles/mapbox/light-v11", //3d map */
+      style: style,
       center: [-98.30953630020429, 38.75491131673913],
       minZoom: 2,
       zoom: 0,
@@ -575,6 +593,97 @@ function MapComponent({
         });
       });
 
+      const color = {
+        temp: [
+          [203, [115, 70, 105, 255]],
+          [218, [202, 172, 195, 255]],
+          [233, [162, 70, 145, 255]],
+          [248, [143, 89, 169, 255]],
+          [258, [157, 219, 217, 255]],
+          [265, [106, 191, 181, 255]],
+          [269, [100, 166, 189, 255]],
+          [273.15, [93, 133, 198, 255]],
+          [274, [68, 125, 99, 255]],
+          [283, [128, 147, 24, 255]],
+          [294, [243, 183, 4, 255]],
+          [303, [232, 83, 25, 255]],
+          [320, [71, 14, 0, 255]],
+        ],
+        wind: [
+          [0, [98, 113, 183, 255]],
+          [1, [57, 97, 159, 255]],
+          [3, [74, 148, 169, 255]],
+          [5, [77, 141, 123, 255]],
+          [7, [83, 165, 83, 255]],
+          [9, [53, 159, 53, 255]],
+          [11, [167, 157, 81, 255]],
+          [13, [159, 127, 58, 255]],
+          [15, [161, 108, 92, 255]],
+          [17, [129, 58, 78, 255]],
+          [19, [175, 80, 136, 255]],
+          [21, [117, 74, 147, 255]],
+          [24, [109, 97, 163, 255]],
+          [27, [68, 105, 141, 255]],
+          [29, [92, 144, 152, 255]],
+          [36, [125, 68, 165, 255]],
+          [46, [231, 215, 215, 255]],
+          [51, [219, 212, 135, 255]],
+          [77, [205, 202, 112, 255]],
+          [104, [128, 128, 128, 255]],
+        ],
+      };
+
+      const windInterpolateColor = color.wind.reduce(
+        (result, item, key) =>
+          result.concat(item[0], "rgba(" + item[1].join(",") + ")"),
+        []
+      );
+
+      const fillLayer = new ScalarFill(
+        "wind-fill",
+        {
+          // "type": "jsonArray",
+          // "data": data,
+          type: "image",
+          url: "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/image/var_ugrd-var_vgrd.png",
+          extent: [
+            [-180, 85.051129],
+            [-180, -85.051129],
+            [180, 85.051129],
+            [180, -85.051129],
+          ],
+          width: 1440,
+          height: 720,
+          uMin: -21.34380340576172,
+          uMax: 30.7261962890625,
+          vMin: -23.916271209716797,
+          vMax: 24.693727493286133,
+        },
+        {
+          styleSpec: {
+            "fill-color": [
+              "interpolate",
+              ["linear"],
+              ["get", "value"],
+              ...windInterpolateColor,
+            ],
+            opacity: 0.5,
+          },
+          wrapX: true,
+          renderForm: "rg",
+          widthSegments: 720,
+          heightSegments: 360,
+          // widthSegments: 1,
+          // heightSegments: 1,
+          displayRange: [0, 150],
+          mappingRange: [0, 100000],
+        }
+      );
+
+      map.addLayer(fillLayer);
+
+      map.setLayoutProperty("wind-fill", "visibility", "none");
+
       window.windLayer = new WindLayer("wind", windDatas.data, {
         windOptions: {
           colorScale: [
@@ -622,7 +731,7 @@ function MapComponent({
     });
 
     return () => map.remove(); // Cleanup della mappa
-  }, [nightMode, colorBlind]); //dataR added to prevent map to be black at the start, if problems delete this
+  }, [nightMode, colorBlind, map3D]); //dataR added to prevent map to be black at the start, if problems delete this
 
   useEffect(() => {
     mapRef.current.on("mousemove", "state-aqi", (e) => {
@@ -789,7 +898,7 @@ function MapComponent({
         dispatch(setCurrentLayer("state"));
       }
     });
-  }, [dataR, nightMode, colorBlind]);
+  }, [dataR, nightMode, colorBlind, map3D]);
 
   useEffect(() => {
     if (
@@ -810,7 +919,7 @@ function MapComponent({
     };
     setDataRDots(dotsDatas[sliderValue + 1]);
     mapRef.current.getSource("glowy-source").setData(data);
-  }, [sliderValue, nightMode, colorBlind]);
+  }, [sliderValue, nightMode, colorBlind, map3D]);
 
   return (
     <div style={{ zIndex: 0 }}>
