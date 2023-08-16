@@ -15,17 +15,16 @@ import { useSelector } from "react-redux";
 import TemporalSlider from "./components/TemporalSlider";
 
 const App = () => {
+  const sidebar = useSelector((state) => state.sidebar);
   const [stateInfo, setStateInfo] = useState(null);
-  const [siderbarCloseButtonPressed, setSiderbarCloseButtonPressed] =
-    useState(false);
   const [datas, setDatas] = useState([]);
   const [bulkDatas, setBulkDatas] = useState([]);
   const [dotsDatas, setDotsDatas] = useState({});
   const [windDatas, setWindDatas] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [zoomInClicked, setZoomInClicked] = useState(false);
+  /* const [zoomInClicked, setZoomInClicked] = useState(false);
   const [centerClicked, setCenterClicked] = useState(false);
-  const [zoomOutClicked, setZoomOutClicked] = useState(false);
+  const [zoomOutClicked, setZoomOutClicked] = useState(false); */
   const layersToShow = {
     "PM2.5": "state-pm2.5-aqi",
     PM10: "state-pm10-aqi",
@@ -91,7 +90,7 @@ const App = () => {
     ],
   };
 
-  const handleStopButton = () => {
+  /* const handleStopButton = () => {
     setZoomInClicked(false);
     setCenterClicked(false);
     setZoomOutClicked(false);
@@ -107,12 +106,7 @@ const App = () => {
 
   const handleZoomOutClick = () => {
     setZoomOutClicked(true);
-  };
-
-  const handleSiderbarCloseButtonClick = () => {
-    setSiderbarCloseButtonPressed(!siderbarCloseButtonPressed);
-    setStateInfo(null);
-  };
+  }; */
 
   const stateClicked = (stateInfos) => {
     setStateInfo(stateInfos);
@@ -620,27 +614,24 @@ const App = () => {
               dotsDatas={dotsDatas}
               windDatas={windDatas}
               stateClicked={stateClicked}
-              siderbarCloseButton={siderbarCloseButtonPressed}
-              siderbarCloseButtonClick={handleSiderbarCloseButtonClick}
-              zoomInClicked={zoomInClicked}
+              /* zoomInClicked={zoomInClicked}
               centerClicked={centerClicked}
               zoomOutClicked={zoomOutClicked}
-              stopButton={handleStopButton}
+              stopButton={handleStopButton} */
             ></MapComponent>
           )}
           <TemporalSlider></TemporalSlider>
-          {stateInfo && (
+          {sidebar && stateInfo && (
             <Sidebar
               infos={stateInfo}
               bulkDatas={bulkDatas}
-              onButtonClick={handleSiderbarCloseButtonClick}
             />
           )}
           <Legend></Legend>
           <Toolbar
-            onZoomInClick={handleZoomInClick}
+            /* onZoomInClick={handleZoomInClick}
             onCenterClick={handleCenterClick}
-            onZoomOutClick={handleZoomOutClick}
+            onZoomOutClick={handleZoomOutClick} */
           ></Toolbar>
         </div>
       )}

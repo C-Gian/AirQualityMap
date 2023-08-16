@@ -1,19 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import "rc-slider/assets/index.css";
 import PollsLevelsChart from "./PollsLevelsChart";
-import { useSelector } from "react-redux";
 import * as d3 from "d3";
 import PollsTempCorrChart from "./PollsTempCorrChart";
 import CorrelationMatrix from "./CorrelationMatrix";
 import LinearRegression from "./LinearRegression";
 import MultipleRegression from "./MultipleRegression";
 import CountryFlag from "react-country-flag";
+import { useSelector, useDispatch } from "react-redux";
+import { setSidebar } from "../actions/index.js";
 
-const Sidebar = ({
-  infos,
-  bulkDatas,
-  onButtonClick,
-}) => {
+const Sidebar = ({infos, bulkDatas}) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [AQI, setAQI] = useState("");
   const [lastUpdate, setLastUpdate] = useState("");
@@ -40,6 +38,11 @@ const Sidebar = ({
         "rgba(115, 0, 23, 1)",
       ]
     : ["#00D900", "#B5B500", "#F57300", "#F50000", "#83328C", "#730017"];
+
+    const handleCloseButtonClick = () => {
+      dispatch(setSidebar(false));
+    };
+    
 
   function getColoreByValore(value) {
     if (value >= 0 && value <= 51) {
@@ -203,7 +206,7 @@ const Sidebar = ({
         </div>
         <button
           className="absolute top-0 right-0 mt-2 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
-          onClick={onButtonClick}
+          onClick={handleCloseButtonClick}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

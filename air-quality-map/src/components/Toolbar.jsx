@@ -10,9 +10,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
-  onZoomInClick,
+  /* onZoomInClick,
   onCenterClick,
-  onZoomOutClick,
+  onZoomOutClick, */
 }) {
   const dispatch = useDispatch();
   const currentLayer = useSelector((state) => state.currentLayer);
@@ -295,7 +295,7 @@ function Toolbar({
           <span className="tooltip-text p-2">3D Map</span>
         </div>
 
-        <div className={`mr-2 tooltip-container `}>
+        <div className={`tooltip-container `}>
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
             onClick={handleDotsButtonClick}
@@ -319,7 +319,7 @@ function Toolbar({
         </div>
       </div>
 
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <div className="tooltip-container">
           <button
             className="bg-white p-1 flex items-center tooltip-btn  rounded-l"
@@ -391,7 +391,7 @@ function Toolbar({
           </button>
           <span className="tooltip-text p-2">Zoom Out</span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

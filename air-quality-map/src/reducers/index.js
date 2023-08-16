@@ -8,10 +8,7 @@ const initialState = {
   wind: false,
   windHeatmap: false,
   map3d: false,
-  sidebar: {
-    infos: {},
-    bulkDatas: {},
-  },
+  sidebar: false,
   nightMode: true,
   colorBlindMode: false,
 };

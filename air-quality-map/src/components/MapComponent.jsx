@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import Popup from "./Popup";
 import * as turf from "@turf/turf";
-import { setCurrentLayer } from "../actions/index.js";
+import { setCurrentLayer, setSidebar } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { WindLayer, ScalarFill } from "@sakitam-gis/mapbox-wind";
 import axios from "axios";
@@ -12,24 +12,24 @@ function MapComponent({
   dotsDatas,
   windDatas,
   stateClicked,
-  siderbarCloseButton,
-  siderbarCloseButtonClick,
-  zoomInClicked,
+  /* zoomInClicked,
   centerClicked,
   zoomOutClicked,
-  stopButton,
+  stopButton, */
 }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
   const zoomThreshold = 3;
   const dispatch = useDispatch();
   const sliderValue = useSelector((state) => state.sliderValue);
+  const currentLayer = useSelector((state) => state.currentLayer);
   const layerToShow = useSelector((state) => state.layerToShow);
   const wind = useSelector((state) => state.wind);
   const windHeatmap = useSelector((state) => state.windHeatmap);
   const map3D = useSelector((state) => state.map3d);
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlind = useSelector((state) => state.colorBlindMode);
+  const sidebar = useSelector((state) => state.sidebar);
   const [dataR, setDataR] = useState(datas[sliderValue]);
   const [dataRDots, setDataRDots] = useState(dotsDatas[sliderValue + 1]);
   const [showPopup, setShowPopup] = useState(false);
@@ -144,7 +144,7 @@ function MapComponent({
         "rgba(87, 1, 45, 1)",
       ];
 
-  if (zoomInClicked) {
+  /* if (zoomInClicked) {
     mapRef.current.zoomIn();
     stopButton();
   }
@@ -163,25 +163,7 @@ function MapComponent({
   if (zoomOutClicked) {
     mapRef.current.zoomOut();
     stopButton();
-  }
-
-  //close button sidebar actions
-  if (siderbarCloseButton) {
-    mapRef.current.flyTo({
-      center: [-100.86857959024933, 38.482552979137004],
-      zoom: mapRef.current.getZoom() - 0.5,
-      speed: 1.5, // Velocità dell'animazione
-      curve: 1.5, // Curva di accelerazione dell'animazione
-      essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
-    });
-    for (let i = 0; i < 50; i++) {
-      mapRef.current.setFeatureState(
-        { source: "aqi", id: i },
-        { selected: false }
-      );
-    }
-    siderbarCloseButtonClick();
-  }
+  } */
 
   useEffect(() => {
     if (mapRef.current && mapRef.current.getStyle()) {
@@ -378,6 +360,28 @@ function MapComponent({
   }, [windHeatmap]);
 
   useEffect(() => {
+    if (!sidebar && mapRef.current) {
+      if (currentLayer == "country") {
+        mapRef.current.flyTo({
+          center: [-100.86857959024933, 38.482552979137004],
+          zoom: 2, // Livello di zoom desiderato
+          speed: 1.5, // Velocità dell'animazione
+          curve: 1.5, // Curva di accelerazione dell'animazione
+          essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+        });
+      } else {
+        mapRef.current.flyTo({
+          center: [-100.86857959024933, 38.482552979137004],
+          zoom: 3, // Livello di zoom desiderato
+          speed: 1.5, // Velocità dell'animazione
+          curve: 1.5, // Curva di accelerazione dell'animazione
+          essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
+        });
+      }
+    }
+  }, [sidebar])
+
+  useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
     let style = "mapbox://styles/mapbox/dark-v10";
@@ -403,6 +407,27 @@ function MapComponent({
       logoPosition: "top-left",
     });
     mapRef.current = map;
+
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserHeading: true
+  }), "top-right");
+
+  const nav = new mapboxgl.NavigationControl({
+    visualizePitch: true
+});
+map.addControl(nav, 'top-right');
+
+const scale = new mapboxgl.ScaleControl({
+  maxWidth: 80,
+  unit: 'imperial'
+});
+map.addControl(scale, "top-right");
+
+scale.setUnit('metric');
 
     map.doubleClickZoom.disable();
 
@@ -832,6 +857,7 @@ function MapComponent({
         { selected: true }
       );
       stateClicked(stateInfos);
+      dispatch(setSidebar(true));
       const center = turf.center(e.features[0].geometry).geometry.coordinates;
 
       // Esegui l'animazione di zoom e panoramica verso il centro dello stato
@@ -854,7 +880,7 @@ function MapComponent({
       };
       stateClicked(stateInfos);
       const center = [-108.15050813778196, 43.20742527199025];
-
+      dispatch(setSidebar(true));
       // Esegui l'animazione di zoom e panoramica verso il centro dello stato
       mapRef.current.flyTo({
         center: center,
@@ -874,7 +900,7 @@ function MapComponent({
           curve: 1.5, // Curva di accelerazione dell'animazione
           essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
         });
-        siderbarCloseButtonClick();
+        dispatch(setSidebar(false));
       }
     });
 
