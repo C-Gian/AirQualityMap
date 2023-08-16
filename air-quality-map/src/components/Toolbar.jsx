@@ -259,7 +259,7 @@ function Toolbar({
               />
             </svg>
           </button>
-          <span className="tooltip-text p-2">Wind</span>
+          <span className="tooltip-text p-2">Wind Heatmap</span>
         </div>
 
         <div className={`mr-1 tooltip-container `}>
@@ -285,7 +285,7 @@ function Toolbar({
               <path d="M14 9v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"></path>
             </svg>
           </button>
-          <span className="tooltip-text p-2">Circle Layer</span>
+          <span className="tooltip-text p-2">3D Map</span>
         </div>
 
         <div className={`mr-2 tooltip-container `}>

@@ -37,112 +37,66 @@ function MapComponent({
   const [hoveredState, setHoveredState] = useState(null);
   const [hoveredStateColor, setHoveredStateColor] = useState(null);
   const colorsLayers = colorBlind
-    ? [
-        0,
-        "#FFFFFF",
-        16.8,
-        "#00ff04",
-        33.4,
-        "#d3ff00",
-        50,
-        "#ffee00",
+  ? [
+      0, "rgba(255, 255, 255, 1)",
+      16.8, "rgba(0, 255, 4, 1)",
+      33.4, "rgba(211, 255, 0, 1)",
+      50, "rgba(255, 238, 0, 1)",
 
-        51,
-        "#ffa500",
-        67.4,
-        "#ffab00",
-        83.7,
-        "#ff6b00",
-        100,
-        "#ff0000",
+      51, "rgba(255, 165, 0, 1)",
+      67.4, "rgba(255, 171, 0, 1)",
+      83.7, "rgba(255, 107, 0, 1)",
+      100, "rgba(255, 0, 0, 1)",
 
-        101,
-        "#e60031",
-        117.4,
-        "#e8006f",
-        133.7,
-        "#ca3367",
-        150,
-        "#a7005b",
+      101, "rgba(230, 0, 49, 1)",
+      117.4, "rgba(232, 0, 111, 1)",
+      133.7, "rgba(202, 51, 103, 1)",
+      150, "rgba(167, 0, 91, 1)",
 
-        151,
-        "#6f00a4",
-        167.4,
-        "#3b00b3",
-        183.7,
-        "#004dd1",
-        200,
-        "#0071ce",
+      151, "rgba(111, 0, 164, 1)",
+      167.4, "rgba(59, 0, 179, 1)",
+      183.7, "rgba(0, 77, 209, 1)",
+      200, "rgba(0, 113, 206, 1)",
 
-        201,
-        "#00a2ff",
-        220.8,
-        "#00e0ff",
-        240.6,
-        "#00ffbf",
-        260.4,
-        "#00ff7b",
-        280.2,
-        "#00b34e",
-        300,
-        "#00734e",
+      201, "rgba(0, 162, 255, 1)",
+      220.8, "rgba(0, 224, 255, 1)",
+      240.6, "rgba(0, 255, 191, 1)",
+      260.4, "rgba(0, 255, 123, 1)",
+      280.2, "rgba(0, 179, 78, 1)",
+      300, "rgba(0, 115, 78, 1)",
 
-        301,
-        "#00494e",
-      ]
-    : [
-        0,
-        "#FFFFFF",
-        16.8,
-        "#00ff04",
-        33.4,
-        "#a2ff00",
-        50,
-        "#bbff00",
+      301, "rgba(0, 73, 78, 1)",
+    ]
+  : [
+      0, "rgba(255, 255, 255, 1)",
+      16.8, "rgba(0, 255, 4, 1)",
+      33.4, "rgba(162, 255, 0, 1)",
+      50, "rgba(187, 255, 0, 1)",
 
-        51,
-        "#f6ff00",
-        67.4,
-        "#ffea00",
-        83.7,
-        "#ffd000",
-        100,
-        "#ffb300",
+      51, "rgba(246, 255, 0, 1)",
+      67.4, "rgba(255, 234, 0, 1)",
+      83.7, "rgba(255, 208, 0, 1)",
+      100, "rgba(255, 179, 0, 1)",
 
-        101,
-        "#ff9900",
-        117.4,
-        "#ff8000",
-        133.7,
-        "#ff6600",
-        150,
-        "#ff4800",
+      101, "rgba(255, 153, 0, 1)",
+      117.4, "rgba(255, 128, 0, 1)",
+      133.7, "rgba(255, 102, 0, 1)",
+      150, "rgba(255, 72, 0, 1)",
 
-        151,
-        "#ff0000",
-        167.4,
-        "#ff003c",
-        183.7,
-        "#ff0066",
-        200,
-        "#d6006f",
+      151, "rgba(255, 0, 0, 1)",
+      167.4, "rgba(255, 0, 60, 1)",
+      183.7, "rgba(255, 0, 102, 1)",
+      200, "rgba(214, 0, 111, 1)",
 
-        201,
-        "#db0072",
-        220.8,
-        "#b50460",
-        240.6,
-        "#9e0253",
-        260.4,
-        "#8a0349",
-        280.2,
-        "#7a0140",
-        300,
-        "#690137",
+      201, "rgba(219, 0, 114, 1)",
+      220.8, "rgba(181, 4, 96, 1)",
+      240.6, "rgba(158, 2, 83, 1)",
+      260.4, "rgba(138, 3, 73, 1)",
+      280.2, "rgba(122, 1, 64, 1)",
+      300, "rgba(105, 1, 55, 1)",
 
-        301,
-        "#57012d",
-      ];
+      301, "rgba(87, 1, 45, 1)",
+    ];
 
   if (zoomInClicked) {
     mapRef.current.zoomIn();
@@ -279,6 +233,24 @@ function MapComponent({
         //window.windLayer.stop();
         window.windLayer.setWindOptions({
           colorScale: [
+            "rgb(255, 255, 255)",   // Bianco
+            "rgb(220, 235, 255)",
+            "rgb(190, 215, 245)",
+            "rgb(160, 195, 235)",
+            "rgb(130, 175, 225)",
+            "rgb(100, 155, 215)",
+            "rgb(75, 135, 205)",
+            "rgb(50, 115, 195)",
+            "rgb(30, 95, 185)",
+            "rgb(15, 75, 175)",
+            "rgb(5, 55, 165)",
+            "rgb(1, 40, 155)",
+            "rgb(2, 25, 145)",
+            "rgb(1, 15, 135)",
+            "rgb(0, 5, 125)",
+            "rgb(0, 0, 115)",       // Blu scuro
+          ],
+          /* colorScale: [
             "rgb(36,104, 180)",
             "rgb(60,157, 194)",
             "rgb(128,205,193 )",
@@ -294,7 +266,7 @@ function MapComponent({
             "rgb(237,45,28)",
             "rgb(220,24,32)",
             "rgb(180,0,35)",
-          ],
+          ], */
           frameRate: 20,
           maxAge: 60,
           globalAlpha: 0.9,
@@ -305,6 +277,24 @@ function MapComponent({
         //window.windLayer.render();
         window.windLayer.setWindOptions({
           colorScale: [
+            "rgb(255, 255, 255)",   // Bianco
+            "rgb(220, 235, 255)",
+            "rgb(190, 215, 245)",
+            "rgb(160, 195, 235)",
+            "rgb(130, 175, 225)",
+            "rgb(100, 155, 215)",
+            "rgb(75, 135, 205)",
+            "rgb(50, 115, 195)",
+            "rgb(30, 95, 185)",
+            "rgb(15, 75, 175)",
+            "rgb(5, 55, 165)",
+            "rgb(1, 40, 155)",
+            "rgb(2, 25, 145)",
+            "rgb(1, 15, 135)",
+            "rgb(0, 5, 125)",
+            "rgb(0, 0, 115)",       // Blu scuro
+          ],
+          /* colorScale: [
             "rgb(36,104, 180)",
             "rgb(60,157, 194)",
             "rgb(128,205,193 )",
@@ -320,7 +310,7 @@ function MapComponent({
             "rgb(237,45,28)",
             "rgb(220,24,32)",
             "rgb(180,0,35)",
-          ],
+          ], */
           frameRate: 20,
           maxAge: 60,
           globalAlpha: 0.9,
@@ -687,6 +677,24 @@ function MapComponent({
       window.windLayer = new WindLayer("wind", windDatas.data, {
         windOptions: {
           colorScale: [
+            "rgb(255, 255, 255)",   // Bianco
+            "rgb(220, 235, 255)",
+            "rgb(190, 215, 245)",
+            "rgb(160, 195, 235)",
+            "rgb(130, 175, 225)",
+            "rgb(100, 155, 215)",
+            "rgb(75, 135, 205)",
+            "rgb(50, 115, 195)",
+            "rgb(30, 95, 185)",
+            "rgb(15, 75, 175)",
+            "rgb(5, 55, 165)",
+            "rgb(1, 40, 155)",
+            "rgb(2, 25, 145)",
+            "rgb(1, 15, 135)",
+            "rgb(0, 5, 125)",
+            "rgb(0, 0, 115)",       // Blu scuro
+          ],
+          /* colorScale: [
             "rgb(36,104, 180)",
             "rgb(60,157, 194)",
             "rgb(128,205,193 )",
@@ -702,7 +710,7 @@ function MapComponent({
             "rgb(237,45,28)",
             "rgb(220,24,32)",
             "rgb(180,0,35)",
-          ],
+          ], */
           frameRate: 20,
           maxAge: 60,
           globalAlpha: 0.9,
@@ -920,6 +928,16 @@ function MapComponent({
     setDataRDots(dotsDatas[sliderValue + 1]);
     mapRef.current.getSource("glowy-source").setData(data);
   }, [sliderValue, nightMode, colorBlind, map3D]);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      if (mapRef.current.getZoom() < zoomThreshold) {
+        dispatch(setCurrentLayer("country"));
+      } else {
+        dispatch(setCurrentLayer("state"));
+      }
+    }
+  }, [map3D])
 
   return (
     <div style={{ zIndex: 0 }}>
