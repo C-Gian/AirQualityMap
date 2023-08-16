@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import PopupLegend from "./PopupLegend";
 import ReactDOM from "react-dom";
+import { useSelector } from "react-redux";
 
-function Legend({ nightMode, colorBlind }) {
+function Legend() {
   const [showPopup, setShowPopup] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const nightMode = useSelector((state) => state.nightMode);
+  const colorBlind = useSelector((state) => state.colorBlindMode);
 
   const handleMouseEnter = (e) => {
     setShowPopup(true);

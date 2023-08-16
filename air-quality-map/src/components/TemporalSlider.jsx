@@ -3,11 +3,12 @@ import Slider from "rc-slider";
 import { setSliderValue } from "../actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 
-function TemporalSlider({ nightMode }) {
+function TemporalSlider() {
   const [selectedDay, setSelectedDay] = useState("Today");
   const dispatch = useDispatch();
   const sliderValue = useSelector((state) => state.sliderValue);
-
+  const nightMode = useSelector((state) => state.nightMode);
+  
   const handleChange = (value) => {
     dispatch(setSliderValue(value - 1));
   };

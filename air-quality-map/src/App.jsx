@@ -23,8 +23,6 @@ const App = () => {
   const [dotsDatas, setDotsDatas] = useState({});
   const [windDatas, setWindDatas] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [nightMode, setNightMode] = useState(true);
-  const [colorBlind, setColorBlind] = useState(false);
   const [zoomInClicked, setZoomInClicked] = useState(false);
   const [centerClicked, setCenterClicked] = useState(false);
   const [zoomOutClicked, setZoomOutClicked] = useState(false);
@@ -109,14 +107,6 @@ const App = () => {
 
   const handleZoomOutClick = () => {
     setZoomOutClicked(true);
-  };
-
-  const handleColorBlindClick = () => {
-    setColorBlind(!colorBlind);
-  };
-
-  const handleNightModeClick = () => {
-    setNightMode(!nightMode);
   };
 
   const handleSiderbarCloseButtonClick = () => {
@@ -632,29 +622,22 @@ const App = () => {
               stateClicked={stateClicked}
               siderbarCloseButton={siderbarCloseButtonPressed}
               siderbarCloseButtonClick={handleSiderbarCloseButtonClick}
-              nightMode={nightMode}
-              colorBlind={colorBlind}
               zoomInClicked={zoomInClicked}
               centerClicked={centerClicked}
               zoomOutClicked={zoomOutClicked}
               stopButton={handleStopButton}
             ></MapComponent>
           )}
-          <TemporalSlider nightMode={nightMode}></TemporalSlider>
+          <TemporalSlider></TemporalSlider>
           {stateInfo && (
             <Sidebar
               infos={stateInfo}
               bulkDatas={bulkDatas}
               onButtonClick={handleSiderbarCloseButtonClick}
-              nightMode={nightMode}
-              colorBlind={colorBlind}
             />
           )}
-          <Legend nightMode={nightMode} colorBlind={colorBlind}></Legend>
+          <Legend></Legend>
           <Toolbar
-            nightMode={nightMode}
-            onNightModeClick={handleNightModeClick}
-            onColorBlindClick={handleColorBlindClick}
             onZoomInClick={handleZoomInClick}
             onCenterClick={handleCenterClick}
             onZoomOutClick={handleZoomOutClick}

@@ -458,7 +458,7 @@ async function getFifthUS() {
   }
 }
 
-const API_INTERVAL = 20 * 1000; //2 * 60 * 1000; // 2 minuti in millisecondi
+/* const API_INTERVAL = 20 * 1000; //2 * 60 * 1000; // 2 minuti in millisecondi
 
 // Funzione per eseguire la richiesta API
 const makeApiRequest = async () => {
@@ -474,6 +474,6 @@ const makeApiRequest = async () => {
   }
 };
 
-makeApiRequest();
+makeApiRequest(); */
 
 app.listen(4000);

@@ -13,8 +13,6 @@ const Sidebar = ({
   infos,
   bulkDatas,
   onButtonClick,
-  nightMode,
-  colorBlind,
 }) => {
   const [name, setName] = useState("");
   const [AQI, setAQI] = useState("");
@@ -29,6 +27,8 @@ const Sidebar = ({
   const [humidity, setHumidity] = useState(null);
   const [nStations, setNStation] = useState(0);
   const sliderValue = useSelector((state) => state.sliderValue);
+  const nightMode = useSelector((state) => state.nightMode);
+  const colorBlind = useSelector((state) => state.colorBlindMode);
 
   const colors = colorBlind
     ? [

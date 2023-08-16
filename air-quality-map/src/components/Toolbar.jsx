@@ -4,13 +4,12 @@ import {
   setWind,
   setWindHeatmap,
   set3DMap,
+  setNightMode,
+  setColorBlindMode
 } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Toolbar({
-  nightMode,
-  onNightModeClick,
-  onColorBlindClick,
   onZoomInClick,
   onCenterClick,
   onZoomOutClick,
@@ -21,6 +20,8 @@ function Toolbar({
   const wind = useSelector((state) => state.wind);
   const windHeatmap = useSelector((state) => state.windHeatmap);
   const map3d = useSelector((state) => state.map3d);
+  const nightMode = useSelector((state) => state.nightMode);
+  const colorBlindMode = useSelector((state) => state.colorBlindMode);
   const [dotsActive, setDotsActive] = useState(false);
   const [currentLayerBool, setCurrentLayerBool] = useState(
     currentLayer == "country" || dotsActive
@@ -34,22 +35,28 @@ function Toolbar({
     }
   };
 
-  const handleDotsButtonClick = () => {
-    if (dotsActive) {
-      setDotsActive(false);
-      setCheckedItem("AQI");
-      setCurrentLayerBool(false);
-    } else {
-      setDotsActive(true);
-      setCheckedItem("DOTS");
-      setCurrentLayerBool(true);
-    }
+  const handleNightModeClick = () => {
+    dispatch(setNightMode(!nightMode));
+  };
+
+  const handleColorBlindClick = () => {
+    dispatch(setColorBlindMode(!colorBlindMode));
   };
 
   const handleMenuClose = () => {
     setIsMenuOpen(false);
     setCheckedItem("AQI");
     //dispatch(setLayerToShow(checkedItem));
+  };
+
+  const handleDotsButtonClick = () => {
+    if (dotsActive) {
+      setDotsActive(false);
+      setCheckedItem("AQI");
+    } else {
+      setDotsActive(true);
+      setCheckedItem("DOTS");
+    }
   };
 
   const handleCheckboxChange = (optionKey) => {
@@ -100,7 +107,7 @@ function Toolbar({
         <div className="tooltip-container mr-1">
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
-            onClick={onNightModeClick}
+            onClick={handleNightModeClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +129,7 @@ function Toolbar({
         <div className="tooltip-container">
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
-            onClick={onColorBlindClick}
+            onClick={handleColorBlindClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

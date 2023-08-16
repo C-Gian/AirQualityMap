@@ -8,6 +8,33 @@ const initialState = {
   wind: false,
   windHeatmap: false,
   map3d: false,
+  sidebar: {
+    infos: {},
+    bulkDatas: {},
+  },
+  nightMode: true,
+  colorBlindMode: false,
+};
+
+const sidebarReducer = (state = initialState.sidebar, action) => {
+  if (action.type === "SET_SIDEBAR") {
+    return action.payload;
+  }
+  return state;
+};
+
+const nightModeReducer = (state = initialState.nightMode, action) => {
+  if (action.type === "SET_NIGHT_MODE") {
+    return action.payload;
+  }
+  return state;
+};
+
+const colorBlindReducer = (state = initialState.colorBlindMode, action) => {
+  if (action.type === "SET_CB_MODE") {
+    return action.payload;
+  }
+  return state;
 };
 
 const sliderValueReducer = (state = initialState.sliderValue, action) => {
@@ -59,6 +86,9 @@ const rootReducer = combineReducers({
   wind: windReducer,
   windHeatmap: windHeatmapReducer,
   map3d: map3DReducer,
+  sidebar: sidebarReducer,
+  nightMode: nightModeReducer,
+  colorBlindMode: colorBlindReducer,
 });
 
 export default rootReducer;

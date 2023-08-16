@@ -14,8 +14,6 @@ function MapComponent({
   stateClicked,
   siderbarCloseButton,
   siderbarCloseButtonClick,
-  nightMode,
-  colorBlind,
   zoomInClicked,
   centerClicked,
   zoomOutClicked,
@@ -30,6 +28,8 @@ function MapComponent({
   const wind = useSelector((state) => state.wind);
   const windHeatmap = useSelector((state) => state.windHeatmap);
   const map3D = useSelector((state) => state.map3d);
+  const nightMode = useSelector((state) => state.nightMode);
+  const colorBlind = useSelector((state) => state.colorBlindMode);
   const [dataR, setDataR] = useState(datas[sliderValue]);
   const [dataRDots, setDataRDots] = useState(dotsDatas[sliderValue + 1]);
   const [showPopup, setShowPopup] = useState(false);

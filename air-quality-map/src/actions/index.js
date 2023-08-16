@@ -6,6 +6,27 @@ export const setSliderValue = (value) => {
   };
 };
 
+export const setSidebar = (value) => {
+  return {
+    type: "SET_SIDEBAR",
+    payload: value,
+  };
+};
+
+export const setNightMode = (value) => {
+  return {
+    type: "SET_NIGHT_MODE",
+    payload: value,
+  };
+};
+
+export const setColorBlindMode = (value) => {
+  return {
+    type: "SET_CB_MODE",
+    payload: value,
+  };
+};
+
 export const setLayerToShow = (value) => {
   return {
     type: "SET_LAYER_TO_SHOW",
