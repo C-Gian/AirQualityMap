@@ -4,6 +4,7 @@ import axios from "axios";
 import weatherDataProxy from "./data/weatherProxy.json";
 import dailyDataProxy from "./data/dailyDataProxy.json";
 import datasBackup from "./data/datasBackup.json";
+import windData from "./data/wind.data.json";
 import * as turf from "@turf/turf";
 import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
@@ -375,7 +376,7 @@ const App = () => {
   }
 
   async function getWindDatas() {
-    const data = await axios.get(`http://localhost:4000/daily-wind-update`);
+    const data = windData; //await axios.get(`http://localhost:4000/daily-wind-update`);
     if (data) {
       return data;
     } else {
