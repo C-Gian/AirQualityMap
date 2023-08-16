@@ -183,80 +183,6 @@ const App = () => {
     return Math.round(aqi);
   }
 
-  async function getFirstUS() {
-    const apiURL =
-      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125.525950,26.165337,-103.729075,47.554315&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-    /* const apiURL =
-      "https://www.airnowapi.org/aq/data/?startDate=2023-07-15T10&endDate=2023-07-15T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125.525950,26.165337,-103.729075,47.554315&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-     */
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("first data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching first US data", error);
-      return null;
-    }
-  }
-  async function getSecondUS() {
-    /* const apiURL =
-      "https://www.airnowapi.org/aq/data/?startDate=2023-07-15T10&endDate=2023-07-15T18&parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX= -94.46,24.39,-66.93,49.38&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-     */
-    const apiURL =
-      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-103.729075,26.749853,-86.150950,47.282452&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("second data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching second US data", error);
-      return null;
-    }
-  }
-  async function getThirdUS() {
-    const apiURL =
-      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-85.799388,27.152772,-67.166575,47.111827&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("third data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching third US data", error);
-      return null;
-    }
-  }
-  async function getFourthUS() {
-    //alaska
-    const apiURL =
-      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-166.440506,59.326006,-140.073318,71.169033&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("fourth data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching fourth US data", error);
-      return null;
-    }
-  }
-  async function getFifthUS() {
-    //hawaii
-    const apiURL =
-      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-160.220000,18.910000,-154.800000,20.320000&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A";
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      console.log("fifth data US got correctly");
-      return data;
-    } catch (error) {
-      console.log("error fetching fifth US data", error);
-      return null;
-    }
-  }
-
   /* async function getAirQualityDataEurope() {
   const API_TOKEN = "551302aec928205074ba444ee505af1db545b83c";
     try {
@@ -350,29 +276,9 @@ const App = () => {
   }
 
   async function getDailyData() {
-    let data = [];
-    const d1 = await getFirstUS();
-    d1.forEach((measurement) => {
-      data.push(measurement);
-    });
-    const d2 = await getSecondUS();
-    d2.forEach((measurement) => {
-      data.push(measurement);
-    });
-    const d3 = await getThirdUS();
-    d3.forEach((measurement) => {
-      data.push(measurement);
-    });
-    const d4 = await getFourthUS();
-    d4.forEach((measurement) => {
-      data.push(measurement);
-    });
-    const d5 = await getFifthUS();
-    d5.forEach((measurement) => {
-      data.push(measurement);
-    });
-    console.log("Daily data got", data);
-    return data;
+    const response = await axios.get(`http://localhost:4000/get-daily-datas`);
+    console.log("Daily data got", response);
+    return response.data;
   }
 
   async function getWindDatas() {

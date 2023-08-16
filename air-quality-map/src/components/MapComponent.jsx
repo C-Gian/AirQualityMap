@@ -152,7 +152,7 @@ function MapComponent({
   if (centerClicked) {
     mapRef.current.flyTo({
       center: [-100.86857959024933, 38.482552979137004],
-      zoom: 3.5, // Livello di zoom desiderato
+      zoom: 1, // Livello di zoom desiderato
       speed: 1.5, // Velocità dell'animazione
       curve: 1.5, // Curva di accelerazione dell'animazione
       essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
@@ -395,8 +395,8 @@ function MapComponent({
       //style: "mapbox://styles/c-gian/clk5ue5ru00ij01pd1w9k89ek?fresh=true",
       style: style,
       center: [-98.30953630020429, 38.75491131673913],
-      minZoom: 2,
-      zoom: 0,
+      minZoom: 0,
+      zoom: 1,
       pitch: 0, // Imposta il pitch a 0 per ottenere una vista 2D
       bearing: 0,
       attributionControl: false,
@@ -418,52 +418,10 @@ function MapComponent({
         }
       });
 
-      /* fetch(
-        "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/json/wind.json"
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          window.windLayer = new WindLayer("wind", data, {
-            windOptions: {
-              colorScale: (m) => {
-                return "#fff";
-              },
-              colorScale: [
-                "rgb(36,104, 180)",
-                "rgb(60,157, 194)",
-                "rgb(128,205,193 )",
-                "rgb(151,218,168 )",
-                "rgb(198,231,181)",
-                "rgb(238,247,217)",
-                "rgb(255,238,159)",
-                "rgb(252,217,125)",
-                "rgb(255,182,100)",
-                "rgb(252,150,75)",
-                "rgb(250,112,52)",
-                "rgb(245,64,32)",
-                "rgb(237,45,28)",
-                "rgb(220,24,32)",
-                "rgb(180,0,35)",
-              ],
-              velocityScale: 1 / 20,
-              paths: 5000,
-              frameRate: 10,
-              maxAge: 60,
-              globalAlpha: 0.9,
-              velocityScale: 0.03,
-              //paths: 10000,
-              paths: 10000,
-            },
-            fieldOptions: {
-              wrapX: true,
-            },
-          });
-
-          window.windLayer.addTo(map);
-        }); */
-
-      //map.addControl(new NavigationControl(), "top-right");
+      map.addSource("aqi", {
+        type: "geojson",
+        data: dataR,
+      });
 
       map.addSource("glowy-source", {
         type: "geojson",
@@ -523,11 +481,6 @@ function MapComponent({
         },
       });
 
-      map.addSource("aqi", {
-        type: "geojson",
-        data: dataR,
-      });
-
       map.addLayer({
         id: "country-aqi",
         source: "aqi",
@@ -570,15 +523,19 @@ function MapComponent({
             1,
             0.75,
           ],
+          "fill-outline-color": "rgba(0, 0, 0, 1)",
         },
       });
 
-      map.addLayer({
+      /* map.addLayer({
         id: "state-outline-layer",
         minzoom: zoomThreshold,
         type: "line",
         interactive: false,
         source: "aqi",
+        layout: {
+          visibility: "visible",
+        },
         paint: {
           "line-color": [
             "case",
@@ -593,7 +550,7 @@ function MapComponent({
             0.3, // Larghezza del contorno per gli stati non selezionati
           ],
         },
-      });
+      }); */
 
       const layersToShow = [
         "state-pm2.5-aqi",
@@ -625,6 +582,7 @@ function MapComponent({
               1,
               0.75,
             ],
+            "fill-outline-color": "rgba(0, 0, 0, 1)",
           },
         });
       });
@@ -770,19 +728,6 @@ function MapComponent({
       });
 
       window.windLayer.addTo(map);
-
-      /* map.addLayer({
-        id: "state-aqi-line",
-        source: "aqi",
-        minzoom: zoomThreshold,
-        type: "line",
-        interactive: false,
-        paint: {
-          "line-opacity": 0.3, // Opacità delle linee dei confini
-          "line-color": "#212121", // Colore delle linee dei confini
-          "line-width": 0.5, // Spessore delle linee dei confini
-        },
-      }); */
     });
 
     return () => map.remove(); // Cleanup della mappa
