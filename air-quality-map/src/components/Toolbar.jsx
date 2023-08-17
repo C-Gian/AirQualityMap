@@ -4,16 +4,16 @@ import {
   setWind,
   setWindHeatmap,
   set3DMap,
-  setNightMode,
-  setColorBlindMode
 } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 
-function Toolbar({
-  /* onZoomInClick,
+function Toolbar(
+  {
+    /* onZoomInClick,
   onCenterClick,
   onZoomOutClick, */
-}) {
+  }
+) {
   const dispatch = useDispatch();
   const currentLayer = useSelector((state) => state.currentLayer);
   const layerToShow = useSelector((state) => state.layerToShow);
@@ -33,14 +33,6 @@ function Toolbar({
     if (!currentLayerBool) {
       setIsMenuOpen(true);
     }
-  };
-
-  const handleNightModeClick = () => {
-    dispatch(setNightMode(!nightMode));
-  };
-
-  const handleColorBlindClick = () => {
-    dispatch(setColorBlindMode(!colorBlindMode));
   };
 
   const handleMenuClose = () => {
@@ -103,53 +95,6 @@ function Toolbar({
           : "rgba(128, 128, 128, 0.5)",
       }}
     >
-      <div className="flex mr-2">
-        <div className="tooltip-container mr-1">
-          <button
-            className="bg-white p-1 rounded flex items-center tooltip-btn"
-            onClick={handleNightModeClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-              />
-            </svg>
-          </button>
-          <span className="tooltip-text p-2">Modalità Notte</span>
-        </div>
-        <div className="tooltip-container">
-          <button
-            className="bg-white p-1 rounded flex items-center tooltip-btn"
-            onClick={handleColorBlindClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z"
-              />
-            </svg>
-          </button>
-          <span className="tooltip-text p-2">Modalità Daltonici</span>
-        </div>
-      </div>
-
       <div className="flex w-fit justify-between">
         <div
           className={`mr-1 tooltip-container ${
