@@ -10,7 +10,7 @@ import CountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
 
-const Sidebar = ({infos, bulkDatas}) => {
+const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [AQI, setAQI] = useState("");
@@ -39,10 +39,9 @@ const Sidebar = ({infos, bulkDatas}) => {
       ]
     : ["#00D900", "#B5B500", "#F57300", "#F50000", "#83328C", "#730017"];
 
-    const handleCloseButtonClick = () => {
-      dispatch(setSidebar(false));
-    };
-    
+  const handleCloseButtonClick = () => {
+    dispatch(setSidebar(false));
+  };
 
   function getColoreByValore(value) {
     if (value >= 0 && value <= 51) {

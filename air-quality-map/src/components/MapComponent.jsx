@@ -379,7 +379,7 @@ function MapComponent({
         });
       }
     }
-  }, [sidebar])
+  }, [sidebar]);
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -408,26 +408,29 @@ function MapComponent({
     });
     mapRef.current = map;
 
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-          enableHighAccuracy: true
-      },
-      trackUserLocation: true,
-      showUserHeading: true
-  }), "top-right");
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+        showUserHeading: true,
+      }),
+      "top-right"
+    );
 
-  const nav = new mapboxgl.NavigationControl({
-    visualizePitch: true
-});
-map.addControl(nav, 'top-right');
+    const nav = new mapboxgl.NavigationControl({
+      visualizePitch: true,
+    });
+    map.addControl(nav, "top-right");
 
-const scale = new mapboxgl.ScaleControl({
-  maxWidth: 80,
-  unit: 'imperial'
-});
-map.addControl(scale, "top-right");
+    const scale = new mapboxgl.ScaleControl({
+      maxWidth: 80,
+      unit: "imperial",
+    });
+    map.addControl(scale, "top-right");
 
-scale.setUnit('metric');
+    scale.setUnit("metric");
 
     map.doubleClickZoom.disable();
 

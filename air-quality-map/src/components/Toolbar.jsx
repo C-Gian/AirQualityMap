@@ -87,7 +87,7 @@ function Toolbar(
 
   return (
     <div
-      className="flex mr-3 absolute w-fit p-3 h-fit rounded-xl right-0 items-center justify-between"
+      className="flex mr-3 absolute w-250 p-3 h-fit rounded-xl right-0 items-center"
       style={{
         bottom: "110px",
         backgroundColor: nightMode
@@ -95,9 +95,9 @@ function Toolbar(
           : "rgba(128, 128, 128, 0.5)",
       }}
     >
-      <div className="flex w-fit justify-between">
+      <div className="flex w-full justify-around">
         <div
-          className={`mr-1 tooltip-container ${
+          className={`tooltip-container ${
             currentLayerBool ? "disabled-div" : ""
           }`}
         >
@@ -164,57 +164,65 @@ function Toolbar(
           )}
         </div>
 
-        <div
-          className={`mr-1 tooltip-container ${map3d ? "disabled-div" : ""}`}
-        >
+        <div className={`tooltip-container ${map3d ? "disabled-div" : ""}`}>
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
             onClick={handleWindButtonClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="none"
+              className="icon icon-tabler icon-tabler-wind"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth="2"
               stroke="currentColor"
-              className="w-6 h-6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181"
-              />
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"></path>
+              <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"></path>
+              <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"></path>
             </svg>
           </button>
           <span className="tooltip-text p-2">Wind</span>
         </div>
 
-        <div
-          className={`mr-1 tooltip-container ${map3d ? "disabled-div" : ""}`}
-        >
+        <div className={`tooltip-container ${map3d ? "disabled-div" : ""}`}>
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
             onClick={handleWindHeatmapButtonClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="none"
+              className="icon icon-tabler icon-tabler-sun-wind"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth="2"
               stroke="currentColor"
-              className="w-6 h-6"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-              />
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M14.468 10a4 4 0 1 0 -5.466 5.46"></path>
+              <path d="M2 12h1"></path>
+              <path d="M11 3v1"></path>
+              <path d="M11 20v1"></path>
+              <path d="M4.6 5.6l.7 .7"></path>
+              <path d="M17.4 5.6l-.7 .7"></path>
+              <path d="M5.3 17.7l-.7 .7"></path>
+              <path d="M15 13h5a2 2 0 1 0 0 -4"></path>
+              <path d="M12 16h5.714l.253 0a2 2 0 0 1 2.033 2a2 2 0 0 1 -2 2h-.286"></path>
             </svg>
           </button>
           <span className="tooltip-text p-2">Wind Heatmap</span>
         </div>
 
-        <div className={`mr-1 tooltip-container `}>
+        <div className={`tooltip-container `}>
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
             onClick={handle3DButtonClick}
@@ -249,7 +257,7 @@ function Toolbar(
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={2}
               stroke="currentColor"
               className="w-6 h-6"
             >

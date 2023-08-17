@@ -204,6 +204,16 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.mapboxgl-ctrl button.mapboxgl-ctrl-geolocate {
+  width: 32px;
+  height: 32px;
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-compass {
+  width: 32px;
+  height: 32px;
+}
+
 /* Stilizza i marker di scala */
 .mapboxgl-ctrl-scale-line {
   background-color: #666;
@@ -214,4 +224,24 @@ body {
 /* Stilizza la posizione dei controlli nella parte alta destra */
 .mapboxgl-ctrl-top-right {
   top: 50px; /* Regola questa altezza in base alla tua navbar */
+}
+
+.mapboxgl-ctrl-navigation {
+  width: 32px;
+  height: 32px;
+}
+
+/* Stilizza la scritta al passaggio del mouse */
+a:hover h2 {
+  color: lightblue; /* Cambia il colore al passaggio del mouse */
+}
+
+/* Stilizza il logo al passaggio del mouse */
+a:hover svg path {
+  fill: lightblue; /* Cambia il colore al passaggio del mouse */
+}
+
+/* Stilizza il pulsante al passaggio del mouse */
+.info-button:hover {
+  color: lightblue; /* Cambia il colore al passaggio del mouse */
 }
