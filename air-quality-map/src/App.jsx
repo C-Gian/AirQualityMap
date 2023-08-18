@@ -260,8 +260,11 @@ const App = () => {
   }
 
   async function getDailyData() {
+    /* const apiAQIWorlds = await axios.get(
+      "https://api.waqi.info/v2/map/bounds?latlng=-90,-180,90,180&networks=all&token=551302aec928205074ba444ee505af1db545b83c"
+    ); */
     const response = await axios.get(`http://localhost:4000/get-daily-datas`);
-    const flatResponse = response.data.flat()
+    const flatResponse = response.data.flat();
     console.log("Daily data got", flatResponse);
     return flatResponse;
   }
@@ -436,7 +439,11 @@ const App = () => {
                   ignoreBoundary: false,
                 })
               ) {
-                todayDots.push(point);
+                //todayDots.push(point);
+                todayDots.push({
+                  point: point,
+                  value: measurement.AQI ? measurement.AQI : 0,
+                });
                 feature.properties.nDetections =
                   feature.properties.nDetections + 1;
                 if (

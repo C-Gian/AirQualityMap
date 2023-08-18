@@ -168,13 +168,12 @@ function MapComponent({
   useEffect(() => {
     if (mapRef.current && mapRef.current.getStyle()) {
       mapRef.current.getStyle().layers.forEach((layer) => {
-        if (layer.source == "aqi" && layer.type !== "line") {
-          mapRef.current.setLayoutProperty(layer.id, "visibility", "none");
-        }
         if (
           layer.id == "glowy-things-1" ||
           layer.id == "glowy-things-2" ||
-          layer.id == "glowy-things-3"
+          layer.id == "glowy-things-3" ||
+          (layer.source == "aqi" && layer.type !== "line") ||
+          layer.id == "heatmap-layer"
         ) {
           mapRef.current.setLayoutProperty(layer.id, "visibility", "none");
         }
@@ -247,6 +246,13 @@ function MapComponent({
           );
           mapRef.current.setLayoutProperty(
             "glowy-things-3",
+            "visibility",
+            "visible"
+          );
+          break;
+        case "HEAT":
+          mapRef.current.setLayoutProperty(
+            "heatmap-layer",
             "visibility",
             "visible"
           );
@@ -457,7 +463,7 @@ function MapComponent({
           type: "FeatureCollection",
           features: dataRDots.map((coord) => ({
             type: "Feature",
-            geometry: coord.geometry,
+            geometry: coord.point.geometry,
           })),
         },
       });
@@ -756,6 +762,69 @@ function MapComponent({
       });
 
       window.windLayer.addTo(map);
+
+      map.addLayer({
+        id: "heatmap-layer",
+        type: "heatmap",
+        layout: {
+          visibility: "none",
+        },
+        source: {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: dataRDots.map((el) => ({
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: el.point.geometry.coordinates,
+              },
+              properties: {
+                value: el.value,
+              },
+            })),
+          },
+        },
+        paint: {
+          "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get", "value"],
+            0,
+            0,
+            1,
+            1,
+          ],
+          "heatmap-intensity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0,
+            1,
+            9,
+            3,
+          ],
+          "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 9, 20],
+          "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0,
+            "rgba(0, 0, 255, 0)",
+            0.2,
+            "royalblue",
+            0.4,
+            "cyan",
+            0.6,
+            "lime",
+            0.8,
+            "yellow",
+            1,
+            "red",
+          ],
+          "heatmap-opacity": 0.8,
+        },
+      });
     });
 
     return () => map.remove(); // Cleanup della mappa
@@ -943,7 +1012,7 @@ function MapComponent({
       type: "FeatureCollection",
       features: dotsDatas[sliderValue + 1].map((coord) => ({
         type: "Feature",
-        geometry: coord.geometry,
+        geometry: coord.point.geometry,
       })),
     };
     setDataRDots(dotsDatas[sliderValue + 1]);
