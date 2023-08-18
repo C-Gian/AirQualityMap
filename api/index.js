@@ -227,7 +227,7 @@ app.get("/datas", async (req, res) => {
   } catch (error) {}
 });
 
-//endpoint to get daily datas from API
+/* //endpoint to get daily datas from API
 app.get("/get-daily-datas", async (req, res) => {
   try {
     let data = [];
@@ -252,6 +252,23 @@ app.get("/get-daily-datas", async (req, res) => {
       data.push(measurement);
     });
     res.json(data);
+  } catch (error) {}
+}); */
+
+//endpoint to get daily datas from API
+app.get("/get-daily-datas", async (req, res) => {
+  try {
+    const boundingBoxes = [
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125.525950,26.165337,-103.729075,47.554315&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-103.729075,26.749853,-86.150950,47.282452&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",  
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-85.799388,27.152772,-67.166575,47.111827&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-166.440506,59.326006,-140.073318,71.169033&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-160.220000,18.910000,-154.800000,20.320000&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
+    ]
+    
+    const promises = boundingBoxes.map(url => fetch(url).then(response => response.json()));
+    const responses = await Promise.all(promises);
+    res.json(responses);
   } catch (error) {}
 });
 

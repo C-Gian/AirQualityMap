@@ -261,8 +261,9 @@ const App = () => {
 
   async function getDailyData() {
     const response = await axios.get(`http://localhost:4000/get-daily-datas`);
-    console.log("Daily data got", response);
-    return response.data;
+    const flatResponse = response.data.flat()
+    console.log("Daily data got", flatResponse);
+    return flatResponse;
   }
 
   async function getWindDatas() {
