@@ -4,7 +4,7 @@ import axios from "axios";
 import weatherDataProxy from "./data/weatherProxy.json";
 import dailyDataProxy from "./data/dailyDataProxy.json";
 import datasBackup from "./data/datasBackup.json";
-import windData from "./data/wind.data.json";
+import windDataImport from "./data/wind.data.json";
 import * as turf from "@turf/turf";
 import Sidebar from "./components/Sidebar";
 import MapComponent from "./components/MapComponent";
@@ -269,16 +269,6 @@ const App = () => {
     return flatResponse;
   }
 
-  async function getWindDatas() {
-    const data = windData; //await axios.get(`http://localhost:4000/daily-wind-update`);
-    if (data) {
-      return data;
-    } else {
-      console.log("wind data error");
-      return null;
-    }
-  }
-
   async function getDatas() {
     const response = await axios.get(`http://localhost:4000/datas`);
     return response.data;
@@ -293,6 +283,16 @@ const App = () => {
     const response = await axios.get(`http://localhost:4000/dots-datas`);
     return response.data;
   }
+
+  /* async function getWindDatas() {
+    const data = windDataImport; //await axios.get(`http://localhost:4000/daily-wind-update`);
+    if (data) {
+      return data;
+    } else {
+      console.log("wind data error");
+      return null;
+    }
+  } */
 
   async function getWeatherDataStates() {
     const apiKey = "bbf74644b9d24ee58ea144902232407";
@@ -357,6 +357,26 @@ const App = () => {
       weatherData[state] = data; // Salva i dati meteo nell'oggetto weatherData
     }
     return weatherData;
+  }
+
+  async function getAllData() {
+    try {
+      const [datas, bulkDatas, dotsDatas] = await Promise.all([
+        getDatas(),
+        getBulkDatas(),
+        getDotsDatas(),
+      ]);
+      const windData = windDataImport;
+
+      setDatas(datas); //getting the whole db data (7 days data)
+      setBulkDatas(bulkDatas.data);
+      setDotsDatas(dotsDatas.data);
+      setWindDatas(windData);
+
+      // Puoi fare ulteriori elaborazioni sui dati qui
+    } catch (error) {
+      console.error("Errore durante il recupero dei dati:", error);
+    }
   }
 
   useEffect(() => {
@@ -557,18 +577,20 @@ const App = () => {
           await dailyDotsDataUpdate(todayDots);
           console.log("Daily Dots Updated");
         }
-        const datas = await getDatas();
+        await getAllData();
+        console.log("datas got");
+        /* const datas = await getDatas();
         console.log("1", datas);
         const bulkDatas = await getBulkDatas();
         console.log("2", bulkDatas.data);
         const dotsDatas = await getDotsDatas();
         console.log("3", dotsDatas.data);
-        const windData = await getWindDatas();
-        console.log("4", windData);
+        const windData = windDataImport;
+        console.log("4", windData); 
         setDatas(datas); //getting the whole db data (7 days data)
         setBulkDatas(bulkDatas.data);
         setDotsDatas(dotsDatas.data);
-        setWindDatas(windData);
+        setWindDatas(windData);*/
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
