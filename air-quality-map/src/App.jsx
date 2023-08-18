@@ -622,14 +622,11 @@ const App = () => {
           )}
           <TemporalSlider></TemporalSlider>
           {sidebar && stateInfo && (
-            <Sidebar
-              infos={stateInfo}
-              bulkDatas={bulkDatas}
-            />
+            <Sidebar infos={stateInfo} bulkDatas={bulkDatas} />
           )}
           <Legend></Legend>
           <Toolbar
-            /* onZoomInClick={handleZoomInClick}
+          /* onZoomInClick={handleZoomInClick}
             onCenterClick={handleCenterClick}
             onZoomOutClick={handleZoomOutClick} */
           ></Toolbar>

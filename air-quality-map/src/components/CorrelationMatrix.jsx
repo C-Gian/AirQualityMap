@@ -291,6 +291,7 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
 
       // Imposta il colore delle etichette delle scale sull'asse x come bianche
       svg.selectAll(".tick text").style("fill", "white");
+      svg.selectAll(".tick line").style("stroke", "white");
 
       svg
         .selectAll()
