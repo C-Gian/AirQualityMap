@@ -8,7 +8,7 @@ function TemporalSlider() {
   const dispatch = useDispatch();
   const sliderValue = useSelector((state) => state.sliderValue);
   const nightMode = useSelector((state) => state.nightMode);
-  
+
   const handleChange = (value) => {
     dispatch(setSliderValue(value - 1));
   };

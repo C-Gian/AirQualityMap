@@ -305,7 +305,7 @@ function MapComponent({
           maxAge: 60,
           globalAlpha: 0.9,
           velocityScale: 0.03, //single particles length
-          paths: 5000,
+          paths: 3000,
         });
       } else {
         //window.windLayer.render();
@@ -763,27 +763,29 @@ function MapComponent({
 
       window.windLayer.addTo(map);
 
+      map.addSource("heatmap-source", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: dataRDots.map((el) => ({
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: el.point.geometry.coordinates,
+            },
+            properties: {
+              value: el.value,
+            },
+          })),
+        },
+      });
+
       map.addLayer({
         id: "heatmap-layer",
         type: "heatmap",
+        source: "heatmap-source",
         layout: {
           visibility: "none",
-        },
-        source: {
-          type: "geojson",
-          data: {
-            type: "FeatureCollection",
-            features: dataRDots.map((el) => ({
-              type: "Feature",
-              geometry: {
-                type: "Point",
-                coordinates: el.point.geometry.coordinates,
-              },
-              properties: {
-                value: el.value,
-              },
-            })),
-          },
         },
         paint: {
           "heatmap-weight": [
@@ -1017,6 +1019,7 @@ function MapComponent({
     };
     setDataRDots(dotsDatas[sliderValue + 1]);
     mapRef.current.getSource("glowy-source").setData(data);
+    mapRef.current.getSource("heatmap-source").setData(data);
   }, [sliderValue, nightMode, colorBlind, map3D]);
 
   useEffect(() => {

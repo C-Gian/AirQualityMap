@@ -48,6 +48,7 @@ function Toolbar(
       setCheckedItem("AQI");
     } else {
       setDotsActive(true);
+      setHeatmapActive(false);
       setCheckedItem("DOTS");
     }
   };
@@ -58,6 +59,7 @@ function Toolbar(
       setCheckedItem("AQI");
     } else {
       setHeatmapActive(true);
+      setDotsActive(false);
       setCheckedItem("HEAT");
     }
   };
