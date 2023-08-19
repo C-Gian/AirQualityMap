@@ -1,5 +1,8 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
+import React, { useEffect } from "react";
+/* import { Line } from "react-chartjs-2"; */
+import Chart from "chart.js/auto";
+import zoomPlugin from "chartjs-plugin-zoom";
+Chart.register(zoomPlugin);
 
 const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
   let data = [];
@@ -91,6 +94,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
 
   // Opzioni per personalizzare il grafico
   const options = {
+    responsive: true,
     scales: {
       x: {
         grid: {
@@ -110,6 +114,21 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
       },
     },
     plugins: {
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: "x",
+        },
+        zoom: {
+          pinch: {
+            enabled: true, // Enable pinch zooming
+          },
+          wheel: {
+            enabled: true, // Enable wheel zooming
+          },
+          mode: "x",
+        },
+      },
       legend: {
         labels: {
           font: {
@@ -199,7 +218,22 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
     ],
   };
 
-  return <Line data={chartData} options={options} />;
+  const config = {
+    type: "line",
+    data: chartData,
+    options: options,
+  };
+
+  // Aggiungi il ref al componente Chart.js
+  const chartRef = React.createRef();
+
+  useEffect(() => {
+    if (chartRef && chartRef.current) {
+      new Chart(chartRef.current, config);
+    }
+  }, []);
+
+  return <canvas ref={chartRef}></canvas>;
 };
 
 export default PollsTempCorrChart;
