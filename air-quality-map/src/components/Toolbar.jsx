@@ -23,6 +23,7 @@ function Toolbar(
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlindMode = useSelector((state) => state.colorBlindMode);
   const [dotsActive, setDotsActive] = useState(false);
+  const [heatCircleActive, setHeatCircleActive] = useState("NONE");
   const [heatmapActive, setHeatmapActive] = useState(false);
   const [currentLayerBool, setCurrentLayerBool] = useState(
     currentLayer == "country" || dotsActive
@@ -42,25 +43,20 @@ function Toolbar(
     //dispatch(setLayerToShow(checkedItem));
   };
 
-  const handleDotsButtonClick = () => {
-    if (dotsActive) {
-      setDotsActive(false);
-      setCheckedItem("AQI");
-    } else {
-      setDotsActive(true);
-      setHeatmapActive(false);
-      setCheckedItem("DOTS");
-    }
-  };
-
-  const handleHeatmapButtonClick = () => {
-    if (heatmapActive) {
-      setHeatmapActive(false);
-      setCheckedItem("AQI");
-    } else {
-      setHeatmapActive(true);
-      setDotsActive(false);
-      setCheckedItem("HEAT");
+  const handleHeatCircleClick = () => {
+    switch (heatCircleActive) {
+      case "NONE":
+        setHeatCircleActive("HEAT");
+        setCheckedItem("HEAT");
+        break;
+      case "HEAT":
+        setHeatCircleActive("DOTS");
+        setCheckedItem("DOTS");
+        break;
+      case "DOTS":
+        setHeatCircleActive("NONE");
+        setCheckedItem("AQI");
+        break;
     }
   };
 
@@ -264,123 +260,64 @@ function Toolbar(
         <div className={`tooltip-container `}>
           <button
             className="bg-white p-1 rounded flex items-center tooltip-btn"
-            onClick={handleDotsButtonClick}
+            onClick={handleHeatCircleClick}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+            {heatCircleActive == "NONE" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="black"
+                viewBox="0 0 256 256"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,208V59.31L196.69,208ZM59.31,48H208V196.7Z"></path>
+              </svg>
+            )}
+            {heatCircleActive == "HEAT" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                />
+              </svg>
+            )}
+            {heatCircleActive == "DOTS" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            )}
           </button>
-          <span className="tooltip-text p-2">Circle Layer</span>
-        </div>
-
-        <div className={`tooltip-container `}>
-          <button
-            className="bg-white p-1 rounded flex items-center tooltip-btn"
-            onClick={handleHeatmapButtonClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-              />
-            </svg>
-          </button>
-          <span className="tooltip-text p-2">Heat Map</span>
+          {heatCircleActive == "NONE" && (
+            <span className="tooltip-text p-2">None</span>
+          )}
+          {heatCircleActive == "HEAT" && (
+            <span className="tooltip-text p-2">Heat Map</span>
+          )}
+          {heatCircleActive == "DOTS" && (
+            <span className="tooltip-text p-2">Dots Map</span>
+          )}
         </div>
       </div>
-
-      {/* <div className="flex items-center">
-        <div className="tooltip-container">
-          <button
-            className="bg-white p-1 flex items-center tooltip-btn  rounded-l"
-            onClick={onZoomInClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.5v15m7.5-7.5h-15"
-              />
-            </svg>
-          </button>
-          <span className="tooltip-text p-2">Zoom In</span>
-        </div>
-        <div className="tooltip-container">
-          <button
-            className="bg-white p-1 flex items-center tooltip-btn"
-            onClick={onCenterClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-              />
-            </svg>
-          </button>
-          <span className="tooltip-text p-2">Go to Center</span>
-        </div>
-        <div className="tooltip-container">
-          <button
-            className="bg-white mt-1 mb-1 p-1 flex items-center tooltip-btn rounded-r"
-            onClick={onZoomOutClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 12h-15"
-              />
-            </svg>
-          </button>
-          <span className="tooltip-text p-2">Zoom Out</span>
-        </div>
-      </div> */}
     </div>
   );
 }
