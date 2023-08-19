@@ -19,12 +19,11 @@ app.use(
 );
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
+let client;
+connectToDatabase();
 
 app.get("/is-daily-update-done", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /is-daily-update-done successfull");
-
     // Seleziona il database
     const db = client.db(dbName);
 
@@ -62,8 +61,6 @@ app.get("/is-daily-update-done", async (req, res) => {
 
 app.post("/daily-bulk-update", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /daily-bulk-update successfull");
     const { todayBulkData } = req.body;
     const db = client.db(dbName);
     const collection = db.collection("bulkdata");
@@ -87,8 +84,6 @@ app.post("/daily-bulk-update", async (req, res) => {
 
 app.post("/daily-dots-update", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /daily-dots-update successfull");
     const { todayDots } = req.body;
     const db = client.db(dbName);
     const collection = db.collection("dotsdata");
@@ -129,8 +124,6 @@ app.post("/daily-dots-update", async (req, res) => {
 
 app.post("/daily-update", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /daily-update successfull");
     const { dataToUpdate } = req.body;
     const db = client.db(dbName);
     await db.collection("day7").deleteMany({});
@@ -158,8 +151,6 @@ app.post("/daily-update", async (req, res) => {
 
 app.get("/bulk-datas", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /bulk-datas successfull");
     const db = client.db(dbName);
     const collection = db.collection("bulkdata");
     const bulkData = await collection.findOne();
@@ -189,8 +180,6 @@ app.get("/daily-wind-update", async (req, res) => {
 
 app.get("/dots-datas", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /dots-datas successfull");
     const db = client.db(dbName);
     const collection = db.collection("dotsdata");
     const dotsdata = await collection.findOne();
@@ -205,8 +194,6 @@ app.get("/dots-datas", async (req, res) => {
 //endpoint to get datas from mongo and send to react
 app.get("/datas", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /datas successfull");
     const db = client.db(dbName);
     const collections = [
       "day1",
@@ -260,13 +247,15 @@ app.get("/get-daily-datas", async (req, res) => {
   try {
     const boundingBoxes = [
       "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-125.525950,26.165337,-103.729075,47.554315&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
-      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-103.729075,26.749853,-86.150950,47.282452&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",  
+      "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-103.729075,26.749853,-86.150950,47.282452&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
       "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-85.799388,27.152772,-67.166575,47.111827&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
       "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-166.440506,59.326006,-140.073318,71.169033&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
       "https://www.airnowapi.org/aq/data/?parameters=OZONE,PM25,PM10,CO,NO2,SO2&BBOX=-160.220000,18.910000,-154.800000,20.320000&dataType=B&format=application/json&verbose=0&monitorType=0&includerawconcentrations=0&API_KEY=B463827E-2DD2-4E7D-A5DC-CCF4D074877A",
-    ]
-    
-    const promises = boundingBoxes.map(url => fetch(url).then(response => response.json()));
+    ];
+
+    const promises = boundingBoxes.map((url) =>
+      fetch(url).then((response) => response.json())
+    );
     const responses = await Promise.all(promises);
     res.json(responses);
   } catch (error) {}
@@ -292,8 +281,6 @@ app.post("/update", (req, res) => {
 
 app.post("/singleUpdateForTest", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for /daily-update successfull");
     const { dataR } = req.body;
     const db = client.db(dbName);
     await db.collection("day1").insertOne(dataR);
@@ -307,8 +294,6 @@ app.post("/singleUpdateForTest", async (req, res) => {
 
 app.post("/multipleUpdateForTest", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for multiple test successfull");
     const db = client.db(dbName);
     const collections = [
       "day1",
@@ -345,8 +330,6 @@ app.post("/multipleUpdateForTest", async (req, res) => {
 
 app.post("/multipleAddForTest", async (req, res) => {
   try {
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-    console.log("connection mongodb for multiple test successfull");
     const db = client.db(dbName);
     const { datasBackup } = req.body;
     const d1 = datasBackup[0];
@@ -492,5 +475,15 @@ const makeApiRequest = async () => {
 };
 
 makeApiRequest(); */
+
+async function connectToDatabase() {
+  try {
+    client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Errore durante la connessione al database:", error);
+    throw error;
+  }
+}
 
 app.listen(4000);
