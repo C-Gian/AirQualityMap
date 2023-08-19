@@ -19,6 +19,11 @@ const Navbar = () => {
   const handleColorBlindClick = () => {
     dispatch(setColorBlindMode(!colorBlindMode));
   };
+
+  const stopPropagation = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <div
       className="p-4 z-30 w-full top-0 fixed flex justify-between items-center"
@@ -158,8 +163,14 @@ const Navbar = () => {
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-4 w-500 relative">
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={toggleModal}
+        >
+          <div
+            className="bg-white rounded-lg p-4 w-500 relative"
+            onClick={stopPropagation}
+          >
             <button
               className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
               onClick={toggleModal}

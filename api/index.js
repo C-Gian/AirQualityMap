@@ -122,6 +122,28 @@ app.post("/daily-dots-update", async (req, res) => {
   }
 });
 
+app.post("/refresh-dots", async (req, res) => {
+  try {
+    const { todayDots } = req.body;
+    const db = client.db(dbName);
+    const collection = db.collection("dotsdata");
+    const previousDotsData = await collection.findOne();
+    if (previousDotsData) {
+      previousDotsData.data["1"] = todayDots;
+      await collection.deleteMany({});
+      await collection.insertOne(previousDotsData);
+      console.log("Refresh Dots Done");
+      res.send(true);
+    } else {
+      console.log("Refresh Dots Error");
+      res.status(500).send(false);
+    }
+  } catch (error) {
+    console.error("Errore durante la connessione o l'inserimento:", error);
+    res.status(500).send(false);
+  }
+});
+
 app.post("/daily-update", async (req, res) => {
   try {
     const { dataToUpdate } = req.body;
@@ -145,6 +167,21 @@ app.post("/daily-update", async (req, res) => {
   } catch (error) {
     console.error("Errore durante la connessione o l'inserimento:", error);
     // Invia una risposta al client con un messaggio di errore
+    res.status(500).send(false);
+  }
+});
+
+app.post("/refresh-data", async (req, res) => {
+  try {
+    const { dataToUpdate } = req.body;
+    console.log(dataToUpdate);
+    const db = client.db(dbName);
+    await db.collection("day1").deleteMany({});
+    await db.collection("day1").insertOne(dataToUpdate);
+    console.log("Refresh Data Done");
+    res.send(true);
+  } catch (error) {
+    console.error("Refresh Error:", error);
     res.status(500).send(false);
   }
 });

@@ -22,6 +22,7 @@ const App = () => {
   const [dotsDatas, setDotsDatas] = useState({});
   const [windDatas, setWindDatas] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshIsLoading, setRefreshIsLoading] = useState(false);
   /* const [zoomInClicked, setZoomInClicked] = useState(false);
   const [centerClicked, setCenterClicked] = useState(false);
   const [zoomOutClicked, setZoomOutClicked] = useState(false); */
@@ -88,6 +89,12 @@ const App = () => {
       [301, 400],
       [401, 500],
     ],
+  };
+
+  const onRefreshButton = async () => {
+    setRefreshIsLoading(true);
+    await getDataCode(true);
+    setRefreshIsLoading(false);
   };
 
   /* const handleStopButton = () => {
@@ -245,6 +252,13 @@ const App = () => {
     console.log("Daily update done");
   }
 
+  async function refreshData(dataToUpdate) {
+    await axios.post(`http://localhost:4000/refresh-data`, {
+      dataToUpdate,
+    });
+    console.log("Refresh Data Done");
+  }
+
   async function dailyBulkDataUpdate(todayBulkData) {
     await axios.post(`http://localhost:4000/daily-bulk-update`, {
       todayBulkData,
@@ -257,6 +271,13 @@ const App = () => {
       todayDots,
     });
     console.log("Daily dots update done");
+  }
+
+  async function refreshDots(todayDots) {
+    await axios.post(`http://localhost:4000/refresh-dots`, {
+      todayDots,
+    });
+    console.log("Refresh Dots Done");
   }
 
   async function getDailyData() {
@@ -359,7 +380,7 @@ const App = () => {
     return weatherData;
   }
 
-  async function getAllData() {
+  /* async function getAllData() {
     try {
       const [datas, bulkDatas, dotsDatas] = await Promise.all([
         getDatas(),
@@ -376,6 +397,187 @@ const App = () => {
       // Puoi fare ulteriori elaborazioni sui dati qui
     } catch (error) {
       console.error("Errore durante il recupero dei dati:", error);
+    }
+  } */
+
+  async function getDataCode(refresh) {
+    const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
+    const weatherDailyData = await getWeatherDataStates();
+    initilizeJson(); //initialize json to be sure that adding field are correct
+    let todayBulkData = {
+      PM10: {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+      "PM2.5": {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+      OZONE: {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+      NO2: {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+      CO: {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+      SO2: {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+      TEMP: {
+        tempValue: 0,
+        finalValue: 0,
+        times: 0,
+      },
+    };
+    let todayDots = [];
+    dailyData.forEach((measurement) => {
+      const point = turf.point([measurement.Longitude, measurement.Latitude]);
+      for (let i = 0; i < dataR.features.length; i++) {
+        const feature = dataR.features[i];
+        feature.id = i;
+        feature.lastUpdatedMe = formattedTime().toString(); //??
+        const typeF = feature.geometry.type;
+        let polygon = {};
+        if (typeF === "MultiPolygon") {
+          polygon = turf.multiPolygon(feature.geometry.coordinates);
+        } else {
+          polygon = turf.polygon(feature.geometry.coordinates);
+        }
+        if (
+          turf.booleanPointInPolygon(point, polygon, {
+            ignoreBoundary: false,
+          })
+        ) {
+          //todayDots.push(point);
+          todayDots.push({
+            point: point,
+            value: measurement.AQI ? measurement.AQI : 0,
+          });
+          feature.properties.nDetections = feature.properties.nDetections + 1;
+          if (
+            Object.keys(feature.properties.measurements).includes(
+              measurement.Parameter
+            )
+          ) {
+            todayBulkData[measurement.Parameter].tempValue += measurement.Value;
+            todayBulkData[measurement.Parameter].times += 1;
+            if (feature.properties.AQI < measurement.AQI) {
+              feature.properties.AQI = measurement.AQI;
+            }
+            if (
+              feature.properties.measurements[measurement.Parameter]
+                .totalValues != null
+            ) {
+              feature.properties.measurements[
+                measurement.Parameter
+              ].totalValues += measurement.Value;
+              feature.properties.measurements[measurement.Parameter].times += 1;
+            } else {
+              feature.properties.measurements[
+                measurement.Parameter
+              ].totalValues = measurement.Value;
+              feature.properties.measurements[measurement.Parameter].unit =
+                measurement.Unit;
+              feature.properties.measurements[
+                measurement.Parameter
+              ].lastUpdate = measurement.UTC;
+              feature.properties.measurements[measurement.Parameter].times = 1;
+            }
+            if (measurement.Parameter !== null) {
+              const singleAQIPoll = calculateAQI(
+                measurement.Parameter,
+                measurement.Value
+              );
+              if (
+                feature.properties[layersToShow[measurement.Parameter]] <
+                singleAQIPoll
+              ) {
+                feature.properties[layersToShow[measurement.Parameter]] =
+                  singleAQIPoll;
+              }
+            }
+          }
+          break;
+        }
+      }
+    });
+    //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
+    //calculating countryAQI for country-layer
+    let med = 0;
+    let tem = 0;
+    let hum = 0;
+    dataR.features.forEach((el) => {
+      //setting fixedValue
+      Object.keys(el.properties.measurements).forEach((key) => {
+        if (
+          el.properties.measurements[key].totalValues != null &&
+          el.properties.measurements[key].totalValues > 0
+        ) {
+          el.properties.measurements[key].fixedValue =
+            el.properties.measurements[key].totalValues /
+            el.properties.measurements[key].times;
+        }
+      });
+      const weatherNameState = el.properties.name;
+      const weatherStateData = weatherDailyData[weatherNameState];
+      const cloud = weatherStateData.current.cloud;
+      const tempReal = weatherStateData.current.temp_c;
+      todayBulkData["TEMP"].tempValue += tempReal;
+      todayBulkData["TEMP"].times += 1;
+      const tempFeel = weatherStateData.current.feelslike_c;
+      const humidity = weatherStateData.current.humidity;
+      const conditionIcon = weatherStateData.current.condition.icon;
+      const conditionText = weatherStateData.current.condition.text;
+      tem += tempReal;
+      hum += humidity;
+      el.weather = {
+        data: {
+          cloud,
+          tempReal,
+          tempFeel,
+          humidity,
+          conditionIcon,
+          conditionText,
+        },
+      };
+      med += el.properties.AQI;
+    });
+    Object.keys(todayBulkData).forEach((el) => {
+      todayBulkData[el] = (
+        todayBulkData[el].tempValue / todayBulkData[el].times
+      ).toFixed(2);
+    });
+    dataR.features.forEach((el) => {
+      el.properties.countryAQI = med / dataR.features.length;
+      el.properties.countryTemp = tem / dataR.features.length;
+      el.properties.countryHum = hum / dataR.features.length;
+    });
+    if (refresh) {
+      await refreshData(dataR);
+      await dailyBulkDataUpdate(todayBulkData);
+      await refreshDots(todayDots);
+      console.log("All refresh operations completed");
+      const datas = await getDatas();
+      setDatas(datas);
+    } else {
+      await dailyUpdate(dataR);
+      console.log("Daily Data Updated");
+      await dailyBulkDataUpdate(todayBulkData);
+      console.log("Daily Bulk Data Updated");
+      await dailyDotsDataUpdate(todayDots);
+      console.log("Daily Dots Updated");
     }
   }
 
@@ -397,200 +599,22 @@ const App = () => {
           `http://localhost:4000/is-daily-update-done`
         );
         if (!todayIsUpdated.data) {
-          const dailyData = await getDailyData(); //getting today data, using dataAirNow as proxy to not get each time api connection
-          const weatherDailyData = await getWeatherDataStates();
-          initilizeJson(); //initialize json to be sure that adding field are correct
-          let todayBulkData = {
-            PM10: {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-            "PM2.5": {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-            OZONE: {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-            NO2: {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-            CO: {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-            SO2: {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-            TEMP: {
-              tempValue: 0,
-              finalValue: 0,
-              times: 0,
-            },
-          };
-          let todayDots = [];
-          dailyData.forEach((measurement) => {
-            const point = turf.point([
-              measurement.Longitude,
-              measurement.Latitude,
-            ]);
-            for (let i = 0; i < dataR.features.length; i++) {
-              const feature = dataR.features[i];
-              feature.id = i;
-              feature.lastUpdatedMe = formattedTime().toString(); //??
-              const typeF = feature.geometry.type;
-              let polygon = {};
-              if (typeF === "MultiPolygon") {
-                polygon = turf.multiPolygon(feature.geometry.coordinates);
-              } else {
-                polygon = turf.polygon(feature.geometry.coordinates);
-              }
-              if (
-                turf.booleanPointInPolygon(point, polygon, {
-                  ignoreBoundary: false,
-                })
-              ) {
-                //todayDots.push(point);
-                todayDots.push({
-                  point: point,
-                  value: measurement.AQI ? measurement.AQI : 0,
-                });
-                feature.properties.nDetections =
-                  feature.properties.nDetections + 1;
-                if (
-                  Object.keys(feature.properties.measurements).includes(
-                    measurement.Parameter
-                  )
-                ) {
-                  todayBulkData[measurement.Parameter].tempValue +=
-                    measurement.Value;
-                  todayBulkData[measurement.Parameter].times += 1;
-                  if (feature.properties.AQI < measurement.AQI) {
-                    feature.properties.AQI = measurement.AQI;
-                  }
-                  if (
-                    feature.properties.measurements[measurement.Parameter]
-                      .totalValues != null
-                  ) {
-                    feature.properties.measurements[
-                      measurement.Parameter
-                    ].totalValues += measurement.Value;
-                    feature.properties.measurements[
-                      measurement.Parameter
-                    ].times += 1;
-                  } else {
-                    feature.properties.measurements[
-                      measurement.Parameter
-                    ].totalValues = measurement.Value;
-                    feature.properties.measurements[
-                      measurement.Parameter
-                    ].unit = measurement.Unit;
-                    feature.properties.measurements[
-                      measurement.Parameter
-                    ].lastUpdate = measurement.UTC;
-                    feature.properties.measurements[
-                      measurement.Parameter
-                    ].times = 1;
-                  }
-                  if (measurement.Parameter !== null) {
-                    const singleAQIPoll = calculateAQI(
-                      measurement.Parameter,
-                      measurement.Value
-                    );
-                    if (
-                      feature.properties[layersToShow[measurement.Parameter]] <
-                      singleAQIPoll
-                    ) {
-                      feature.properties[layersToShow[measurement.Parameter]] =
-                        singleAQIPoll;
-                    }
-                  }
-                }
-                break;
-              }
-            }
-          });
-          //setting fixedValue to sidebar data, fixedValue is the sum for each pollutant divided by the number of its measurements in that state
-          //calculating countryAQI for country-layer
-          let med = 0;
-          let tem = 0;
-          let hum = 0;
-          dataR.features.forEach((el) => {
-            //setting fixedValue
-            Object.keys(el.properties.measurements).forEach((key) => {
-              if (
-                el.properties.measurements[key].totalValues != null &&
-                el.properties.measurements[key].totalValues > 0
-              ) {
-                el.properties.measurements[key].fixedValue =
-                  el.properties.measurements[key].totalValues /
-                  el.properties.measurements[key].times;
-              }
-            });
-            const weatherNameState = el.properties.name;
-            const weatherStateData = weatherDailyData[weatherNameState];
-            const cloud = weatherStateData.current.cloud;
-            const tempReal = weatherStateData.current.temp_c;
-            todayBulkData["TEMP"].tempValue += tempReal;
-            todayBulkData["TEMP"].times += 1;
-            const tempFeel = weatherStateData.current.feelslike_c;
-            const humidity = weatherStateData.current.humidity;
-            const conditionIcon = weatherStateData.current.condition.icon;
-            const conditionText = weatherStateData.current.condition.text;
-            tem += tempReal;
-            hum += humidity;
-            el.weather = {
-              data: {
-                cloud,
-                tempReal,
-                tempFeel,
-                humidity,
-                conditionIcon,
-                conditionText,
-              },
-            };
-            med += el.properties.AQI;
-          });
-          Object.keys(todayBulkData).forEach((el) => {
-            todayBulkData[el] = (
-              todayBulkData[el].tempValue / todayBulkData[el].times
-            ).toFixed(2);
-          });
-          dataR.features.forEach((el) => {
-            el.properties.countryAQI = med / dataR.features.length;
-            el.properties.countryTemp = tem / dataR.features.length;
-            el.properties.countryHum = hum / dataR.features.length;
-          });
-          await dailyUpdate(dataR);
-          console.log("Daily Data Updated");
-          await dailyBulkDataUpdate(todayBulkData);
-          console.log("Daily Bulk Data Updated");
-          await dailyDotsDataUpdate(todayDots);
-          console.log("Daily Dots Updated");
+          await getDataCode(false);
         }
-        await getAllData();
-        console.log("datas got");
-        /* const datas = await getDatas();
+        /* await getAllData();
+        console.log("datas got"); */
+        const datas = await getDatas();
         console.log("1", datas);
         const bulkDatas = await getBulkDatas();
         console.log("2", bulkDatas.data);
         const dotsDatas = await getDotsDatas();
         console.log("3", dotsDatas.data);
         const windData = windDataImport;
-        console.log("4", windData); 
+        console.log("4", windData);
         setDatas(datas); //getting the whole db data (7 days data)
         setBulkDatas(bulkDatas.data);
         setDotsDatas(dotsDatas.data);
-        setWindDatas(windData);*/
+        setWindDatas(windData);
         setIsLoading(false);
 
         /* //CODE TO FIND MIN, MED, MAX AQI LEVEL
@@ -656,9 +680,8 @@ const App = () => {
           )}
           <Legend></Legend>
           <Toolbar
-          /* onZoomInClick={handleZoomInClick}
-            onCenterClick={handleCenterClick}
-            onZoomOutClick={handleZoomOutClick} */
+            onRefreshButton={onRefreshButton}
+            refreshIsLoading={refreshIsLoading}
           ></Toolbar>
         </div>
       )}

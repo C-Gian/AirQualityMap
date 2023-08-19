@@ -7,16 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { WindLayer, ScalarFill } from "@sakitam-gis/mapbox-wind";
 import axios from "axios";
 
-function MapComponent({
-  datas,
-  dotsDatas,
-  windDatas,
-  stateClicked,
-  /* zoomInClicked,
-  centerClicked,
-  zoomOutClicked,
-  stopButton, */
-}) {
+function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
   const mapRef = useRef(null);
   let hoveredPolygonId = null;
   const zoomThreshold = 3;
@@ -143,27 +134,6 @@ function MapComponent({
         301,
         "rgba(87, 1, 45, 1)",
       ];
-
-  /* if (zoomInClicked) {
-    mapRef.current.zoomIn();
-    stopButton();
-  }
-
-  if (centerClicked) {
-    mapRef.current.flyTo({
-      center: [-100.86857959024933, 38.482552979137004],
-      zoom: 1, // Livello di zoom desiderato
-      speed: 1.5, // Velocità dell'animazione
-      curve: 1.5, // Curva di accelerazione dell'animazione
-      essential: true, // Indica che questa animazione è essenziale per l'esperienza dell'utente
-    });
-    stopButton();
-  }
-
-  if (zoomOutClicked) {
-    mapRef.current.zoomOut();
-    stopButton();
-  } */
 
   useEffect(() => {
     if (mapRef.current && mapRef.current.getStyle()) {
@@ -1020,7 +990,7 @@ function MapComponent({
     setDataRDots(dotsDatas[sliderValue + 1]);
     mapRef.current.getSource("glowy-source").setData(data);
     mapRef.current.getSource("heatmap-source").setData(data);
-  }, [sliderValue, nightMode, colorBlind, map3D]);
+  }, [sliderValue, nightMode, colorBlind, map3D, datas]);
 
   useEffect(() => {
     if (mapRef.current) {

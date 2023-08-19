@@ -119,6 +119,11 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
           enabled: true,
           mode: "x",
         },
+        limits: {
+          x: {
+            minRange: 7,
+          },
+        },
         zoom: {
           pinch: {
             enabled: true, // Enable pinch zooming
@@ -154,6 +159,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 3,
+        pointRadius: 2,
       },
       {
         label: "PM10",
@@ -164,6 +170,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 1,
+        pointRadius: 2,
       },
       {
         label: "PM2.5",
@@ -174,6 +181,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 1,
+        pointRadius: 2,
       },
       {
         label: "O3",
@@ -184,6 +192,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 1,
+        pointRadius: 2,
       },
       {
         label: "NO2",
@@ -194,6 +203,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 1,
+        pointRadius: 2,
       },
       {
         label: "CO",
@@ -204,6 +214,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 1,
+        pointRadius: 2,
       },
       {
         label: "SO2",
@@ -214,6 +225,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 1,
+        pointRadius: 2,
       },
     ],
   };
@@ -229,7 +241,15 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
 
   useEffect(() => {
     if (chartRef && chartRef.current) {
-      new Chart(chartRef.current, config);
+      const chart = new Chart(chartRef.current, config);
+      chart.zoom(2);
+      chart.pan(
+        {
+          x: Number.MIN_SAFE_INTEGER,
+        },
+        undefined,
+        "default"
+      );
     }
   }, []);
 
