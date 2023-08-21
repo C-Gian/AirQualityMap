@@ -70,22 +70,22 @@ function TemporalSlider() {
             min={1}
             max={7}
             marks={{
-              1: <span className="slider-mark">1</span>,
-              2: <span className="slider-mark">2</span>,
-              3: <span className="slider-mark">3</span>,
-              4: <span className="slider-mark">4</span>,
-              5: <span className="slider-mark">5</span>,
-              6: <span className="slider-mark">6</span>,
-              7: <span className="slider-mark">7</span>,
+              1: <span className="text-white text-xl">1</span>,
+              2: <span className="text-white text-xl">2</span>,
+              3: <span className="text-white text-xl">3</span>,
+              4: <span className="text-white text-xl">4</span>,
+              5: <span className="text-white text-xl">5</span>,
+              6: <span className="text-white text-xl">6</span>,
+              7: <span className="text-white text-xl">7</span>,
             }}
             defaultValue={sliderValue + 1}
-            railStyle={{ backgroundColor: "#FFF", height: 6 }}
+            railStyle={{ backgroundColor: "#FFF", height: 16 }}
             trackStyle={{ backgroundColor: "#FFF", height: 6 }}
             handleStyle={{
-              borderColor: "#FFF",
-              height: 16,
-              width: 16,
-              backgroundColor: "#fff",
+              borderColor: "white",
+              height: 26,
+              width: 26,
+              backgroundColor: "red",
             }}
             dotStyle={{ visibility: "hidden" }}
             activeDotStyle={{ visibility: "hidden" }}

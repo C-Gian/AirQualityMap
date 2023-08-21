@@ -97,11 +97,6 @@ body {
   cursor: pointer;
 }
 
-.slider-mark {
-  color: #fff; /* Imposta il colore bianco per i numeri dello slider */
-  font-size: 16px;
-}
-
 /* Stili per la barra di scorrimento della sidebar */
 .sidebar::-webkit-scrollbar {
   width: 8px; /* Larghezza della barra di scorrimento */

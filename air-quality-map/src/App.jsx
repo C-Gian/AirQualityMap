@@ -604,13 +604,10 @@ const App = () => {
         /* await getAllData();
         console.log("datas got"); */
         const datas = await getDatas();
-        console.log("1", datas);
+        console.log("datas", datas);
         const bulkDatas = await getBulkDatas();
-        console.log("2", bulkDatas.data);
         const dotsDatas = await getDotsDatas();
-        console.log("3", dotsDatas.data);
         const windData = windDataImport;
-        console.log("4", windData);
         setDatas(datas); //getting the whole db data (7 days data)
         setBulkDatas(bulkDatas.data);
         setDotsDatas(dotsDatas.data);
