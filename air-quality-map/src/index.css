@@ -156,7 +156,7 @@ body {
 
 .tooltip-text {
   visibility: hidden;
-  width: 150px;
+  width: fit-content;
   background-color: #333;
   color: #fff;
   text-align: center;
@@ -165,9 +165,10 @@ body {
   position: absolute;
   z-index: 1;
   top: -25px;
-  left: -100px; /* Posizione a sinistra del bottone */
+  left: -50%;
   transform: translateY(-50%);
   opacity: 0;
+  white-space: nowrap;
   transition: opacity 0.3s, visibility 0.3s;
 }
 

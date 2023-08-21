@@ -12,7 +12,7 @@ import Legend from "./components/Legend";
 import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
-import TemporalSlider from "./components/TemporalSlider";
+import ControlPanel from "./components/ControlPanel";
 
 const App = () => {
   const sidebar = useSelector((state) => state.sidebar);
@@ -671,15 +671,16 @@ const App = () => {
               stopButton={handleStopButton} */
             ></MapComponent>
           )}
-          <TemporalSlider></TemporalSlider>
+          <ControlPanel onRefreshButton={onRefreshButton}
+            refreshIsLoading={refreshIsLoading}></ControlPanel>
           {sidebar && stateInfo && (
             <Sidebar infos={stateInfo} bulkDatas={bulkDatas} />
           )}
-          <Legend></Legend>
+          {/* <Legend></Legend>
           <Toolbar
             onRefreshButton={onRefreshButton}
             refreshIsLoading={refreshIsLoading}
-          ></Toolbar>
+          ></Toolbar> */}
         </div>
       )}
     </div>

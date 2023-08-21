@@ -182,7 +182,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
 
   return (
     <div
-      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed"
+      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-500 z-30 fixed"
       style={{
         top: "50px",
         backgroundColor: nightMode

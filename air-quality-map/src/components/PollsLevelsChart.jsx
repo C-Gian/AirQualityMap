@@ -90,10 +90,8 @@ function PollsLevelsChart({
 
   const options = {
     barPercentage: 0.6,
-    indexAxis: "x", // Imposta l'asse x come asse principale
     scales: {
       y: {
-        beginAtZero: true,
         grid: {
           color: "white", // Colore delle linee di griglia sull'asse Y
         },
