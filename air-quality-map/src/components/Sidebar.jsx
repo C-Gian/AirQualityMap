@@ -9,7 +9,7 @@ import MultipleRegression from "./MultipleRegression";
 import CountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
-import HalfDoughnutChart from "./HalfDoughnutChart";
+import PollutantsDoughnutChart from "./PollutantsDoughnutChart";
 
 const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
@@ -236,30 +236,14 @@ const Sidebar = ({ infos, bulkDatas }) => {
       </div>
       <div className="sidebar mr-1 h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-3 sm:h-[calc(100%-130px)]">
         <div className="mr-4">
-          <div className="flex w-full h-fit items-center justify-between mt-2 space-y-5">
-            <div className="flex flex-col items-center">
-              <div
-                className="rounded-2xl p-3 flex justify-center whitespace-nowrap"
-                style={{
-                  backgroundColor: hexColor,
-                  height: "100px",
-                  width: "100px",
-                }}
-              >
-                <h2
-                  className="text-white flex mix-blend-difference text-xl items-center justify-center align-middle whitespace-nowrap"
-                  style={{ color: hexColor }}
-                >
-                  {Math.floor(AQI * 100) / 100 != 0
-                    ? Math.floor(AQI * 100) / 100
-                    : "No Data"}
-                </h2>
-              </div>
-              <h2 className="text-white text-xl">AQI</h2>
+          <div className="flex w-full h-fit items-center justify-around mt-5 space-y-5">
+            <div className="flex flex-col items-center justify-center">
+              <h2 className="text-white text-xl ">AQI</h2>
+              <PollutantsDoughnutChart></PollutantsDoughnutChart>
             </div>
-            <div className="flex flex-col items-center">
-              <HalfDoughnutChart></HalfDoughnutChart>
-              <h2 className="text-white text-xl">AQI</h2>
+            <div className="flex flex-col items-center justify-center">
+              <h2 className="text-white text-xl ">AQI</h2>
+              <PollutantsDoughnutChart></PollutantsDoughnutChart>
             </div>
           </div>
           <div className="mt-10">
