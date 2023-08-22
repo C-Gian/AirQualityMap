@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 /* import { Line } from "react-chartjs-2"; */
 import Chart from "chart.js/auto";
 import zoomPlugin from "chartjs-plugin-zoom";
 Chart.register(zoomPlugin);
 
 const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
+  const chartRef = useRef(null);
   let data = [];
   const colors = colorBlind
     ? {
@@ -81,7 +82,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
   }
 
   // Estrai le labels (giorni) dall'array di dati
-  const labels = data.map((item) => item.day);
+  const labels = data.map((item, index) => index + 1);
 
   // Estrai i dati di temperatura e inquinanti dall'array di dati
   const temperaturaData = data.map((item) => item.temp);
@@ -97,6 +98,11 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
     responsive: true,
     scales: {
       x: {
+        title: {
+          display: true,
+          text: "Days", // Testo per la descrizione dell'asse x
+          color: "white",
+        },
         grid: {
           color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
         },
@@ -236,21 +242,21 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
     options: options,
   };
 
-  // Aggiungi il ref al componente Chart.js
-  const chartRef = React.createRef();
-
   useEffect(() => {
-    if (chartRef && chartRef.current) {
-      const chart = new Chart(chartRef.current, config);
-      chart.zoom(2);
-      chart.pan(
-        {
-          x: Number.MIN_SAFE_INTEGER,
-        },
-        undefined,
-        "default"
-      );
-    }
+    const myChart = new Chart(chartRef.current, config);
+    myChart.zoom(2);
+    myChart.pan(
+      {
+        x: Number.MIN_SAFE_INTEGER,
+      },
+      undefined,
+      "default"
+    );
+
+    // Clean up the chart instance on unmount
+    return () => {
+      myChart.destroy();
+    };
   }, []);
 
   return <canvas ref={chartRef}></canvas>;

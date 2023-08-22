@@ -159,7 +159,7 @@ function PollsLevelsChart({
 
   return (
     <div>
-      <canvas className="mt-5" ref={chartRef} />
+      <canvas className="mt-3" ref={chartRef} />
     </div>
   );
 }
