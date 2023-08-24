@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Slider from "rc-slider";
-import { setSliderValue, 
-    setLayerToShow,
-    setWind,
-    setWindHeatmap,
-    set3DMap, } from "../actions/index.js";
+import {
+  setSliderValue,
+  setLayerToShow,
+  setWind,
+  setWindHeatmap,
+  set3DMap,
+} from "../actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 
 function ControlPanel({ onRefreshButton, refreshIsLoading }) {
@@ -26,7 +28,6 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
   const [checkedItem, setCheckedItem] = useState(layerToShow);
   const [selectedDay, setSelectedDay] = useState("Today");
   const sliderValue = useSelector((state) => state.sliderValue);
-
 
   const handleMenuOpen = () => {
     if (!currentLayerBool) {
@@ -90,7 +91,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
   useEffect(() => {
     setCurrentLayerBool(currentLayer == "country" || dotsActive);
   }, [currentLayer]);
-  
+
   const handleChange = (value) => {
     dispatch(setSliderValue(value - 1));
   };
@@ -143,9 +144,11 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
         height: "fit-content",
       }}
     >
-      <div className={`flex flex-col p-5 ${
-        nightMode ? "sfondo bg-opacity-50 backdrop-blur-md" : "bg-red-500"
-      }`}>
+      <div
+        className={`flex flex-col p-5 ${
+          nightMode ? "sfondo bg-opacity-50 backdrop-blur-md" : "bg-red-500"
+        }`}
+      >
         <div className="flex justify-between">
           <div className="flex space-x-1">
             <div className={`tooltip-container `}>
@@ -265,124 +268,127 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               <span className="tooltip-text p-2">Wind</span>
             </div>
           </div>
-          
-          <div className="flex w-full mx-2 items-center justify-center" style={{backgroundColor: "rgba(255, 255, 255, 1)"}}>
-          <h2 className="text-black items-center px-1 text-l font-semibold select-none">
+
+          <div
+            className="flex w-full mx-2 items-center justify-center"
+            style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}
+          >
+            <h2 className="text-black items-center px-1 text-l font-semibold select-none">
               {selectedDay}
             </h2>
           </div>
-          
+
           <div className="flex space-x-1">
-          <div className={`tooltip-container ${map3d ? "disabled-div" : ""}`}>
-            <button
-              className="bg-white p-1 rounded flex items-center tooltip-btn"
-              onClick={handleWindHeatmapButtonClick}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-sun-wind"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <div className={`tooltip-container ${map3d ? "disabled-div" : ""}`}>
+              <button
+                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                onClick={handleWindHeatmapButtonClick}
               >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M14.468 10a4 4 0 1 0 -5.466 5.46"></path>
-                <path d="M2 12h1"></path>
-                <path d="M11 3v1"></path>
-                <path d="M11 20v1"></path>
-                <path d="M4.6 5.6l.7 .7"></path>
-                <path d="M17.4 5.6l-.7 .7"></path>
-                <path d="M5.3 17.7l-.7 .7"></path>
-                <path d="M15 13h5a2 2 0 1 0 0 -4"></path>
-                <path d="M12 16h5.714l.253 0a2 2 0 0 1 2.033 2a2 2 0 0 1 -2 2h-.286"></path>
-              </svg>
-            </button>
-            <span className="tooltip-text p-2">Wind Heatmap</span>
-          </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-sun-wind"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M14.468 10a4 4 0 1 0 -5.466 5.46"></path>
+                  <path d="M2 12h1"></path>
+                  <path d="M11 3v1"></path>
+                  <path d="M11 20v1"></path>
+                  <path d="M4.6 5.6l.7 .7"></path>
+                  <path d="M17.4 5.6l-.7 .7"></path>
+                  <path d="M5.3 17.7l-.7 .7"></path>
+                  <path d="M15 13h5a2 2 0 1 0 0 -4"></path>
+                  <path d="M12 16h5.714l.253 0a2 2 0 0 1 2.033 2a2 2 0 0 1 -2 2h-.286"></path>
+                </svg>
+              </button>
+              <span className="tooltip-text p-2">Wind Heatmap</span>
+            </div>
 
-          <div className={`tooltip-container `}>
-            <button
-              className="bg-white p-1 rounded flex items-center tooltip-btn"
-              onClick={handle3DButtonClick}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-badge-3d"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <div className={`tooltip-container `}>
+              <button
+                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                onClick={handle3DButtonClick}
               >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-                <path d="M7 9.5a.5 .5 0 0 1 .5 -.5h1a1.5 1.5 0 0 1 0 3h-.5h.5a1.5 1.5 0 0 1 0 3h-1a.5 .5 0 0 1 -.5 -.5"></path>
-                <path d="M14 9v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"></path>
-              </svg>
-            </button>
-            <span className="tooltip-text p-2">3D Map</span>
-          </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-badge-3d"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                  <path d="M7 9.5a.5 .5 0 0 1 .5 -.5h1a1.5 1.5 0 0 1 0 3h-.5h.5a1.5 1.5 0 0 1 0 3h-1a.5 .5 0 0 1 -.5 -.5"></path>
+                  <path d="M14 9v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"></path>
+                </svg>
+              </button>
+              <span className="tooltip-text p-2">3D Map</span>
+            </div>
 
-          <div className={`tooltip-container `}>
-            <button
-              className="bg-white p-1 rounded flex items-center tooltip-btn"
-              onClick={handleHeatCircleClick}
-            >
-              {heatCircleActive == "NONE" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="black"
-                  viewBox="0 0 256 256"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,208V59.31L196.69,208ZM59.31,48H208V196.7Z"></path>
-                </svg>
-              )}
-              {heatCircleActive == "HEAT" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                  />
-                </svg>
-              )}
-              {heatCircleActive == "DOTS" && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              )}
-            </button>
-            <span className="tooltip-text p-2">Heats</span>
-          </div>
+            <div className={`tooltip-container `}>
+              <button
+                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                onClick={handleHeatCircleClick}
+              >
+                {heatCircleActive == "NONE" && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="black"
+                    viewBox="0 0 256 256"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,208V59.31L196.69,208ZM59.31,48H208V196.7Z"></path>
+                  </svg>
+                )}
+                {heatCircleActive == "HEAT" && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    />
+                  </svg>
+                )}
+                {heatCircleActive == "DOTS" && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                )}
+              </button>
+              <span className="tooltip-text p-2">Heats</span>
+            </div>
           </div>
         </div>
 
@@ -392,13 +398,62 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               min={1}
               max={7}
               marks={{
-                1: <span className="text-white select-none" style={{fontSize: 17}}>1</span>,
-                2: <span className="text-white  select-none" style={{fontSize: 17}}>2</span>,
-                3: <span className="text-white  select-none" style={{fontSize: 17}}>3</span>,
-                4: <span className="text-white  select-none" style={{fontSize: 17}}>4</span>,
-                5: <span className="text-white  select-none" style={{fontSize: 17}}>5</span>,
-                6: <span className="text-white  select-none" style={{fontSize: 17}}>6</span>,
-                7: <span className="text-white  select-none" style={{fontSize: 17}}>7</span>,
+                1: (
+                  <span
+                    className="text-white select-none whitespace-nowrap ml-2"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 1
+                  </span>
+                ),
+                2: (
+                  <span
+                    className="text-white  select-none whitespace-nowrap ml-1"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 2
+                  </span>
+                ),
+                3: (
+                  <span
+                    className="text-white  select-none whitespace-nowrap ml-1"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 3
+                  </span>
+                ),
+                4: (
+                  <span
+                    className="text-white  select-none whitespace-nowrap"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 4
+                  </span>
+                ),
+                5: (
+                  <span
+                    className="text-white  select-none whitespace-nowrap mr-1"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 5
+                  </span>
+                ),
+                6: (
+                  <span
+                    className="text-white  select-none whitespace-nowrap mr-1"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 6
+                  </span>
+                ),
+                7: (
+                  <span
+                    className="text-white  select-none whitespace-nowrap mr-2"
+                    style={{ fontSize: 15 }}
+                  >
+                    Day 7
+                  </span>
+                ),
               }}
               defaultValue={sliderValue + 1}
               railStyle={{ backgroundColor: "#FFF", height: 6 }}
@@ -409,8 +464,20 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 width: 16,
                 backgroundColor: "red",
               }}
-              dotStyle={{ visibility: "hidden" }}
-              activeDotStyle={{ visibility: "hidden" }}
+              dotStyle={{
+                visibility: "visible",
+                backgroundColor: "red", // Change color here
+                width: 6, // Adjust size here
+                height: 6, // Adjust size here
+                border: "none", // Remove border
+              }}
+              activeDotStyle={{
+                visibility: "visible",
+                backgroundColor: "red", // Change color here
+                width: 6, // Adjust size here
+                height: 6, // Adjust size here
+                border: "none", // Remove border
+              }}
               onChange={handleChange}
             />
           </div>
