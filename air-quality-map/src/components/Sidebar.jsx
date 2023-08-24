@@ -9,7 +9,7 @@ import MultipleRegression from "./MultipleRegression";
 import CountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
-import PollutantsDoughnutChart from "./PollutantsDoughnutChart";
+import PollutantsHalfDoughnutChart from "./PollutantsHalfDoughnutChart";
 import AQIShow from "./AQIShow";
 
 const Sidebar = ({ infos, bulkDatas }) => {
@@ -252,11 +252,77 @@ const Sidebar = ({ infos, bulkDatas }) => {
               <h2 className="text-white text-3xl font-semibold">
                 Single Polls AQI
               </h2>
-              <div></div>
-            </div>
+              <div className="mt-6 w-full items-center flex flex-col justify-center">
+              <div className="flex w-full justify-between mb-2 items-center">
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={65}
+                h={65}
+                fs={15}
+                extraAQI={"pm25"}
+
+                extraAQIfs={12}
+              ></AQIShow>
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={65}
+                h={65}
+                fs={15}
+                extraAQI={"pm25"}
+
+                extraAQIfs={12}
+              ></AQIShow>
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={65}
+                h={65}
+                fs={15}
+                extraAQI={"pm25"}
+
+                extraAQIfs={12}
+              ></AQIShow>
+              </div>
+              <div className="flex w-full justify-between items-center">
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={65}
+                h={65}
+                fs={15}
+                extraAQI={"pm25"}
+
+                extraAQIfs={12}
+              ></AQIShow>
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={65}
+                h={65}
+                fs={15}
+                extraAQI={"pm25"}
+                extraAQIfs={12}
+              ></AQIShow>
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={65}
+                h={65}
+                fs={15}
+                extraAQI={"pm25"}
+
+                extraAQIfs={12}
+              ></AQIShow>
+              </div>
+              </div>
+            <div>
+          </div>
+          </div>
             {/* <div className="flex h-full flex-col items-center justify-between">
               <h2 className="text-white text-3xl font-semibold">Polls</h2>
-              <PollutantsDoughnutChart></PollutantsDoughnutChart>
+              <PollutantsHalfDoughnutChart></PollutantsHalfDoughnutChart>
             </div> */}
           </div>
           <div className="mt-10">
