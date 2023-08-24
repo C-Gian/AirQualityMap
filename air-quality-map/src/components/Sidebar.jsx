@@ -10,6 +10,7 @@ import CountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
 import PollutantsDoughnutChart from "./PollutantsDoughnutChart";
+import AQIShow from "./AQIShow";
 
 const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
@@ -236,15 +237,27 @@ const Sidebar = ({ infos, bulkDatas }) => {
       </div>
       <div className="sidebar mr-1 h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-3 sm:h-[calc(100%-130px)]">
         <div className="mr-4">
-          <div className="flex w-full h-fit items-center justify-around mt-5 space-y-5">
-            <div className="flex flex-col items-center justify-center">
-              <h2 className="text-white text-xl ">AQI</h2>
-              <PollutantsDoughnutChart></PollutantsDoughnutChart>
+          <div className="flex w-full h-200 items-center justify-around mt-5">
+            <div className="flex h-full flex-col items-center justify-between">
+              <h2 className="text-white text-3xl font-semibold">AQI</h2>
+              <AQIShow
+                hexColor={hexColor}
+                AQI={AQI}
+                w={150}
+                h={150}
+                fs={35}
+              ></AQIShow>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <h2 className="text-white text-xl ">AQI</h2>
-              <PollutantsDoughnutChart></PollutantsDoughnutChart>
+            <div className="flex h-full flex-col items-center justify-between">
+              <h2 className="text-white text-3xl font-semibold">
+                Single Polls AQI
+              </h2>
+              <div></div>
             </div>
+            {/* <div className="flex h-full flex-col items-center justify-between">
+              <h2 className="text-white text-3xl font-semibold">Polls</h2>
+              <PollutantsDoughnutChart></PollutantsDoughnutChart>
+            </div> */}
           </div>
           <div className="mt-10">
             <h2 className="text-white text-xl font-semibold">

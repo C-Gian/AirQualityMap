@@ -409,41 +409,41 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 2: (
                   <span
                     className="text-white  select-none whitespace-nowrap ml-1"
-                    style={{ fontSize: 15 }}
+                    style={{ fontSize: 14 }}
                   >
-                    Day 2
+                    2
                   </span>
                 ),
                 3: (
                   <span
                     className="text-white  select-none whitespace-nowrap ml-1"
-                    style={{ fontSize: 15 }}
+                    style={{ fontSize: 14 }}
                   >
-                    Day 3
+                    3
                   </span>
                 ),
                 4: (
                   <span
                     className="text-white  select-none whitespace-nowrap"
-                    style={{ fontSize: 15 }}
+                    style={{ fontSize: 14 }}
                   >
-                    Day 4
+                    4
                   </span>
                 ),
                 5: (
                   <span
                     className="text-white  select-none whitespace-nowrap mr-1"
-                    style={{ fontSize: 15 }}
+                    style={{ fontSize: 14 }}
                   >
-                    Day 5
+                    5
                   </span>
                 ),
                 6: (
                   <span
                     className="text-white  select-none whitespace-nowrap mr-1"
-                    style={{ fontSize: 15 }}
+                    style={{ fontSize: 14 }}
                   >
-                    Day 6
+                    6
                   </span>
                 ),
                 7: (
