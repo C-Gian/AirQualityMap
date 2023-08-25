@@ -232,7 +232,9 @@ const Sidebar = ({ infos, bulkDatas }) => {
             ></path>
           </svg>
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-white text-l font-light">Last Update</h2>
+            <h2 className="text-white text-l font-light opacity-90">
+              Last Update
+            </h2>
             <div className="flex text-white -mt-2">
               <h2 className="text-xl">
                 {lastUpdate ? lastUpdate[0] : "No data"}
@@ -396,7 +398,10 @@ const Sidebar = ({ infos, bulkDatas }) => {
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
               </div>
-              <div className="flex mt-10 items-center">
+              <div className="flex flex-col mt-10">
+                <h2 className="text-white text-2xl font-semibold mb-5">
+                  Correlation Matrix
+                </h2>
                 <CorrelationMatrix
                   bulkDatas={bulkDatas}
                   colorBlind={colorBlind}

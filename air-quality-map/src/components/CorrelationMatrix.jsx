@@ -292,6 +292,7 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
       // Imposta il colore delle etichette delle scale sull'asse x come bianche
       svg.selectAll(".tick text").style("fill", "white");
       svg.selectAll(".tick line").style("stroke", "white");
+      svg.selectAll(".domain").style("display", "none");
 
       svg
         .selectAll()
@@ -330,12 +331,23 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
   }, [isLoaded, colorBlind]);
 
   return (
-    <div className="flex flex-col w-full items-center justify-center mr-10">
-      <div
+    <div
+      className="flex flex-col w-full items-center"
+      style={{ marginRight: 30 }}
+    >
+      {matrix.length > 0 && <svg ref={svgRef} />}
+    </div>
+  );
+};
+
+export default CorrelationMatrix;
+
+{
+  /* <div
         className="flex-col mb-5 items-center justify-center"
         style={{ width: "400px" }}
       >
-        <div className=" text-white text-xl flex justify-between mb-3">
+        <div className=" text-white text-xl flex justify-between mb-1">
           Value Near 1: Strong Correlation
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -356,7 +368,7 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
             <path d="M7 3l0 18"></path>
           </svg>
         </div>
-        <div className=" text-white text-xl flex justify-between mb-3">
+        <div className=" text-white text-xl flex justify-between mb-1">
           Value Near 0: No Correlation
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -373,7 +385,7 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
             />
           </svg>
         </div>
-        <div className=" text-white text-xl flex justify-between mb-3">
+        <div className=" text-white text-xl flex justify-between mb-1">
           Value Near -1: Opposite Correlation
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -394,10 +406,5 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
             <path d="M20 6l-3 -3l-3 3"></path>
           </svg>
         </div>
-      </div>
-      <div>{matrix.length > 0 && <svg ref={svgRef} />}</div>
-    </div>
-  );
-};
-
-export default CorrelationMatrix;
+      </div> */
+}
