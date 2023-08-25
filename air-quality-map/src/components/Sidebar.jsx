@@ -10,7 +10,7 @@ import CountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
 import AQIShow from "./AQIShow";
-import BubbleChart from "./BubbleChart";
+import AreaChart from "./AreaChart";
 
 const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
@@ -234,9 +234,9 @@ const Sidebar = ({ infos, bulkDatas }) => {
           </svg>
         </button>
       </div>
-      <div className="sidebar mr-1 h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-3 sm:h-[calc(100%-130px)]">
-        <div className="mr-4">
-          <div className="flex w-full h-200 items-center justify-around mt-5">
+      <div className="sidebar h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-3 sm:h-[calc(100%-130px)]">
+        <div className="mr-2">
+          <div className="flex w-full h-200 items-center justify-between mt-5">
             <div className="flex h-full flex-col items-center justify-between">
               <h2 className="text-white text-3xl font-semibold">AQI</h2>
               <AQIShow
@@ -247,14 +247,14 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 fs={35}
               ></AQIShow>
             </div>
-            <div className="flex h-full flex-col items-center justify-between">
-              <h2 className="text-white text-3xl font-semibold">7 Days AQI</h2>
-              <BubbleChart
+            <div className="flex h-full flex-col items-center justify-between
+            ">
+              <h2 className="text-white text-3xl font-semibold">AQI History</h2>
+              <AreaChart
                 data={infos.datas.map(
                   (item) => item.features[0].properties.countryAQI
-                )}
+                )} color={hexColor}
               />
-              <div></div>
             </div>
             {/* <div className="flex h-full flex-col items-center justify-between">
               <h2 className="text-white text-3xl font-semibold">Polls</h2>
