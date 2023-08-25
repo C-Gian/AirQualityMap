@@ -10,6 +10,7 @@ import CountryFlag from "react-country-flag";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
 import AQIShow from "./AQIShow";
+import BubbleChart from "./BubbleChart";
 
 const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
@@ -28,17 +29,6 @@ const Sidebar = ({ infos, bulkDatas }) => {
   const sliderValue = useSelector((state) => state.sliderValue);
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlind = useSelector((state) => state.colorBlindMode);
-  const chartsData1 = [
-    { id: "chart1", value: Math.floor(Math.random() * 302) },
-    { id: "chart2", value: Math.floor(Math.random() * 302) },
-    { id: "chart3", value: Math.floor(Math.random() * 302) },
-  ];
-
-  const chartsData2 = [
-    { id: "chart4", value: Math.floor(Math.random() * 302) },
-    { id: "chart5", value: Math.floor(Math.random() * 302) },
-    { id: "chart6", value: Math.floor(Math.random() * 302) },
-  ];
   const colors = colorBlind
     ? [
         "rgba(0, 147, 0, 1)", // Verde
@@ -258,69 +248,12 @@ const Sidebar = ({ infos, bulkDatas }) => {
               ></AQIShow>
             </div>
             <div className="flex h-full flex-col items-center justify-between">
-              <h2 className="text-white text-3xl font-semibold">
-                Single Polls AQI
-              </h2>
-              <div className="mt-6 w-full items-center flex flex-col justify-center">
-                <div className="flex w-full justify-between mb-2 items-center">
-                  <AQIShow
-                    hexColor={hexColor}
-                    AQI={AQI}
-                    w={65}
-                    h={65}
-                    fs={15}
-                    extraAQI={"pm25"}
-                    extraAQIfs={12}
-                  ></AQIShow>
-                  <AQIShow
-                    hexColor={hexColor}
-                    AQI={AQI}
-                    w={65}
-                    h={65}
-                    fs={15}
-                    extraAQI={"pm25"}
-                    extraAQIfs={12}
-                  ></AQIShow>
-                  <AQIShow
-                    hexColor={hexColor}
-                    AQI={AQI}
-                    w={65}
-                    h={65}
-                    fs={15}
-                    extraAQI={"pm25"}
-                    extraAQIfs={12}
-                  ></AQIShow>
-                </div>
-                <div className="flex w-full justify-between items-center">
-                  <AQIShow
-                    hexColor={hexColor}
-                    AQI={AQI}
-                    w={65}
-                    h={65}
-                    fs={15}
-                    extraAQI={"pm25"}
-                    extraAQIfs={12}
-                  ></AQIShow>
-                  <AQIShow
-                    hexColor={hexColor}
-                    AQI={AQI}
-                    w={65}
-                    h={65}
-                    fs={15}
-                    extraAQI={"pm25"}
-                    extraAQIfs={12}
-                  ></AQIShow>
-                  <AQIShow
-                    hexColor={hexColor}
-                    AQI={AQI}
-                    w={65}
-                    h={65}
-                    fs={15}
-                    extraAQI={"pm25"}
-                    extraAQIfs={12}
-                  ></AQIShow>
-                </div>
-              </div>
+              <h2 className="text-white text-3xl font-semibold">7 Days AQI</h2>
+              <BubbleChart
+                data={infos.datas.map(
+                  (item) => item.features[0].properties.countryAQI
+                )}
+              />
               <div></div>
             </div>
             {/* <div className="flex h-full flex-col items-center justify-between">
