@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSidebar } from "../actions/index.js";
 import AQIShow from "./AQIShow";
 import AreaChart from "./AreaChart";
+import HoverableHeader from "./HoverableHeader";
 
 const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
@@ -389,9 +390,11 @@ const Sidebar = ({ infos, bulkDatas }) => {
           ) : (
             <div>
               <div className="mt-10">
-                <h2 className="text-white text-2xl font-semibold mb-3">
-                  Levels Comparation [Temperature - Polluttants]
-                </h2>
+                <HoverableHeader
+                  title="                  Levels Comparation [Temperature - Polluttants]
+                  "
+                  toShow="PollsTempCorrChart"
+                />
                 <PollsTempCorrChart
                   datas={bulkDatas}
                   id={null}
@@ -399,9 +402,10 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 ></PollsTempCorrChart>
               </div>
               <div className="flex flex-col mt-10">
-                <h2 className="text-white text-2xl font-semibold mb-5">
-                  Correlation Matrix
-                </h2>
+                <HoverableHeader
+                  title="Correlation Matrix"
+                  toShow="CorrelationMatrix"
+                />
                 <CorrelationMatrix
                   bulkDatas={bulkDatas}
                   colorBlind={colorBlind}
