@@ -82,7 +82,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
   }
 
   // Estrai le labels (giorni) dall'array di dati
-  const labels = data.map((item, index) => index + 1);
+  const labels = data.map((item, index) => (index + 1).toString());
 
   // Estrai i dati di temperatura e inquinanti dall'array di dati
   const temperaturaData = data.map((item) => item.temp);
@@ -95,7 +95,6 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
 
   // Opzioni per personalizzare il grafico
   const options = {
-    responsive: true,
     scales: {
       x: {
         title: {
@@ -104,7 +103,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
           color: "white",
         },
         grid: {
-          color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
+          color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
         },
         ticks: {
           color: "white", // Colore delle etichette dell'asse y
@@ -112,7 +111,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
       },
       y: {
         grid: {
-          color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
+          color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
         },
         ticks: {
           color: "white", // Colore delle etichette dell'asse y
@@ -127,16 +126,14 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         },
         limits: {
           x: {
-            minRange: 7,
+            minRange: 10,
           },
         },
         zoom: {
-          pinch: {
-            enabled: true, // Enable pinch zooming
-          },
           wheel: {
             enabled: true, // Enable wheel zooming
           },
+          speed: 50,
           mode: "x",
         },
       },
@@ -165,7 +162,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         barPercentage: 0.8,
         categoryPercentage: 0.5,
         borderWidth: 3,
-        pointRadius: 2,
+        pointRadius: 3,
       },
       {
         label: "PM10",
@@ -175,8 +172,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         borderColor: colors["PM10"],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
-        borderWidth: 1,
-        pointRadius: 2,
+        borderWidth: 3,
+        pointRadius: 3,
       },
       {
         label: "PM2.5",
@@ -186,8 +183,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         borderColor: colors["PM2.5"],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
-        borderWidth: 1,
-        pointRadius: 2,
+        borderWidth: 3,
+        pointRadius: 3,
       },
       {
         label: "O3",
@@ -197,8 +194,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         borderColor: colors["OZONE"],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
-        borderWidth: 1,
-        pointRadius: 2,
+        borderWidth: 3,
+        pointRadius: 3,
       },
       {
         label: "NO2",
@@ -208,8 +205,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         borderColor: colors["NO2"],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
-        borderWidth: 1,
-        pointRadius: 2,
+        borderWidth: 3,
+        pointRadius: 3,
       },
       {
         label: "CO",
@@ -219,8 +216,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         borderColor: colors["CO"],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
-        borderWidth: 1,
-        pointRadius: 2,
+        borderWidth: 3,
+        pointRadius: 3,
       },
       {
         label: "SO2",
@@ -230,8 +227,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         borderColor: colors["SO2"],
         barPercentage: 0.8,
         categoryPercentage: 0.5,
-        borderWidth: 1,
-        pointRadius: 2,
+        borderWidth: 3,
+        pointRadius: 3,
       },
     ],
   };

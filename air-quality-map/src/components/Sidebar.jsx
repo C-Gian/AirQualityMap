@@ -26,6 +26,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
   const [cloud, setCloud] = useState(null);
   const [humidity, setHumidity] = useState(null);
   const [nStations, setNStation] = useState(0);
+  const [historyAQI, setHistoryAQI] = useState([]);
   const sliderValue = useSelector((state) => state.sliderValue);
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlind = useSelector((state) => state.colorBlindMode);
@@ -101,6 +102,9 @@ const Sidebar = ({ infos, bulkDatas }) => {
       setLastUpdate(dataR.lastUpdatedMe.split(" "));
       setTempReal(dataR.properties.countryTemp);
       setHumidity(dataR.properties.countryHum);
+      setHistoryAQI(
+        infos.datas.map((item) => item.features[0].properties.countryAQI)
+      );
       setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
       setNStation(
         infos.datas[sliderValue].features.reduce(
@@ -112,7 +116,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
         colorToSet = "#00000000";
       } else {
         if (dataR.properties.countryAQI >= 301) {
-          ("#4b0b2c");
+          colorToSet = "#4b0b2c";
         } else {
           let stateColorArray = getColorForValue(dataR.properties.countryAQI);
           const stateColorArrayRGB = stateColorArray
@@ -145,6 +149,9 @@ const Sidebar = ({ infos, bulkDatas }) => {
         condText: dataR.weather.data.conditionText,
         condIcon: dataR.weather.data.conditionIcon,
       });
+      setHistoryAQI(
+        infos.datas.map((item) => item.features[infos.id].properties.AQI)
+      );
       setTempFeel(dataR.weather.data.tempFeel);
       setTempReal(dataR.weather.data.tempReal);
       setCloud(dataR.weather.data.cloud);
@@ -155,7 +162,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
         colorToSet = "#00000000";
       } else {
         if (dataR.properties.AQI >= 301) {
-          ("#4b0b2c");
+          colorToSet = "#4b0b2c";
         } else {
           let stateColorArray = getColorForValue(dataR.properties.AQI);
           const stateColorArrayRGB = stateColorArray
@@ -183,7 +190,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
 
   return (
     <div
-      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-500 z-30 fixed"
+      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed"
       style={{
         top: "50px",
         backgroundColor: nightMode
@@ -192,7 +199,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
       }}
     >
       <div className="flex justify-between">
-        <div className="flex flex-col items-center">
+        <div className="flex items-center">
           <div className="flex items-center">
             <CountryFlag
               className="mr-3"
@@ -205,17 +212,39 @@ const Sidebar = ({ infos, bulkDatas }) => {
             />
             <span className="text-4xl text-white ">{name}</span>
           </div>
-          <div className="flex text-white">
-            <h2 className="text-xs">
-              {lastUpdate ? lastUpdate[0] : "No data"}
-            </h2>
-            <h2 className="ml-2 text-xs">
-              {lastUpdate ? lastUpdate[1] : "No data"}
-            </h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon icon-tabler icon-tabler-point-filled text-white mx-2"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+            stroke="currentColor"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+              strokeWidth="0"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-white text-l font-light">Last Update</h2>
+            <div className="flex text-white -mt-2">
+              <h2 className="text-xl">
+                {lastUpdate ? lastUpdate[0] : "No data"}
+              </h2>
+              <h2 className="ml-2 text-xl">
+                {lastUpdate ? lastUpdate[1] : "No data"}
+              </h2>
+            </div>
           </div>
         </div>
         <button
-          className="absolute top-0 right-0 mt-2 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+          className="absolute top-0 right-0 m-0 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
           onClick={handleCloseButtonClick}
         >
           <svg
@@ -236,9 +265,9 @@ const Sidebar = ({ infos, bulkDatas }) => {
       </div>
       <div className="sidebar h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-3 sm:h-[calc(100%-130px)]">
         <div className="mr-2">
-          <div className="flex w-full h-200 items-center justify-between mt-5">
+          <div className="flex w-full h-200 items-center justify-around mt-5">
             <div className="flex h-full flex-col items-center justify-between">
-              <h2 className="text-white text-3xl font-semibold">AQI</h2>
+              <h2 className="text-white text-2xl font-semibold">AQI</h2>
               <AQIShow
                 hexColor={hexColor}
                 AQI={AQI}
@@ -247,22 +276,16 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 fs={35}
               ></AQIShow>
             </div>
-            <div className="flex h-full flex-col items-center justify-between
-            ">
-              <h2 className="text-white text-3xl font-semibold">AQI History</h2>
-              <AreaChart
-                data={infos.datas.map(
-                  (item) => item.features[0].properties.countryAQI
-                )} color={hexColor}
-              />
+            <div
+              className="flex h-full flex-col items-center justify-between
+            "
+            >
+              <h2 className="text-white text-2xl font-semibold">AQI History</h2>
+              <AreaChart data={historyAQI} color={hexColor} />
             </div>
-            {/* <div className="flex h-full flex-col items-center justify-between">
-              <h2 className="text-white text-3xl font-semibold">Polls</h2>
-              <PollutantsHalfDoughnutChart></PollutantsHalfDoughnutChart>
-            </div> */}
           </div>
           <div className="mt-10">
-            <h2 className="text-white text-xl font-semibold">
+            <h2 className="text-white text-2xl font-semibold mb-3">
               Polluttants Levels
             </h2>
             <PollsLevelsChart
@@ -273,26 +296,20 @@ const Sidebar = ({ infos, bulkDatas }) => {
               colorBlind={colorBlind}
             ></PollsLevelsChart>
           </div>
-          <div className="h-fit w-full mt-10 flex-col justify-between">
+          <div className="h-fit w-full mt-10 flex-col justify-between bg-slate-500 p-5 rounded-2xl">
             <div className="flex justify-between">
-              <h2 className="text-xl text-white mr-5 font-semibold">
-                Air Quality:{" "}
-              </h2>
-              <h2 className="text-xl" style={{ color: hexColor }}>
+              <h2 className="text-2xl text-white mr-5">Air Quality: </h2>
+              <h2 className="text-xl font-semibold" style={{ color: hexColor }}>
                 {airQualityText}
               </h2>
             </div>
             <div className="flex justify-between mt-5">
-              <h2 className="text-xl text-white mr-5 font-semibold">
-                Total Stations:{" "}
-              </h2>
-              <h2 className="text-xl text-white">{nStations}</h2>
+              <h2 className="text-2xl text-white mr-5">Total Stations: </h2>
+              <h2 className="text-xl text-white font-semibold">{nStations}</h2>
             </div>
             {weatherCondition != null && infos.isState && (
               <div className="flex justify-between mt-5 items-center">
-                <h2 className="text-xl text-white mr-5 font-semibold">
-                  Weather:{" "}
-                </h2>
+                <h2 className="text-2xl text-white mr-5">Weather: </h2>
                 <div className="flex items-center">
                   <img
                     className=" mr-2 "
@@ -300,46 +317,38 @@ const Sidebar = ({ infos, bulkDatas }) => {
                     width={50}
                     height={50}
                   />
-                  <h2 className="text-xl text-white">{`${weatherCondition.condText}`}</h2>
+                  <h2 className="text-xl text-white font-semibold">{`${weatherCondition.condText}`}</h2>
                 </div>
               </div>
             )}
             {cloud != null && infos.isState && (
               <div className="flex justify-between mt-5">
-                <h2 className="text-xl text-white mr-5 font-semibold">
-                  Cloud:{" "}
-                </h2>
-                <h2 className="text-xl text-white">
+                <h2 className="text-2xl text-white mr-5">Cloud: </h2>
+                <h2 className="text-xl text-white font-semibold">
                   {Math.floor(cloud * 100) / 100}
                 </h2>
               </div>
             )}
             {tempFeel != null && infos.isState && (
               <div className="flex justify-between mt-5">
-                <h2 className="text-xl text-white mr-5 font-semibold">
-                  Temp. Feel:{" "}
-                </h2>
-                <h2 className="text-xl text-white">{`${
+                <h2 className="text-2xl text-white mr-5">Temp. Feel: </h2>
+                <h2 className="text-xl text-white font-semibold">{`${
                   Math.floor(tempFeel * 100) / 100
                 }°`}</h2>
               </div>
             )}
             {tempReal != null && (
               <div className="flex justify-between mt-5">
-                <h2 className="text-xl text-white mr-5 font-semibold">
-                  Temp. Real:{" "}
-                </h2>
-                <h2 className="text-xl text-white">{`${
+                <h2 className="text-2xl text-white mr-5">Temp. Real: </h2>
+                <h2 className="text-xl text-white font-semibold">{`${
                   Math.floor(tempReal * 100) / 100
                 }°`}</h2>
               </div>
             )}
             {humidity != null && (
               <div className="flex justify-between mt-5">
-                <h2 className="text-xl text-white mr-5 font-semibold">
-                  Humidity:{" "}
-                </h2>
-                <h2 className="text-xl text-white">{`${
+                <h2 className="text-2xl text-white mr-5">Humidity: </h2>
+                <h2 className="text-xl text-white font-semibold">{`${
                   Math.floor(humidity * 100) / 100
                 }%`}</h2>
               </div>
@@ -377,14 +386,17 @@ const Sidebar = ({ infos, bulkDatas }) => {
             </div>
           ) : (
             <div>
-              <div className="mt-5">
+              <div className="mt-10">
+                <h2 className="text-white text-2xl font-semibold mb-3">
+                  Levels Comparation [Temperature - Polluttants]
+                </h2>
                 <PollsTempCorrChart
                   datas={bulkDatas}
                   id={null}
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
               </div>
-              <div className="flex mt-16 items-center">
+              <div className="flex mt-10 items-center">
                 <CorrelationMatrix
                   bulkDatas={bulkDatas}
                   colorBlind={colorBlind}
@@ -470,7 +482,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
                   )
                 )}
               </div>
-              <div className="mt-16">
+              <div className="mt-10">
                 <MultipleRegression
                   datas={bulkDatas}
                   id={null}

@@ -89,52 +89,24 @@ function PollsLevelsChart({
   };
 
   const options = {
-    barPercentage: 0.6,
     scales: {
-      y: {
-        border: {
-          display: false,
-        },
-        grid: {
-          color: "rgba(255, 255, 255, 0.5)", // Colore delle linee di griglia sull'asse Y
-        },
-        ticks: {
-          min: 0, // Valore minimo dell'asse y
-          stepSize: 10, // Imposta l'incremento dei valori sull'asse y
-          callback: (value) => `${value}`, // Formatta i valori sull'asse y
-          font: {
-            size: 14, // Dimensione del carattere per le etichette dell'asse Y
-          },
-          color: "white", // Colore delle etichette dell'asse Y
-        },
-      },
       x: {
         border: {
           display: false,
         },
         grid: {
-          color: "rgba(255, 255, 255, 0)", // Colore delle linee di griglia sull'asse Y
-        },
-        ticks: {
-          autoSkip: false,
-          maxRotation: 0,
-          minRotation: 0,
-          font: {
-            size: 12, // Dimensione del carattere per le etichette dell'asse Y
-          },
-          color: "white", // Colore delle etichette dell'asse Y
+          display: false,
+          color: "rgba(255, 255, 255, 0.1)",
         },
       },
-    },
-    plugins: {
-      legend: {
-        display: false, // Nascondi la legenda
-        labels: {
-          font: {
-            size: 16, // Dimensione del carattere per le etichette della legenda
-            weight: "bold", // Spessore del carattere per le etichette della legenda
-          },
-          color: "white", // Colore delle etichette della legenda
+      y: {
+        border: {
+          display: false,
+        },
+        grid: {
+          drawBorder: false,
+          display: false,
+          color: "rgba(255, 255, 255, 0.1)",
         },
       },
     },
