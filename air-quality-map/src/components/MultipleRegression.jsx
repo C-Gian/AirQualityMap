@@ -240,9 +240,9 @@ function MultipleRegression({ datas, id, colorBlind }) {
   return (
     <div>
       <canvas ref={chartRef} />
-      <h2 className="text-xl text-white">
-        When All Polls = 0 temperature is: {nullPolls}
-      </h2>
+      {/* <h2 className="text-xl text-white">
+        When All Polluttants = 0 temperature is: {nullPolls}
+      </h2> */}
     </div>
   );
 }

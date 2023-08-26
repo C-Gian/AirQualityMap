@@ -247,7 +247,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
           </div>
         </div>
         <button
-          className="absolute top-0 right-0 m-0 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+          className="absolute top-0 right-0 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
           onClick={handleCloseButtonClick}
         >
           <svg
@@ -266,7 +266,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
           </svg>
         </button>
       </div>
-      <div className="sidebar h-[calc(100%-110px)] overflow-y-scroll py-4 pb-40 pt-3 sm:h-[calc(100%-130px)]">
+      <div className="sidebar h-[calc(100%-110px)] overflow-y-scroll py-4">
         <div className="mr-2">
           <div className="flex w-full h-200 items-center justify-around mt-5">
             <div className="flex h-full flex-col items-center justify-between">
@@ -359,7 +359,8 @@ const Sidebar = ({ infos, bulkDatas }) => {
           </div>
           {infos.isState ? (
             <div>
-              <div className="mt-5">
+              <div className="mt-10">
+                <HoverableHeader title="Levels Comparation [Temperature - Polluttants]" />
                 <PollsTempCorrChart
                   datas={infos.datas}
                   id={infos.id}
@@ -390,11 +391,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
           ) : (
             <div>
               <div className="mt-10">
-                <HoverableHeader
-                  title="                  Levels Comparation [Temperature - Polluttants]
-                  "
-                  toShow="PollsTempCorrChart"
-                />
+                <HoverableHeader title="Levels Comparation [Temperature - Polluttants]" />
                 <PollsTempCorrChart
                   datas={bulkDatas}
                   id={null}
@@ -402,84 +399,14 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 ></PollsTempCorrChart>
               </div>
               <div className="flex flex-col mt-10">
-                <HoverableHeader
-                  title="Correlation Matrix"
-                  toShow="CorrelationMatrix"
-                />
+                <HoverableHeader title="Correlation Matrix" />
                 <CorrelationMatrix
                   bulkDatas={bulkDatas}
                   colorBlind={colorBlind}
                 ></CorrelationMatrix>
               </div>
               <div className="flex-col mt-10">
-                <div className="flex-col items-center text-white text-xl mx-10">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 100 100"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="mr-3"
-                      >
-                        <line
-                          x1="0"
-                          y1="100"
-                          x2="100"
-                          y2="0"
-                          stroke="white"
-                          strokeWidth="10"
-                        />
-                      </svg>
-                      <h2 className="mb-1">Up Line</h2>
-                    </div>
-                    <h2 className="mb-1">Correlation</h2>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 100 100"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="mr-3"
-                      >
-                        <line
-                          x1="0"
-                          y1="50"
-                          x2="100"
-                          y2="50"
-                          stroke="white"
-                          strokeWidth="10"
-                        />
-                      </svg>
-                      <h2 className="mb-1">Straight Line</h2>
-                    </div>
-                    <h2 className="mb-1">No Correlation</h2>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 100 100"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="mr-3"
-                      >
-                        <line
-                          x1="0"
-                          y1="0"
-                          x2="100"
-                          y2="100"
-                          stroke="white"
-                          strokeWidth="10"
-                        />
-                      </svg>
-                      <h2 className="mb-1">Down Line</h2>
-                    </div>
-                    <h2>Opposite Correlation</h2>
-                  </div>
-                </div>
+                <HoverableHeader title="Linear Regression" />
                 {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
                   (pollutant, index) => (
                     <LinearRegression
@@ -492,6 +419,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 )}
               </div>
               <div className="mt-10">
+                <HoverableHeader title="Multiple Regression" />
                 <MultipleRegression
                   datas={bulkDatas}
                   id={null}

@@ -65,7 +65,7 @@ const AreaChart = ({ data, color }) => {
                 color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
               },
               ticks: {
-                display: false,
+                display: true,
                 color: "white", // Colore delle etichette dell'asse y
               },
             },
