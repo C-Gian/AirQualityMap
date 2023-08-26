@@ -195,7 +195,7 @@ function MultipleRegression({ datas, id, colorBlind }) {
             color: "white",
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
+            color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
           },
         },
         y: {
@@ -203,7 +203,7 @@ function MultipleRegression({ datas, id, colorBlind }) {
             color: "white",
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.3)", // Griglia sull'asse X: bianco con opacità 0.3
+            color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
           },
         },
       },

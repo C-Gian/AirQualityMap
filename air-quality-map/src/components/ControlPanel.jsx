@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import {
   setSliderValue,
   setLayerToShow,
@@ -18,11 +19,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
   const map3d = useSelector((state) => state.map3d);
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlindMode = useSelector((state) => state.colorBlindMode);
-  const [dotsActive, setDotsActive] = useState(false);
   const [heatCircleActive, setHeatCircleActive] = useState("NONE");
-  const [heatmapActive, setHeatmapActive] = useState(false);
   const [currentLayerBool, setCurrentLayerBool] = useState(
-    currentLayer == "country" || dotsActive
+    currentLayer == "country" || heatCircleActive == "DOTS"
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [checkedItem, setCheckedItem] = useState(layerToShow);
@@ -89,7 +88,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
   }, [checkedItem]);
 
   useEffect(() => {
-    setCurrentLayerBool(currentLayer == "country" || dotsActive);
+    setCurrentLayerBool(
+      currentLayer == "country" || heatCircleActive == "DOTS"
+    );
   }, [currentLayer]);
 
   const handleChange = (value) => {
@@ -137,23 +138,23 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
 
   return (
     <div
-      className={`absolute flex flex-col bottom-0 right-0 m-3`}
+      className={`absolute flex flex-col bottom-0 right-0 m-3 `}
       style={{
         zIndex: 300,
-        width: "350px",
+        width: "400px",
         height: "fit-content",
       }}
     >
       <div
-        className={`flex flex-col p-5 ${
+        className={`flex flex-col p-5 shadow-md ${
           nightMode ? "sfondo bg-opacity-50 backdrop-blur-md" : "bg-red-500"
         }`}
       >
         <div className="flex justify-between">
           <div className="flex space-x-1">
-            <div className={`tooltip-container `}>
+            <div className={`tooltip-container shadow-md `}>
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
                 onClick={onRefreshButton}
               >
                 <svg
@@ -162,7 +163,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className={`w-6 h-6 ${refreshIsLoading ? "rotate" : ""}`}
+                  className={`w-7 h-7 ${refreshIsLoading ? "rotate" : ""}`}
                 >
                   <path
                     strokeLinecap="round"
@@ -187,7 +188,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 <svg
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 421.59 421.59"
                 >
@@ -242,16 +243,18 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               )}
             </div>
 
-            <div className={`tooltip-container ${map3d ? "disabled-div" : ""}`}>
+            <div
+              className={`tooltip-container shadow-md  ${
+                map3d ? "disabled-div" : ""
+              }`}
+            >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
                 onClick={handleWindButtonClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-wind"
-                  width="24"
-                  height="24"
+                  className="icon icon-tabler icon-tabler-wind w-7 h-7"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
@@ -279,16 +282,18 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
           </div>
 
           <div className="flex space-x-1">
-            <div className={`tooltip-container ${map3d ? "disabled-div" : ""}`}>
+            <div
+              className={`tooltip-container shadow-md ${
+                map3d ? "disabled-div" : ""
+              }`}
+            >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md"
                 onClick={handleWindHeatmapButtonClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-sun-wind"
-                  width="24"
-                  height="24"
+                  className="icon icon-tabler icon-tabler-sun-wind w-7 h-7"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
@@ -311,16 +316,14 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               <span className="tooltip-text p-2">Wind Heatmap</span>
             </div>
 
-            <div className={`tooltip-container `}>
+            <div className={`tooltip-container shadow-md `}>
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
                 onClick={handle3DButtonClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-badge-3d"
-                  width="24"
-                  height="24"
+                  className="icon icon-tabler icon-tabler-badge-3d w-7 h-7"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
@@ -337,9 +340,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               <span className="tooltip-text p-2">3D Map</span>
             </div>
 
-            <div className={`tooltip-container `}>
+            <div className={`tooltip-container shadow-md `}>
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
                 onClick={handleHeatCircleClick}
               >
                 {heatCircleActive == "NONE" && (
@@ -349,7 +352,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                     viewBox="0 0 256 256"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-7 h-7"
                   >
                     <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,208V59.31L196.69,208ZM59.31,48H208V196.7Z"></path>
                   </svg>
@@ -361,7 +364,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-7 h-7"
                   >
                     <path
                       strokeLinecap="round"
@@ -377,7 +380,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                     viewBox="0 0 24 24"
                     strokeWidth={2}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-7 h-7"
                   >
                     <path
                       strokeLinecap="round"
@@ -393,14 +396,16 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
         </div>
 
         <div className="flex-col justify-between">
-          <div className="mt-5 mb-5">
+          <div className="mt-5 mb-5 mx-2">
             <Slider
               min={1}
               max={7}
+              dots={true}
+              included={false}
               marks={{
                 1: (
                   <span
-                    className="text-white select-none whitespace-nowrap ml-2"
+                    className="text-white font-semibold select-none whitespace-nowrap ml-2"
                     style={{ fontSize: 15 }}
                   >
                     Day 1
@@ -408,7 +413,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 2: (
                   <span
-                    className="text-white  select-none whitespace-nowrap ml-1"
+                    className="text-white font-semibold select-none whitespace-nowrap ml-1"
                     style={{ fontSize: 14 }}
                   >
                     2
@@ -416,7 +421,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 3: (
                   <span
-                    className="text-white  select-none whitespace-nowrap ml-1"
+                    className="text-white font-semibold select-none whitespace-nowrap ml-1"
                     style={{ fontSize: 14 }}
                   >
                     3
@@ -424,7 +429,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 4: (
                   <span
-                    className="text-white  select-none whitespace-nowrap"
+                    className="text-white font-semibold select-none whitespace-nowrap"
                     style={{ fontSize: 14 }}
                   >
                     4
@@ -432,7 +437,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 5: (
                   <span
-                    className="text-white  select-none whitespace-nowrap mr-1"
+                    className="text-white font-semibold select-none whitespace-nowrap mr-1"
                     style={{ fontSize: 14 }}
                   >
                     5
@@ -440,7 +445,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 6: (
                   <span
-                    className="text-white  select-none whitespace-nowrap mr-1"
+                    className="text-white font-semibold select-none whitespace-nowrap mr-1"
                     style={{ fontSize: 14 }}
                   >
                     6
@@ -448,7 +453,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 7: (
                   <span
-                    className="text-white  select-none whitespace-nowrap mr-2"
+                    className="text-white font-semibold select-none whitespace-nowrap mr-2"
                     style={{ fontSize: 15 }}
                   >
                     Day 7
@@ -456,26 +461,26 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
               }}
               defaultValue={sliderValue + 1}
-              railStyle={{ backgroundColor: "#FFF", height: 6 }}
-              trackStyle={{ backgroundColor: "#FFF", height: 6 }}
+              railStyle={{ backgroundColor: "#FFF", height: 10 }}
+              //trackStyle={{ backgroundColor: "#FFF", height: 10 }}
               handleStyle={{
                 borderColor: "white",
-                height: 16,
-                width: 16,
+                height: 20,
+                width: 20,
                 backgroundColor: "red",
               }}
               dotStyle={{
                 visibility: "visible",
-                backgroundColor: "red", // Change color here
-                width: 6, // Adjust size here
-                height: 6, // Adjust size here
+                backgroundColor: "rgba(210, 210, 210, 1)", // Change color here
+                width: 15, // Adjust size here
+                height: 15, // Adjust size here
                 border: "none", // Remove border
               }}
               activeDotStyle={{
                 visibility: "visible",
-                backgroundColor: "red", // Change color here
-                width: 6, // Adjust size here
-                height: 6, // Adjust size here
+                backgroundColor: "rgba(220, 220, 220, 1)", // Change color here
+                width: 20, // Adjust size here
+                height: 20, // Adjust size here
                 border: "none", // Remove border
               }}
               onChange={handleChange}
@@ -485,7 +490,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
       </div>
 
       <div
-        className="w-full mt-1 h-1 rounded"
+        className="w-full mt-2 h-2 rounded"
         style={{
           background: `linear-gradient(to right, ${startColor}, ${mid1Color}, ${mid2Color}, ${mid3Color}, ${mid4Color}, ${endColor})`,
         }}
