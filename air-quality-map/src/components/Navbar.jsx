@@ -56,7 +56,7 @@ const Navbar = () => {
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-info-small w-12 h-12"
               viewBox="0 0 24 24"
-              strokeWidth="2"
+              strokeWidth={1.5}
               stroke="currentColor"
               fill="none"
               strokeLinecap="round"
@@ -75,23 +75,10 @@ const Navbar = () => {
             href="https://github.com/C-Gian/Dev-Mapbox"
             target="_blank"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-brand-github-filled w-7 h-7"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              fill="white"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path
-                d="M5.315 2.1c.791 -.113 1.9 .145 3.333 .966l.272 .161l.16 .1l.397 -.083a13.3 13.3 0 0 1 4.59 -.08l.456 .08l.396 .083l.161 -.1c1.385 -.84 2.487 -1.17 3.322 -1.148l.164 .008l.147 .017l.076 .014l.05 .011l.144 .047a1 1 0 0 1 .53 .514a5.2 5.2 0 0 1 .397 2.91l-.047 .267l-.046 .196l.123 .163c.574 .795 .93 1.728 1.03 2.707l.023 .295l.007 .272c0 3.855 -1.659 5.883 -4.644 6.68l-.245 .061l-.132 .029l.014 .161l.008 .157l.004 .365l-.002 .213l-.003 3.834a1 1 0 0 1 -.883 .993l-.117 .007h-6a1 1 0 0 1 -.993 -.883l-.007 -.117v-.734c-1.818 .26 -3.03 -.424 -4.11 -1.878l-.535 -.766c-.28 -.396 -.455 -.579 -.589 -.644l-.048 -.019a1 1 0 0 1 .564 -1.918c.642 .188 1.074 .568 1.57 1.239l.538 .769c.76 1.079 1.36 1.459 2.609 1.191l.001 -.678l-.018 -.168a5.03 5.03 0 0 1 -.021 -.824l.017 -.185l.019 -.12l-.108 -.024c-2.976 -.71 -4.703 -2.573 -4.875 -6.139l-.01 -.31l-.004 -.292a5.6 5.6 0 0 1 .908 -3.051l.152 -.222l.122 -.163l-.045 -.196a5.2 5.2 0 0 1 .145 -2.642l.1 -.282l.106 -.253a1 1 0 0 1 .529 -.514l.144 -.047l.154 -.03z"
-                stroke-width="0"
-                fill="currentColor"
-              ></path>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-github w-6 h-6" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+</svg>
           </a>
           <span className="tooltip-text p-2">Github</span>
         </div>
@@ -106,7 +93,7 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth={1.5}
+                strokeWidth={2}
                 stroke="currentColor"
                 className="w-6 h-6"
               >
@@ -121,7 +108,7 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth={1.5}
+                strokeWidth={2}
                 stroke="currentColor"
                 className="w-6 h-6"
               >
@@ -142,29 +129,24 @@ const Navbar = () => {
             onClick={handleColorBlindClick}
           >
             {colorBlindMode ? (
-              <svg
-                version="1.0"
-                className="w-7 h-7"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512.000000 512.000000"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                <g
-                  transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                  fill="#000000"
-                  stroke="none"
-                >
-                  <path d="M3883 3988 c-12 -7 -109 -96 -215 -198 -106 -102 -223 -213 -259 -247 l-66 -63 -69 31 c-365 166 -760 202 -1138 104 -392 -102 -835 -379 -1189 -744 -129 -133 -152 -180 -152 -311 0 -142 20 -178 204 -360 151 -150 311 -281 463 -379 48 -31 87 -58 88 -61 0 -3 -106 -106 -235 -229 -193 -185 -237 -231 -245 -262 -12 -44 3 -91 38 -122 28 -25 92 -33 125 -16 15 8 652 615 1417 1349 1088 1044 1392 1342 1399 1367 12 43 -2 93 -33 122 -29 28 -101 38 -133 19z m-1120 -791 c43 -14 103 -40 133 -58 l54 -33 -87 -88 -86 -87 -31 16 c-159 82 -370 42 -498 -95 -77 -82 -118 -184 -118 -292 0 -56 18 -139 38 -176 10 -18 1 -31 -77 -108 l-89 -88 -27 46 c-43 74 -76 191 -82 292 -7 117 14 220 70 334 33 68 58 102 127 170 96 97 187 150 312 181 102 26 254 20 361 -14z" />
-                  <path d="M3475 2990 l-260 -250 5 -38 c3 -20 5 -91 5 -157 0 -91 -5 -133 -19 -175 -74 -219 -217 -369 -426 -445 -62 -23 -96 -29 -195 -32 -85 -3 -136 0 -173 10 l-54 14 -181 -174 c-100 -95 -183 -178 -185 -183 -8 -22 267 -87 435 -102 514 -47 1069 179 1598 652 144 128 240 236 274 310 21 45 26 70 26 140 0 146 -51 225 -279 432 -105 96 -294 249 -307 248 -2 -1 -121 -113 -264 -250z" />
-                  <path d="M2780 2321 l-195 -189 54 10 c146 26 267 130 321 276 42 111 27 103 -180 -97z" />
-                </g>
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" 
+              className="icon icon-tabler icon-tabler-sunglasses w-6 h-6"  
+              viewBox="0 0 24 24" strokeWidth={1.7} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M8 4h-2l-3 10"></path>
+              <path d="M16 4h2l3 10"></path>
+              <path d="M10 16h4"></path>
+              <path d="M21 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+              <path d="M10 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+              <path d="M4 14l4.5 4.5"></path>
+              <path d="M15 14l4.5 4.5"></path>
+           </svg>
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth={1.5}
+                strokeWidth={2}
                 stroke="currentColor"
                 className="w-6 h-6"
               >
