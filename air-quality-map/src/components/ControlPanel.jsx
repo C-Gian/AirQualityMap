@@ -141,7 +141,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
       className={`absolute flex flex-col bottom-0 right-0 m-3 `}
       style={{
         zIndex: 300,
-        width: "400px",
+        width: "450px",
         height: "fit-content",
       }}
     >
@@ -152,9 +152,12 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
       >
         <div className="flex justify-between">
           <div className="flex space-x-1">
-            <div className={`tooltip-container shadow-md `}>
+            <div
+              className={`tooltip-container shadow-md `}
+              style={{ width: 40, height: 40 }}
+            >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
+                className="bg-white p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md "
                 onClick={onRefreshButton}
               >
                 <svg
@@ -179,9 +182,10 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               className={`tooltip-container ${
                 currentLayerBool ? "disabled-div" : ""
               }`}
+              style={{ width: 40, height: 40 }}
             >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn"
+                className="bg-white p-1 w-full h-full justify-center rounded flex items-center tooltip-btn"
                 onMouseEnter={handleMenuOpen}
                 onMouseLeave={handleMenuClose}
               >
@@ -247,14 +251,17 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               className={`tooltip-container shadow-md  ${
                 map3d ? "disabled-div" : ""
               }`}
+              style={{ width: 40, height: 40 }}
             >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
+                className="bg-white p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md "
                 onClick={handleWindButtonClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-wind w-7 h-7"
+                  className={`icon icon-tabler icon-tabler-wind w-7 h-7 ${
+                    wind ? "wind-animation" : ""
+                  }`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
@@ -276,7 +283,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             className="flex w-full mx-2 items-center justify-center"
             style={{ backgroundColor: "rgba(255, 255, 255, 1)" }}
           >
-            <h2 className="text-black items-center px-1 text-l font-semibold select-none">
+            <h2 className="text-black items-center px-1 text-xl font-bold select-none">
               {selectedDay}
             </h2>
           </div>
@@ -286,14 +293,17 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               className={`tooltip-container shadow-md ${
                 map3d ? "disabled-div" : ""
               }`}
+              style={{ width: 40, height: 40 }}
             >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md"
+                className="bg-white w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md "
                 onClick={handleWindHeatmapButtonClick}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-sun-wind w-7 h-7"
+                  className={`icon icon-tabler icon-tabler-sun-wind w-7 h-7 ${
+                    windHeatmap ? "windheatmap-animation" : ""
+                  }`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
@@ -316,33 +326,33 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               <span className="tooltip-text p-2">Wind Heatmap</span>
             </div>
 
-            <div className={`tooltip-container shadow-md `}>
+            <div
+              className={`tooltip-container shadow-md `}
+              style={{ width: 40, height: 40 }}
+            >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
+                className="bg-white w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center"
                 onClick={handle3DButtonClick}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-badge-3d w-7 h-7"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
-                  <path d="M7 9.5a.5 .5 0 0 1 .5 -.5h1a1.5 1.5 0 0 1 0 3h-.5h.5a1.5 1.5 0 0 1 0 3h-1a.5 .5 0 0 1 -.5 -.5"></path>
-                  <path d="M14 9v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2h-1z"></path>
-                </svg>
+                {!map3d ? (
+                  <h2 className="font-bold" style={{ fontSize: 20 }}>
+                    2D
+                  </h2>
+                ) : (
+                  <h2 className="font-bold" style={{ fontSize: 20 }}>
+                    3D
+                  </h2>
+                )}
               </button>
               <span className="tooltip-text p-2">3D Map</span>
             </div>
 
-            <div className={`tooltip-container shadow-md `}>
+            <div
+              className={`tooltip-container shadow-md `}
+              style={{ width: 40, height: 40 }}
+            >
               <button
-                className="bg-white p-1 rounded flex items-center tooltip-btn shadow-md "
+                className="bg-white p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md "
                 onClick={handleHeatCircleClick}
               >
                 {heatCircleActive == "NONE" && (
@@ -396,7 +406,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
         </div>
 
         <div className="flex-col justify-between">
-          <div className="mt-5 mb-5 mx-2">
+          <div className="mt-5 mb-6 mx-2">
             <Slider
               min={1}
               max={7}
@@ -414,7 +424,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 2: (
                   <span
                     className="text-white font-semibold select-none whitespace-nowrap ml-1"
-                    style={{ fontSize: 14 }}
+                    style={{ fontSize: 15 }}
                   >
                     2
                   </span>
@@ -422,7 +432,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 3: (
                   <span
                     className="text-white font-semibold select-none whitespace-nowrap ml-1"
-                    style={{ fontSize: 14 }}
+                    style={{ fontSize: 15 }}
                   >
                     3
                   </span>
@@ -430,7 +440,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 4: (
                   <span
                     className="text-white font-semibold select-none whitespace-nowrap"
-                    style={{ fontSize: 14 }}
+                    style={{ fontSize: 15 }}
                   >
                     4
                   </span>
@@ -438,7 +448,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 5: (
                   <span
                     className="text-white font-semibold select-none whitespace-nowrap mr-1"
-                    style={{ fontSize: 14 }}
+                    style={{ fontSize: 15 }}
                   >
                     5
                   </span>
@@ -446,7 +456,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 6: (
                   <span
                     className="text-white font-semibold select-none whitespace-nowrap mr-1"
-                    style={{ fontSize: 14 }}
+                    style={{ fontSize: 15 }}
                   >
                     6
                   </span>
@@ -461,20 +471,27 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
               }}
               defaultValue={sliderValue + 1}
-              railStyle={{ backgroundColor: "#FFF", height: 10 }}
+              railStyle={{
+                marginBottom: "20px",
+                backgroundColor: "#FFF",
+                height: 10,
+                userSelect: "none",
+              }}
               //trackStyle={{ backgroundColor: "#FFF", height: 10 }}
               handleStyle={{
                 borderColor: "white",
                 height: 20,
                 width: 20,
                 backgroundColor: "red",
+                userSelect: "none",
               }}
               dotStyle={{
                 visibility: "visible",
                 backgroundColor: "rgba(210, 210, 210, 1)", // Change color here
-                width: 15, // Adjust size here
-                height: 15, // Adjust size here
+                width: 12, // Adjust size here
+                height: 12, // Adjust size here
                 border: "none", // Remove border
+                userSelect: "none",
               }}
               activeDotStyle={{
                 visibility: "visible",
@@ -482,6 +499,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 width: 20, // Adjust size here
                 height: 20, // Adjust size here
                 border: "none", // Remove border
+                userSelect: "none",
               }}
               onChange={handleChange}
             />

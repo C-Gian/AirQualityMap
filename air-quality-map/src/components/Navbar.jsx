@@ -49,33 +49,53 @@ const Navbar = () => {
         </span>
       </div>
 
-      <div
-        className="flex justify-between text-white text-xl"
-        style={{ width: "150px" }}
-      >
-        <button className="info-button" onClick={toggleModal}>
-          <h2>Info</h2>
-        </button>
-        <a
-          className="flex"
-          href="https://github.com/C-Gian/Dev-Mapbox"
-          target="_blank"
-        >
-          <h2>GitHub</h2>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            fill="white"
-            viewBox="0 0 256 256"
+      <div className="flex space-x-2">
+        <div className="tooltip-container  bg-white rounded-full w-9 h-9 flex items-center justify-center">
+          <button className="info-button" onClick={toggleModal}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-info-small w-12 h-12"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 9h.01"></path>
+              <path d="M11 12h1v4h1"></path>
+            </svg>
+          </button>
+          <span className="tooltip-text p-2">Github</span>
+        </div>
+        <div className="tooltip-container  bg-white rounded-full w-9 h-9  flex flex-col items-center justify-end">
+          <a
+            className="flex flex-col w-full h-full justify-end items-center"
+            href="https://github.com/C-Gian/Dev-Mapbox"
+            target="_blank"
           >
-            <path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"></path>
-          </svg>
-        </a>
-      </div>
-
-      <div className="flex">
-        <div className="tooltip-container mr-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-brand-github-filled w-7 h-7"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="white"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M5.315 2.1c.791 -.113 1.9 .145 3.333 .966l.272 .161l.16 .1l.397 -.083a13.3 13.3 0 0 1 4.59 -.08l.456 .08l.396 .083l.161 -.1c1.385 -.84 2.487 -1.17 3.322 -1.148l.164 .008l.147 .017l.076 .014l.05 .011l.144 .047a1 1 0 0 1 .53 .514a5.2 5.2 0 0 1 .397 2.91l-.047 .267l-.046 .196l.123 .163c.574 .795 .93 1.728 1.03 2.707l.023 .295l.007 .272c0 3.855 -1.659 5.883 -4.644 6.68l-.245 .061l-.132 .029l.014 .161l.008 .157l.004 .365l-.002 .213l-.003 3.834a1 1 0 0 1 -.883 .993l-.117 .007h-6a1 1 0 0 1 -.993 -.883l-.007 -.117v-.734c-1.818 .26 -3.03 -.424 -4.11 -1.878l-.535 -.766c-.28 -.396 -.455 -.579 -.589 -.644l-.048 -.019a1 1 0 0 1 .564 -1.918c.642 .188 1.074 .568 1.57 1.239l.538 .769c.76 1.079 1.36 1.459 2.609 1.191l.001 -.678l-.018 -.168a5.03 5.03 0 0 1 -.021 -.824l.017 -.185l.019 -.12l-.108 -.024c-2.976 -.71 -4.703 -2.573 -4.875 -6.139l-.01 -.31l-.004 -.292a5.6 5.6 0 0 1 .908 -3.051l.152 -.222l.122 -.163l-.045 -.196a5.2 5.2 0 0 1 .145 -2.642l.1 -.282l.106 -.253a1 1 0 0 1 .529 -.514l.144 -.047l.154 -.03z"
+                stroke-width="0"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </a>
+          <span className="tooltip-text p-2">Github</span>
+        </div>
+        <div className="tooltip-container  bg-white rounded-full w-9 h-9  flex items-center justify-center">
           <button
             className="bg-white rounded-full flex items-center tooltip-btn"
             style={{ padding: "5px" }}
@@ -115,7 +135,7 @@ const Navbar = () => {
           </button>
           <span className="tooltip-text p-2">Modalità Notte</span>
         </div>
-        <div className="tooltip-container">
+        <div className="tooltip-container bg-white rounded-full w-9 h-9  flex items-center justify-center">
           <button
             className="bg-white rounded-full flex items-center tooltip-btn"
             style={{ padding: "5px" }}
@@ -123,18 +143,21 @@ const Navbar = () => {
           >
             {colorBlindMode ? (
               <svg
+                version="1.0"
+                className="w-7 h-7"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
+                viewBox="0 0 512.000000 512.000000"
+                preserveAspectRatio="xMidYMid meet"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
-                />
+                <g
+                  transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                  fill="#000000"
+                  stroke="none"
+                >
+                  <path d="M3883 3988 c-12 -7 -109 -96 -215 -198 -106 -102 -223 -213 -259 -247 l-66 -63 -69 31 c-365 166 -760 202 -1138 104 -392 -102 -835 -379 -1189 -744 -129 -133 -152 -180 -152 -311 0 -142 20 -178 204 -360 151 -150 311 -281 463 -379 48 -31 87 -58 88 -61 0 -3 -106 -106 -235 -229 -193 -185 -237 -231 -245 -262 -12 -44 3 -91 38 -122 28 -25 92 -33 125 -16 15 8 652 615 1417 1349 1088 1044 1392 1342 1399 1367 12 43 -2 93 -33 122 -29 28 -101 38 -133 19z m-1120 -791 c43 -14 103 -40 133 -58 l54 -33 -87 -88 -86 -87 -31 16 c-159 82 -370 42 -498 -95 -77 -82 -118 -184 -118 -292 0 -56 18 -139 38 -176 10 -18 1 -31 -77 -108 l-89 -88 -27 46 c-43 74 -76 191 -82 292 -7 117 14 220 70 334 33 68 58 102 127 170 96 97 187 150 312 181 102 26 254 20 361 -14z" />
+                  <path d="M3475 2990 l-260 -250 5 -38 c3 -20 5 -91 5 -157 0 -91 -5 -133 -19 -175 -74 -219 -217 -369 -426 -445 -62 -23 -96 -29 -195 -32 -85 -3 -136 0 -173 10 l-54 14 -181 -174 c-100 -95 -183 -178 -185 -183 -8 -22 267 -87 435 -102 514 -47 1069 179 1598 652 144 128 240 236 274 310 21 45 26 70 26 140 0 146 -51 225 -279 432 -105 96 -294 249 -307 248 -2 -1 -121 -113 -264 -250z" />
+                  <path d="M2780 2321 l-195 -189 54 10 c146 26 267 130 321 276 42 111 27 103 -180 -97z" />
+                </g>
               </svg>
             ) : (
               <svg

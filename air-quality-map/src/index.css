@@ -172,21 +172,6 @@ body {
   height: 32px;
 }
 
-/* Stilizza la scritta al passaggio del mouse */
-a:hover h2 {
-  color: lightblue; /* Cambia il colore al passaggio del mouse */
-}
-
-/* Stilizza il logo al passaggio del mouse */
-a:hover svg path {
-  fill: lightblue; /* Cambia il colore al passaggio del mouse */
-}
-
-/* Stilizza il pulsante al passaggio del mouse */
-.info-button:hover {
-  color: lightblue; /* Cambia il colore al passaggio del mouse */
-}
-
 .rotate {
   animation: rotate 1s linear infinite; /* Imposta l'animazione di rotazione */
 }
@@ -201,7 +186,7 @@ a:hover svg path {
 }
 
 .rc-slider-dot {
-  bottom: -8px !important;
+  bottom: -7px !important;
 }
 
 .rc-slider-dot-active {
@@ -225,10 +210,68 @@ a:hover svg path {
   background-color: rgb(255, 0, 0);
   width: 20;
   height: 20;
+  user-select: none;
 }
 
 .inactive-dot {
   background-color: rgba(210, 210, 210, 1);
-  width: 15;
-  height: 15;
+  width: 12;
+  height: 12;
+  user-select: none;
+}
+
+.wind-animation {
+  stroke: rgb(0, 0, 0); /* Colore iniziale delle linee dell'SVG */
+  stroke-dasharray: 100%; /* Imposta la lunghezza del tratto su tutta la lunghezza del percorso */
+  stroke-dashoffset: 100%; /* Sposta il tratto fuori dalla vista */
+  animation: pulsateWind 3s infinite linear; /* Animazione dello spostamento del tratto */
+}
+
+@keyframes pulsateWind {
+  0% {
+    stroke: rgb(0, 0, 0);
+    stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
+  }
+  25% {
+    stroke: rgb(
+      42,
+      152,
+      255
+    ); /* Colore blu più chiaro per l'effetto di pulsazione */
+    stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
+  }
+  100% {
+    stroke: rgb(0, 89, 255); /* Mantieni il colore blu più chiaro alla fine */
+    stroke-dashoffset: 0%; /* Mantieni il tratto all'interno della vista alla fine */
+  }
+}
+
+.windheatmap-animation {
+  stroke: rgb(0, 0, 0); /* Colore iniziale delle linee dell'SVG */
+  stroke-dasharray: 100%; /* Imposta la lunghezza del tratto su tutta la lunghezza del percorso */
+  stroke-dashoffset: 100%; /* Sposta il tratto fuori dalla vista */
+  animation: pulsateWindHeat 3s infinite linear; /* Animazione dello spostamento del tratto */
+}
+
+@keyframes pulsateWindHeat {
+  0% {
+    stroke: rgb(0, 0, 0);
+    stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
+  }
+  25% {
+    stroke: rgb(
+      80,
+      148,
+      17
+    ); /* Colore blu più chiaro per l'effetto di pulsazione */
+    stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
+  }
+  100% {
+    stroke: rgb(255, 0, 0); /* Mantieni il colore blu più chiaro alla fine */
+    stroke-dashoffset: 0%; /* Mantieni il tratto all'interno della vista alla fine */
+  }
+}
+
+.rc-slider-mark {
+  top: 25px !important;
 }
