@@ -191,11 +191,11 @@ const Sidebar = ({ infos, bulkDatas }) => {
 
   return (
     <div
-      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed"
+      className="sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed backdrop-blur-2xl"
       style={{
         top: "50px",
         backgroundColor: nightMode
-          ? "rgba(75 ,85 ,99, 1)"
+          ? "rgba(53, 54, 58, 0.5)"
           : "rgba(75 ,85 ,99, 1)",
       }}
     >
@@ -299,7 +299,12 @@ const Sidebar = ({ infos, bulkDatas }) => {
               colorBlind={colorBlind}
             ></PollsLevelsChart>
           </div>
-          <div className="h-fit w-full mt-10 flex-col justify-between bg-slate-500 p-5 rounded-2xl">
+          <div
+            className="h-fit w-full mt-10 flex-col justify-between p-5 rounded-2xl shadow-lg"
+            style={{
+              backgroundColor: "rgba(185, 185, 185, 0.1)",
+            }}
+          >
             <div className="flex justify-between">
               <h2 className="text-2xl text-white mr-5">Air Quality: </h2>
               <h2 className="text-xl font-semibold" style={{ color: hexColor }}>

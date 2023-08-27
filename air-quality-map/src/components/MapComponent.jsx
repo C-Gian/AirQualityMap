@@ -812,7 +812,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
             { source: "aqi", id: hoveredPolygonId },
             { hover: true }
           );
-          setHoveredState([dataR.features[e.features[0].id], false]);
+          setHoveredState([dataR, e.features[0].id, false]);
           setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
         } else if (e.features[0].id != hoveredPolygonId) {
           mapRef.current.setFeatureState(
@@ -824,7 +824,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
             { source: "aqi", id: hoveredPolygonId },
             { hover: true }
           );
-          setHoveredState([dataR.features[e.features[0].id], false]);
+          setHoveredState([dataR, e.features[0].id, false]);
           setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
         }
         setPopupPosition({
@@ -858,7 +858,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
             { hover: true }
           );
         }
-        setHoveredState([dataR.features[e.features[0].id], true]);
+        setHoveredState([dataR, e.features[0].id, true]);
         setHoveredStateColor(e.features[0].layer.paint["fill-color"]);
         setPopupPosition({
           x: e.originalEvent.clientX,

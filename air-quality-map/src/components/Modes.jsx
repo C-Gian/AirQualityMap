@@ -16,12 +16,18 @@ function Modes() {
   return (
     <div
       className="flex flex-col space-y-3 absolute overflow-hidden"
-      style={{ top: 230, right: 10 }}
+      style={{ top: 280, right: 10 }}
     >
-      <div className="tooltip-container rounded-full w-fit h-fit flex items-center justify-center">
+      <div
+        className="tooltip-container rounded w-fit h-fit flex items-center justify-center border border-gray-500 p-2"
+        style={{
+          backgroundColor: "rgba(51, 51, 51, 1)",
+          width: 40,
+          height: 40,
+        }}
+      >
         <button
-          className="rounded flex items-center tooltip-btn"
-          style={{ padding: "6px", backgroundColor: "#333" }}
+          className="flex items-center tooltip-btn w-full h-full"
           onClick={handleNightModeClick}
         >
           {nightMode ? (
@@ -58,10 +64,16 @@ function Modes() {
         </button>
         <span className="tooltip-text p-2">Modalità Notte</span>
       </div>
-      <div className="tooltip-container rounded-full w-fit h-fit  flex items-center justify-center">
+      <div
+        className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border border-gray-500 p-2"
+        style={{
+          backgroundColor: "rgba(51, 51, 51, 1)",
+          width: 40,
+          height: 40,
+        }}
+      >
         <button
-          className="bg-white rounded flex items-center tooltip-btn"
-          style={{ padding: "6px", backgroundColor: "#333" }}
+          className="rounded flex items-center tooltip-btn"
           onClick={handleColorBlindClick}
         >
           {colorBlindMode ? (
