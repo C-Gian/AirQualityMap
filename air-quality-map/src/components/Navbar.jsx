@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="p-4 z-30 w-full top-0 fixed flex justify-between items-center"
+      className="p-4 z-30 w-full top-0 fixed flex items-center space-x-5"
       style={{ height: "50px", backgroundColor: "transparent" }}
     >
       <div className="flex items-center space-x-2">
@@ -112,49 +112,54 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
         <span className="text-white text-3xl font-semibold logo-title">
           Air Quality Map
         </span>
-        <div className="flex justify-between items-center">
-          <div className="tooltip-container w-fit h-fit flex items-center justify-center">
-            <button className="rounded-full w-fit h-fit" onClick={toggleModal}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="white"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="black"
-                className="w-10 h-10"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-                />
-              </svg>
-            </button>
-            <span className="tooltip-text p-2">Github</span>
-          </div>
-          <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
-            <a
-              className="flex flex-col w-fit h-fit justify-center items-center"
-              href="https://github.com/C-Gian/Dev-Mapbox"
-              target="_blank"
+      </div>
+
+      <div className="flex justify-between items-center">
+        <div className="tooltip-container w-fit h-fit flex items-center justify-center">
+          <button className="rounded-full w-fit h-fit" onClick={toggleModal}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-info-hexagon-filled"
+              width={30}
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="white"
+              fill="white"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-brand-github"
-                viewBox="0 0 24 24"
-                width={30}
-                strokeWidth="2"
-                stroke="white"
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path
+                d="M10.425 1.414a3.33 3.33 0 0 1 3.026 -.097l.19 .097l6.775 3.995l.096 .063l.092 .077l.107 .075a3.224 3.224 0 0 1 1.266 2.188l.018 .202l.005 .204v7.284c0 1.106 -.57 2.129 -1.454 2.693l-.17 .1l-6.803 4.302c-.918 .504 -2.019 .535 -3.004 .068l-.196 -.1l-6.695 -4.237a3.225 3.225 0 0 1 -1.671 -2.619l-.007 -.207v-7.285c0 -1.106 .57 -2.128 1.476 -2.705l6.95 -4.098zm1.575 9.586h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"
+                stroke-width="0"
                 fill="white"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
-              </svg>
-            </a>
-            <span className="tooltip-text p-2">Github</span>
-          </div>
+              ></path>
+            </svg>
+          </button>
+          <span className="tooltip-text p-2">Github</span>
+        </div>
+        <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
+          <a
+            className="flex flex-col w-fit h-fit justify-center items-center"
+            href="https://github.com/C-Gian/Dev-Mapbox"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-brand-github"
+              viewBox="0 0 24 24"
+              width={30}
+              strokeWidth="2"
+              stroke="white"
+              fill="white"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+            </svg>
+          </a>
+          <span className="tooltip-text p-2">Github</span>
         </div>
       </div>
 

@@ -15,13 +15,13 @@ function Modes() {
   };
   return (
     <div
-      className="flex flex-col space-y-3 absolute right-2 overflow-hidden"
-      style={{ top: 200 }}
+      className="flex flex-col space-y-3 absolute overflow-hidden"
+      style={{ top: 230, right: 10 }}
     >
       <div className="tooltip-container rounded-full w-fit h-fit flex items-center justify-center">
         <button
-          className="bg-white rounded flex items-center tooltip-btn"
-          style={{ padding: "5px" }}
+          className="rounded flex items-center tooltip-btn"
+          style={{ padding: "6px", backgroundColor: "#333" }}
           onClick={handleNightModeClick}
         >
           {nightMode ? (
@@ -30,8 +30,8 @@ function Modes() {
               fill="white"
               viewBox="0 0 24 24"
               strokeWidth={2}
-              stroke="black"
-              className="w-6 h-6"
+              stroke="white"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"
@@ -61,7 +61,7 @@ function Modes() {
       <div className="tooltip-container rounded-full w-fit h-fit  flex items-center justify-center">
         <button
           className="bg-white rounded flex items-center tooltip-btn"
-          style={{ padding: "5px" }}
+          style={{ padding: "6px", backgroundColor: "#333" }}
           onClick={handleColorBlindClick}
         >
           {colorBlindMode ? (
@@ -90,8 +90,8 @@ function Modes() {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
-              stroke="black"
-              className="w-6 h-6"
+              stroke="white"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"
