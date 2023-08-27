@@ -13,6 +13,7 @@ import Toolbar from "./components/Toolbar";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
 import ControlPanel from "./components/ControlPanel";
+import Modes from "./components/Modes";
 
 const App = () => {
   const sidebar = useSelector((state) => state.sidebar);
@@ -651,7 +652,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="flex-col">
+    <div className="flex-col overflow-x-hidden">
       <Navbar></Navbar>
       {isLoading ? (
         <div className="loading-overlay">
@@ -671,8 +672,10 @@ const App = () => {
               stopButton={handleStopButton} */
             ></MapComponent>
           )}
-          <ControlPanel onRefreshButton={onRefreshButton}
-            refreshIsLoading={refreshIsLoading}></ControlPanel>
+          <ControlPanel
+            onRefreshButton={onRefreshButton}
+            refreshIsLoading={refreshIsLoading}
+          ></ControlPanel>
           {sidebar && stateInfo && (
             <Sidebar infos={stateInfo} bulkDatas={bulkDatas} />
           )}
@@ -681,6 +684,7 @@ const App = () => {
             onRefreshButton={onRefreshButton}
             refreshIsLoading={refreshIsLoading}
           ></Toolbar> */}
+          <Modes></Modes>
         </div>
       )}
     </div>

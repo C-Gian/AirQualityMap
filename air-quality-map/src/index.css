@@ -146,13 +146,13 @@ body {
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-geolocate {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 }
 
 .mapboxgl-ctrl button.mapboxgl-ctrl-compass {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 }
 
 /* Stilizza i marker di scala */
@@ -164,12 +164,20 @@ body {
 
 /* Stilizza la posizione dei controlli nella parte alta destra */
 .mapboxgl-ctrl-top-right {
-  top: 50px; /* Regola questa altezza in base alla tua navbar */
+  top: 0px; /* Regola questa altezza in base alla tua navbar */
+}
+
+.mapboxgl-ctrl-scale {
+  width: fit-content !important;
+}
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon {
+  color: #fff !important;
 }
 
 .mapboxgl-ctrl-navigation {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 }
 
 .rotate {
@@ -274,4 +282,38 @@ body {
 
 .rc-slider-mark {
   top: 25px !important;
+}
+
+@font-face {
+  font-family: "Hangout-Italic"; /* Dà un nome al font */
+  src: url("./fonts/Hangout-Italic.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "Hangout"; /* Dà un nome al font */
+  src: url("./fonts/Hangout.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "Amonos"; /* Dà un nome al font */
+  src: url("./fonts/amonos.otf") format("otf"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "Nauticus"; /* Dà un nome al font */
+  src: url("./fonts/NauticusSans.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "NauticusThin"; /* Dà un nome al font */
+  src: url("./fonts/Nauticushin.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "Potatoes"; /* Dà un nome al font */
+  src: url("./fonts/SpicyPotatos.ttf") format("truetype"); /* Percorso al font */
+}
+
+.logo-title {
+  font-family: "Hangout", sans-serif; /* Usa il font personalizzato */
 }

@@ -384,6 +384,14 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
     });
     mapRef.current = map;
 
+    const scale = new mapboxgl.ScaleControl({
+      maxWidth: 80,
+      unit: "imperial",
+    });
+    map.addControl(scale, "top-right");
+
+    scale.setUnit("metric");
+
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -399,14 +407,6 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
       visualizePitch: true,
     });
     map.addControl(nav, "top-right");
-
-    const scale = new mapboxgl.ScaleControl({
-      maxWidth: 80,
-      unit: "imperial",
-    });
-    map.addControl(scale, "top-right");
-
-    scale.setUnit("metric");
 
     map.doubleClickZoom.disable();
 
