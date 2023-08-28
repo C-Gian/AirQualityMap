@@ -281,7 +281,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
           </div>
 
           <div className="flex w-full mx-2 items-center justify-center rounded button-colors">
-            <h2 className="text-white items-center px-1 text-xl select-none light-text-font">
+            <h2 className="text-white items-center px-1 text-l select-none light-text-font uppercase">
               {selectedDay}
             </h2>
           </div>
@@ -333,11 +333,11 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 onClick={handle3DButtonClick}
               >
                 {!map3d ? (
-                  <h2 className="font-bold text-white" style={{ fontSize: 20 }}>
+                  <h2 className=" text-white normal-text-font" style={{ fontSize: 20 }}>
                     2D
                   </h2>
                 ) : (
-                  <h2 className="font-bold text-white" style={{ fontSize: 20 }}>
+                  <h2 className=" text-white normal-text-font" style={{ fontSize: 20 }}>
                     3D
                   </h2>
                 )}

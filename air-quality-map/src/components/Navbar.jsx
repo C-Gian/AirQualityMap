@@ -183,40 +183,40 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
             }}
           >
             <button
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
-              onClick={toggleModal}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="white"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+          className="absolute top-2 right-2 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+          onClick={toggleModal}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
             <div className="flex flex-col space-y-10">
               <div className="flex flex-col">
-                <span className="text-white text-lg font-bold">
+                <span className="normal-text-font text-white text-lg font-bold">
                   What is Air Quality Map?
                 </span>
-                <span className="text-white text-base">
+                <span className="normal-text-font text-white text-base">
                   Air Quality Map is a web application that provides users with
                   an interactive color-coded map based on the Air Quality Index
                   (AQI) of countries and regions or states.
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="text-white text-lg font-bold">
+                <span className="normal-text-font text-white text-lg font-bold">
                   What is AQI?
                 </span>
-                <span className="text-white text-base">
+                <span className="normal-text-font text-white text-base">
                   Air Quality Index (AQI) is a tool designed to measure the air
                   quality in a specific area. Higher AQI level indicates more
                   dangerous air to breathe.
@@ -224,91 +224,85 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                 <div className="flex justify-between mt-2">
                   <div className="flex  w-full h-full flex-col justify-center items-center space-y-1">
                     <div
-                      className=""
                       style={{
                         width: 90,
                         height: 25,
                         backgroundColor: startColor,
                       }}
                     ></div>
-                    <h2 className="text-white text-xs">Good</h2>
+                    <h2 className="light-text-font text-white text-xs">Good</h2>
                   </div>
                   <div className="flex  w-full h-full flex-col justify-center items-center space-y-1">
                     <div
-                      className="bg-slate-500"
                       style={{
                         width: 90,
                         height: 25,
                         backgroundColor: mid1Color,
                       }}
                     ></div>
-                    <h2 className="text-white text-xs">Moderate</h2>
+                    <h2 className="light-text-font text-white text-xs">Moderate</h2>
                   </div>
                   <div className="flex w-full h-full flex-col justify-center items-center space-y-1">
                     <div
-                      className="bg-slate-500"
                       style={{
                         width: 90,
                         height: 25,
                         backgroundColor: mid2Color,
                       }}
                     ></div>
-                    <h2 className="text-white text-xs text-center">
+                    <h2 className="light-text-font text-white text-xs text-center">
                       Unhealthy for Sensitive Groups
                     </h2>
                   </div>
                   <div className="flex  w-full h-full flex-col justify-center items-center space-y-1">
                     <div
-                      className="bg-slate-500"
                       style={{
                         width: 90,
                         height: 25,
                         backgroundColor: mid3Color,
                       }}
                     ></div>
-                    <h2 className="text-white text-xs">Unhealthy</h2>
+                    <h2 className="light-text-font text-white text-xs">Unhealthy</h2>
                   </div>
                   <div className="flex w-full h-full flex-col justify-center items-center space-y-1">
                     <div
-                      className="bg-slate-500"
                       style={{
                         width: 90,
                         height: 25,
                         backgroundColor: mid4Color,
                       }}
                     ></div>
-                    <h2 className="text-white text-xs text-center">
+                    <h2 className="light-text-font text-white text-xs text-center">
                       Very Unhealthy
                     </h2>
                   </div>
                   <div className="flex  w-full h-full flex-col justify-center items-center space-y-1">
                     <div
-                      className="bg-slate-500"
                       style={{
                         width: 90,
                         height: 25,
                         backgroundColor: endColor,
                       }}
                     ></div>
-                    <h2 className="text-white text-xs">Hazardous</h2>
+                    <h2 className="light-text-font text-white text-xs">Hazardous</h2>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="text-white text-lg font-bold">
+                <span className="normal-text-font text-white text-lg font-bold">
                   Why is important to monitor AQI?
                 </span>
-                <span className="text-white text-base">
+                <span className="normal-text-font text-white text-base">
                   Monitoring AQI is of really important due to the perilous
                   nature of pollutants for both human beings and the
                   environment.
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="text-white text-lg font-bold">
+                <span className="normal-text-font text-white text-lg font-bold">
                   How is AQI calculated?
                 </span>
-                <span className="text-white text-base">
+                <span className="normal-text-font text-white text-base">
                   AQI is calculated using a formula that computes the sub-index
                   for each pollutant. The highest sub-index is then selected to
                   determine the AQI value.
