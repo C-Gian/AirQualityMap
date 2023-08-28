@@ -7,18 +7,19 @@ function PopupChart({ data }) {
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
 
+    const pollutantColors = {
+      PM10: "red",
+      "PM2.5": "blue",
+      OZONE: "green",
+      NO2: "yellow",
+      CO: "orange",
+      SO2: "purple",
+    };
+
     const sortedData = Object.entries(data).sort((a, b) => b[1] - a[1]);
     const labels = sortedData.map((entry) => entry[0]);
     const values = sortedData.map((entry) => entry[1]);
-
-    const colors = [
-      "rgba(255, 0, 0, 0.6)", // Rosso per PM10
-      "rgba(54, 162, 235, 0.6)", // Blu per PM2.5
-      "rgba(0, 128, 0, 0.6)", // Verde per OZONE
-      "rgba(255, 255, 0, 0.6)", // Giallo per NO2
-      "rgba(255, 165, 0, 0.6)", // Arancione per CO
-      "rgba(128, 0, 128, 0.6)", // Viola per SO2
-    ];
+    const colors = labels.map((label) => pollutantColors[label]);
 
     const chart = new Chart(ctx, {
       type: "bar",

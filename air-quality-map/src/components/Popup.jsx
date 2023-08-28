@@ -9,16 +9,16 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
   let name = "";
   let AQI = 0;
   let polls = {};
+  let polluttants = {
+    CO: 0,
+    NO2: 0,
+    OZONE: 0,
+    "PM2.5": 0,
+    PM10: 0,
+    SO2: 0,
+  };
   if (hoveredState != undefined) {
     if (hoveredState[2]) {
-      let polluttants = {
-        CO: 0,
-        NO2: 0,
-        OZONE: 0,
-        "PM2.5": 0,
-        PM10: 0,
-        SO2: 0,
-      };
       hoveredState2 = hoveredState[0].features[hoveredState[1]];
       hoveredState[0].features.forEach((state) => {
         const stateM = state.properties.measurements;
@@ -34,6 +34,9 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
       AQI = hoveredState2.properties.countryAQI;
     } else {
       hoveredState2 = hoveredState[0].features[hoveredState[1]];
+      Object.keys(hoveredState2.properties.measurements).forEach((poll) => {
+        polls[poll] = hoveredState2.properties.measurements[poll].fixedValue;
+      });
       name = hoveredState2.properties.name;
       AQI = hoveredState2.properties.AQI;
     }

@@ -92,6 +92,7 @@ body {
 
 .tooltip-container {
   position: relative;
+  cursor: pointer;
 }
 
 .tooltip-btn {
@@ -117,6 +118,23 @@ body {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
+.tooltip-text-modes {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 88;
+  top: 0px;
+  right: 50px;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
@@ -130,7 +148,7 @@ body {
 }
 
 .sfondo {
-  background-color: rgba(153, 148, 148, 0.041);
+  background-color: rgba(116, 116, 116, 0.101);
 }
 
 /* Stilizza il controllo della scala */
@@ -144,8 +162,17 @@ body {
 }
 
 .mapboxgl-ctrl-group {
-  background-color: #333; /* Colore di sfondo scuro */
-  border: 0.1px solid #a0aec090;
+  background-color: rgba(40, 40, 40, 1); /* Colore di sfondo scuro */
+  border: 0.1px solid #a0aec015;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.modes-border {
+  border: 0.1px solid #a0aec015;
+}
+
+.modes-shadow {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
 .mapboxgl-ctrl-group button + button {
@@ -324,6 +351,6 @@ body {
   font-family: "Hangout", sans-serif; /* Usa il font personalizzato */
 }
 
-.porcodio {
-  background-color: rgb(50, 51, 53);
+.belcolorechiaro {
+  background-color: rgba(48, 58, 62, 1);
 }

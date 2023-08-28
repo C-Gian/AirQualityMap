@@ -15,21 +15,19 @@ function Modes() {
   };
   return (
     <div
-      className="flex flex-col space-y-3 absolute overflow-hidden"
-      style={{ top: 280, right: 10 }}
+      className="flex flex-col space-y-1 absolute overflow-hidden m-2 modes-shadow"
+      style={{ top: 280, right: 2 }}
     >
       <div
-        className="tooltip-container rounded w-fit h-fit flex items-center justify-center border border-gray-500 p-2"
+        className="tooltip-container rounded flex items-center justify-center border modes-border p-2 select-none"
         style={{
-          backgroundColor: "rgba(51, 51, 51, 1)",
+          backgroundColor: "rgba(40, 40, 40, 1)",
           width: 40,
           height: 40,
         }}
+        onClick={handleNightModeClick}
       >
-        <button
-          className="flex items-center tooltip-btn w-full h-full"
-          onClick={handleNightModeClick}
-        >
+        <button className="flex items-center tooltip-btn w-full h-full">
           {nightMode ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,12 +60,12 @@ function Modes() {
             </svg>
           )}
         </button>
-        <span className="tooltip-text p-2">Modalità Notte</span>
+        <span className="tooltip-text p-2">Night Mode</span>
       </div>
       <div
-        className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border border-gray-500 p-2"
+        className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border modes-border p-2"
         style={{
-          backgroundColor: "rgba(51, 51, 51, 1)",
+          backgroundColor: "rgba(40, 40, 40, 1)",
           width: 40,
           height: 40,
         }}
@@ -118,7 +116,7 @@ function Modes() {
             </svg>
           )}
         </button>
-        <span className="tooltip-text p-2">Modalità Daltonici</span>
+        <span className="tooltip-text-modes p-2">Modalità Daltonici</span>
       </div>
     </div>
   );
