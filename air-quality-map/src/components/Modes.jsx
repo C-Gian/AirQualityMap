@@ -15,7 +15,7 @@ function Modes() {
   };
   return (
     <div
-      className="flex flex-col space-y-1 absolute overflow-hidden m-2 modes-shadow"
+      className="flex flex-col space-y-1 absolute  m-2 modes-shadow"
       style={{ top: 280, right: 2 }}
     >
       <div
@@ -60,7 +60,7 @@ function Modes() {
             </svg>
           )}
         </button>
-        <span className="tooltip-text p-2">Night Mode</span>
+        <span className="tooltip-text-modes p-2">Night Mode</span>
       </div>
       <div
         className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border modes-border p-2"
@@ -116,7 +116,7 @@ function Modes() {
             </svg>
           )}
         </button>
-        <span className="tooltip-text-modes p-2">Modalità Daltonici</span>
+        <span className="tooltip-text-modes p-2">Blind Mode</span>
       </div>
     </div>
   );
