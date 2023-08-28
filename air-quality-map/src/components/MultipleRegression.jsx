@@ -193,6 +193,10 @@ function MultipleRegression({ datas, id, colorBlind }) {
           stacked: true, // Imposta l'asse x come asse delle categorie
           ticks: {
             color: "white",
+            font: {
+              family: "PoppinsLight", // Imposta il font desiderato
+              size: 15, // Imposta la dimensione del font desiderata
+            },
           },
           grid: {
             color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
@@ -204,6 +208,10 @@ function MultipleRegression({ datas, id, colorBlind }) {
           },
           grid: {
             color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+            font: {
+              family: "PoppinsLight", // Imposta il font desiderato
+              size: 12, // Imposta la dimensione del font desiderata
+            },
           },
         },
       },
@@ -216,7 +224,8 @@ function MultipleRegression({ datas, id, colorBlind }) {
           },
           labels: {
             font: {
-              size: 16, // Imposta la dimensione del font della legenda
+              family: "Poppins", // Imposta il font desiderato
+              size: 17, // Imposta la dimensione del font desiderata
             },
             color: "white", // Colore delle etichette della legenda
             boxWidth: 25,

@@ -67,6 +67,10 @@ const AreaChart = ({ data, color }) => {
               ticks: {
                 display: true,
                 color: "white", // Colore delle etichette dell'asse y
+                font: {
+                  family: "PoppinsLight", // Imposta il font desiderato
+                  size: 12, // Imposta la dimensione del font desiderata
+                },
               },
             },
             y: {

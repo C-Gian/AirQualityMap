@@ -286,7 +286,10 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
       svg
         .append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x))
+        .selectAll(".tick text") // Aggiungi questa parte per cambiare il font delle etichette dell'asse X
+        .style("font-family", "PoppinsLight"); // Imposta il font desiderato
+
       svg.append("g").call(d3.axisLeft(y));
 
       // Imposta il colore delle etichette delle scale sull'asse x come bianche

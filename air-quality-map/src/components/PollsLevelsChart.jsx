@@ -102,10 +102,11 @@ function PollsLevelsChart({
           min: 0, // Valore minimo dell'asse y
           stepSize: 10, // Imposta l'incremento dei valori sull'asse y
           callback: (value) => `${value}`, // Formatta i valori sull'asse y
-          font: {
-            size: 14, // Dimensione del carattere per le etichette dell'asse Y
-          },
           color: "white", // Colore delle etichette dell'asse Y
+          font: {
+            family: "PoppinsLight", // Imposta il font desiderato
+            size: 15, // Imposta la dimensione del font desiderata
+          },
         },
       },
       x: {
@@ -120,7 +121,8 @@ function PollsLevelsChart({
           maxRotation: 0,
           minRotation: 0,
           font: {
-            size: 12, // Dimensione del carattere per le etichette dell'asse Y
+            family: "PoppinsLight", // Imposta il font desiderato
+            size: 15, // Imposta la dimensione del font desiderata
           },
           color: "white", // Colore delle etichette dell'asse Y
         },

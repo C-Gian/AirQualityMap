@@ -86,6 +86,10 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
         position: "bottom",
         ticks: {
           color: "white",
+          font: {
+            family: "PoppinsLight", // Imposta il font desiderato
+            size: 15, // Imposta la dimensione del font desiderata
+          },
         },
         grid: {
           color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
@@ -94,6 +98,10 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
       y: {
         ticks: {
           color: "white",
+          font: {
+            family: "PoppinsLight", // Imposta il font desiderato
+            size: 12, // Imposta la dimensione del font desiderata
+          },
         },
         grid: {
           color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
@@ -104,7 +112,8 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
       legend: {
         labels: {
           font: {
-            size: 16, // Imposta la dimensione del font della legenda
+            family: "Poppins", // Imposta il font desiderato
+            size: 17, // Imposta la dimensione del font desiderata
           },
           pointStyleWidth: 20,
           usePointStyle: true,

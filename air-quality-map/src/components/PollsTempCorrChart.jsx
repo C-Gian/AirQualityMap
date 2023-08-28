@@ -107,6 +107,10 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         },
         ticks: {
           color: "white", // Colore delle etichette dell'asse y
+          font: {
+            family: "PoppinsLight", // Imposta il font desiderato
+            size: 15, // Imposta la dimensione del font desiderata
+          },
         },
       },
       y: {
@@ -115,6 +119,10 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         },
         ticks: {
           color: "white", // Colore delle etichette dell'asse y
+          font: {
+            family: "PoppinsLight", // Imposta il font desiderato
+            size: 12, // Imposta la dimensione del font desiderata
+          },
         },
       },
     },
@@ -140,7 +148,8 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
       legend: {
         labels: {
           font: {
-            size: 16, // Imposta la dimensione del font della legenda
+            family: "Poppins", // Imposta il font desiderato
+            size: 17, // Imposta la dimensione del font desiderata
           },
           color: "white", // Colore delle etichette della legenda
           boxWidth: 17,
