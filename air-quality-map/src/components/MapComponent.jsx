@@ -389,10 +389,9 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
       unit: "imperial",
     });
     map.addControl(scale, "top-right");
-
     scale.setUnit("metric");
 
-    map.addControl(
+    /* map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,
@@ -401,12 +400,18 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
         showUserHeading: true,
       }),
       "top-right"
-    );
+    ); */
 
     const nav = new mapboxgl.NavigationControl({
       visualizePitch: true,
+      showCompass: false,
     });
     map.addControl(nav, "top-right");
+
+    // Seleziona tutti gli elementi con la classe mapboxgl-ctrl-icon
+    document.querySelectorAll(".mapboxgl-ctrl-icon").forEach((icon) => {
+      icon.removeAttribute("title");
+    });
 
     map.doubleClickZoom.disable();
 

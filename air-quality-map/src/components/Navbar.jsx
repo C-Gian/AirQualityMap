@@ -26,8 +26,8 @@ const Navbar = () => {
   return (
     <div className="z-30 w-full top-0 fixed flex items-center ">
       <div
-        className="p-4 flex w-full space-x-5  backdrop-blur-2xl"
-        style={{ height: "50px", backgroundColor: "rgba(53, 54, 58, 0.5)" }}
+        className="p-4 flex w-full justify-between backdrop-blur-2xl navbar-background"
+        style={{ height: "50px" }}
       >
         <div className="flex items-center space-x-2">
           <svg
@@ -110,12 +110,15 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
               />
             </g>
           </svg>
-          <span className="text-white text-3xl font-semibold logo-title select-none">
+          <span
+            className="text-white logo-title select-none"
+            style={{ fontSize: 25 }}
+          >
             Air Quality Map
           </span>
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center space-x-3">
           <div className="tooltip-container w-fit h-fit flex items-center justify-center">
             <button className="rounded-full w-fit h-fit" onClick={toggleModal}>
               <svg

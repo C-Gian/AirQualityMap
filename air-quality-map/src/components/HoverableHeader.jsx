@@ -26,11 +26,11 @@ const HoverableHeader = ({ title }) => {
         <div>
           {title == "Levels Comparation [Temperature - Polluttants]" && (
             <div
-              className="w-400 h-150 bg-gray-700 absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl"
+              className="w-400 h-150 absolute text-white p-5 text-xl z-20 space-y-3 rounded-2xl"
               style={{
                 top: tooltipPosition.y - 200 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(53, 54, 58, 1)",
+                backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
               <h2 style={{ fontSize: 18 }}>
@@ -41,11 +41,11 @@ const HoverableHeader = ({ title }) => {
           )}
           {title == "Correlation Matrix" && (
             <div
-              className="w-400 h-200 bg-gray-700 absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl"
+              className="w-400 h-200  absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl"
               style={{
                 top: tooltipPosition.y - 300 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(53, 54, 58, 1)",
+                backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
               <h2 style={{ fontSize: 18 }}>
@@ -134,11 +134,11 @@ const HoverableHeader = ({ title }) => {
           )}
           {title == "Linear Regression" && (
             <div
-              className="w-500 h-300 bg-gray-700 absolute text-white p-5 text-xl z-20 space-y-3 rounded-2xl"
+              className="w-500 h-300 absolute text-white p-5 text-xl z-20 space-y-3 rounded-2xl"
               style={{
                 top: tooltipPosition.y - 300 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(53, 54, 58, 1)",
+                backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
               <h2 style={{ fontSize: 18 }}>
@@ -229,11 +229,11 @@ const HoverableHeader = ({ title }) => {
           )}
           {title == "Multiple Regression" && (
             <div
-              className="w-400 h-150 absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl rounded-2xl"
+              className="w-400 h-150 absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl"
               style={{
                 top: tooltipPosition.y - 200 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(53, 54, 58, 1)",
+                backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
               <h2 style={{ fontSize: 18 }}>

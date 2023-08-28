@@ -147,7 +147,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
     >
       <div
         className={`flex flex-col p-5 shadow-md rounded-2xl ${
-          nightMode ? "sfondo backdrop-blur-2xl" : "bg-red-500"
+          nightMode ? "controlPanel-background backdrop-blur-2xl" : "bg-red-500"
         }`}
       >
         <div className="flex justify-between">
@@ -157,8 +157,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className=" p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  backdrop-blur-lg"
-                style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
+                className=" p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md button-colors"
                 onClick={onRefreshButton}
               >
                 <svg
@@ -186,9 +185,8 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn"
+                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn button-colors"
                 onMouseEnter={handleMenuOpen}
-                style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
                 onMouseLeave={handleMenuClose}
               >
                 <svg
@@ -257,9 +255,8 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md "
+                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  button-colors"
                 onClick={handleWindButtonClick}
-                style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -283,10 +280,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             </div>
           </div>
 
-          <div
-            className="flex w-full mx-2 items-center justify-center  rounded"
-            style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
-          >
+          <div className="flex w-full mx-2 items-center justify-center rounded button-colors">
             <h2 className="text-white items-center px-1 text-xl font-bold select-none">
               {selectedDay}
             </h2>
@@ -300,9 +294,8 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md "
+                className="w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md button-colors"
                 onClick={handleWindHeatmapButtonClick}
-                style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -336,8 +329,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center"
-                style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
+                className="w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center  button-colors"
                 onClick={handle3DButtonClick}
               >
                 {!map3d ? (
@@ -358,9 +350,8 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md "
+                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  button-colors"
                 onClick={handleHeatCircleClick}
-                style={{ backgroundColor: "rgba(40, 40, 40, 1)" }}
               >
                 {heatCircleActive == "NONE" && (
                   <svg
@@ -480,7 +471,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               defaultValue={sliderValue + 1}
               railStyle={{
                 marginBottom: "20px",
-                backgroundColor: "rgba(70,70,70, 1)",
+                backgroundColor: "rgba(92, 112, 119, 0.681)",
                 height: 10,
                 userSelect: "none",
               }}
@@ -489,12 +480,12 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 borderColor: "white",
                 height: 20,
                 width: 20,
-                backgroundColor: "rgba(143, 144, 145, 1)",
+                backgroundColor: "rgba(70, 114, 131, 1)",
                 userSelect: "none",
               }}
               dotStyle={{
                 visibility: "visible",
-                backgroundColor: "rgba(255, 255, 255, 0.7)", // Change color here
+                backgroundColor: "rgba(255, 255, 255, 1)", // Change color here
                 width: 12, // Adjust size here
                 height: 12, // Adjust size here
                 border: "none", // Remove border

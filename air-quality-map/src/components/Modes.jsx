@@ -16,18 +16,17 @@ function Modes() {
   return (
     <div
       className="flex flex-col space-y-1 absolute  m-2 modes-shadow"
-      style={{ top: 280, right: 2 }}
+      style={{ top: 180, right: 2 }}
     >
       <div
-        className="tooltip-container rounded flex items-center justify-center border modes-border p-2 select-none"
+        className="tooltip-container rounded flex items-center justify-center border modes-border p-2 button-colors"
         style={{
-          backgroundColor: "rgba(40, 40, 40, 1)",
           width: 40,
           height: 40,
         }}
         onClick={handleNightModeClick}
       >
-        <button className="flex items-center tooltip-btn w-full h-full">
+        <button className="flex items-center tooltip-btn w-full h-full select-none transition duration-300 ease-in-out">
           {nightMode ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,18 +59,18 @@ function Modes() {
             </svg>
           )}
         </button>
+        <div className="absolute inset-0 bg-black opacity-0 transition duration-300 ease-in-out hover:opacity-10"></div>
         <span className="tooltip-text-modes p-2">Night Mode</span>
       </div>
       <div
-        className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border modes-border p-2"
+        className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border modes-border p-2 button-colors"
         style={{
-          backgroundColor: "rgba(40, 40, 40, 1)",
           width: 40,
           height: 40,
         }}
       >
         <button
-          className="rounded flex items-center tooltip-btn"
+          className="rounded flex items-center tooltip-btn  transition duration-300 ease-in-out"
           onClick={handleColorBlindClick}
         >
           {colorBlindMode ? (
@@ -116,6 +115,7 @@ function Modes() {
             </svg>
           )}
         </button>
+        <div className="absolute inset-0 bg-black opacity-0 transition duration-300 ease-in-out hover:opacity-10"></div>
         <span className="tooltip-text-modes p-2">Blind Mode</span>
       </div>
     </div>

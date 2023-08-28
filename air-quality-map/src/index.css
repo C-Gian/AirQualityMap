@@ -135,6 +135,10 @@ body {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
+.mapboxgl-ctrl-scale {
+  user-select: none;
+}
+
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
@@ -152,22 +156,18 @@ body {
   /* Aggiungi ulteriori stili per rendere il div visivamente disabilitato */
 }
 
-.sfondo {
-  background-color: rgba(116, 116, 116, 0.101);
-}
-
 /* Stilizza il controllo della scala */
 .mapboxgl-ctrl-scale {
   font-family: Arial, sans-serif;
   font-size: 12px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  background-color: rgba(48, 58, 62, 0);
   user-select: "none";
+  color: rgba(255, 255, 255, 1);
+  border: none !important;
 }
 
 .mapboxgl-ctrl-group {
-  background-color: rgba(40, 40, 40, 1); /* Colore di sfondo scuro */
+  background-color: rgba(58, 76, 82, 1); /* Colore di sfondo scuro */
   border: 0.1px solid #a0aec015;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3) !important;
 }
@@ -275,19 +275,23 @@ body {
 
 @keyframes pulsateWind {
   0% {
-    stroke: rgb(0, 0, 0);
+    stroke: rgb(255, 255, 255);
     stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
   }
   25% {
     stroke: rgb(
-      42,
-      152,
+      255,
+      255,
       255
     ); /* Colore blu più chiaro per l'effetto di pulsazione */
     stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
   }
   100% {
-    stroke: rgb(0, 89, 255); /* Mantieni il colore blu più chiaro alla fine */
+    stroke: rgb(
+      255,
+      255,
+      255
+    ); /* Mantieni il colore blu più chiaro alla fine */
     stroke-dashoffset: 0%; /* Mantieni il tratto all'interno della vista alla fine */
   }
 }
@@ -301,19 +305,23 @@ body {
 
 @keyframes pulsateWindHeat {
   0% {
-    stroke: rgb(0, 0, 0);
+    stroke: rgb(255, 255, 255);
     stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
   }
   25% {
     stroke: rgb(
-      80,
-      148,
-      17
+      255,
+      255,
+      255
     ); /* Colore blu più chiaro per l'effetto di pulsazione */
     stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
   }
   100% {
-    stroke: rgb(255, 0, 0); /* Mantieni il colore blu più chiaro alla fine */
+    stroke: rgb(
+      255,
+      255,
+      255
+    ); /* Mantieni il colore blu più chiaro alla fine */
     stroke-dashoffset: 0%; /* Mantieni il tratto all'interno della vista alla fine */
   }
 }
@@ -357,5 +365,35 @@ body {
 }
 
 .belcolorechiaro {
+  /* background-color: rgba(48, 58, 62, 1); */
   background-color: rgba(48, 58, 62, 1);
+}
+
+.blurred {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.controlPanel-background {
+  /* background-color: rgba(48, 58, 62, 0.5); */
+  background-color: rgba(35, 42, 47, 0.7);
+}
+
+.sidebarInfo-background {
+  background-color: rgba(58, 76, 82, 0.638);
+}
+
+.navbar-background,
+.sidebar-background {
+  /* background-color: rgba(48, 58, 62, 0.5); */
+  background-color: rgba(35, 42, 47, 0.765);
+}
+
+.button-colors {
+  background-color: rgba(58, 76, 82, 1);
+  /*background-color: rgba(48, 58, 62, 1);*/
+}
+
+.prova {
+  background-color: rgb(70, 114, 131);
 }
