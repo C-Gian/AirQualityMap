@@ -33,7 +33,7 @@ const HoverableHeader = ({ title }) => {
                 backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
-              <h2 style={{ fontSize: 18 }}>
+              <h2 className="normal-text-font" style={{ fontSize: 18 }}>
                 Interactive chart to visually demonstrates a correlation between
                 temperature and all pollutants
               </h2>
@@ -48,7 +48,7 @@ const HoverableHeader = ({ title }) => {
                 backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
-              <h2 style={{ fontSize: 18 }}>
+              <h2 className="normal-text-font" style={{ fontSize: 18 }}>
                 Shows the correlation between temperature and each pollutant.
               </h2>
               <div className="flex flex-col w-full">
@@ -141,7 +141,7 @@ const HoverableHeader = ({ title }) => {
                 backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
-              <h2 style={{ fontSize: 18 }}>
+              <h2 className="normal-text-font" style={{ fontSize: 18 }}>
                 Each chart shows the correlation between a polluttant and the
                 temperature, quantifies the strength and the direction of their
                 relationship using a straight line. This technique helps
@@ -170,9 +170,9 @@ const HoverableHeader = ({ title }) => {
                         strokeWidth="10"
                       />
                     </svg>
-                    <h2 className="mb-1">Up Line</h2>
+                    <h2 className="normal-text-font  mb-1">Up Line</h2>
                   </div>
-                  <h2 className="mb-1">Correlation</h2>
+                  <h2 className="normal-text-font  mb-1">Correlation</h2>
                 </div>
                 <div
                   className="flex justify-between items-center"
@@ -195,9 +195,9 @@ const HoverableHeader = ({ title }) => {
                         strokeWidth="10"
                       />
                     </svg>
-                    <h2 className="mb-1">Straight Line</h2>
+                    <h2 className="normal-text-font  mb-1">Straight Line</h2>
                   </div>
-                  <h2 className="mb-1">No Correlation</h2>
+                  <h2 className="normal-text-font  mb-1">No Correlation</h2>
                 </div>
                 <div
                   className="flex justify-between items-center"
@@ -220,7 +220,7 @@ const HoverableHeader = ({ title }) => {
                         strokeWidth="10"
                       />
                     </svg>
-                    <h2 className="mb-1">Down Line</h2>
+                    <h2 className="normal-text-font  mb-1">Down Line</h2>
                   </div>
                   <h2>Opposite Correlation</h2>
                 </div>
@@ -236,7 +236,7 @@ const HoverableHeader = ({ title }) => {
                 backgroundColor: "rgba(48, 58, 62, 1)",
               }}
             >
-              <h2 style={{ fontSize: 18 }}>
+              <h2 className="normal-text-font" style={{ fontSize: 18 }}>
                 This interactive chart performs multiple regression analysis to
                 understand the impact of different combinations of pollutants on
                 temperature

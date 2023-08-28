@@ -51,7 +51,7 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
 
   return (
     <div
-      className="flex flex-col items-center w-fit h-fit fixed pb-4 p-3 sfondo backdrop-blur-2xl rounded-2xl"
+      className="flex flex-col items-center w-fit h-fit fixed pb-4 p-3 sidebarInfo-background backdrop-blur-2xl rounded-2xl"
       style={{ left: x + 30, top: y - 200 }}
     >
       <div className="flex items-center">
@@ -64,11 +64,13 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
             height: "auto",
           }}
         />
-        <span className="text-4xl text-white ">{name}</span>
+        <span className="text-4xl text-white title-text-font">{name}</span>
       </div>
       <div className="flex justify-between items-center">
         <div className="flex flex-col w-fit h-fit items-center mt-4 overflow-hidden space-y-4">
-          <h2 className="text-white text-2xl items-center">AQI</h2>
+          <h2 className="text-white text-2xl items-center headers-text-font">
+            AQI
+          </h2>
           <AQIShow
             hexColor={hexColor}
             AQI={AQI}

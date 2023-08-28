@@ -281,7 +281,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
           </div>
 
           <div className="flex w-full mx-2 items-center justify-center rounded button-colors">
-            <h2 className="text-white items-center px-1 text-xl font-bold select-none">
+            <h2 className="text-white items-center px-1 text-xl select-none light-text-font">
               {selectedDay}
             </h2>
           </div>
@@ -355,46 +355,152 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               >
                 {heatCircleActive == "NONE" && (
                   <svg
+                    className="overflow-hidden"
+                    version="1.0"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="white"
-                    viewBox="0 0 256 256"
-                    strokeWidth={1.5}
-                    stroke="white"
-                    className="w-7 h-7"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet"
                   >
-                    <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,208V59.31L196.69,208ZM59.31,48H208V196.7Z"></path>
+                    <g
+                      transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                      fill="#FFF"
+                      stroke="none"
+                    >
+                      <path
+                        d="M868 5105 c-371 -62 -700 -346 -816 -705 -53 -163 -52 -118 -52
+                 -1840 0 -1722 -1 -1677 52 -1840 118 -362 446 -644 823 -705 135 -22 3235 -22
+                 3370 0 437 71 789 423 860 860 23 138 22 3240 0 3371 -76 442 -423 788 -860
+                 859 -125 21 -3255 20 -3377 0z m3356 -471 c33 -9 88 -30 121 -47 78 -41 201
+                 -164 242 -242 67 -128 63 -15 63 -1785 0 -1770 4 -1657 -63 -1785 -41 -78
+                 -164 -201 -242 -242 -128 -67 -15 -63 -1785 -63 -1770 0 -1657 -4 -1785 63
+                 -78 41 -201 164 -242 242 -67 128 -63 15 -63 1785 0 1770 -4 1657 63 1785 40
+                 75 163 200 237 240 128 68 2 63 1784 64 1436 1 1615 -1 1670 -15z"
+                      />
+                    </g>
                   </svg>
                 )}
                 {heatCircleActive == "HEAT" && (
                   <svg
+                    className="overflow-hidden"
+                    version="1.0"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="white"
-                    className="w-7 h-7"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 180.000000 173.000000"
+                    preserveAspectRatio="xMidYMid meet"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                    />
+                    <g
+                      transform="translate(0.000000,173.000000) scale(0.100000,-0.100000)"
+                      fill="#FFF"
+                      stroke="none"
+                    >
+                      <path
+                        d="M888 1700 c-54 -29 -81 -73 -86 -141 -6 -77 27 -137 91 -168 157 -76
+                 312 79 236 236 -41 84 -154 118 -241 73z"
+                      />
+                      <path
+                        d="M159 1641 c-32 -33 -36 -58 -14 -100 25 -49 90 -57 130 -16 41 40 33
+                 105 -16 130 -42 22 -67 18 -100 -14z"
+                      />
+                      <path
+                        d="M1645 1595 c-47 -46 -22 -134 41 -149 37 -10 82 11 99 45 21 40 19
+                 63 -11 98 -34 41 -92 44 -129 6z"
+                      />
+                      <path
+                        d="M305 1007 c-70 -39 -103 -135 -71 -210 48 -116 200 -138 285 -41 122
+                 138 -52 342 -214 251z"
+                      />
+                      <path
+                        d="M1399 947 c-82 -44 -124 -139 -105 -240 9 -49 76 -122 131 -143 125
+                 -47 266 39 282 173 19 166 -159 288 -308 210z"
+                      />
+                      <path
+                        d="M773 299 c-99 -49 -118 -171 -39 -248 62 -60 150 -60 212 0 80 78 60
+                 205 -40 250 -53 24 -81 24 -133 -2z"
+                      />
+                      <path
+                        d="M64 190 c-63 -26 -71 -114 -15 -157 21 -16 81 -16 102 0 22 17 39 51
+                 39 81 0 54 -74 99 -126 76z"
+                      />
+                      <path
+                        d="M1525 178 c-32 -19 -44 -40 -45 -81 0 -95 121 -122 165 -36 39 74
+                 -48 158 -120 117z"
+                      />
+                    </g>
                   </svg>
                 )}
                 {heatCircleActive == "DOTS" && (
                   <svg
+                    className="overflow-hidden"
+                    version="1.0"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="white"
-                    className="w-7 h-7"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 512.000000 512.000000"
+                    preserveAspectRatio="xMidYMid meet"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
+                    <g
+                      transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                      fill="#FFF"
+                      stroke="none"
+                    >
+                      <path
+                        d="M885 4471 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M2485 4471 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M4085 4471 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M885 2871 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M2485 2871 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M4085 2871 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M885 1271 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M2485 1271 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                      <path
+                        d="M4085 1271 c-92 -24 -173 -90 -215 -176 -34 -69 -35 -198 -2 -265 34
+                 -71 75 -114 144 -151 58 -31 70 -34 148 -33 72 0 93 4 136 26 75 40 107 70
+                 145 140 31 58 34 70 34 148 0 78 -3 90 -34 148 -57 104 -144 160 -260 167 -36
+                 2 -79 1 -96 -4z"
+                      />
+                    </g>
                   </svg>
                 )}
               </button>
@@ -413,7 +519,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               marks={{
                 1: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap ml-2"
+                    className="text-white  select-none whitespace-nowrap ml-2 normal-text-font"
                     style={{ fontSize: 15 }}
                   >
                     Day 1
@@ -421,7 +527,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 2: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap ml-1"
+                    className="text-white  select-none whitespace-nowrap ml-1 light-text-font"
                     style={{ fontSize: 15 }}
                   >
                     2
@@ -429,7 +535,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 3: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap ml-1"
+                    className="text-white  select-none whitespace-nowrap ml-1 light-text-font"
                     style={{ fontSize: 15 }}
                   >
                     3
@@ -437,7 +543,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 4: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap"
+                    className="text-white  select-none whitespace-nowrap normal-text-font"
                     style={{ fontSize: 15 }}
                   >
                     4
@@ -445,7 +551,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 5: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap mr-1"
+                    className="text-white  select-none whitespace-nowrap mr-1"
                     style={{ fontSize: 15 }}
                   >
                     5
@@ -453,7 +559,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 6: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap mr-1"
+                    className="text-white  select-none whitespace-nowrap mr-1"
                     style={{ fontSize: 15 }}
                   >
                     6
@@ -461,7 +567,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 7: (
                   <span
-                    className="text-white font-semibold select-none whitespace-nowrap mr-2"
+                    className="text-white  select-none whitespace-nowrap mr-2"
                     style={{ fontSize: 15 }}
                   >
                     Day 7
@@ -480,7 +586,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 borderColor: "white",
                 height: 20,
                 width: 20,
-                backgroundColor: "rgba(70, 114, 131, 1)",
+                backgroundColor: "rgba(199, 61, 61, 1)",
                 userSelect: "none",
               }}
               dotStyle={{

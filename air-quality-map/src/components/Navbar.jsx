@@ -119,14 +119,14 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
         </div>
 
         <div className="flex justify-between items-center space-x-3">
-          <div className="tooltip-container w-fit h-fit flex items-center justify-center">
-            <button className="rounded-full w-fit h-fit" onClick={toggleModal}>
+          <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
+            <a className="github-button" onClick={toggleModal}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-info-hexagon-filled"
-                width={30}
+                className="icon icon-tabler icon-tabler-brand-github"
                 viewBox="0 0 24 24"
-                strokeWidth={2}
+                width={30}
+                strokeWidth="2"
                 stroke="white"
                 fill="white"
                 strokeLinecap="round"
@@ -139,12 +139,12 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                   fill="white"
                 ></path>
               </svg>
-            </button>
+            </a>
             <span className="tooltip-text p-2">Github</span>
           </div>
           <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
             <a
-              className="flex flex-col w-fit h-fit justify-center items-center"
+              className="github-button"
               href="https://github.com/C-Gian/Dev-Mapbox"
               target="_blank"
             >

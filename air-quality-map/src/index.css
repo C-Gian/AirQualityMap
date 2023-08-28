@@ -50,14 +50,18 @@ body {
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background-color: #9f9f9f; /* Colore della barra di scorrimento grigia */
+  background-color: #9f9f9fbd; /* Colore della barra di scorrimento grigia */
   height: 5px;
   border-radius: 100px; /* Smussatura dei bordi */
 }
 
 /* Cambia colore quando si passa sopra con il mouse */
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: #c0c0c0; /* Cambia il colore al passaggio del mouse */
+  background-color: rgb(
+    205,
+    104,
+    104
+  ); /* Cambia il colore al passaggio del mouse */
 }
 
 /* Stili per lo schermo di caricamento */
@@ -360,6 +364,42 @@ body {
   src: url("./fonts/SpicyPotatos.ttf") format("truetype"); /* Percorso al font */
 }
 
+@font-face {
+  font-family: "Poppins"; /* Dà un nome al font */
+  src: url("./fonts/Poppins-Regular.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "PoppinsMedium"; /* Dà un nome al font */
+  src: url("./fonts/Poppins-Medium.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "PoppinsBold"; /* Dà un nome al font */
+  src: url("./fonts/Poppins-Bold.ttf") format("truetype"); /* Percorso al font */
+}
+
+@font-face {
+  font-family: "PoppinsLight"; /* Dà un nome al font */
+  src: url("./fonts/Poppins-Light.ttf") format("truetype"); /* Percorso al font */
+}
+
+.title-text-font {
+  font-family: "PoppinsBold", sans-serif;
+}
+
+.light-text-font {
+  font-family: "PoppinsLight", sans-serif;
+}
+
+.headers-text-font {
+  font-family: "PoppinsMedium", sans-serif;
+}
+
+.normal-text-font {
+  font-family: "Poppins", sans-serif;
+}
+
 .logo-title {
   font-family: "Hangout", sans-serif; /* Usa il font personalizzato */
 }
@@ -394,6 +434,16 @@ body {
   /*background-color: rgba(48, 58, 62, 1);*/
 }
 
-.prova {
-  background-color: rgb(70, 114, 131);
+.github-button {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-button:hover svg path:nth-child(2) {
+  fill: rgb(205, 104, 104);
+  stroke: rgb(205, 104, 104);
 }
