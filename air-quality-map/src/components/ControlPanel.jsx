@@ -228,10 +228,11 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               </button>
               {isMenuOpen && (
                 <div
-                  className="absolute bg-white border border-gray-300 rounded shadow w-300 cursor-pointer"
+                  className={`absolute rounded shadow w-300 cursor-pointer`}
                   style={{
                     top: "-310px",
                     right: "0px",
+                    backgroundColor: nightMode ? "rgb(45,56,61)" : "#FFF",
                   }}
                   onMouseEnter={handleMenuOpen}
                   onMouseLeave={handleMenuClose}
@@ -239,17 +240,17 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   {Object.keys(options).map((optionKey) => (
                     <div
                       key={optionKey}
-                      className={`flex items-center space-x-2 font-semibold pt-2 pb-2 text-xl cursor-pointer ${
-                        checkedItem === optionKey ? "bg-blue-300" : "" // Aggiungiamo la classe 'selected' se l'opzione è selezionata
-                      }`}
+                      className={`flex items-center space-x-2 pt-2 pb-2 text-xl cursor-pointer `}
+                      style={{
+                        backgroundColor:
+                          checkedItem === optionKey
+                            ? "rgba(255, 0, 0, 0.5)"
+                            : "",
+                        fontFamily: "Poppins",
+                        color: nightMode ? "#FFF" : "#333",
+                      }}
                       onClick={() => handleCheckboxChange(optionKey)}
                     >
-                      {/* <input
-                      type="checkbox"
-                      className="w-4 h-4"
-                      checked={checkedItem === optionKey}
-                      onChange={() => handleCheckboxChange(optionKey)}
-                    /> */}
                       <span className="ml-2 select-none pl-2 pr-2">
                         {options[optionKey]}
                       </span>
@@ -277,7 +278,8 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={`icon icon-tabler icon-tabler-wind w-7 h-7 ${
-                    wind ? "wind-animation" : ""
+                    (nightMode ? "night-mode" : "",
+                    wind ? "wind-animation" : "")
                   }`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
@@ -331,7 +333,8 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className={`icon icon-tabler icon-tabler-sun-wind w-7 h-7 ${
-                    windHeatmap ? "windheatmap-animation" : ""
+                    (nightMode ? "night-mode" : "",
+                    windHeatmap ? "windheatmap-animation" : "")
                   }`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"

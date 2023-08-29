@@ -219,7 +219,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`icon icon-tabler icon-tabler-point-filled mx-2 ${
-              nightMode ? "" : "light-mode-text-color"
+              nightMode ? "text-white" : "light-mode-text-color"
             }`}
             width="20"
             height="20"
@@ -286,8 +286,18 @@ const Sidebar = ({ infos, bulkDatas }) => {
       >
         <div className="mr-2">
           <div className="flex w-full h-200 items-center justify-around mt-5">
-            <div className="flex h-full flex-col items-center justify-between">
-              <h2 className="headers-text-font  text-2xl">AQI</h2>
+            <div
+              className={`flex h-full flex-col items-center justify-between ${
+                nightMode ? "" : "light-mode-text-color"
+              }`}
+            >
+              <h2
+                className={`headers-text-font text-2xl ${
+                  nightMode ? "night-mode" : ""
+                }`}
+              >
+                AQI
+              </h2>
               <AQIShow
                 hexColor={hexColor}
                 AQI={AQI}
@@ -309,7 +319,11 @@ const Sidebar = ({ infos, bulkDatas }) => {
             </div>
           </div>
           <div className="mt-10">
-            <h2 className="headers-text-font  text-2xl mb-3">
+            <h2
+              className={`headers-text-font text-2xl mb-3 ${
+                nightMode ? "text-white" : "light-mode-text-color"
+              }`}
+            >
               Polluttants Levels
             </h2>
             <PollsLevelsChart
@@ -324,8 +338,8 @@ const Sidebar = ({ infos, bulkDatas }) => {
           <div
             className={`h-fit w-full mt-10 flex-col justify-between p-5 rounded-2xl shadow-md ${
               nightMode
-                ? "sidebarInfo-background"
-                : "sidebarInfo-background-light"
+                ? "sidebarInfo-background text-white"
+                : "sidebarInfo-background-light light-mode-text-color"
             }`}
           >
             <div className="flex justify-between">
@@ -435,6 +449,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 <PollsTempCorrChart
                   datas={bulkDatas}
                   id={null}
+                  nightMode={nightMode}
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
               </div>

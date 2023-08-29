@@ -285,14 +285,14 @@ body {
   user-select: none;
 }
 
-.wind-animation {
+.night-mode .wind-animation {
   stroke: rgb(0, 0, 0); /* Colore iniziale delle linee dell'SVG */
   stroke-dasharray: 100%; /* Imposta la lunghezza del tratto su tutta la lunghezza del percorso */
   stroke-dashoffset: 100%; /* Sposta il tratto fuori dalla vista */
-  animation: pulsateWind 3s infinite linear; /* Animazione dello spostamento del tratto */
+  animation: pulsateWindNight 3s infinite linear; /* Animazione dello spostamento del tratto */
 }
 
-@keyframes pulsateWind {
+@keyframes pulsateWindNight {
   0% {
     stroke: rgb(255, 255, 255);
     stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
@@ -315,14 +315,62 @@ body {
   }
 }
 
+.wind-animation {
+  stroke: #333; /* Colore iniziale delle linee dell'SVG */
+  stroke-dasharray: 100%; /* Imposta la lunghezza del tratto su tutta la lunghezza del percorso */
+  stroke-dashoffset: 100%; /* Sposta il tratto fuori dalla vista */
+  animation: pulsateWind 3s infinite linear; /* Animazione dello spostamento del tratto */
+}
+
+@keyframes pulsateWind {
+  0% {
+    stroke: #333;
+    stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
+  }
+  25% {
+    stroke: #333; /* Colore blu più chiaro per l'effetto di pulsazione */
+    stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
+  }
+  100% {
+    stroke: #333; /* Mantieni il colore blu più chiaro alla fine */
+    stroke-dashoffset: 0%; /* Mantieni il tratto all'interno della vista alla fine */
+  }
+}
+
 .windheatmap-animation {
-  stroke: rgb(0, 0, 0); /* Colore iniziale delle linee dell'SVG */
+  stroke: #333; /* Colore iniziale delle linee dell'SVG */
   stroke-dasharray: 100%; /* Imposta la lunghezza del tratto su tutta la lunghezza del percorso */
   stroke-dashoffset: 100%; /* Sposta il tratto fuori dalla vista */
   animation: pulsateWindHeat 3s infinite linear; /* Animazione dello spostamento del tratto */
 }
 
 @keyframes pulsateWindHeat {
+  0% {
+    stroke: #333;
+    stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
+  }
+  25% {
+    stroke: #333; /* Colore blu più chiaro per l'effetto di pulsazione */
+    stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
+  }
+  65% {
+    stroke: #333; /* Colore blu più chiaro per l'effetto di pulsazione */
+    stroke-dashoffset: 0%; /* Tratto all'interno della vista durante l'animazione */
+  }
+  100% {
+    stroke: #333; /* Mantieni il colore blu più chiaro alla fine */
+    stroke-dashoffset: 0%; /* Mantieni il tratto all'interno della vista alla fine */
+  }
+}
+
+.night-mode .windheatmap-animation {
+  stroke: rgb(0, 0, 0); /* Colore iniziale delle linee dell'SVG */
+  stroke-dasharray: 100%; /* Imposta la lunghezza del tratto su tutta la lunghezza del percorso */
+  stroke-dashoffset: 100%; /* Sposta il tratto fuori dalla vista */
+  animation: pulsateWindHeatNight 3s infinite linear; /* Animazione dello spostamento del tratto */
+}
+
+@keyframes pulsateWindHeatNight {
   0% {
     stroke: rgb(255, 255, 255);
     stroke-dashoffset: 100%; /* Tratto fuori dalla vista all'inizio */
@@ -401,21 +449,50 @@ body {
 
 .title-text-font {
   font-family: "PoppinsBold", sans-serif;
+  color: #333;
 }
 
 .light-text-font {
   font-family: "PoppinsLight", sans-serif;
+  color: #333;
 }
 
 .headers-text-font {
   font-family: "PoppinsMedium", sans-serif;
+  color: #333;
 }
 
 .normal-text-font {
   font-family: "Poppins", sans-serif;
+  color: #333;
 }
 
 .logo-title {
+  font-family: "Hangout", sans-serif; /* Usa il font personalizzato */
+  color: #333;
+}
+
+.night-mode .title-text-font {
+  font-family: "PoppinsBold", sans-serif;
+  color: #fff;
+}
+
+.night-mode .light-text-font {
+  font-family: "PoppinsLight", sans-serif;
+  color: #fff;
+}
+
+.night-mode .headers-text-font {
+  font-family: "PoppinsMedium", sans-serif;
+  color: #fff;
+}
+
+.night-mode .normal-text-font {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+.night-mode .logo-title {
   font-family: "Hangout", sans-serif; /* Usa il font personalizzato */
 }
 

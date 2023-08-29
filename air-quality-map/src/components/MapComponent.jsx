@@ -236,24 +236,42 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
       if (wind) {
         //window.windLayer.stop();
         window.windLayer.setWindOptions({
-          colorScale: [
-            "rgb(255, 255, 255)", // Bianco
-            "rgb(220, 235, 255)",
-            "rgb(190, 215, 245)",
-            "rgb(160, 195, 235)",
-            "rgb(130, 175, 225)",
-            "rgb(100, 155, 215)",
-            "rgb(75, 135, 205)",
-            "rgb(50, 115, 195)",
-            "rgb(30, 95, 185)",
-            "rgb(15, 75, 175)",
-            "rgb(5, 55, 165)",
-            "rgb(1, 40, 155)",
-            "rgb(2, 25, 145)",
-            "rgb(1, 15, 135)",
-            "rgb(0, 5, 125)",
-            "rgb(0, 0, 115)", // Blu scuro
-          ],
+          colorScale: nightMode
+            ? [
+                "rgb(255, 255, 255)", // Bianco
+                "rgb(220, 235, 255)",
+                "rgb(190, 215, 245)",
+                "rgb(160, 195, 235)",
+                "rgb(130, 175, 225)",
+                "rgb(100, 155, 215)",
+                "rgb(75, 135, 205)",
+                "rgb(50, 115, 195)",
+                "rgb(30, 95, 185)",
+                "rgb(15, 75, 175)",
+                "rgb(5, 55, 165)",
+                "rgb(1, 40, 155)",
+                "rgb(2, 25, 145)",
+                "rgb(1, 15, 135)",
+                "rgb(0, 5, 125)",
+                "rgb(0, 0, 115)", // Blu scuro
+              ]
+            : [
+                "rgb(240, 250, 255)",
+                "rgb(200, 230, 255)",
+                "rgb(160, 210, 255)",
+                "rgb(120, 190, 255)",
+                "rgb(80, 170, 255)",
+                "rgb(40, 150, 255)",
+                "rgb(0, 130, 255)",
+                "rgb(0, 110, 255)",
+                "rgb(0, 90, 255)",
+                "rgb(0, 70, 255)",
+                "rgb(0, 50, 255)",
+                "rgb(0, 30, 255)",
+                "rgb(0, 10, 255)",
+                "rgb(0, 0, 255)",
+                "rgb(0, 0, 200)",
+              ],
           /* colorScale: [
             "rgb(36,104, 180)",
             "rgb(60,157, 194)",
@@ -280,24 +298,42 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
       } else {
         //window.windLayer.render();
         window.windLayer.setWindOptions({
-          colorScale: [
-            "rgb(255, 255, 255)", // Bianco
-            "rgb(220, 235, 255)",
-            "rgb(190, 215, 245)",
-            "rgb(160, 195, 235)",
-            "rgb(130, 175, 225)",
-            "rgb(100, 155, 215)",
-            "rgb(75, 135, 205)",
-            "rgb(50, 115, 195)",
-            "rgb(30, 95, 185)",
-            "rgb(15, 75, 175)",
-            "rgb(5, 55, 165)",
-            "rgb(1, 40, 155)",
-            "rgb(2, 25, 145)",
-            "rgb(1, 15, 135)",
-            "rgb(0, 5, 125)",
-            "rgb(0, 0, 115)", // Blu scuro
-          ],
+          colorScale: nightMode
+            ? [
+                "rgb(255, 255, 255)", // Bianco
+                "rgb(220, 235, 255)",
+                "rgb(190, 215, 245)",
+                "rgb(160, 195, 235)",
+                "rgb(130, 175, 225)",
+                "rgb(100, 155, 215)",
+                "rgb(75, 135, 205)",
+                "rgb(50, 115, 195)",
+                "rgb(30, 95, 185)",
+                "rgb(15, 75, 175)",
+                "rgb(5, 55, 165)",
+                "rgb(1, 40, 155)",
+                "rgb(2, 25, 145)",
+                "rgb(1, 15, 135)",
+                "rgb(0, 5, 125)",
+                "rgb(0, 0, 115)", // Blu scuro
+              ]
+            : [
+                "rgb(240, 250, 255)",
+                "rgb(200, 230, 255)",
+                "rgb(160, 210, 255)",
+                "rgb(120, 190, 255)",
+                "rgb(80, 170, 255)",
+                "rgb(40, 150, 255)",
+                "rgb(0, 130, 255)",
+                "rgb(0, 110, 255)",
+                "rgb(0, 90, 255)",
+                "rgb(0, 70, 255)",
+                "rgb(0, 50, 255)",
+                "rgb(0, 30, 255)",
+                "rgb(0, 10, 255)",
+                "rgb(0, 0, 255)",
+                "rgb(0, 0, 200)",
+              ],
           /* colorScale: [
             "rgb(36,104, 180)",
             "rgb(60,157, 194)",
@@ -358,6 +394,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
   }, [sidebar]);
 
   useEffect(() => {
+    dispatch(setCurrentLayer("country"));
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYy1naWFuIiwiYSI6ImNsanB3MXVjdTAwdmUzZW80OWwxazl2M2EifQ.O0p5OWTAIw07QDYHYTH1rw";
     let style = "mapbox://styles/mapbox/dark-v10";
@@ -696,24 +733,42 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
 
       window.windLayer = new WindLayer("wind", windDatas, {
         windOptions: {
-          colorScale: [
-            "rgb(255, 255, 255)", // Bianco
-            "rgb(220, 235, 255)",
-            "rgb(190, 215, 245)",
-            "rgb(160, 195, 235)",
-            "rgb(130, 175, 225)",
-            "rgb(100, 155, 215)",
-            "rgb(75, 135, 205)",
-            "rgb(50, 115, 195)",
-            "rgb(30, 95, 185)",
-            "rgb(15, 75, 175)",
-            "rgb(5, 55, 165)",
-            "rgb(1, 40, 155)",
-            "rgb(2, 25, 145)",
-            "rgb(1, 15, 135)",
-            "rgb(0, 5, 125)",
-            "rgb(0, 0, 115)", // Blu scuro
-          ],
+          colorScale: nightMode
+            ? [
+                "rgb(255, 255, 255)", // Bianco
+                "rgb(220, 235, 255)",
+                "rgb(190, 215, 245)",
+                "rgb(160, 195, 235)",
+                "rgb(130, 175, 225)",
+                "rgb(100, 155, 215)",
+                "rgb(75, 135, 205)",
+                "rgb(50, 115, 195)",
+                "rgb(30, 95, 185)",
+                "rgb(15, 75, 175)",
+                "rgb(5, 55, 165)",
+                "rgb(1, 40, 155)",
+                "rgb(2, 25, 145)",
+                "rgb(1, 15, 135)",
+                "rgb(0, 5, 125)",
+                "rgb(0, 0, 115)", // Blu scuro
+              ]
+            : [
+                "rgb(240, 250, 255)",
+                "rgb(200, 230, 255)",
+                "rgb(160, 210, 255)",
+                "rgb(120, 190, 255)",
+                "rgb(80, 170, 255)",
+                "rgb(40, 150, 255)",
+                "rgb(0, 130, 255)",
+                "rgb(0, 110, 255)",
+                "rgb(0, 90, 255)",
+                "rgb(0, 70, 255)",
+                "rgb(0, 50, 255)",
+                "rgb(0, 30, 255)",
+                "rgb(0, 10, 255)",
+                "rgb(0, 0, 255)",
+                "rgb(0, 0, 200)",
+              ],
           /* colorScale: [
             "rgb(36,104, 180)",
             "rgb(60,157, 194)",
@@ -1022,6 +1077,8 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
           y={popupPosition.y}
           hoveredState={hoveredState}
           hoveredStateColor={hoveredStateColor}
+          nightMode={nightMode}
+          colorBlindMode={colorBlind}
         />
       )}
     </div>

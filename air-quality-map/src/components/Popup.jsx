@@ -2,8 +2,16 @@ import React from "react";
 import AQIShow from "./AQIShow";
 import CountryFlag from "react-country-flag";
 import PopupChart from "./PopupChart";
+import { color } from "d3";
 
-const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
+const Popup = ({
+  x,
+  y,
+  hoveredState,
+  hoveredStateColor,
+  nightMode,
+  colorBlindMode,
+}) => {
   //console.log(hoveredState[0]);
   let hoveredState2 = null;
   let name = "";
@@ -80,7 +88,11 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
           ></AQIShow>
         </div>
         <div className="ml-50">
-          <PopupChart data={polls}></PopupChart>
+          <PopupChart
+            data={polls}
+            nightMode={nightMode}
+            colorBlindMode={colorBlindMode}
+          ></PopupChart>
         </div>
       </div>
     </div>

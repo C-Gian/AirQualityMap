@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 
-function PopupChart({ data }) {
+function PopupChart({ data, nightMode, colorBlindMode }) {
   const chartRef = useRef();
 
   useEffect(() => {
@@ -41,26 +41,30 @@ function PopupChart({ data }) {
           x: {
             display: false, // Nasconde le scritte sull'asse x
             grid: {
-              color: "rgba(255, 255, 255, 0)", // Griglia bianca con opacità 0.3
+              color: nightMode
+                ? "rgba(255, 255, 255, 0.1)"
+                : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
             },
             ticks: {
               font: {
                 family: "PoppinsLight", // Imposta il font desiderato
                 size: 12, // Imposta la dimensione del font desiderata
               },
-              color: "white", // Colore delle etichette dell'asse Y
+              color: nightMode ? "white" : "#333",
             },
           },
           y: {
             display: true, // Nasconde le scritte sull'asse y
             grid: {
-              color: "rgba(255, 255, 255, 0)", // Griglia bianca con opacità 0.3
+              color: nightMode
+                ? "rgba(255, 255, 255, 0.1)"
+                : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
             },
             ticks: {
               font: {
                 size: 12, // Dimensione del carattere per le etichette dell'asse Y
               },
-              color: "white", // Colore delle etichette dell'asse Y
+              color: nightMode ? "white" : "#333",
             },
           },
         },

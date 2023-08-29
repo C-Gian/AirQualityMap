@@ -253,7 +253,16 @@ const PollsTempCorrChart = ({ datas, id, nightMode, colorBlind }) => {
   };
 
   useEffect(() => {
-    const myChart = new Chart(chartRef.current, config);
+    const canvas = chartRef.current;
+
+    // Verifica se esiste già un grafico sul canvas
+    if (canvas && canvas.chart) {
+      canvas.chart.destroy(); // Distruggi l'istanza del grafico esistente
+    }
+    const ctx = canvas.getContext("2d");
+
+    const myChart = new Chart(ctx, config);
+    canvas.chart = myChart;
     myChart.zoom(2);
     myChart.pan(
       {
@@ -267,7 +276,7 @@ const PollsTempCorrChart = ({ datas, id, nightMode, colorBlind }) => {
     return () => {
       myChart.destroy();
     };
-  }, []);
+  }, [datas, nightMode, colorBlind]);
 
   return <canvas ref={chartRef}></canvas>;
 };

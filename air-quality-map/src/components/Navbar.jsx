@@ -44,7 +44,7 @@ const Navbar = () => {
           >
             <g
               transform="translate(0.000000,540.000000) scale(0.100000,-0.100000)"
-              fill="#FFF"
+              fill={`${nightMode ? "#FFF" : "#333"}`}
               stroke="none"
             >
               <path
@@ -113,8 +113,12 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
             </g>
           </svg>
           <span
-            className="text-white logo-title select-none"
-            style={{ fontSize: 25 }}
+            className={`select-none `}
+            style={{
+              fontSize: 25,
+              fontFamily: "Hangout",
+              color: nightMode ? "#FFF" : "#333",
+            }}
           >
             Air Quality Map
           </span>
@@ -138,11 +142,10 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                 <path
                   d="M10.425 1.414a3.33 3.33 0 0 1 3.026 -.097l.19 .097l6.775 3.995l.096 .063l.092 .077l.107 .075a3.224 3.224 0 0 1 1.266 2.188l.018 .202l.005 .204v7.284c0 1.106 -.57 2.129 -1.454 2.693l-.17 .1l-6.803 4.302c-.918 .504 -2.019 .535 -3.004 .068l-.196 -.1l-6.695 -4.237a3.225 3.225 0 0 1 -1.671 -2.619l-.007 -.207v-7.285c0 -1.106 .57 -2.128 1.476 -2.705l6.95 -4.098zm1.575 9.586h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"
                   strokeWidth="0"
-                  fill="white"
+                  fill={`${nightMode ? "#FFF" : "#333"}`}
                 ></path>
               </svg>
             </a>
-            <span className="tooltip-text p-2">Github</span>
           </div>
           <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
             <a
@@ -156,8 +159,8 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                 viewBox="0 0 24 24"
                 width={30}
                 strokeWidth="2"
-                stroke="white"
-                fill="white"
+                stroke={`${nightMode ? "#FFF" : "#333"}`}
+                fill={`${nightMode ? "#FFF" : "#333"}`}
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
@@ -165,7 +168,6 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                 <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
               </svg>
             </a>
-            <span className="tooltip-text p-2">Github</span>
           </div>
         </div>
       </div>
@@ -181,11 +183,15 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
             style={{
               backgroundColor: nightMode
                 ? "rgba(53, 54, 58, 0.5)"
-                : "rgba(75 ,85 ,99, 1)",
+                : "rgba(255, 255, 255, 0)",
             }}
           >
             <button
-              className="absolute top-2 right-2 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+              className={`absolute top-2 right-2 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl${
+                nightMode
+                  ? "text-gray-300 hover:text-gray-100"
+                  : "light-mode-text-color hover:text-gray-100"
+              }`}
               onClick={toggleModal}
             >
               <svg
@@ -205,20 +211,20 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
             </button>
             <div className="flex flex-col space-y-10">
               <div className="flex flex-col">
-                <span className="normal-text-font text-white text-lg font-bold">
+                <span className="normal-text-font  text-lg font-bold">
                   What is Air Quality Map?
                 </span>
-                <span className="normal-text-font text-white text-base">
+                <span className="normal-text-font  text-base">
                   Air Quality Map is a web application that provides users with
                   an interactive color-coded map based on the Air Quality Index
                   (AQI) of countries and regions or states.
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="normal-text-font text-white text-lg font-bold">
+                <span className="normal-text-font  text-lg font-bold">
                   What is AQI?
                 </span>
-                <span className="normal-text-font text-white text-base">
+                <span className="normal-text-font  text-base">
                   Air Quality Index (AQI) is a tool designed to measure the air
                   quality in a specific area. Higher AQI level indicates more
                   dangerous air to breathe.
@@ -232,7 +238,7 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: startColor,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">Good</h2>
+                    <h2 className="light-text-font  text-xs">Good</h2>
                   </div>
                   <div className="flex  w-full h-full flex-col justify-center items-center space-y-1">
                     <div
@@ -242,9 +248,7 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: mid1Color,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">
-                      Moderate
-                    </h2>
+                    <h2 className="light-text-font  text-xs">Moderate</h2>
                   </div>
                   <div className="flex w-full h-full flex-col justify-center items-center space-y-1">
                     <div
@@ -254,7 +258,7 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: mid2Color,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs text-center">
+                    <h2 className="light-text-font  text-xs text-center">
                       Unhealthy for Sensitive Groups
                     </h2>
                   </div>
@@ -266,9 +270,7 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: mid3Color,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">
-                      Unhealthy
-                    </h2>
+                    <h2 className="light-text-font  text-xs">Unhealthy</h2>
                   </div>
                   <div className="flex w-full h-full flex-col justify-center items-center space-y-1">
                     <div
@@ -278,7 +280,7 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: mid4Color,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs text-center">
+                    <h2 className="light-text-font  text-xs text-center">
                       Very Unhealthy
                     </h2>
                   </div>
@@ -290,27 +292,25 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: endColor,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">
-                      Hazardous
-                    </h2>
+                    <h2 className="light-text-font  text-xs">Hazardous</h2>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="normal-text-font text-white text-lg font-bold">
+                <span className="normal-text-font  text-lg font-bold">
                   Why is important to monitor AQI?
                 </span>
-                <span className="normal-text-font text-white text-base">
+                <span className="normal-text-font  text-base">
                   Monitoring AQI is of really important due to the perilous
                   nature of pollutants for both human beings and the
                   environment.
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="normal-text-font text-white text-lg font-bold">
+                <span className="normal-text-font  text-lg font-bold">
                   How is AQI calculated?
                 </span>
-                <span className="normal-text-font text-white text-base">
+                <span className="normal-text-font  text-base">
                   AQI is calculated using a formula that computes the sub-index
                   for each pollutant. The highest sub-index is then selected to
                   determine the AQI value.
