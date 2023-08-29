@@ -187,7 +187,7 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
             }}
           >
             <button
-              className={`absolute top-2 right-2 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl${
+              className={`absolute top-0 right-0 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl ${
                 nightMode
                   ? "text-gray-300 hover:text-gray-100"
                   : "light-mode-text-color hover:text-gray-100"
