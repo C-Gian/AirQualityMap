@@ -6,6 +6,7 @@ function PollsLevelsChart({
   allDays,
   isState,
   sliderValue,
+  nightMode,
   colorBlind,
 }) {
   const labels = Object.keys(dataR.properties.measurements);
@@ -96,13 +97,15 @@ function PollsLevelsChart({
           display: false,
         },
         grid: {
-          color: "rgba(255, 255, 255, 0.5)", // Colore delle linee di griglia sull'asse Y
+          color: nightMode
+            ? "rgba(255, 255, 255, 0.5)"
+            : "rgba(51, 51, 51, 0.5)", // Colore delle linee di griglia sull'asse Y
         },
         ticks: {
           min: 0, // Valore minimo dell'asse y
           stepSize: 10, // Imposta l'incremento dei valori sull'asse y
           callback: (value) => `${value}`, // Formatta i valori sull'asse y
-          color: "white", // Colore delle etichette dell'asse Y
+          color: nightMode ? "white" : "#333",
           font: {
             family: "PoppinsLight", // Imposta il font desiderato
             size: 15, // Imposta la dimensione del font desiderata
@@ -124,7 +127,7 @@ function PollsLevelsChart({
             family: "PoppinsLight", // Imposta il font desiderato
             size: 15, // Imposta la dimensione del font desiderata
           },
-          color: "white", // Colore delle etichette dell'asse Y
+          color: nightMode ? "white" : "#333",
         },
       },
     },
@@ -136,7 +139,7 @@ function PollsLevelsChart({
             size: 16, // Dimensione del carattere per le etichette della legenda
             weight: "bold", // Spessore del carattere per le etichette della legenda
           },
-          color: "white", // Colore delle etichette della legenda
+          color: nightMode ? "white" : "#333",
         },
       },
     },

@@ -171,7 +171,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}
-                  stroke="white"
+                  stroke={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                   className={`w-7 h-7 ${refreshIsLoading ? "rotate" : ""}`}
                 >
                   <path
@@ -185,20 +185,25 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             </div>
 
             <div
-              className={`tooltip-container ${
+              className={`tooltip-container shadow-md ${
                 currentLayerBool ? "disabled-div" : ""
               }`}
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn button-colors-nightmode"
+                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn ${
+                  nightMode
+                    ? "button-colors-nightmode"
+                    : "button-colors-lightmode"
+                }
+            `}
                 onMouseEnter={handleMenuOpen}
                 onMouseLeave={handleMenuClose}
               >
                 <svg
                   strokeWidth={2}
-                  stroke="white"
-                  fill="white"
+                  stroke={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
+                  fill={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                   className="w-7 h-7"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 421.59 421.59"
@@ -261,7 +266,12 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  button-colors-nightmode"
+                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  ${
+                  nightMode
+                    ? "button-colors-nightmode"
+                    : "button-colors-lightmode"
+                }
+            `}
                 onClick={handleWindButtonClick}
               >
                 <svg
@@ -271,7 +281,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   }`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
-                  stroke="white"
+                  stroke={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -286,8 +296,18 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             </div>
           </div>
 
-          <div className="flex w-full mx-2 items-center justify-center rounded button-colors-nightmode">
-            <h2 className="text-white items-center px-1 text-l select-none light-text-font uppercase">
+          <div
+            className={`flex w-full mx-2 items-center justify-center rounded shadow-md ${
+              nightMode ? "button-colors-nightmode" : "button-colors-lightmode"
+            }
+            `}
+          >
+            <h2
+              className={`items-center px-1 text-l select-none light-text-font uppercase ${
+                nightMode ? "text-white" : "light-mode-text-color"
+              }
+            `}
+            >
               {selectedDay}
             </h2>
           </div>
@@ -300,7 +320,12 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md button-colors-nightmode"
+                className={`w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md ${
+                  nightMode
+                    ? "button-colors-nightmode"
+                    : "button-colors-lightmode"
+                }
+            `}
                 onClick={handleWindHeatmapButtonClick}
               >
                 <svg
@@ -310,7 +335,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   }`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
-                  stroke="white"
+                  stroke={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -335,19 +360,30 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center  button-colors-nightmode"
+                className={`w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center ${
+                  nightMode
+                    ? "button-colors-nightmode"
+                    : "button-colors-lightmode"
+                }
+            `}
                 onClick={handle3DButtonClick}
               >
                 {!map3d ? (
                   <h2
-                    className=" text-white normal-text-font"
+                    className={` normal-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }
+                  `}
                     style={{ fontSize: 20 }}
                   >
                     2D
                   </h2>
                 ) : (
                   <h2
-                    className=" text-white normal-text-font"
+                    className={` normal-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }
+                  `}
                     style={{ fontSize: 20 }}
                   >
                     3D
@@ -362,7 +398,12 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               style={{ width: 40, height: 40 }}
             >
               <button
-                className="p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  button-colors-nightmode"
+                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md ${
+                  nightMode
+                    ? "button-colors-nightmode"
+                    : "button-colors-lightmode"
+                }
+            `}
                 onClick={handleHeatCircleClick}
               >
                 {heatCircleActive == "NONE" && (
@@ -377,7 +418,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   >
                     <g
                       transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                      fill="#FFF"
+                      fill={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                       stroke="none"
                     >
                       <path
@@ -405,7 +446,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   >
                     <g
                       transform="translate(0.000000,173.000000) scale(0.100000,-0.100000)"
-                      fill="#FFF"
+                      fill={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                       stroke="none"
                     >
                       <path
@@ -455,7 +496,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                   >
                     <g
                       transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                      fill="#FFF"
+                      fill={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
                       stroke="none"
                     >
                       <path
@@ -531,7 +572,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               marks={{
                 1: (
                   <span
-                    className="text-white  select-none whitespace-nowrap ml-2 normal-text-font"
+                    className={`select-none whitespace-nowrap ml-2 normal-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     Day 1
@@ -539,7 +582,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 2: (
                   <span
-                    className="text-white  select-none whitespace-nowrap ml-1 light-text-font"
+                    className={` select-none whitespace-nowrap ml-1 light-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     2
@@ -547,7 +592,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 3: (
                   <span
-                    className="text-white  select-none whitespace-nowrap ml-1 light-text-font"
+                    className={` select-none whitespace-nowrap ml-1 light-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     3
@@ -555,7 +602,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 4: (
                   <span
-                    className="text-white  select-none whitespace-nowrap normal-text-font"
+                    className={` select-none whitespace-nowrap ml-1 light-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     4
@@ -563,7 +612,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 5: (
                   <span
-                    className="text-white  select-none whitespace-nowrap mr-1"
+                    className={` select-none whitespace-nowrap ml-1 light-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     5
@@ -571,7 +622,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 6: (
                   <span
-                    className="text-white  select-none whitespace-nowrap mr-1"
+                    className={` select-none whitespace-nowrap ml-1 light-text-font ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     6
@@ -579,7 +632,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 ),
                 7: (
                   <span
-                    className="text-white  select-none whitespace-nowrap mr-2"
+                    className={` text-white  select-none whitespace-nowrap mr-2 ${
+                      nightMode ? "text-white" : "light-mode-text-color"
+                    }`}
                     style={{ fontSize: 15 }}
                   >
                     Day 7
@@ -589,7 +644,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               defaultValue={sliderValue + 1}
               railStyle={{
                 marginBottom: "20px",
-                backgroundColor: "rgba(92, 112, 119, 0.8)",
+                backgroundColor: nightMode
+                  ? "rgba(92, 112, 119, 0.8)"
+                  : "rgba(255,255,255)",
                 height: 10,
                 userSelect: "none",
               }}
@@ -603,7 +660,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               }}
               dotStyle={{
                 visibility: "visible",
-                backgroundColor: "rgba(255, 255, 255, 1)", // Change color here
+                backgroundColor: nightMode
+                  ? "rgba(255, 255, 255, 1)"
+                  : "rgba(51, 51, 51, 0.3)", // Change color here
                 width: 12, // Adjust size here
                 height: 12, // Adjust size here
                 border: "none", // Remove border
@@ -621,15 +680,6 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
           background: `linear-gradient(to right, ${startColor}, ${mid1Color}, ${mid2Color}, ${mid3Color}, ${mid4Color}, ${endColor})`,
         }}
       ></div>
-
-      {/* <div className="flex w-full mt-1">
-        <div className="bg-cyan-400 flex-1" style={{height: 5, marginRight: 2}}></div>
-        <div className="bg-red-500 flex-1" style={{height: 5, marginRight: 2}}></div>
-        <div className="bg-green-500 flex-1" style={{height: 5, marginRight: 2}}></div>
-        <div className="bg-orange-400 flex-1" style={{height: 5, marginRight: 2}}></div>
-        <div className="bg-yellow-300 flex-1" style={{height: 5, marginRight: 2}}></div>
-        <div className="bg-gray-500 flex-1" style={{height: 5}}></div>
-      </div> */}
     </div>
   );
 }

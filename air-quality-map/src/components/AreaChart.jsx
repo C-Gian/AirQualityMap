@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
-const AreaChart = ({ data, color }) => {
+const AreaChart = ({ data, color, nightMode }) => {
   const chartContainer = useRef(null);
 
   function changeHexOpacity(hexColor, opacity) {
@@ -66,7 +66,7 @@ const AreaChart = ({ data, color }) => {
               },
               ticks: {
                 display: true,
-                color: "white", // Colore delle etichette dell'asse y
+                color: nightMode ? "white" : "#333",
                 font: {
                   family: "PoppinsLight", // Imposta il font desiderato
                   size: 12, // Imposta la dimensione del font desiderata

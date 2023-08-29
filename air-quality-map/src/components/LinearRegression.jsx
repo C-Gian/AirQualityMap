@@ -2,7 +2,13 @@ import React from "react";
 import { Scatter } from "react-chartjs-2";
 import regression from "regression";
 
-const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
+const LinearRegression = ({
+  datas,
+  pollutant,
+  index,
+  nightMode,
+  colorBlind,
+}) => {
   let temperatures = [];
   let pollutantValues = [];
   let objData = [];
@@ -85,26 +91,30 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
         type: "linear",
         position: "bottom",
         ticks: {
-          color: "white",
+          color: nightMode ? "white" : "#333",
           font: {
             family: "PoppinsLight", // Imposta il font desiderato
             size: 15, // Imposta la dimensione del font desiderata
           },
         },
         grid: {
-          color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+          color: nightMode
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
         },
       },
       y: {
         ticks: {
-          color: "white",
+          color: nightMode ? "white" : "#333",
           font: {
             family: "PoppinsLight", // Imposta il font desiderato
             size: 12, // Imposta la dimensione del font desiderata
           },
         },
         grid: {
-          color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+          color: nightMode
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
         },
       },
     },
@@ -133,7 +143,7 @@ const LinearRegression = ({ datas, pollutant, index, colorBlind }) => {
               strokeStyle: dataset.borderColor,
               pointStyle: pointStyle[index],
               lineWidth: 5,
-              fontColor: "white",
+              fontColor: nightMode ? "white" : "#333",
             }));
           },
         },

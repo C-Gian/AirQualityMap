@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Chart } from "chart.js/auto";
 import * as math from "mathjs";
 
-function MultipleRegression({ datas, id, colorBlind }) {
+function MultipleRegression({ datas, id, nightMode, colorBlind }) {
   const chartRef = useRef(null);
   const [nullPolls, setNullPolls] = useState(null);
   const [activePollutants, setActivePollutants] = useState([
@@ -192,22 +192,26 @@ function MultipleRegression({ datas, id, colorBlind }) {
         x: {
           stacked: true, // Imposta l'asse x come asse delle categorie
           ticks: {
-            color: "white",
+            color: nightMode ? "white" : "#333",
             font: {
               family: "PoppinsLight", // Imposta il font desiderato
               size: 15, // Imposta la dimensione del font desiderata
             },
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+            color: nightMode
+              ? "rgba(255, 255, 255, 0.1)"
+              : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
           },
         },
         y: {
           ticks: {
-            color: "white",
+            color: nightMode ? "white" : "#333",
           },
           grid: {
-            color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+            color: nightMode
+              ? "rgba(255, 255, 255, 0.1)"
+              : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
             font: {
               family: "PoppinsLight", // Imposta il font desiderato
               size: 12, // Imposta la dimensione del font desiderata
@@ -227,7 +231,7 @@ function MultipleRegression({ datas, id, colorBlind }) {
               family: "Poppins", // Imposta il font desiderato
               size: 17, // Imposta la dimensione del font desiderata
             },
-            color: "white", // Colore delle etichette della legenda
+            color: nightMode ? "white" : "#333",
             boxWidth: 25,
           },
         },
@@ -244,7 +248,7 @@ function MultipleRegression({ datas, id, colorBlind }) {
     return () => {
       myChart.destroy();
     };
-  }, [activePollutants, id, colorBlind]);
+  }, [activePollutants, id, nightMode, colorBlind]);
 
   return (
     <div>

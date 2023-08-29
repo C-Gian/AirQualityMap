@@ -4,7 +4,7 @@ import Chart from "chart.js/auto";
 import zoomPlugin from "chartjs-plugin-zoom";
 Chart.register(zoomPlugin);
 
-const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
+const PollsTempCorrChart = ({ datas, id, nightMode, colorBlind }) => {
   const chartRef = useRef(null);
   let data = [];
   const colors = colorBlind
@@ -100,13 +100,15 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
         title: {
           display: true,
           text: "Days", // Testo per la descrizione dell'asse x
-          color: "white",
+          color: nightMode ? "white" : "#333",
         },
         grid: {
-          color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+          color: nightMode
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
         },
         ticks: {
-          color: "white", // Colore delle etichette dell'asse y
+          color: nightMode ? "white" : "#333",
           font: {
             family: "PoppinsLight", // Imposta il font desiderato
             size: 15, // Imposta la dimensione del font desiderata
@@ -115,10 +117,12 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
       },
       y: {
         grid: {
-          color: "rgba(255, 255, 255, 0.1)", // Griglia sull'asse X: bianco con opacità 0.3
+          color: nightMode
+            ? "rgba(255, 255, 255, 0.1)"
+            : "rgba(51, 51, 51, 0.1)", // Colore delle linee di griglia sull'asse Y
         },
         ticks: {
-          color: "white", // Colore delle etichette dell'asse y
+          color: nightMode ? "white" : "#333",
           font: {
             family: "PoppinsLight", // Imposta il font desiderato
             size: 12, // Imposta la dimensione del font desiderata
@@ -151,7 +155,7 @@ const PollsTempCorrChart = ({ datas, id, colorBlind }) => {
             family: "Poppins", // Imposta il font desiderato
             size: 17, // Imposta la dimensione del font desiderata
           },
-          color: "white", // Colore delle etichette della legenda
+          color: nightMode ? "white" : "#333",
           boxWidth: 17,
         },
       },

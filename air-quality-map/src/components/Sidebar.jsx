@@ -192,7 +192,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
   return (
     <div
       className={`sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed backdrop-blur-2xl ${
-        nightMode ? "sidebar-background" : ""
+        nightMode ? "sidebar-background " : "sidebar-background-light"
       }`}
       style={{
         top: "50px",
@@ -200,7 +200,11 @@ const Sidebar = ({ infos, bulkDatas }) => {
     >
       <div className="flex justify-between">
         <div className="flex items-center">
-          <div className="flex items-center">
+          <div
+            className={`flex items-center ${
+              nightMode ? "" : "light-mode-text-color"
+            }`}
+          >
             <CountryFlag
               className="mr-3"
               countryCode={dataR.properties.countryCode}
@@ -210,11 +214,13 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 height: "auto",
               }}
             />
-            <span className="text-4xl text-white title-text-font">{name}</span>
+            <span className="text-4xl title-text-font">{name}</span>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-point-filled text-white mx-2"
+            className={`icon icon-tabler icon-tabler-point-filled mx-2 ${
+              nightMode ? "" : "light-mode-text-color"
+            }`}
             width="20"
             height="20"
             viewBox="0 0 24 24"
@@ -231,11 +237,15 @@ const Sidebar = ({ infos, bulkDatas }) => {
               fill="currentColor"
             ></path>
           </svg>
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="normal-text-font text-white text-l font-light opacity-90">
+          <div
+            className={`flex flex-col justify-center items-center ${
+              nightMode ? "" : "light-mode-text-color"
+            }`}
+          >
+            <h2 className={`normal-text-font text-l font-light opacity-90 `}>
               Last Update
             </h2>
-            <div className="flex text-white -mt-2">
+            <div className={`flex -mt-2 `}>
               <h2 className="normal-text-font text-xl">
                 {lastUpdate ? lastUpdate[0] : "No data"}
               </h2>
@@ -246,7 +256,11 @@ const Sidebar = ({ infos, bulkDatas }) => {
           </div>
         </div>
         <button
-          className="absolute top-0 right-0 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+          className={`absolute top-0 right-0 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl  ${
+            nightMode
+              ? "text-gray-300 hover:text-gray-100"
+              : "light-mode-text-color hover:text-gray-100"
+          }`}
           onClick={handleCloseButtonClick}
         >
           <svg
@@ -265,11 +279,15 @@ const Sidebar = ({ infos, bulkDatas }) => {
           </svg>
         </button>
       </div>
-      <div className="sidebar h-[calc(100%-110px)] overflow-y-scroll py-4">
+      <div
+        className={`sidebar h-[calc(100%-110px)] overflow-y-scroll py-4 ${
+          nightMode ? "" : "light-mode-text-color"
+        }`}
+      >
         <div className="mr-2">
           <div className="flex w-full h-200 items-center justify-around mt-5">
             <div className="flex h-full flex-col items-center justify-between">
-              <h2 className="headers-text-font text-white text-2xl">AQI</h2>
+              <h2 className="headers-text-font  text-2xl">AQI</h2>
               <AQIShow
                 hexColor={hexColor}
                 AQI={AQI}
@@ -282,14 +300,16 @@ const Sidebar = ({ infos, bulkDatas }) => {
               className="flex h-full flex-col items-center justify-between
             "
             >
-              <h2 className="headers-text-font text-white text-2xl">
-                AQI History
-              </h2>
-              <AreaChart data={historyAQI} color={hexColor} />
+              <h2 className="headers-text-font  text-2xl">AQI History</h2>
+              <AreaChart
+                data={historyAQI}
+                color={hexColor}
+                nightMode={nightMode}
+              />
             </div>
           </div>
           <div className="mt-10">
-            <h2 className="headers-text-font text-white text-2xl mb-3">
+            <h2 className="headers-text-font  text-2xl mb-3">
               Polluttants Levels
             </h2>
             <PollsLevelsChart
@@ -297,14 +317,19 @@ const Sidebar = ({ infos, bulkDatas }) => {
               allDays={infos.datas}
               isState={infos.isState}
               sliderValue={sliderValue}
+              nightMode={nightMode}
               colorBlind={colorBlind}
             ></PollsLevelsChart>
           </div>
-          <div className="h-fit w-full mt-10 flex-col justify-between p-5 rounded-2xl shadow-lg sidebarInfo-background">
+          <div
+            className={`h-fit w-full mt-10 flex-col justify-between p-5 rounded-2xl shadow-md ${
+              nightMode
+                ? "sidebarInfo-background"
+                : "sidebarInfo-background-light"
+            }`}
+          >
             <div className="flex justify-between">
-              <h2 className="light-text-font text-xl text-white mr-5">
-                Air Quality:{" "}
-              </h2>
+              <h2 className="light-text-font text-xl  mr-5">Air Quality: </h2>
               <h2
                 className="everything-font text-xl"
                 style={{ color: hexColor }}
@@ -313,18 +338,14 @@ const Sidebar = ({ infos, bulkDatas }) => {
               </h2>
             </div>
             <div className="flex justify-between mt-5">
-              <h2 className="light-text-font text-xl text-white mr-5">
+              <h2 className="light-text-font text-xl  mr-5">
                 Total Stations:{" "}
               </h2>
-              <h2 className="light-text-font text-xl text-white">
-                {nStations}
-              </h2>
+              <h2 className="light-text-font text-xl ">{nStations}</h2>
             </div>
             {weatherCondition != null && infos.isState && (
               <div className="flex justify-between mt-5 items-center">
-                <h2 className="light-text-font text-xl text-white mr-5">
-                  Weather:{" "}
-                </h2>
+                <h2 className="light-text-font text-xl  mr-5">Weather: </h2>
                 <div className="flex items-center">
                   <img
                     className=" mr-2 "
@@ -332,46 +353,38 @@ const Sidebar = ({ infos, bulkDatas }) => {
                     width={50}
                     height={50}
                   />
-                  <h2 className="light-text-font text-xl text-white">{`${weatherCondition.condText}`}</h2>
+                  <h2 className="light-text-font text-xl ">{`${weatherCondition.condText}`}</h2>
                 </div>
               </div>
             )}
             {cloud != null && infos.isState && (
               <div className="flex justify-between mt-5">
-                <h2 className="light-text-font text-xl text-white mr-5">
-                  Cloud:{" "}
-                </h2>
-                <h2 className="light-text-font text-xl text-white">
+                <h2 className="light-text-font text-xl  mr-5">Cloud: </h2>
+                <h2 className="light-text-font text-xl ">
                   {Math.floor(cloud * 100) / 100}
                 </h2>
               </div>
             )}
             {tempFeel != null && infos.isState && (
               <div className="flex justify-between mt-5">
-                <h2 className="light-text-font text-xl text-white mr-5">
-                  Temp. Feel:{" "}
-                </h2>
-                <h2 className="light-text-font text-xl text-white">{`${
+                <h2 className="light-text-font text-xl  mr-5">Temp. Feel: </h2>
+                <h2 className="light-text-font text-xl ">{`${
                   Math.floor(tempFeel * 100) / 100
                 }°`}</h2>
               </div>
             )}
             {tempReal != null && (
               <div className="flex justify-between mt-5">
-                <h2 className="light-text-font text-xl text-white mr-5">
-                  Temp. Real:{" "}
-                </h2>
-                <h2 className="light-text-font text-xl text-white">{`${
+                <h2 className="light-text-font text-xl  mr-5">Temp. Real: </h2>
+                <h2 className="light-text-font text-xl ">{`${
                   Math.floor(tempReal * 100) / 100
                 }°`}</h2>
               </div>
             )}
             {humidity != null && (
               <div className="flex justify-between mt-5">
-                <h2 className="light-text-font text-xl text-white mr-5">
-                  Humidity:{" "}
-                </h2>
-                <h2 className="light-text-font text-xl text-white">{`${
+                <h2 className="light-text-font text-xl  mr-5">Humidity: </h2>
+                <h2 className="light-text-font text-xl ">{`${
                   Math.floor(humidity * 100) / 100
                 }%`}</h2>
               </div>
@@ -380,10 +393,14 @@ const Sidebar = ({ infos, bulkDatas }) => {
           {infos.isState ? (
             <div>
               <div className="mt-10">
-                <HoverableHeader title="Levels Comparation [Temperature - Polluttants]" />
+                <HoverableHeader
+                  title="Levels Comparation [Temperature - Polluttants]"
+                  nightMode={nightMode}
+                />
                 <PollsTempCorrChart
                   datas={infos.datas}
                   id={infos.id}
+                  nightMode={nightMode}
                   colorBlind={colorBlind}
                 ></PollsTempCorrChart>
               </div>
@@ -411,7 +428,10 @@ const Sidebar = ({ infos, bulkDatas }) => {
           ) : (
             <div>
               <div className="mt-10">
-                <HoverableHeader title="Levels Comparation [Temperature - Polluttants]" />
+                <HoverableHeader
+                  title="Levels Comparation [Temperature - Polluttants]"
+                  nightMode={nightMode}
+                />
                 <PollsTempCorrChart
                   datas={bulkDatas}
                   id={null}
@@ -419,30 +439,42 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 ></PollsTempCorrChart>
               </div>
               <div className="flex flex-col mt-10">
-                <HoverableHeader title="Correlation Matrix" />
+                <HoverableHeader
+                  title="Correlation Matrix"
+                  nightMode={nightMode}
+                />
                 <CorrelationMatrix
                   bulkDatas={bulkDatas}
+                  nightMode={nightMode}
                   colorBlind={colorBlind}
                 ></CorrelationMatrix>
               </div>
               <div className="flex-col mt-10">
-                <HoverableHeader title="Linear Regression" />
+                <HoverableHeader
+                  title="Linear Regression"
+                  nightMode={nightMode}
+                />
                 {["PM10", "PM2.5", "OZONE", "NO2", "CO", "SO2"].map(
                   (pollutant, index) => (
                     <LinearRegression
                       datas={bulkDatas}
                       pollutant={pollutant}
                       key={index}
+                      nightMode={nightMode}
                       colorBlind={colorBlind}
                     />
                   )
                 )}
               </div>
               <div className="mt-10">
-                <HoverableHeader title="Multiple Regression" />
+                <HoverableHeader
+                  title="Multiple Regression"
+                  nightMode={nightMode}
+                />
                 <MultipleRegression
                   datas={bulkDatas}
                   id={null}
+                  nightMode={nightMode}
                   colorBlind={colorBlind}
                 ></MultipleRegression>
               </div>

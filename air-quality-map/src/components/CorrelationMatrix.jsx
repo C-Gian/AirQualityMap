@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
+const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
   const [matrix, setMatrix] = useState([]);
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -242,6 +242,8 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
 
   useEffect(() => {
     if (isLoaded) {
+      d3.select(svgRef.current).selectAll("*").remove();
+
       // set the dimensions and margins of the graph
       const margin = { top: 0, right: 0, bottom: 50, left: 50 },
         width = 450 - margin.left - margin.right,
@@ -286,15 +288,15 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
       svg
         .append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .selectAll(".tick text") // Aggiungi questa parte per cambiare il font delle etichette dell'asse X
-        .style("font-family", "PoppinsLight"); // Imposta il font desiderato
+        .call(d3.axisBottom(x));
 
       svg.append("g").call(d3.axisLeft(y));
 
       // Imposta il colore delle etichette delle scale sull'asse x come bianche
-      svg.selectAll(".tick text").style("fill", "white");
-      svg.selectAll(".tick line").style("stroke", "white");
+      svg.selectAll(".tick text").style("fill", nightMode ? "white" : "#333");
+      svg.selectAll(".tick text").style("font-family", "PoppinsLight");
+      svg.selectAll(".tick text").style("font-size", "15"); // Imposta il font desiderato
+      svg.selectAll(".tick line").style("stroke", nightMode ? "white" : "#333");
       svg.selectAll(".domain").style("display", "none");
 
       svg
@@ -331,7 +333,7 @@ const CorrelationMatrix = ({ bulkDatas, colorBlind }) => {
           svg.selectAll(".heatmap-cell-value").remove();
         });
     }
-  }, [isLoaded, colorBlind]);
+  }, [isLoaded, nightMode, colorBlind]);
 
   return (
     <div

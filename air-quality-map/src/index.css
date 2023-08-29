@@ -436,17 +436,27 @@ body {
 
 .cp-background-light {
   /* background-color: rgba(48, 58, 62, 0.5); */
-  background-color: rgba(59, 164, 230, 0.61);
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .sidebarInfo-background {
   background-color: rgba(58, 76, 82, 0.638);
 }
 
+.sidebarInfo-background-light {
+  background-color: rgba(124, 124, 124, 0.079);
+}
+
 .navbar-background,
 .sidebar-background {
   /* background-color: rgba(48, 58, 62, 0.5); */
   background-color: rgba(35, 42, 47, 0.765);
+}
+
+.navbar-background-light,
+.sidebar-background-light {
+  /* background-color: rgba(48, 58, 62, 0.5); */
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .button-colors-nightmode {
@@ -482,6 +492,13 @@ body {
 }
 
 .light-mode-text-color {
-  color: "rgb(51, 51, 51)";
-  background-color: rgb(51, 162, 231);
+  color: rgb(51, 51, 51);
+}
+
+.cp-buttons-shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.205);
+}
+
+.prova {
+  color: rgb(188, 188, 188);
 }

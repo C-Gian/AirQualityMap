@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const HoverableHeader = ({ title }) => {
+const HoverableHeader = ({ title, nightMode }) => {
   const [showExpl, setShowExpl] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
@@ -14,23 +14,31 @@ const HoverableHeader = ({ title }) => {
   };
 
   return (
-    <div>
+    <div className={` ${nightMode ? "text-white" : "light-mode-text-color"}`}>
       <h2
-        className="text-white text-2xl font-semibold mb-5 w-fit hover:text-blue-300 hover:underline cursor-pointer"
+        className={` text-2xl font-semibold mb-5 w-fit ${
+          nightMode ? "hover:text-blue-300" : "hover:text-white"
+        }  hover:underline cursor-pointer `}
         onMouseEnter={(event) => handleMouseEnter(event)}
         onMouseLeave={handleMouseLeave}
       >
         {title}
       </h2>
       {showExpl && (
-        <div>
+        <div
+          className={` ${nightMode ? "text-white" : "light-mode-text-color"}`}
+        >
           {title == "Levels Comparation [Temperature - Polluttants]" && (
             <div
-              className="w-400 h-150 absolute text-white p-5 text-xl z-20 space-y-3 rounded-2xl"
+              className="w-400 h-150 absolute  p-5 text-xl z-20 space-y-3 rounded-2xl"
               style={{
                 top: tooltipPosition.y - 200 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(48, 58, 62, 1)",
+                backgroundColor: nightMode
+                  ? nightMode
+                    ? "rgba(48, 58, 62, 1)"
+                    : "rgba(255, 255, 255, 1)"
+                  : "rgba(255, 255, 255, 1)",
               }}
             >
               <h2 className="normal-text-font" style={{ fontSize: 18 }}>
@@ -41,11 +49,13 @@ const HoverableHeader = ({ title }) => {
           )}
           {title == "Correlation Matrix" && (
             <div
-              className="w-400 h-200  absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl"
+              className="w-400 h-200  absolute  p-5 text-xl z-20 space-y-3  rounded-2xl"
               style={{
                 top: tooltipPosition.y - 300 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(48, 58, 62, 1)",
+                backgroundColor: nightMode
+                  ? "rgba(48, 58, 62, 1)"
+                  : "rgba(255, 255, 255, 1)",
               }}
             >
               <h2 className="normal-text-font" style={{ fontSize: 18 }}>
@@ -53,7 +63,7 @@ const HoverableHeader = ({ title }) => {
               </h2>
               <div className="flex flex-col w-full">
                 <div
-                  className=" text-white flex justify-between"
+                  className="  flex justify-between"
                   style={{ fontSize: 17 }}
                 >
                   Value Near 1:
@@ -80,7 +90,7 @@ const HoverableHeader = ({ title }) => {
                   </div>
                 </div>
                 <div
-                  className=" text-white flex justify-between"
+                  className="  flex justify-between"
                   style={{ fontSize: 17 }}
                 >
                   Value Near 0:
@@ -103,7 +113,7 @@ const HoverableHeader = ({ title }) => {
                   </div>
                 </div>
                 <div
-                  className=" text-white flex justify-between"
+                  className="  flex justify-between"
                   style={{ fontSize: 17 }}
                 >
                   Value Near -1:
@@ -134,11 +144,13 @@ const HoverableHeader = ({ title }) => {
           )}
           {title == "Linear Regression" && (
             <div
-              className="w-500 h-300 absolute text-white p-5 text-xl z-20 space-y-3 rounded-2xl"
+              className="w-500 h-300 absolute  p-5 text-xl z-20 space-y-3 rounded-2xl"
               style={{
                 top: tooltipPosition.y - 300 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(48, 58, 62, 1)",
+                backgroundColor: nightMode
+                  ? "rgba(48, 58, 62, 1)"
+                  : "rgba(255, 255, 255, 1)",
               }}
             >
               <h2 className="normal-text-font" style={{ fontSize: 18 }}>
@@ -148,7 +160,7 @@ const HoverableHeader = ({ title }) => {
                 understand how changes in one variable relate to changes in the
                 other.
               </h2>
-              <div className="flex-col items-center text-white text-xl mx-10">
+              <div className="flex-col items-center  text-xl mx-10">
                 <div
                   className="flex justify-between items-center"
                   style={{ fontSize: 17 }}
@@ -229,11 +241,13 @@ const HoverableHeader = ({ title }) => {
           )}
           {title == "Multiple Regression" && (
             <div
-              className="w-400 h-150 absolute text-white p-5 text-xl z-20 space-y-3  rounded-2xl"
+              className="w-400 h-150 absolute  p-5 text-xl z-20 space-y-3  rounded-2xl"
               style={{
                 top: tooltipPosition.y - 200 + "px",
                 left: tooltipPosition.x + "px",
-                backgroundColor: "rgba(48, 58, 62, 1)",
+                backgroundColor: nightMode
+                  ? "rgba(48, 58, 62, 1)"
+                  : "rgba(255, 255, 255, 1)",
               }}
             >
               <h2 className="normal-text-font" style={{ fontSize: 18 }}>

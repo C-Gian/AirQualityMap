@@ -26,7 +26,9 @@ const Navbar = () => {
   return (
     <div className="z-30 w-full top-0 fixed flex items-center ">
       <div
-        className="p-4 flex w-full justify-between backdrop-blur-2xl navbar-background"
+        className={`p-4 flex w-full justify-between backdrop-blur-2xl ${
+          nightMode ? "navbar-background" : "navbar-background-light"
+        }`}
         style={{ height: "50px" }}
       >
         <div className="flex items-center space-x-2">
@@ -183,24 +185,24 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
             }}
           >
             <button
-          className="absolute top-2 right-2 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
-          onClick={toggleModal}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-8 h-8"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+              className="absolute top-2 right-2 m-1 bg-transparent border-none cursor-pointer p-0 text-2xl text-gray-300 hover:text-gray-100"
+              onClick={toggleModal}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-8 h-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
             <div className="flex flex-col space-y-10">
               <div className="flex flex-col">
                 <span className="normal-text-font text-white text-lg font-bold">
@@ -240,7 +242,9 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: mid1Color,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">Moderate</h2>
+                    <h2 className="light-text-font text-white text-xs">
+                      Moderate
+                    </h2>
                   </div>
                   <div className="flex w-full h-full flex-col justify-center items-center space-y-1">
                     <div
@@ -262,7 +266,9 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: mid3Color,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">Unhealthy</h2>
+                    <h2 className="light-text-font text-white text-xs">
+                      Unhealthy
+                    </h2>
                   </div>
                   <div className="flex w-full h-full flex-col justify-center items-center space-y-1">
                     <div
@@ -284,7 +290,9 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
                         backgroundColor: endColor,
                       }}
                     ></div>
-                    <h2 className="light-text-font text-white text-xs">Hazardous</h2>
+                    <h2 className="light-text-font text-white text-xs">
+                      Hazardous
+                    </h2>
                   </div>
                 </div>
               </div>
