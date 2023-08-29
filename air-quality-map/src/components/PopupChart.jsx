@@ -45,7 +45,8 @@ function PopupChart({ data }) {
             },
             ticks: {
               font: {
-                size: 12, // Dimensione del carattere per le etichette dell'asse Y
+                family: "PoppinsLight", // Imposta il font desiderato
+                size: 12, // Imposta la dimensione del font desiderata
               },
               color: "white", // Colore delle etichette dell'asse Y
             },

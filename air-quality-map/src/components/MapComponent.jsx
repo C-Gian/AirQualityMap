@@ -413,6 +413,12 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
       icon.removeAttribute("title");
     });
 
+    if (nightMode) {
+      document.body.classList.add("night-mode");
+    } else {
+      document.body.classList.remove("night-mode");
+    }
+
     map.doubleClickZoom.disable();
 
     map.on("load", () => {

@@ -51,7 +51,7 @@ const Popup = ({ x, y, hoveredState, hoveredStateColor }) => {
 
   return (
     <div
-      className="flex flex-col items-center w-fit h-fit fixed pb-4 p-3 sidebarInfo-background backdrop-blur-2xl rounded-2xl"
+      className="flex flex-col items-center w-fit h-fit fixed pb-4 p-3 controlPanel-background backdrop-blur-2xl rounded-2xl"
       style={{ left: x + 30, top: y - 200 }}
     >
       <div className="flex items-center">

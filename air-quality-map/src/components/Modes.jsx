@@ -15,11 +15,16 @@ function Modes() {
   };
   return (
     <div
-      className="flex flex-col space-y-1 absolute  m-2 modes-shadow"
+      className="flex flex-col space-y-1 absolute m-2 modes-shadow"
       style={{ top: 180, right: 2 }}
     >
       <div
-        className="tooltip-container rounded flex items-center justify-center border modes-border p-2 button-colors"
+        className={`tooltip-container rounded flex items-center justify-center border modes-border p-2 
+        ${
+          nightMode
+            ? "button-colors-nightmode-map"
+            : "button-colors-lightmode-map"
+        }`}
         style={{
           width: 40,
           height: 40,
@@ -45,17 +50,61 @@ function Modes() {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="black"
+              class="icon icon-tabler icon-tabler-sun-filled"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="black"
-              className="w-6 h-6"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-              />
+                d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.218 -1.567l.102 .07z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
+              <path
+                d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                strokeWidth="0"
+                fill="rgb(51, 51, 51)"
+              ></path>
             </svg>
           )}
         </button>
@@ -63,11 +112,16 @@ function Modes() {
         <span className="tooltip-text-modes p-2">Night Mode</span>
       </div>
       <div
-        className="tooltip-container rounded w-fit h-fit  flex items-center justify-center border modes-border p-2 button-colors"
+        className={`tooltip-container rounded w-fit h-fit flex items-center justify-center border modes-border p-2 ${
+          nightMode
+            ? "button-colors-nightmode-map"
+            : "button-colors-lightmode-map"
+        }`}
         style={{
           width: 40,
           height: 40,
         }}
+        onClick={handleColorBlindClick}
       >
         <button
           className="rounded flex items-center tooltip-btn  transition duration-300 ease-in-out"
@@ -99,7 +153,7 @@ function Modes() {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
-              stroke="white"
+              stroke={`${nightMode ? "white" : "rgb(51, 51, 51)"}`}
               className="w-7 h-7"
             >
               <path
