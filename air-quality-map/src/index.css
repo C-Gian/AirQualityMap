@@ -393,6 +393,39 @@ body {
   }
 }
 
+/* Animazione per spostamento orizzontale */
+@keyframes moveHorizontally {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Animazione per il disegno del tratto */
+@keyframes fillDraw {
+  0%,
+  100% {
+    fill: red;
+  }
+  50% {
+    fill: green; /* O il colore desiderato */
+  }
+}
+
+/* Assegna l'animazione al path da disegnare */
+.animated-fill path {
+  fill: transparent;
+  animation: fillDraw 2s forwards; /* forwards mantiene l'ultimo frame dell'animazione */
+}
+
+/* Assegna l'animazione al movimento orizzontale */
+.animated-move {
+  animation: moveHorizontally 3s infinite;
+}
+
 .rc-slider-mark {
   top: 25px !important;
 }
@@ -576,6 +609,43 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.205);
 }
 
+.globe-night {
+  background: #191a1a;
+  border-radius: 50%;
+  height: 340px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+}
+
+.globe {
+  background: #f3f2f2;
+  border-radius: 50%;
+  height: 340px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+}
+
+.globe-svg {
+  animation: rotation 8s linear 0s infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: translateX(0);
+  }
+  from {
+    transform: translateX(-50%);
+  }
+}
+
 .prova {
-  color: rgb(188, 188, 188);
+  color: rgb(45, 47, 48);
 }
