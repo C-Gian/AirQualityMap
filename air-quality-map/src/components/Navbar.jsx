@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="z-30 w-full top-0 fixed flex items-center ">
+    <div className="z-30 w-full top-0 fixed flex items-center " style={{zIndex: 999}}>
       <div
         className={`p-4 flex w-full justify-between backdrop-blur-2xl ${
           nightMode ? "navbar-background" : "navbar-background-light"
