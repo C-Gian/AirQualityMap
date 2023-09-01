@@ -8,12 +8,12 @@ const Navbar = () => {
   const colorBlindMode = useSelector((state) => state.colorBlindMode);
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
-  const startColor = colorBlindMode ? "rgba(0, 147, 0, 1)" : "#00D900";
-  const mid1Color = colorBlindMode ? "rgba(181, 140, 0, 1)" : "#B5B500";
-  const mid2Color = colorBlindMode ? "rgba(245, 116, 0, 1)" : "#F57300";
-  const mid3Color = colorBlindMode ? "rgba(245, 0, 0, 1)" : "#F50000";
-  const mid4Color = colorBlindMode ? "rgba(131, 52, 140, 1)" : "#83328C";
-  const endColor = colorBlindMode ? "rgba(115, 0, 23, 1)" : "#730017";
+  const startColor = colorBlindMode ? "rgba(255, 255, 255, 1)" : "#00D900";
+  const mid1Color = colorBlindMode ? "rgba(208, 208, 255, 1)" : "#B5B500";
+  const mid2Color = colorBlindMode ? "rgba(176, 176, 255, 1)" : "#F57300";
+  const mid3Color = colorBlindMode ? "rgba(112, 112, 255, 1)" : "#F50000";
+  const mid4Color = colorBlindMode ? "rgba(48, 48, 255, 1)" : "#83328C";
+  const endColor = colorBlindMode ? "rgba(0, 0, 255, 1)" : "#730017";
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
