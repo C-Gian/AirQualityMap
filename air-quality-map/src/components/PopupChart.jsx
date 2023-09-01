@@ -91,7 +91,11 @@ function PopupChart({ data, nightMode, colorBlindMode }) {
     };
   }, [data]);
 
-  return <canvas ref={chartRef} />;
+  return (
+    <div className="popup-chart">
+      <canvas ref={chartRef} />
+    </div>
+  );
 }
 
 export default PopupChart;

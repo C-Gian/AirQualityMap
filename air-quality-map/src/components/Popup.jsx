@@ -59,7 +59,7 @@ const Popup = ({
 
   return (
     <div
-      className="flex flex-col items-center w-fit h-fit fixed pb-4 p-3 controlPanel-background backdrop-blur-2xl rounded-2xl"
+      className="popup-div flex flex-col items-center fixed pb-4 p-3 controlPanel-background backdrop-blur-2xl rounded-2xl"
       style={{ left: x + 30, top: y - 200 }}
     >
       <div className="flex items-center">
@@ -72,22 +72,18 @@ const Popup = ({
             height: "auto",
           }}
         />
-        <span className="text-4xl text-white title-text-font">{name}</span>
+        <span className="title-text-font text-4xl text-white title-text-font">
+          {name}
+        </span>
       </div>
-      <div className="flex justify-between items-center">
-        <div className="flex flex-col w-fit h-fit items-center mt-4 overflow-hidden space-y-4">
+      <div className="popup-div-1 flex justify-between items-center w-full">
+        <div className="popup-div-2 flex flex-col w-fit h-fit items-center mt-4 overflow-hidden space-y-4">
           <h2 className="text-white text-2xl items-center headers-text-font">
             AQI
           </h2>
-          <AQIShow
-            hexColor={hexColor}
-            AQI={AQI}
-            w={100}
-            h={100}
-            fs={30}
-          ></AQIShow>
+          <AQIShow hexColor={hexColor} AQI={AQI} sidebar={false}></AQIShow>
         </div>
-        <div className="ml-50">
+        <div className="ml-30">
           <PopupChart
             data={polls}
             nightMode={nightMode}

@@ -91,7 +91,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
 
   return (
     <div
-      className={`sidebar pt-3 pb-3 pl-3 pr-2 h-screen w-600 z-30 fixed backdrop-blur-2xl ${
+      className={`pt-3 pb-3 pl-3 pr-2 h-screen w-650 z-30 fixed backdrop-blur-2xl ${
         nightMode ? "sidebar-background " : "sidebar-background-light"
       }`}
       style={{
@@ -186,7 +186,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
         }`}
       >
         <div className="mr-2">
-          <div className="flex w-full h-200 items-center justify-around mt-5">
+          <div className="aqis-div flex w-full h-200 items-center justify-around mt-5">
             <div
               className={`flex h-full flex-col items-center justify-between ${
                 nightMode ? "" : "light-mode-text-color"
@@ -202,9 +202,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
               <AQIShow
                 hexColor={hexColor}
                 AQI={sidebarData.AQI}
-                w={150}
-                h={150}
-                fs={35}
+                sidebar={true}
               ></AQIShow>
             </div>
             <div
@@ -219,7 +217,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
               />
             </div>
           </div>
-          <div className="mt-10">
+          <div className="w-full mt-10">
             <h2
               className={`headers-text-font text-2xl mb-3 ${
                 nightMode ? "text-white" : "light-mode-text-color"

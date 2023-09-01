@@ -102,7 +102,7 @@ const AreaChart = ({ data, color, nightMode }) => {
   }, [data]);
 
   return (
-    <div style={{ width: "100%", margin: "0 auto" }}>
+    <div className="area-chart">
       <canvas ref={chartContainer} />
     </div>
   );

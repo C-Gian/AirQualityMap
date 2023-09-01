@@ -141,11 +141,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
 
   return (
     <div
-      className={`absolute flex flex-col bottom-0 right-0 m-3 `}
+      className={`control-panel absolute flex flex-col bottom-0 right-0 m-3 `}
       style={{
         zIndex: 300,
-        width: "450px",
-        height: "fit-content",
       }}
     >
       <div
@@ -157,10 +155,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
       >
         <div className="flex justify-between">
           <div className="flex space-x-1">
-            <div
-              className={`tooltip-container shadow-md`}
-              style={{ width: 40, height: 40 }}
-            >
+            <div className={`cp-buttons tooltip-container shadow-md`}>
               <button
                 className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md ${
                   nightMode
@@ -188,10 +183,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             </div>
 
             <div
-              className={`tooltip-container shadow-md ${
+              className={`cp-buttons tooltip-container shadow-md ${
                 currentLayerBool ? "disabled-div" : ""
               }`}
-              style={{ width: 40, height: 40 }}
             >
               <button
                 className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn ${
@@ -264,10 +258,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             </div>
 
             <div
-              className={`tooltip-container shadow-md  ${
+              className={`cp-buttons tooltip-container shadow-md  ${
                 map3d ? "disabled-div" : ""
               }`}
-              style={{ width: 40, height: 40 }}
             >
               <button
                 className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  ${
@@ -319,10 +312,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
 
           <div className="flex space-x-1">
             <div
-              className={`tooltip-container shadow-md ${
+              className={`cp-buttons tooltip-container shadow-md ${
                 map3d ? "disabled-div" : ""
               }`}
-              style={{ width: 40, height: 40 }}
             >
               <button
                 className={`w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md ${
@@ -361,10 +353,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               <span className="tooltip-text p-2">Wind Heatmap</span>
             </div>
 
-            <div
-              className={`tooltip-container shadow-md `}
-              style={{ width: 40, height: 40 }}
-            >
+            <div className={`cp-buttons tooltip-container shadow-md `}>
               <button
                 className={`w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center ${
                   nightMode
@@ -399,10 +388,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               <span className="tooltip-text p-2">3D Map</span>
             </div>
 
-            <div
-              className={`tooltip-container shadow-md `}
-              style={{ width: 40, height: 40 }}
-            >
+            <div className={`cp-buttons tooltip-container shadow-md `}>
               <button
                 className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md ${
                   nightMode

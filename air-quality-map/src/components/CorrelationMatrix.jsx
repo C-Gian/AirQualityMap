@@ -5,6 +5,7 @@ const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
   const [matrix, setMatrix] = useState([]);
   const svgRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  let resizeTimeout;
   const colors = colorBlind
     ? [
         "rgba(255, 192, 203, 1)",
@@ -106,6 +107,150 @@ const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
         : 0
     );
   }
+
+  // Aggiungi l'effetto per il ridimensionamento dell'SVG
+  useEffect(() => {
+    const updateSVGSize = () => {
+      const containerWidth =
+        document.getElementById("your-container-id").offsetWidth;
+
+      /* d3.select(svgRef.current)
+        .attr("width", containerWidth - 100)
+        .attr("height", containerWidth - 100); */
+
+      if (isLoaded) {
+        d3.select(svgRef.current).selectAll("*").remove();
+
+        // set the dimensions and margins of the graph
+        const margin = { top: 0, right: 0, bottom: 50, left: 50 },
+          width = containerWidth - 100 - margin.left - margin.right,
+          height = containerWidth - 100 - margin.top - margin.bottom;
+
+        // Labels of row and columns
+        const myGroups = ["T", "CO2", "NO2", "SO2", "O3", "PM10", "PM25"];
+        const myVars = [
+          "T",
+          "CO2",
+          "NO2",
+          "SO2",
+          "O3",
+          "PM10",
+          "PM25",
+        ].reverse();
+
+        // Build X scales and axis:
+        const x = d3
+          .scaleBand()
+          .range([0, width])
+          .domain(myGroups)
+          .padding(0.01);
+
+        // Build X scales and axis:
+        const y = d3
+          .scaleBand()
+          .range([height, 0])
+          .domain(myVars)
+          .padding(0.01);
+
+        // Build color scale
+        const myColor = d3.scaleLinear().range(colors).domain([-1, 1]);
+
+        // Read the data
+        const heatMapData = [];
+        const reversedMatrix = matrix.reverse();
+        for (let i = 0; i < myVars.length; i++) {
+          for (let j = 0; j < myGroups.length; j++) {
+            heatMapData.push({
+              group: myGroups[j],
+              variable: myVars[i],
+              value: reversedMatrix[i][j],
+            });
+          }
+        }
+
+        const svg = d3
+          .select(svgRef.current)
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr(
+            "transform",
+            "translate(" + margin.left + "," + margin.top + ")"
+          );
+
+        // Clear existing content before drawing the heatmap
+        svg.selectAll("*").remove();
+
+        svg
+          .append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
+
+        svg.append("g").call(d3.axisLeft(y));
+
+        // Imposta il colore delle etichette delle scale sull'asse x come bianche
+        svg.selectAll(".tick text").style("fill", nightMode ? "white" : "#333");
+        svg.selectAll(".tick text").style("font-family", "PoppinsLight");
+        svg.selectAll(".tick text").style("font-size", "15"); // Imposta il font desiderato
+        svg
+          .selectAll(".tick line")
+          .style("stroke", nightMode ? "white" : "#333");
+        svg.selectAll(".domain").style("display", "none");
+
+        svg
+          .selectAll()
+          .data(heatMapData)
+          .enter()
+          .append("rect")
+          .attr("x", function (d) {
+            return x(d.group);
+          })
+          .attr("y", function (d) {
+            return y(d.variable);
+          })
+          .attr("width", x.bandwidth())
+          .attr("height", y.bandwidth())
+          .style("fill", function (d) {
+            return d.value ? myColor(d.value) : "darkgrey";
+          })
+          .on("mouseover", function (event, d) {
+            // Mostra il valore della cella come tooltip
+            svg
+              .append("text")
+              .attr("class", "heatmap-cell-value")
+              .attr("x", x(d.group) + x.bandwidth() / 2)
+              .attr("y", y(d.variable) + y.bandwidth() / 2)
+              .attr("text-anchor", "middle")
+              .attr("dominant-baseline", "central")
+              .style("font-size", "12px")
+              .style("fill", "black")
+              .text(d.value.toFixed(2));
+          })
+          .on("mouseout", function (event, d) {
+            // Rimuovi il tooltip quando il mouse esce dalla cella
+            svg.selectAll(".heatmap-cell-value").remove();
+          });
+      }
+    };
+    // Funzione per gestire il ridimensionamento della finestra
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateSVGSize();
+      }, 500); // Imposta il tempo di inattività desiderato in millisecondi (qui è 500 ms)
+    };
+
+    // Aggiungi un ascoltatore per il ridimensionamento della finestra
+    window.addEventListener("resize", handleResize);
+
+    // Esegui l'aggiornamento delle dimensioni iniziali
+    updateSVGSize();
+
+    // Rimuovi l'ascoltatore degli eventi durante la disattivazione del componente
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isLoaded, nightMode, colorBlind]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -240,7 +385,7 @@ const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
     ); */
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (isLoaded) {
       d3.select(svgRef.current).selectAll("*").remove();
 
@@ -333,11 +478,12 @@ const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
           svg.selectAll(".heatmap-cell-value").remove();
         });
     }
-  }, [isLoaded, nightMode, colorBlind]);
+  }, [isLoaded, nightMode, colorBlind]); */
 
   return (
     <div
       className="flex flex-col w-full items-center"
+      id="your-container-id"
       style={{ marginRight: 30 }}
     >
       {matrix.length > 0 && <svg ref={svgRef} />}

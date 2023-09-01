@@ -90,6 +90,8 @@ function PollsLevelsChart({
   };
 
   const options = {
+    responsive: true,
+    manteinAspectRation: false,
     barPercentage: 0.6,
     scales: {
       y: {
@@ -168,11 +170,7 @@ function PollsLevelsChart({
     };
   }, [data, options]);
 
-  return (
-    <div>
-      <canvas ref={chartRef} />
-    </div>
-  );
+  return <canvas ref={chartRef} />;
 }
 
 export default PollsLevelsChart;
