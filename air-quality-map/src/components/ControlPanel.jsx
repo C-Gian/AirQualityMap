@@ -28,6 +28,36 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
   const [selectedDay, setSelectedDay] = useState("Today");
   const sliderValue = useSelector((state) => state.sliderValue);
 
+  [
+    0,
+    ,
+    20,
+    "rgba(240, 240, 255, 1)",
+    40,
+    "rgba(208, 208, 255, 1)",
+    60,
+    "rgba(176, 176, 255, 1)",
+    80,
+    "rgba(144, 144, 255, 1)",
+    100,
+    "rgba(112, 112, 255, 1)",
+    120,
+    "rgba(80, 80, 255, 1)",
+    140,
+    "rgba(48, 48, 255, 1)",
+    160,
+    "rgba(16, 16, 255, 1)",
+    180,
+    "rgba(0, 0, 255, 1)",
+  ];
+
+  const startColor = colorBlindMode ? "rgba(255, 255, 255, 1)" : "#00D900";
+  const mid1Color = colorBlindMode ? "rgba(208, 208, 255, 1)" : "#B5B500";
+  const mid2Color = colorBlindMode ? "rgba(176, 176, 255, 1)" : "#F57300";
+  const mid3Color = colorBlindMode ? "rgba(112, 112, 255, 1)" : "#F50000";
+  const mid4Color = colorBlindMode ? "rgba(48, 48, 255, 1)" : "#83328C";
+  const endColor = colorBlindMode ? "rgba(0, 0, 255, 1)" : "#730017";
+
   const handleMenuOpen = () => {
     if (!currentLayerBool) {
       setIsMenuOpen(true);
@@ -128,13 +158,6 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
       setSelectedDay("Today");
     }
   }, [sliderValue]);
-
-  const startColor = colorBlindMode ? "rgba(0, 147, 0, 1)" : "#00D900";
-  const mid1Color = colorBlindMode ? "rgba(181, 140, 0, 1)" : "#B5B500";
-  const mid2Color = colorBlindMode ? "rgba(245, 116, 0, 1)" : "#F57300";
-  const mid3Color = colorBlindMode ? "rgba(245, 0, 0, 1)" : "#F50000";
-  const mid4Color = colorBlindMode ? "rgba(131, 52, 140, 1)" : "#83328C";
-  const endColor = colorBlindMode ? "rgba(115, 0, 23, 1)" : "#730017";
 
   return (
     <div

@@ -42,6 +42,38 @@ body {
   display: none !important;
 }
 
+/* Esempio di media query per dispositivi mobili */
+@media (max-width: 1050px) {
+  .sidebar {
+    width: 400px;
+  }
+  .headers-text-font {
+    font-size: 1.5rem; /* Imposta la dimensione desiderata per il testo su schermi più piccoli */
+  }
+  .title-text-font {
+    font-size: 1rem; /* Imposta la dimensione desiderata per il testo su schermi più piccoli */
+  }
+  .normal-text-font {
+    font-size: 1rem; /* Imposta la dimensione desiderata per il testo su schermi più piccoli */
+  }
+}
+
+/* Esempio di media query per dispositivi desktop */
+@media (min-width: 1050px) {
+  .sidebar {
+    width: 600px;
+  }
+  .headers-text-font {
+    font-size: 1.5rem; /* Imposta la dimensione desiderata per il testo su schermi più piccoli */
+  }
+  .title-text-font {
+    font-size: 2.5rem; /* Imposta la dimensione desiderata per il testo su schermi più piccoli */
+  }
+  .normal-text-font {
+    font-size: 1.5rem; /* Imposta la dimensione desiderata per il testo su schermi più piccoli */
+  }
+}
+
 /* Stili per la barra di scorrimento della sidebar */
 .sidebar::-webkit-scrollbar {
   width: 8px; /* Larghezza della barra di scorrimento */

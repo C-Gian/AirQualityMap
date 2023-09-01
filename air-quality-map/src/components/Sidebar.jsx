@@ -114,7 +114,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 height: "auto",
               }}
             />
-            <span className="text-4xl title-text-font">{sidebarData.name}</span>
+            <span className="title-text-font">{sidebarData.name}</span>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
