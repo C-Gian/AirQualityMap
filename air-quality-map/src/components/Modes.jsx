@@ -3,21 +3,33 @@ import {
   setNightMode,
   setColorBlindMode,
   setSidebar,
+  setLayerToShow,
+  setWind,
+  setWindHeatmap,
 } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Modes() {
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlindMode = useSelector((state) => state.colorBlindMode);
+  const wind = useSelector((state) => state.wind);
+  const windHeatmap = useSelector((state) => state.windHeatmap);
+  const layerToShow = useSelector((state) => state.layerToShow);
   const dispatch = useDispatch();
 
   const handleNightModeClick = () => {
     dispatch(setSidebar(false));
+    dispatch(setLayerToShow("AQI"));
+    dispatch(setWind(false));
+    dispatch(setWindHeatmap(false));
     dispatch(setNightMode(!nightMode));
   };
 
   const handleColorBlindClick = () => {
     dispatch(setSidebar(false));
+    dispatch(setLayerToShow("AQI"));
+    dispatch(setWind(false));
+    dispatch(setWindHeatmap(false));
     dispatch(setColorBlindMode(!colorBlindMode));
   };
   return (

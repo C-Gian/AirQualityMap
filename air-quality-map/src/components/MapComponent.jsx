@@ -335,7 +335,9 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
       if (windHeatmap) {
         mapRef.current.setLayoutProperty("wind-fill", "visibility", "visible");
       } else {
-        mapRef.current.setLayoutProperty("wind-fill", "visibility", "none");
+        if (mapRef.current.getStyle()) {
+          mapRef.current.setLayoutProperty("wind-fill", "visibility", "none");
+        }
       }
     }
   }, [windHeatmap]);
@@ -463,8 +465,8 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
         },
         source: "glowy-source",
         paint: {
-          "circle-radius": 10,
-          "circle-color": "rgb(0, 255, 0)", //"rgb(255, 50, 0)",
+          "circle-radius": 15,
+          "circle-color": colorBlind ? "rgb(255, 255, 0)" : "rgb(0, 255, 0)", //"rgb(255, 50, 0)",
           "circle-opacity": 0.4,
           "circle-blur": 3,
         },
@@ -479,8 +481,8 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
         },
         source: "glowy-source",
         paint: {
-          "circle-radius": 5,
-          "circle-color": "rgb(0, 255, 0)", //"rgb(255, 50, 0)",
+          "circle-radius": 10,
+          "circle-color": colorBlind ? "rgb(255, 255, 0)" : "rgb(0, 255, 0)", //"rgb(255, 50, 0)",
           "circle-opacity": 0.4,
           "circle-blur": 3,
         },
@@ -495,7 +497,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
         },
         source: "glowy-source",
         paint: {
-          "circle-radius": 1,
+          "circle-radius": 2,
           "circle-color": "white",
           "circle-opacity": 1,
           "circle-blur": 0,
@@ -822,23 +824,41 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
             3,
           ],
           "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 9, 20],
-          "heatmap-color": [
-            "interpolate",
-            ["linear"],
-            ["heatmap-density"],
-            0,
-            "rgba(0, 0, 255, 0)",
-            0.2,
-            "royalblue",
-            0.4,
-            "cyan",
-            0.6,
-            "lime",
-            0.8,
-            "yellow",
-            1,
-            "red",
-          ],
+          "heatmap-color": colorBlind
+            ? [
+                "interpolate",
+                ["linear"],
+                ["heatmap-density"],
+                0,
+                "rgba(255, 255, 0, 0)", // Trasparente (parte debole)
+                0.2,
+                "yellow", // Giallo
+                0.4,
+                "purple", // Blu
+                0.6,
+                "cyan", // Ciano
+                0.8,
+                "lime", // Lime
+                1,
+                "royalblue", // Viola (parte forte)
+              ]
+            : [
+                "interpolate",
+                ["linear"],
+                ["heatmap-density"],
+                0,
+                "rgba(0, 0, 255, 0)",
+                0.2,
+                "royalblue",
+                0.4,
+                "cyan",
+                0.6,
+                "lime",
+                0.8,
+                "yellow",
+                1,
+                "red",
+              ],
           "heatmap-opacity": 0.8,
         },
       });
