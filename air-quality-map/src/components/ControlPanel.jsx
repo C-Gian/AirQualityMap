@@ -658,7 +658,9 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
                 borderColor: "white",
                 height: 20,
                 width: 20,
-                backgroundColor: "rgba(255, 0, 0, 0.8)",
+                backgroundColor: colorBlindMode
+                  ? "rgba(0, 0, 255, 0.8)"
+                  : "rgba(255, 0, 0, 0.8)",
                 userSelect: "none",
               }}
               dotStyle={{

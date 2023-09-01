@@ -7,12 +7,12 @@ const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const colors = colorBlind
     ? [
-        "rgba(255, 255, 255, 1)",
-        "rgba(57, 139, 72, 1)",
-        "rgba(97, 169, 168, 1)",
-        "rgba(202, 55, 49, 1)",
-        "rgba(219, 100, 44, 1)",
-        "rgba(106, 58, 122, 1)",
+        "rgba(255, 192, 203, 1)",
+        "rgba(0, 0, 255, 1)",
+        "rgba(128, 128, 128, 1)",
+        "rgba(255, 255, 0, 1)",
+        "rgba(255, 165, 0, 1)",
+        "rgba(128, 0, 128, 1)",
       ]
     : ["white", "#318765"];
 

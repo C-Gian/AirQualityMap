@@ -31,55 +31,24 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
     ? [
         0,
         "rgba(255, 255, 255, 1)",
-        16.8,
-        "rgba(0, 255, 4, 1)",
-        33.4,
-        "rgba(211, 255, 0, 1)",
-        50,
-        "rgba(255, 238, 0, 1)",
-
-        51,
-        "rgba(255, 165, 0, 1)",
-        67.4,
-        "rgba(255, 171, 0, 1)",
-        83.7,
-        "rgba(255, 107, 0, 1)",
+        20,
+        "rgba(240, 240, 255, 1)",
+        40,
+        "rgba(208, 208, 255, 1)",
+        60,
+        "rgba(176, 176, 255, 1)",
+        80,
+        "rgba(144, 144, 255, 1)",
         100,
-        "rgba(255, 0, 0, 1)",
-
-        101,
-        "rgba(230, 0, 49, 1)",
-        117.4,
-        "rgba(232, 0, 111, 1)",
-        133.7,
-        "rgba(202, 51, 103, 1)",
-        150,
-        "rgba(167, 0, 91, 1)",
-
-        151,
-        "rgba(111, 0, 164, 1)",
-        167.4,
-        "rgba(59, 0, 179, 1)",
-        183.7,
-        "rgba(0, 77, 209, 1)",
-        200,
-        "rgba(0, 113, 206, 1)",
-
-        201,
-        "rgba(0, 162, 255, 1)",
-        220.8,
-        "rgba(0, 224, 255, 1)",
-        240.6,
-        "rgba(0, 255, 191, 1)",
-        260.4,
-        "rgba(0, 255, 123, 1)",
-        280.2,
-        "rgba(0, 179, 78, 1)",
-        300,
-        "rgba(0, 115, 78, 1)",
-
-        301,
-        "rgba(0, 73, 78, 1)",
+        "rgba(112, 112, 255, 1)",
+        120,
+        "rgba(80, 80, 255, 1)",
+        140,
+        "rgba(48, 48, 255, 1)",
+        160,
+        "rgba(16, 16, 255, 1)",
+        180,
+        "rgba(0, 0, 255, 1)",
       ]
     : [
         0,
@@ -655,28 +624,38 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
           [303, [232, 83, 25, 255]],
           [320, [71, 14, 0, 255]],
         ],
-        wind: [
-          [0, [98, 113, 183, 255]],
-          [1, [57, 97, 159, 255]],
-          [3, [74, 148, 169, 255]],
-          [5, [77, 141, 123, 255]],
-          [7, [83, 165, 83, 255]],
-          [9, [53, 159, 53, 255]],
-          [11, [167, 157, 81, 255]],
-          [13, [159, 127, 58, 255]],
-          [15, [161, 108, 92, 255]],
-          [17, [129, 58, 78, 255]],
-          [19, [175, 80, 136, 255]],
-          [21, [117, 74, 147, 255]],
-          [24, [109, 97, 163, 255]],
-          [27, [68, 105, 141, 255]],
-          [29, [92, 144, 152, 255]],
-          [36, [125, 68, 165, 255]],
-          [46, [231, 215, 215, 255]],
-          [51, [219, 212, 135, 255]],
-          [77, [205, 202, 112, 255]],
-          [104, [128, 128, 128, 255]],
-        ],
+        wind: colorBlind
+          ? [
+              [0, [255, 255, 255, 255]], // Bianco
+              [1, [204, 204, 255, 255]], // Blu Chiaro
+              [3, [176, 176, 255, 255]], // Blu
+              [5, [141, 141, 255, 255]], // Blu Scuro
+              [7, [83, 83, 255, 255]], // Blu Molto Scuro
+              [9, [53, 53, 255, 255]], // Blu Ultra Scuro
+              [11, [0, 0, 255, 255]], // Blu Scuro Profondo
+            ]
+          : [
+              [0, [98, 113, 183, 255]],
+              [1, [57, 97, 159, 255]],
+              [3, [74, 148, 169, 255]],
+              [5, [77, 141, 123, 255]],
+              [7, [83, 165, 83, 255]],
+              [9, [53, 159, 53, 255]],
+              [11, [167, 157, 81, 255]],
+              [13, [159, 127, 58, 255]],
+              [15, [161, 108, 92, 255]],
+              [17, [129, 58, 78, 255]],
+              [19, [175, 80, 136, 255]],
+              [21, [117, 74, 147, 255]],
+              [24, [109, 97, 163, 255]],
+              [27, [68, 105, 141, 255]],
+              [29, [92, 144, 152, 255]],
+              [36, [125, 68, 165, 255]],
+              [46, [231, 215, 215, 255]],
+              [51, [219, 212, 135, 255]],
+              [77, [205, 202, 112, 255]],
+              [104, [128, 128, 128, 255]],
+            ],
       };
 
       const windInterpolateColor = color.wind.reduce(
@@ -691,7 +670,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
           /* type: "jsonArray",
           data: windDatas[1].data, */
           type: "image",
-          url: "/wind-scalar-fill.png",
+          url: colorBlind ? "/wind-scalar-fill.png" : "/wind-scalar-fill.png",
           //url: "https://sakitam.oss-cn-beijing.aliyuncs.com/codepen/wind-layer/image/var_ugrd-var_vgrd.png",
           extent: [
             [-180, 85.051129],
@@ -954,7 +933,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
         datas: datas,
         id: e.features[0].id,
         isState: true,
-        //color: e.features[0], //.layer.paint["fill-color"],
+        color: e.features[0].layer.paint["fill-color"],
       };
       for (let i = 0; i < 50; i++) {
         mapRef.current.setFeatureState(
@@ -986,7 +965,7 @@ function MapComponent({ datas, dotsDatas, windDatas, stateClicked }) {
         datas: datas,
         id: e.features[0].id,
         isState: false,
-        //color: e.features[0].layer.paint["fill-color"],
+        color: e.features[0].layer.paint["fill-color"],
       };
       stateClicked(stateInfos);
       const center = [-108.15050813778196, 43.20742527199025];

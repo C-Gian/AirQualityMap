@@ -9,13 +9,13 @@ const PollsTempCorrChart = ({ datas, id, nightMode, colorBlind }) => {
   let data = [];
   const colors = colorBlind
     ? {
-        TEMP: "rgba(255, 255, 255, 1)",
-        CO: "rgba(255, 149, 0, 1)",
-        SO2: "rgba(148, 0, 211, 1)",
-        NO2: "rgba(255, 205, 0, 1)",
-        "PM2.5": "rgba(0, 0, 255, 1)",
-        PM10: "rgba(255, 50, 50, 1)",
-        OZONE: "rgba(0, 255, 0, 1)",
+        TEMP: "rgba(255, 255, 255, 1)", //bianco
+        CO: "rgba(255, 165, 0, 1)", // Arancione
+        SO2: "rgba(128, 0, 128, 1)", // Viola
+        NO2: "rgba(255, 255, 0, 1)", // Giallo
+        "PM2.5": "rgba(0, 0, 255, 1)", // Blu
+        PM10: "rgba(255, 192, 203, 1)", // Rosa
+        OZONE: "rgba(128, 128, 128, 1)", // Grigio
       }
     : {
         TEMP: "rgba(255, 255, 255, 1)",

@@ -68,12 +68,12 @@ function PollsLevelsChart({
   const chartRef = useRef(null);
   const colors = colorBlind
     ? [
-        "rgba(255, 50, 50, 1)",
+        "rgba(255, 192, 203, 1)",
         "rgba(0, 0, 255, 1)",
-        "rgba(0, 255, 0, 1)",
-        "rgba(255, 205, 0, 1)",
-        "rgba(255, 149, 0, 1)",
-        "rgba(148, 0, 211, 1)",
+        "rgba(128, 128, 128, 1)",
+        "rgba(255, 255, 0, 1)",
+        "rgba(255, 165, 0, 1)",
+        "rgba(128, 0, 128, 1)",
       ]
     : ["red", "blue", "green", "yellow", "orange", "purple"];
 

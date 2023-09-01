@@ -126,7 +126,12 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
 
         <div className="flex justify-between items-center space-x-3">
           <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
-            <a className="github-button" onClick={toggleModal}>
+            <a
+              className={`github-button ${
+                colorBlindMode ? "github-button-blind" : ""
+              }`}
+              onClick={toggleModal}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-brand-github"
@@ -149,7 +154,9 @@ l-35 22 -1908 3 -1909 2 -34 -34z"
           </div>
           <div className="tooltip-container w-fit h-fit flex flex-col items-center justify-end">
             <a
-              className="github-button"
+              className={`github-button ${
+                colorBlindMode ? "github-button-blind" : ""
+              }`}
               href="https://github.com/C-Gian/Dev-Mapbox"
               target="_blank"
             >

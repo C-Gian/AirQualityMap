@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "rc-slider/assets/index.css";
 import PollsLevelsChart from "./PollsLevelsChart";
-import * as d3 from "d3";
 import PollsTempCorrChart from "./PollsTempCorrChart";
 import CorrelationMatrix from "./CorrelationMatrix";
 import LinearRegression from "./LinearRegression";
@@ -15,32 +14,17 @@ import HoverableHeader from "./HoverableHeader";
 
 const Sidebar = ({ infos, bulkDatas }) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [AQI, setAQI] = useState("");
-  const [lastUpdate, setLastUpdate] = useState("");
+  const [sidebarData, setSidebarData] = useState({});
   const [dataR, setDataR] = useState(infos.datas[0].features[infos.id]);
-  const [hexColor, setHexColor] = useState("");
-  const [airQualityText, setAirQualityText] = useState(null);
-  const [weatherCondition, setWeatherCondition] = useState(null);
-  const [tempFeel, setTempFeel] = useState(null);
-  const [tempReal, setTempReal] = useState(null);
-  const [cloud, setCloud] = useState(null);
-  const [humidity, setHumidity] = useState(null);
-  const [nStations, setNStation] = useState(0);
-  const [historyAQI, setHistoryAQI] = useState([]);
   const sliderValue = useSelector((state) => state.sliderValue);
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlind = useSelector((state) => state.colorBlindMode);
-  const colors = colorBlind
-    ? [
-        "rgba(0, 147, 0, 1)", // Verde
-        "rgba(181, 140, 0, 1)", // Giallo
-        "rgba(245, 116, 0, 1)", // Arancione
-        "rgba(245, 0, 0, 1)", // Rosso
-        "rgba(131, 52, 140, 1)", // Viola
-        "rgba(115, 0, 23, 1)",
-      ]
-    : ["#00D900", "#B5B500", "#F57300", "#F50000", "#83328C", "#730017"];
+  const r = Math.round(infos.color.r * 255);
+  const g = Math.round(infos.color.g * 255);
+  const b = Math.round(infos.color.b * 255);
+  const hexColor = `#${r.toString(16).padStart(2, "0")}${g
+    .toString(16)
+    .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 
   const handleCloseButtonClick = () => {
     dispatch(setSidebar(false));
@@ -61,132 +45,48 @@ const Sidebar = ({ infos, bulkDatas }) => {
     return ["Hazardous", "#730017"];
   }
 
-  /* function getFixedValues(datas) {
-    datas.forEach(day => {
-      day.features.forEach(feature => {
-
-      })
-    })
-  } */
-
-  // Funzione per calcolare il colore associato al valore in base all'interpolazione lineare
-  const getColorForValue = (value) => {
-    if (value && value > 0) {
-      const scale = d3
-        .scaleLinear()
-        .domain([0, 301])
-        .range([0, colors.length - 1]);
-      const index = scale(value);
-      const t = index % 1; // Frazione dell'indice
-      const colorInterpolator = d3.interpolate(
-        colors[Math.floor(index)],
-        colors[Math.ceil(index)]
-      );
-      const color = colorInterpolator(t);
-      // Ora aumenta la luminosità del colore
-      const brighterColor = d3.color(color).brighter(1).toString();
-      return brighterColor;
-    }
-    return "rgba(0,0,0,0)";
-  };
-
   useEffect(() => {
     setDataR(infos.datas[sliderValue].features[infos.id]);
   }, [sliderValue, infos, nightMode, colorBlind]);
 
   useEffect(() => {
-    let colorToSet = null;
     if (!infos.isState) {
-      setName("USA");
       setDataR(infos.datas[sliderValue].features[infos.id]);
-      setAQI(dataR.properties.countryAQI);
-      setLastUpdate(dataR.lastUpdatedMe.split(" "));
-      setTempReal(dataR.properties.countryTemp);
-      setHumidity(dataR.properties.countryHum);
-      setHistoryAQI(
-        infos.datas.map((item) => item.features[0].properties.countryAQI)
-      );
-      setAirQualityText(getColoreByValore(dataR.properties.countryAQI)[0]);
-      setNStation(
-        infos.datas[sliderValue].features.reduce(
+      setSidebarData({
+        name: "USA",
+        AQI: dataR.properties.countryAQI,
+        lastUpdate: dataR.lastUpdatedMe.split(" "),
+        historyAQI: infos.datas.map(
+          (item) => item.features[0].properties.countryAQI
+        ),
+        tempReal: dataR.properties.countryTemp,
+        humidity: dataR.properties.countryHum,
+        airQualityText: getColoreByValore(dataR.properties.countryAQI)[0],
+        nStations: infos.datas[sliderValue].features.reduce(
           (total, obj) => total + obj.properties.nDetections,
           0
-        )
-      );
-      if (!dataR.properties.countryAQI) {
-        colorToSet = "#00000000";
-      } else {
-        if (dataR.properties.countryAQI >= 301) {
-          colorToSet = "#4b0b2c";
-        } else {
-          let stateColorArray = getColorForValue(dataR.properties.countryAQI);
-          const stateColorArrayRGB = stateColorArray
-            .replace("rgb(", "")
-            .replace(")", "")
-            .split(",");
-          const stateColorObjectRGB = {
-            r: Number(stateColorArrayRGB[0]),
-            g: Number(stateColorArrayRGB[1]),
-            b: Number(stateColorArrayRGB[2]),
-          };
-
-          const r = stateColorObjectRGB.r;
-          const g = stateColorObjectRGB.g;
-          const b = stateColorObjectRGB.b;
-          const hc = `#${r.toString(16).padStart(2, "0")}${g
-            .toString(16)
-            .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
-          colorToSet = hc;
-        }
-      }
-    } else {
-      /* console.log("all data", infos.datas);
-      console.log("today data", dataR); */
-      setName(dataR.properties.name);
-      setAQI(dataR.properties.AQI);
-      setLastUpdate(dataR.lastUpdatedMe.split(" "));
-      //setairQualityty(dataR.weather.data.);
-      setWeatherCondition({
-        condText: dataR.weather.data.conditionText,
-        condIcon: dataR.weather.data.conditionIcon,
+        ),
       });
-      setHistoryAQI(
-        infos.datas.map((item) => item.features[infos.id].properties.AQI)
-      );
-      setTempFeel(dataR.weather.data.tempFeel);
-      setTempReal(dataR.weather.data.tempReal);
-      setCloud(dataR.weather.data.cloud);
-      setHumidity(dataR.weather.data.humidity);
-      setAirQualityText(getColoreByValore(dataR.properties.AQI)[0]);
-      setNStation(dataR.properties.nDetections);
-      if (!dataR.properties.AQI) {
-        colorToSet = "#00000000";
-      } else {
-        if (dataR.properties.AQI >= 301) {
-          colorToSet = "#4b0b2c";
-        } else {
-          let stateColorArray = getColorForValue(dataR.properties.AQI);
-          const stateColorArrayRGB = stateColorArray
-            .replace("rgb(", "")
-            .replace(")", "")
-            .split(",");
-          const stateColorObjectRGB = {
-            r: Number(stateColorArrayRGB[0]),
-            g: Number(stateColorArrayRGB[1]),
-            b: Number(stateColorArrayRGB[2]),
-          };
-
-          const r = stateColorObjectRGB.r;
-          const g = stateColorObjectRGB.g;
-          const b = stateColorObjectRGB.b;
-          const hc = `#${r.toString(16).padStart(2, "0")}${g
-            .toString(16)
-            .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
-          colorToSet = hc;
-        }
-      }
+    } else {
+      setSidebarData({
+        name: dataR.properties.name,
+        AQI: dataR.properties.AQI,
+        lastUpdate: dataR.lastUpdatedMe.split(" "),
+        weatherCondition: {
+          condText: dataR.weather.data.conditionText,
+          condIcon: dataR.weather.data.conditionIcon,
+        },
+        historyAQI: infos.datas.map(
+          (item) => item.features[infos.id].properties.AQI
+        ),
+        tempFeel: dataR.weather.data.tempFeel,
+        tempReal: dataR.weather.data.tempReal,
+        cloud: dataR.properties.cloud,
+        humidity: dataR.weather.data.humidity,
+        airQualityText: getColoreByValore(dataR.properties.AQI)[0],
+        nStations: dataR.properties.nDetections,
+      });
     }
-    setHexColor(colorToSet);
   }, [dataR, nightMode, colorBlind]);
 
   return (
@@ -214,7 +114,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 height: "auto",
               }}
             />
-            <span className="text-4xl title-text-font">{name}</span>
+            <span className="text-4xl title-text-font">{sidebarData.name}</span>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -247,10 +147,10 @@ const Sidebar = ({ infos, bulkDatas }) => {
             </h2>
             <div className={`flex -mt-2 `}>
               <h2 className="normal-text-font text-xl">
-                {lastUpdate ? lastUpdate[0] : "No data"}
+                {sidebarData.lastUpdate ? sidebarData.lastUpdate[0] : "No data"}
               </h2>
               <h2 className="normal-text-font ml-2 text-xl">
-                {lastUpdate ? lastUpdate[1] : "No data"}
+                {sidebarData.lastUpdate ? sidebarData.lastUpdate[1] : "No data"}
               </h2>
             </div>
           </div>
@@ -281,7 +181,8 @@ const Sidebar = ({ infos, bulkDatas }) => {
       </div>
       <div
         className={`sidebar h-[calc(100%-110px)] overflow-y-scroll py-4 ${
-          nightMode ? "" : "light-mode-text-color"
+          (nightMode ? "" : "light-mode-text-color",
+          colorBlind ? "sidebar-blind" : "")
         }`}
       >
         <div className="mr-2">
@@ -300,7 +201,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
               </h2>
               <AQIShow
                 hexColor={hexColor}
-                AQI={AQI}
+                AQI={sidebarData.AQI}
                 w={150}
                 h={150}
                 fs={35}
@@ -312,7 +213,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
             >
               <h2 className="headers-text-font  text-2xl">AQI History</h2>
               <AreaChart
-                data={historyAQI}
+                data={sidebarData.historyAQI}
                 color={hexColor}
                 nightMode={nightMode}
               />
@@ -348,58 +249,60 @@ const Sidebar = ({ infos, bulkDatas }) => {
                 className="everything-font text-xl"
                 style={{ color: hexColor }}
               >
-                {airQualityText}
+                {sidebarData.airQualityText}
               </h2>
             </div>
             <div className="flex justify-between mt-5">
               <h2 className="light-text-font text-xl  mr-5">
                 Total Stations:{" "}
               </h2>
-              <h2 className="light-text-font text-xl ">{nStations}</h2>
+              <h2 className="light-text-font text-xl ">
+                {sidebarData.nStations}
+              </h2>
             </div>
-            {weatherCondition != null && infos.isState && (
+            {sidebarData.weatherCondition != null && infos.isState && (
               <div className="flex justify-between mt-5 items-center">
                 <h2 className="light-text-font text-xl  mr-5">Weather: </h2>
                 <div className="flex items-center">
                   <img
                     className=" mr-2 "
-                    src={`${weatherCondition.condIcon}`}
+                    src={`${sidebarData.weatherCondition.condIcon}`}
                     width={50}
                     height={50}
                   />
-                  <h2 className="light-text-font text-xl ">{`${weatherCondition.condText}`}</h2>
+                  <h2 className="light-text-font text-xl ">{`${sidebarData.weatherCondition.condText}`}</h2>
                 </div>
               </div>
             )}
-            {cloud != null && infos.isState && (
+            {sidebarData.cloud != null && infos.isState && (
               <div className="flex justify-between mt-5">
                 <h2 className="light-text-font text-xl  mr-5">Cloud: </h2>
                 <h2 className="light-text-font text-xl ">
-                  {Math.floor(cloud * 100) / 100}
+                  {Math.floor(sidebarData.cloud * 100) / 100}
                 </h2>
               </div>
             )}
-            {tempFeel != null && infos.isState && (
+            {sidebarData.tempFeel != null && infos.isState && (
               <div className="flex justify-between mt-5">
                 <h2 className="light-text-font text-xl  mr-5">Temp. Feel: </h2>
                 <h2 className="light-text-font text-xl ">{`${
-                  Math.floor(tempFeel * 100) / 100
+                  Math.floor(sidebarData.tempFeel * 100) / 100
                 }°`}</h2>
               </div>
             )}
-            {tempReal != null && (
+            {sidebarData.tempReal != null && (
               <div className="flex justify-between mt-5">
                 <h2 className="light-text-font text-xl  mr-5">Temp. Real: </h2>
                 <h2 className="light-text-font text-xl ">{`${
-                  Math.floor(tempReal * 100) / 100
+                  Math.floor(sidebarData.tempReal * 100) / 100
                 }°`}</h2>
               </div>
             )}
-            {humidity != null && (
+            {sidebarData.humidity != null && (
               <div className="flex justify-between mt-5">
                 <h2 className="light-text-font text-xl  mr-5">Humidity: </h2>
                 <h2 className="light-text-font text-xl ">{`${
-                  Math.floor(humidity * 100) / 100
+                  Math.floor(sidebarData.humidity * 100) / 100
                 }%`}</h2>
               </div>
             )}

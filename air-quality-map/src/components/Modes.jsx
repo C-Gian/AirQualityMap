@@ -1,16 +1,23 @@
 import React from "react";
-import { setNightMode, setColorBlindMode } from "../actions/index.js";
+import {
+  setNightMode,
+  setColorBlindMode,
+  setSidebar,
+} from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Modes() {
   const nightMode = useSelector((state) => state.nightMode);
   const colorBlindMode = useSelector((state) => state.colorBlindMode);
   const dispatch = useDispatch();
+
   const handleNightModeClick = () => {
+    dispatch(setSidebar(false));
     dispatch(setNightMode(!nightMode));
   };
 
   const handleColorBlindClick = () => {
+    dispatch(setSidebar(false));
     dispatch(setColorBlindMode(!colorBlindMode));
   };
   return (

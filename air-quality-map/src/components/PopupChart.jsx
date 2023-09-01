@@ -7,14 +7,24 @@ function PopupChart({ data, nightMode, colorBlindMode }) {
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
 
-    const pollutantColors = {
-      PM10: "red",
-      "PM2.5": "blue",
-      OZONE: "green",
-      NO2: "yellow",
-      CO: "orange",
-      SO2: "purple",
-    };
+    const pollutantColors = colorBlindMode
+      ? {
+          TEMP: "rgba(255, 255, 255, 1)", //bianco
+          CO: "rgba(255, 165, 0, 1)", // Arancione
+          SO2: "rgba(128, 0, 128, 1)", // Viola
+          NO2: "rgba(255, 255, 0, 1)", // Giallo
+          "PM2.5": "rgba(0, 0, 255, 1)", // Blu
+          PM10: "rgba(255, 192, 203, 1)", // Rosa
+          OZONE: "rgba(128, 128, 128, 1)", // Grigio
+        }
+      : {
+          CO: "rgba(255, 165, 0, 1)",
+          SO2: "rgba(128, 0, 128, 1)",
+          NO2: "rgba(255, 255, 0, 1) ",
+          "PM2.5": "rgba(0, 0, 255, 1)",
+          PM10: "rgba(255, 0, 0, 1) ",
+          OZONE: "rgba(0, 128, 0, 1) ",
+        };
 
     const sortedData = Object.entries(data).sort((a, b) => b[1] - a[1]);
     const labels = sortedData.map((entry) => entry[0]);
