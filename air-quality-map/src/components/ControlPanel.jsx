@@ -157,7 +157,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
           <div className="flex space-x-1">
             <div className={`cp-buttons tooltip-container shadow-md`}>
               <button
-                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md ${
+                className={`cp-button-r p-1 w-full h-full justify-center  flex items-center tooltip-btn shadow-md ${
                   nightMode
                     ? "button-colors-nightmode"
                     : "button-colors-lightmode"
@@ -188,7 +188,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               }`}
             >
               <button
-                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn ${
+                className={`cp-button-r p-1 w-full h-full justify-center  flex items-center tooltip-btn ${
                   nightMode
                     ? "button-colors-nightmode"
                     : "button-colors-lightmode"
@@ -225,7 +225,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               </button>
               {isMenuOpen && (
                 <div
-                  className={`absolute rounded shadow w-300 cursor-pointer`}
+                  className={`absolute  shadow w-300 cursor-pointer`}
                   style={{
                     top: "-310px",
                     right: "0px",
@@ -263,7 +263,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               }`}
             >
               <button
-                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md  ${
+                className={`cp-button-r p-1 w-full h-full justify-center  flex items-center tooltip-btn shadow-md  ${
                   nightMode
                     ? "button-colors-nightmode"
                     : "button-colors-lightmode"
@@ -295,7 +295,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
           </div>
 
           <div
-            className={`flex w-full mx-2 items-center justify-center rounded shadow-md ${
+            className={`flex w-full mx-1 items-center justify-center rounded shadow-md ${
               nightMode ? "button-colors-nightmode" : "button-colors-lightmode"
             }
             `}
@@ -317,7 +317,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
               }`}
             >
               <button
-                className={`w-full h-full justify-center p-1 rounded flex items-center tooltip-btn shadow-md ${
+                className={`cp-button-r w-full h-full justify-center p-1  flex items-center tooltip-btn shadow-md ${
                   nightMode
                     ? "button-colors-nightmode"
                     : "button-colors-lightmode"
@@ -355,7 +355,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
 
             <div className={`cp-buttons tooltip-container shadow-md `}>
               <button
-                className={`w-full h-full rounded tooltip-btn shadow-md flex items-center justify-center ${
+                className={`cp-button-r  w-full h-full  tooltip-btn shadow-md flex items-center justify-center ${
                   nightMode
                     ? "button-colors-nightmode"
                     : "button-colors-lightmode"
@@ -390,7 +390,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
 
             <div className={`cp-buttons tooltip-container shadow-md `}>
               <button
-                className={`p-1 w-full h-full justify-center rounded flex items-center tooltip-btn shadow-md ${
+                className={`cp-button-r  p-1 w-full h-full justify-center  flex items-center tooltip-btn shadow-md ${
                   nightMode
                     ? "button-colors-nightmode"
                     : "button-colors-lightmode"
@@ -669,7 +669,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
       </div>
 
       <div
-        className="w-full mt-2 h-2 rounded"
+        className="w-full mt-2 h-2 "
         style={{
           background: `linear-gradient(to right, ${startColor}, ${mid1Color}, ${mid2Color}, ${mid3Color}, ${mid4Color}, ${endColor})`,
         }}

@@ -38,7 +38,7 @@ function Modes() {
       style={{ top: 180, right: 2 }}
     >
       <div
-        className={`tooltip-container rounded flex items-center justify-center border modes-border p-2 
+        className={`tooltip-container modes-button flex items-center justify-center border modes-border p-2 
         ${
           nightMode
             ? "button-colors-nightmode-map"
@@ -131,7 +131,7 @@ function Modes() {
         <span className="tooltip-text-modes p-2">Night Mode</span>
       </div>
       <div
-        className={`tooltip-container rounded w-fit h-fit flex items-center justify-center border modes-border p-2 ${
+        className={`tooltip-container modes-button w-fit h-fit flex items-center justify-center border modes-border p-2 ${
           nightMode
             ? "button-colors-nightmode-map"
             : "button-colors-lightmode-map"
@@ -143,7 +143,7 @@ function Modes() {
         onClick={handleColorBlindClick}
       >
         <button
-          className="rounded flex items-center tooltip-btn  transition duration-300 ease-in-out"
+          className="flex items-center tooltip-btn  transition duration-300 ease-in-out"
           onClick={handleColorBlindClick}
         >
           {colorBlindMode ? (
