@@ -91,7 +91,7 @@ const Sidebar = ({ infos, bulkDatas }) => {
 
   return (
     <div
-      className={`pt-3 pb-3 pl-3 pr-2 h-screen w-650 z-30 fixed backdrop-blur-2xl ${
+      className={`sidebar-container pt-3 pb-3 pl-3 pr-2 h-screen z-30 fixed backdrop-blur-2xl ${
         nightMode ? "sidebar-background " : "sidebar-background-light"
       }`}
       style={{

@@ -301,7 +301,7 @@ function ControlPanel({ onRefreshButton, refreshIsLoading }) {
             `}
           >
             <h2
-              className={`items-center px-1 text-l select-none light-text-font uppercase ${
+              className={`items-center px-1 text-l select-none light-text-font cp uppercase ${
                 nightMode ? "text-white" : "light-mode-text-color"
               }
             `}
