@@ -162,7 +162,7 @@ body {
 /*1280x720 - 1920x1080*/
 @media screen and (min-width: 501px) and (max-width: 1050px) {
   .sidebar-container {
-    width: fit-content;
+    width: 400px;
   }
   .sidebar {
     width: 100%;

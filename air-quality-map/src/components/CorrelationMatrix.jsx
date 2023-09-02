@@ -191,7 +191,7 @@ const CorrelationMatrix = ({ bulkDatas, nightMode, colorBlind }) => {
         // Imposta il colore delle etichette delle scale sull'asse x come bianche
         svg.selectAll(".tick text").style("fill", nightMode ? "white" : "#333");
         svg.selectAll(".tick text").style("font-family", "PoppinsLight");
-        svg.selectAll(".tick text").style("font-size", "15"); // Imposta il font desiderato
+        svg.selectAll(".tick text").style("font-size", "0.7rem"); // Imposta il font desiderato
         svg
           .selectAll(".tick line")
           .style("stroke", nightMode ? "white" : "#333");
